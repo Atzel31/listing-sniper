@@ -7,11 +7,30 @@ ETHERSCAN_KEY = os.environ.get("ETHERSCAN_KEY", "")
 SCAN_INTERVAL = 60
 
 EXCHANGE_WALLETS = [
+    # ── MEXC ──────────────────────────────────────────────
     {"address": "0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88", "exchange": "MEXC"},
     {"address": "0x6cc5f688a315f3dc28a7781717a9a798a59fda7b", "exchange": "MEXC"},
     {"address": "0xd24400ae8BfEBb18cA49Be86258a3C749cf46853", "exchange": "MEXC"},
+    {"address": "0x4976a4a02f38326660d17bf34b431dc6e2eb2327", "exchange": "MEXC"},
+    # ── BITGET ────────────────────────────────────────────
     {"address": "0x1ab4973a48dc892cd9971ece8e01dcc7688f8f23", "exchange": "BITGET"},
     {"address": "0x0d0707963952f2fba59dd06f2b425ace40b492fe", "exchange": "BITGET"},
+    {"address": "0xf89d7b9c864f589bbF53a82105107622B35EaA40", "exchange": "BITGET"},
+    # ── BYBIT ─────────────────────────────────────────────
+    {"address": "0xf89d7b9c864f589bbf53a82105107622b35eaa40", "exchange": "BYBIT"},
+    {"address": "0xbaed383ede0e5d9d72430661f3285daa77e9439f", "exchange": "BYBIT"},
+    {"address": "0xa7a93fd0a276fc1c0197a5b5623ed117786eed06", "exchange": "BYBIT"},
+    {"address": "0x18e296053cbdf986196903e889b7dca7a73882f6", "exchange": "BYBIT"},
+    # ── BINANCE ───────────────────────────────────────────
+    {"address": "0xf977814e90da44bfa03b6295a0616a897441acec", "exchange": "BINANCE"},
+    {"address": "0x631fc1ea2270e98fbd9d92658ece0f5a269aa161", "exchange": "BINANCE"},
+    {"address": "0x161ba15a5f335c9f06bb5bbb0a9ce14076fbb645", "exchange": "BINANCE"},
+    {"address": "0xbd612a3f30dca67bf60a39fd0d35e39b7ab80774", "exchange": "BINANCE"},
+    # ── OKX ───────────────────────────────────────────────
+    {"address": "0x4b4e14a3773ee558b6597070797fd51eb48606e5", "exchange": "OKX"},
+    {"address": "0x4e7b110335511f662fdbb01bf958a7844118c0d4", "exchange": "OKX"},
+    {"address": "0xa9ac43f5b5e38155a288d1a01d2cbc4478e14573", "exchange": "OKX"},
+    {"address": "0xa7efae728d2936e78bda97dc267687568dd593f3", "exchange": "OKX"},
 ]
 
 seen = set()
