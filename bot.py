@@ -94,13 +94,14 @@ def notify(title, body, priority="default", tags="bell"):
             f"https://ntfy.sh/{NTFY_TOPIC}",
             data=body.encode("utf-8"),
             headers={
-                "Title":    title,
+                "Title":    title.encode("utf-8").decode("latin-1", errors="replace"),
                 "Priority": priority,
                 "Tags":     tags,
+                "Content-Type": "text/plain; charset=utf-8",
             },
             timeout=10,
         )
-        log(f"📲 {title}")
+        log(f"Notificacion enviada: {title}")
     except Exception as e:
         log(f"[ntfy error] {e}")
 
