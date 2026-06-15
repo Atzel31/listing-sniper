@@ -21,13 +21,17 @@ MIN_AGE_HOURS   = int(os.environ.get("MIN_AGE_HOURS",   "0"))
 MIN_BUY_RATIO   = int(os.environ.get("MIN_BUY_RATIO",   "45"))
 ACCUM_EVERY     = int(os.environ.get("ACCUM_EVERY",     "5"))    # ciclos entre scans de acumulacion
 WEEKLY_UTC_HOUR = int(os.environ.get("WEEKLY_UTC_HOUR", "13"))   # 13 UTC = 8am Peru
-DAILY_UTC_HOUR  = int(os.environ.get("DAILY_UTC_HOUR",  "13"))   # 13 UTC = 8am Peru — resumen diario
+DAILY_UTC_HOUR  = int(os.environ.get("DAILY_UTC_HOUR",  "12"))   # 12 UTC = 7am Peru — resumen diario + forense
 FORCE_WEEKLY    = os.environ.get("FORCE_WEEKLY", "false") == "true"
 PORT            = int(os.environ.get("PORT", "8080"))
 # Filtros reforzados (moderados pero mejores)
 MIN_PUMP_PROB   = int(os.environ.get("MIN_PUMP_PROB",   "45"))   # prob minima de pump para notificar nuevos
 RUG_LIQ_DROP    = int(os.environ.get("RUG_LIQ_DROP",    "75"))   # % caida de liquidez = rugpull
 TRACK_HOURS     = int(os.environ.get("TRACK_HOURS",     "48"))   # horas de seguimiento post-notificacion
+# Modulo de insiders / smart money
+MAX_TRACKED_WHALES = int(os.environ.get("MAX_TRACKED_WHALES", "20"))  # top wallets a seguir
+INSIDER_MIN_TOKENS = int(os.environ.get("INSIDER_MIN_TOKENS", "2"))   # min monedas de la lista para ser smart wallet
+FORENSIC_LOOKBACK_H = int(os.environ.get("FORENSIC_LOOKBACK_H", "48"))# ventana antes del pump para buscar insiders
 
 # ─── CHAINS ───────────────────────────────────────────────────────────────────
 CHAINS = {
@@ -132,7 +136,7 @@ vol5m_prev         = {}
 # Estado del modulo de acumulacion
 accum_state        = {}    # symbol -> datos completos
 accum_prev         = {}    # symbol -> snapshot anterior (para detectar cambios)
-accum_big_buyers   = {}    # wallet -> {"tokens": set, "count": int}
+accum_big_buyers   = {}    # wallet -> {"tokens": set, "count": int, "total_usd": float, "last_buy": ts, "buys": int}
 week_events        = []    # eventos importantes de la semana
 last_weekly_week   = None  # ISO week del ultimo reporte enviado
 cycle_count        = 0
@@ -142,6 +146,13 @@ tracked_tokens     = {}    # contract -> {symbol, chain, notified_at, notified_p
 rugged_tokens      = {}    # contract -> {symbol, chain, rugged_at, liq_before, liq_after, was_tracked}
 daily_notif_count  = 0     # notificaciones de nuevos tokens hoy
 last_daily_day     = None  # dia del ultimo resumen diario
+
+# Estado del modulo de insiders / smart money
+smart_wallets      = {}    # address -> {chain, tokens:set, total_usd, buys, insider_score, last_seen, tag, forensic, label}
+tracked_whale_set  = {}    # address -> {chain, label, last_check, last_seen_tokens:set} — top wallets en seguimiento activo
+forensic_done      = set() # symbols ya analizados forensicamente (para no repetir el mismo dia)
+last_forensic_day  = None  # dia del ultimo analisis forense
+insider_alerts     = []    # historico de alertas de insiders activos
 
 # ─── UTILS ────────────────────────────────────────────────────────────────────
 def log(msg):
@@ -1106,11 +1117,12 @@ def analyze_insiders(contract, chain, dex):
     notify_insider(dex["name"], chain, buyers, float(dex.get("ch1h", 0) or 0), dex)
 
 # ─── MÓDULO 7: ACUMULACIÓN ────────────────────────────────────────────────────
-def detect_big_buyers(contract, chain, symbol):
-    """Registra compradores grandes recientes en tokens EVM de la lista."""
+def detect_big_buyers(contract, chain, symbol, price_usd=0):
+    """Registra compradores grandes recientes en tokens EVM de la lista.
+    Captura monto en USD y frecuencia para alimentar el score de insider."""
     if CHAINS.get(chain, {}).get("escan") is None:
         return 0
-    txs = get_evm_token_txs_v2(contract, chain, by_contract=True, offset=30)
+    txs = get_evm_token_txs_v2(contract, chain, by_contract=True, offset=40)
     now = time.time()
     new_count = 0
     for tx in txs:
@@ -1121,32 +1133,116 @@ def detect_big_buyers(contract, chain, symbol):
         if not to_addr or to_addr in ETH_WALLET_MAP:
             continue
         try:
-            value = float(tx.get("value", 0)) / (10 ** int(tx.get("tokenDecimal", 18)))
+            tokens_amt = float(tx.get("value", 0)) / (10 ** int(tx.get("tokenDecimal", 18)))
         except:
             continue
-        if value <= 0:
+        if tokens_amt <= 0:
             continue
-        entry = accum_big_buyers.setdefault(to_addr, {"tokens": set(), "count": 0})
+        usd = tokens_amt * price_usd if price_usd > 0 else 0
+
+        entry = accum_big_buyers.setdefault(to_addr, {
+            "tokens": set(), "count": 0, "total_usd": 0.0,
+            "last_buy": ts, "buys": 0, "chain": chain,
+        })
+        entry["buys"] += 1
+        entry["total_usd"] += usd
+        entry["last_buy"] = max(entry["last_buy"], ts)
+        entry["chain"] = chain
+
         if symbol not in entry["tokens"]:
             entry["tokens"].add(symbol)
             entry["count"] += 1
             new_count += 1
-            # Si una wallet compra en 2+ tokens de la lista = smart money candidate
-            if len(entry["tokens"]) >= 2:
+            # Registrar/actualizar como smart wallet si compra 2+ tokens de la lista
+            if len(entry["tokens"]) >= INSIDER_MIN_TOKENS:
+                register_smart_wallet(to_addr, chain, entry)
                 k = dedup_key("smartmoney-" + to_addr, 240)
                 if k not in seen_signals:
                     seen_signals.add(k)
                     tokens_str = ", ".join(sorted(entry["tokens"]))
+                    usd_str = f" | ~{fmt_usd(entry['total_usd'])} movidos" if entry["total_usd"] > 0 else ""
                     notify(
-                        f"SMART MONEY: wallet activa en {len(entry['tokens'])} tokens de tu lista",
+                        f"SMART MONEY: wallet en {len(entry['tokens'])} tokens de tu lista",
                         f"Wallet: {short(to_addr)}\n"
-                        f"Comprando: {tokens_str}\n"
+                        f"Comprando: {tokens_str}{usd_str}\n"
                         f"Ver: https://etherscan.io/address/{to_addr}",
                         priority="high", tags="eyes,moneybag",
                     )
                     register_week_event(symbol, "smart_money",
-                                        f"Wallet {short(to_addr)} comprando en {len(entry['tokens'])} tokens: {tokens_str}")
+                                        f"Wallet {short(to_addr)} en {len(entry['tokens'])} tokens: {tokens_str}")
     return new_count
+
+def register_smart_wallet(addr, chain, entry, forensic=False, label=""):
+    """Crea o actualiza una smart wallet y recalcula su score de insider."""
+    sw = smart_wallets.setdefault(addr, {
+        "chain": chain, "tokens": set(), "total_usd": 0.0,
+        "buys": 0, "insider_score": 0, "last_seen": 0,
+        "tag": "smart", "forensic": False, "label": label or short(addr),
+    })
+    sw["chain"] = chain
+    sw["tokens"] = set(entry.get("tokens", sw["tokens"]))
+    sw["total_usd"] = max(sw["total_usd"], entry.get("total_usd", 0))
+    sw["buys"] = max(sw["buys"], entry.get("buys", 0))
+    sw["last_seen"] = max(sw["last_seen"], entry.get("last_buy", int(time.time())))
+    if forensic:
+        sw["forensic"] = True
+    if label:
+        sw["label"] = label
+    sw["insider_score"] = compute_insider_score(sw)
+    # Etiqueta especial
+    if sw["insider_score"] >= 75:
+        sw["tag"] = "insider_activo"
+    elif sw["forensic"]:
+        sw["tag"] = "insider_historico"
+    else:
+        sw["tag"] = "smart"
+    return sw
+
+def compute_insider_score(sw):
+    """
+    Score de insider (0-100) priorizando:
+    - cantidad de dinero movido
+    - cantidad de monedas de la lista que coinciden
+    - nivel de actividad (frecuencia de compras)
+    - bonus si fue detectado en analisis forense (compro antes de un pump real)
+    """
+    s = 0
+    n_tokens = len(sw.get("tokens", set()))
+    usd = sw.get("total_usd", 0)
+    buys = sw.get("buys", 0)
+    now = time.time()
+    last_seen = sw.get("last_seen", 0)
+
+    # Coincidencia de monedas (lo mas importante: insider real compra varias)
+    if n_tokens >= 5:   s += 35
+    elif n_tokens == 4: s += 28
+    elif n_tokens == 3: s += 20
+    elif n_tokens == 2: s += 10
+
+    # Dinero movido
+    if usd >= 100000:   s += 30
+    elif usd >= 25000:  s += 22
+    elif usd >= 5000:   s += 14
+    elif usd >= 1000:   s += 7
+    elif usd > 0:       s += 3
+
+    # Actividad / frecuencia
+    if buys >= 20:   s += 15
+    elif buys >= 10: s += 10
+    elif buys >= 4:  s += 5
+
+    # Recencia (activa = mas valiosa)
+    if last_seen > 0:
+        days_ago = (now - last_seen) / 86400
+        if days_ago < 1:    s += 12
+        elif days_ago < 3:  s += 8
+        elif days_ago < 7:  s += 4
+        elif days_ago > 30: s -= 10
+
+    # Bonus forense: compro antes de un pump confirmado historicamente
+    if sw.get("forensic"):  s += 15
+
+    return max(0, min(100, round(s)))
 
 def register_week_event(token, event_type, detail):
     week_events.append({
@@ -1178,8 +1274,12 @@ def scan_accumulation():
         # Whales conocidas posicionadas en este token
         wc = len(whale_buys.get(contract.lower(), set())) + len(whale_buys.get(contract, set()))
 
-        # Big buyers (solo EVM)
-        bb = detect_big_buyers(contract, chain, symbol)
+        # Big buyers (solo EVM) — con precio para calcular USD movido
+        try:
+            price_usd = float(dex.get("price", 0) or 0)
+        except:
+            price_usd = 0
+        bb = detect_big_buyers(contract, chain, symbol, price_usd)
         time.sleep(0.3)
 
         data = {
@@ -1278,6 +1378,196 @@ def scan_accumulation():
         log(f"  {symbol} (CEX): {accum_data['score']}% | MCap {fmt_usd(data['mcap'])} | {pct(data['ch24h'])} 24h")
 
     log("== Scan ACUMULACION completo ==")
+
+# ─── MÓDULO 7B: FORENSE HISTÓRICO DE INSIDERS ────────────────────────────────
+def get_price_peak_evm(contract, chain):
+    """
+    Encuentra el timestamp aproximado del mayor pump historico de un token EVM
+    usando el historial de transferencias (proxy: pico de actividad).
+    Retorna timestamp o None.
+    """
+    txs = get_evm_token_txs_v2(contract, chain, by_contract=True, sort="desc", offset=100)
+    if not txs:
+        return None
+    # Agrupar transacciones por dia y encontrar el dia de mayor actividad
+    # (proxy de pump: gran volumen de transferencias)
+    buckets = {}
+    for tx in txs:
+        ts = int(tx.get("timeStamp", 0))
+        day = ts // 86400
+        buckets[day] = buckets.get(day, 0) + 1
+    if not buckets:
+        return None
+    peak_day = max(buckets, key=buckets.get)
+    return peak_day * 86400 + 43200  # mediodia de ese dia
+
+def forensic_analysis_token(token):
+    """
+    Analisis forense de un token de la lista de acumulacion.
+    Busca wallets que compraron ANTES del mayor pump historico (posibles insiders).
+    Solo EVM (ETH/BNB/BASE). En SOL es muy limitado con APIs gratis.
+    """
+    symbol, chain, contract = token["name"], token["chain"], token["contract"]
+    if CHAINS.get(chain, {}).get("escan") is None:
+        return 0  # SOL/CEX: forense no disponible con APIs gratis
+
+    peak_ts = get_price_peak_evm(contract, chain)
+    time.sleep(0.4)
+    if not peak_ts:
+        return 0
+
+    window_start = peak_ts - FORENSIC_LOOKBACK_H * 3600
+    # Traer transacciones antiguas en orden ascendente
+    txs = get_evm_token_txs_v2(contract, chain, by_contract=True, sort="asc", offset=100)
+    time.sleep(0.4)
+
+    found = 0
+    buyers_window = {}
+    for tx in txs:
+        ts = int(tx.get("timeStamp", 0))
+        # Solo los que compraron en la ventana ANTES del pico
+        if ts < window_start or ts > peak_ts:
+            continue
+        to_addr = tx.get("to", "").lower()
+        if not to_addr or to_addr in ETH_WALLET_MAP:
+            continue
+        try:
+            amt = float(tx.get("value", 0)) / (10 ** int(tx.get("tokenDecimal", 18)))
+        except:
+            continue
+        if amt <= 0:
+            continue
+        b = buyers_window.setdefault(to_addr, {"amt": 0.0, "count": 0, "first": ts})
+        b["amt"] += amt
+        b["count"] += 1
+
+    # Las wallets que compraron fuerte antes del pico = sospechosas de insider
+    for addr, b in buyers_window.items():
+        # Filtro: que haya comprado al menos 2 veces o un monto relevante
+        if b["count"] < 1:
+            continue
+        existing = accum_big_buyers.setdefault(addr, {
+            "tokens": set(), "count": 0, "total_usd": 0.0,
+            "last_buy": b["first"], "buys": 0, "chain": chain,
+        })
+        if symbol not in existing["tokens"]:
+            existing["tokens"].add(symbol)
+            existing["count"] += 1
+        existing["buys"] += b["count"]
+        existing["chain"] = chain
+        # Marcar como forense (compro antes de un pump real)
+        sw = register_smart_wallet(addr, chain, existing, forensic=True,
+                                   label=f"Insider hist. {symbol}")
+        found += 1
+
+    if found > 0:
+        log(f"  Forense {symbol}: {found} wallets compraron antes del pico historico")
+        register_week_event(symbol, "forensic",
+                            f"{found} posibles insiders historicos detectados en {symbol}")
+    return found
+
+def run_forensic_analysis():
+    """Corre el analisis forense sobre toda la lista de acumulacion (1 vez al dia)."""
+    global last_forensic_day
+    log("=== ANALISIS FORENSE DE INSIDERS ===")
+    total = 0
+    evm_tokens = [t for t in ACCUMULATION_LIST if CHAINS.get(t["chain"], {}).get("escan")]
+    for token in evm_tokens:
+        try:
+            total += forensic_analysis_token(token)
+            time.sleep(0.5)
+        except Exception as e:
+            log(f"  [forense error] {token['name']}: {e}")
+    # Recalcular ranking de insiders y agendar top
+    update_tracked_whales()
+    last_forensic_day = time.strftime("%Y-%m-%d", time.gmtime())
+    log(f"=== FORENSE COMPLETO: {total} wallets analizadas, {len(smart_wallets)} smart wallets totales ===")
+    if total > 0:
+        top = sorted(smart_wallets.items(), key=lambda kv: kv[1]["insider_score"], reverse=True)[:5]
+        top_str = "\n".join(
+            f"  {sw.get('label', short(addr))}: score {sw['insider_score']} ({len(sw['tokens'])} tokens)"
+            for addr, sw in top
+        )
+        notify(
+            f"FORENSE: {total} posibles insiders detectados",
+            f"Top smart wallets ahora:\n{top_str}\n\n"
+            f"Siguiendo las top {MAX_TRACKED_WHALES} activas.\n{VERCEL_URL or ''}",
+            priority="default", tags="detective",
+            click_url=VERCEL_URL,
+        )
+
+def update_tracked_whales():
+    """Selecciona el top N de smart wallets por score y las pone en seguimiento activo."""
+    ranked = sorted(smart_wallets.items(), key=lambda kv: kv[1]["insider_score"], reverse=True)
+    top = ranked[:MAX_TRACKED_WHALES]
+    new_set = {}
+    for addr, sw in top:
+        prev = tracked_whale_set.get(addr, {})
+        new_set[addr] = {
+            "chain": sw["chain"],
+            "label": sw.get("label", short(addr)),
+            "last_check": prev.get("last_check", 0),
+            "last_seen_tokens": prev.get("last_seen_tokens", set()),
+            "insider_score": sw["insider_score"],
+            "tag": sw.get("tag", "smart"),
+        }
+    tracked_whale_set.clear()
+    tracked_whale_set.update(new_set)
+    log(f"  Top {len(new_set)} smart wallets en seguimiento activo")
+
+def scan_tracked_whales():
+    """Sigue las top smart wallets. Si compran algo nuevo, notifica con prioridad."""
+    if not tracked_whale_set:
+        return
+    log(f"-- Siguiendo {len(tracked_whale_set)} smart wallets --")
+    now = time.time()
+    for addr, w in list(tracked_whale_set.items()):
+        chain = w["chain"]
+        if CHAINS.get(chain, {}).get("escan") is None:
+            continue  # SOL: seguimiento limitado
+        txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=15)
+        time.sleep(0.4)
+        if not txs:
+            continue
+        recent = [tx for tx in txs if now - int(tx.get("timeStamp", 0)) < 7200]  # ultimas 2h
+        new_tokens = set()
+        for tx in recent:
+            c = tx.get("contractAddress", "").lower()
+            to_addr = tx.get("to", "").lower()
+            if c and to_addr == addr:  # la wallet RECIBIO el token (compro)
+                new_tokens.add(c)
+        prev_seen = w.get("last_seen_tokens", set())
+        fresh = new_tokens - prev_seen
+        for c in fresh:
+            dex = get_dex(c, chain)
+            time.sleep(0.35)
+            if not dex or dex["liq"] < MIN_LIQUIDITY:
+                continue
+            passed, _ = passes_quality_filter(dex, chain)
+            if not passed:
+                continue
+            tag_label = {"insider_activo": "INSIDER ACTIVO", "insider_historico": "INSIDER HISTORICO"}.get(w.get("tag"), "SMART MONEY")
+            prio = "urgent" if w.get("tag") == "insider_activo" else "high"
+            notify(
+                f"{tag_label} compro: {dex['name']} ({chain})",
+                f"Wallet seguida (score {w.get('insider_score','?')}): {short(addr)}\n"
+                f"Compro: {dex['name']}\n"
+                f"Liq: {fmt_usd(dex['liq'])} | Vol: {fmt_usd(dex['vol'])}\n"
+                f"1h: {pct(dex['ch1h'])}\n"
+                f"Comprar: {dex.get('buy_url','')}\nChart: {dex.get('url','')}",
+                priority=prio, tags="eyes,rotating_light",
+                click_url=VERCEL_URL,
+            )
+            register_week_event(dex["name"], "insider_buy",
+                                f"{tag_label} {short(addr)} compro {dex['name']}")
+            insider_alerts.insert(0, {
+                "ts": int(now), "wallet": addr, "token": dex["name"],
+                "chain": chain, "tag": w.get("tag"), "score": w.get("insider_score"),
+                "url": dex.get("url", ""),
+            })
+            del insider_alerts[50:]
+        w["last_seen_tokens"] = new_tokens
+        w["last_check"] = int(now)
 
 # ─── MÓDULO 8: REPORTE SEMANAL ────────────────────────────────────────────────
 def generate_diagnosis(t):
@@ -1468,12 +1758,18 @@ def daily_report():
     log("=== RESUMEN DIARIO ENVIADO ===")
 
 def check_daily_report():
-    """Verifica si toca el resumen diario (cada dia a DAILY_UTC_HOUR)."""
-    global last_daily_day
+    """Verifica si toca el resumen diario + forense (cada dia a DAILY_UTC_HOUR = 7am)."""
+    global last_daily_day, last_forensic_day
     t = time.gmtime()
     today = time.strftime("%Y-%m-%d", t)
     if t.tm_hour >= DAILY_UTC_HOUR and last_daily_day != today:
         last_daily_day = today
+        # Forense primero (alimenta smart wallets), luego resumen
+        if last_forensic_day != today:
+            try:
+                run_forensic_analysis()
+            except Exception as e:
+                log(f"[forense error] {e}")
         daily_report()
 
 def check_weekly_report():
@@ -1507,6 +1803,23 @@ def start_api_server():
                 tracked_tokens.values(),
                 key=lambda t: t.get("max_mult", 1), reverse=True
             )
+            # Smart wallets / insiders rankeadas por score
+            wallets_out = []
+            for addr, sw in sorted(smart_wallets.items(), key=lambda kv: kv[1]["insider_score"], reverse=True)[:40]:
+                wallets_out.append({
+                    "address": addr,
+                    "chain": sw.get("chain"),
+                    "label": sw.get("label", short(addr)),
+                    "tokens": sorted(sw.get("tokens", set())),
+                    "n_tokens": len(sw.get("tokens", set())),
+                    "total_usd": round(sw.get("total_usd", 0)),
+                    "buys": sw.get("buys", 0),
+                    "insider_score": sw.get("insider_score", 0),
+                    "tag": sw.get("tag", "smart"),
+                    "forensic": sw.get("forensic", False),
+                    "last_seen": sw.get("last_seen", 0),
+                    "tracked": addr in tracked_whale_set,
+                })
             return jsonify({
                 "updated_at": int(time.time()),
                 "tokens": tokens,
@@ -1515,7 +1828,19 @@ def start_api_server():
                 "tracking": tracking,
                 "rugged": list(rugged_tokens.values())[-20:],
                 "daily_notif_count": daily_notif_count,
+                "smart_wallets": wallets_out,
+                "insider_alerts": insider_alerts[:30],
+                "tracked_whales": len(tracked_whale_set),
             })
+
+        @app.route("/api/forensic")
+        def api_forensic():
+            # Endpoint para disparar forense manualmente desde la UI
+            try:
+                threading.Thread(target=run_forensic_analysis, daemon=True).start()
+                return jsonify({"status": "started"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
 
         @app.route("/api/health")
         def api_health():
@@ -1538,17 +1863,27 @@ def scan():
     scan_new_tokens()
     if cycle_count % ACCUM_EVERY == 1:
         scan_accumulation()
-    # Actualizar tracking post-notificacion cada 3 ciclos (no en cada uno por velocidad)
+    # Seguir smart wallets cada 2 ciclos (las top 20 por score de insider)
+    if cycle_count % 2 == 0 and tracked_whale_set:
+        scan_tracked_whales()
+    # Actualizar tracking post-notificacion cada 3 ciclos
     if cycle_count % 3 == 0 and tracked_tokens:
         log(f"-- Actualizando tracking de {len(tracked_tokens)} tokens --")
         update_tracking()
+    # Bootstrap: correr forense una vez al arrancar (tras acumular algo de datos)
+    if cycle_count == 3:
+        log("-- Bootstrap forense inicial --")
+        try:
+            run_forensic_analysis()
+        except Exception as e:
+            log(f"[forense bootstrap error] {e}")
     check_daily_report()
     check_weekly_report()
     log(f"=== Ciclo {cycle_count} completo. Esperando {SCAN_INTERVAL}s ===\n")
 
 # ─── INICIO ───────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    log("Alpha Terminal Bot v4 iniciado")
+    log("Alpha Terminal Bot v5 iniciado")
     log(f"  Ntfy           : {NTFY_TOPIC}")
     log(f"  Etherscan V2   : {'OK (ETH+BNB+BASE)' if ETHERSCAN_KEY else 'sin key'}")
     log(f"  GitHub         : {'OK' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar'}")
@@ -1556,7 +1891,8 @@ if __name__ == "__main__":
     log(f"  Acumulacion    : {len(ACCUMULATION_LIST)} tokens DEX + {len(COINGECKO_TOKENS)} CEX")
     log(f"  Watchlist      : {len(WATCHLIST)} | Exchanges: {len(EXCHANGE_WALLETS_ETH)+len(EXCHANGE_WALLETS_SOL)} | Whales: {len(WHALE_WALLETS)}")
     log(f"  Reporte semanal: Lunes {WEEKLY_UTC_HOUR}:00 UTC ({WEEKLY_UTC_HOUR-5}:00 Peru)")
-    log(f"  Resumen diario : {DAILY_UTC_HOUR}:00 UTC ({DAILY_UTC_HOUR-5}:00 Peru)")
+    log(f"  Forense+diario : {DAILY_UTC_HOUR}:00 UTC ({DAILY_UTC_HOUR-5}:00 Peru)")
+    log(f"  Insiders       : top {MAX_TRACKED_WHALES} smart wallets, min {INSIDER_MIN_TOKENS} tokens")
     log(f"  Prob pump min  : {MIN_PUMP_PROB}% | Rug si liq cae >{RUG_LIQ_DROP}% | Track {TRACK_HOURS}h")
     log("")
 
@@ -1565,15 +1901,14 @@ if __name__ == "__main__":
     api_thread.start()
 
     notify(
-        "Alpha Terminal v4 activo",
-        f"Nuevas mejoras activas:\n"
-        f"Probabilidad de pump (0-100%)\n"
-        f"Tracking post-notificacion ({TRACK_HOURS}h)\n"
-        f"Deteccion de rugpull (liq -{RUG_LIQ_DROP}%)\n"
-        f"Resumen diario: {DAILY_UTC_HOUR-5}:00 am Peru\n"
-        f"Filtros reforzados en Nuevos y Sniper\n\n"
-        f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX\n"
-        f"Reporte semanal: Lunes {WEEKLY_UTC_HOUR-5}:00 am Peru",
+        "Alpha Terminal v5 activo",
+        f"Nuevo modulo de INSIDERS:\n"
+        f"Forense historico diario ({DAILY_UTC_HOUR-5}:00 am Peru)\n"
+        f"Smart wallets que compran 2+ tokens de tu lista\n"
+        f"Score de insider (dinero + coincidencias + actividad)\n"
+        f"Seguimiento de top {MAX_TRACKED_WHALES} wallets activas\n\n"
+        f"Mantiene: prob. pump, tracking, rugpull, resumen diario\n"
+        f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
         priority="high", tags="white_check_mark",
     )
 
