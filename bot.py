@@ -21,8 +21,13 @@ MIN_AGE_HOURS   = int(os.environ.get("MIN_AGE_HOURS",   "0"))
 MIN_BUY_RATIO   = int(os.environ.get("MIN_BUY_RATIO",   "45"))
 ACCUM_EVERY     = int(os.environ.get("ACCUM_EVERY",     "5"))    # ciclos entre scans de acumulacion
 WEEKLY_UTC_HOUR = int(os.environ.get("WEEKLY_UTC_HOUR", "13"))   # 13 UTC = 8am Peru
+DAILY_UTC_HOUR  = int(os.environ.get("DAILY_UTC_HOUR",  "13"))   # 13 UTC = 8am Peru — resumen diario
 FORCE_WEEKLY    = os.environ.get("FORCE_WEEKLY", "false") == "true"
 PORT            = int(os.environ.get("PORT", "8080"))
+# Filtros reforzados (moderados pero mejores)
+MIN_PUMP_PROB   = int(os.environ.get("MIN_PUMP_PROB",   "45"))   # prob minima de pump para notificar nuevos
+RUG_LIQ_DROP    = int(os.environ.get("RUG_LIQ_DROP",    "75"))   # % caida de liquidez = rugpull
+TRACK_HOURS     = int(os.environ.get("TRACK_HOURS",     "48"))   # horas de seguimiento post-notificacion
 
 # ─── CHAINS ───────────────────────────────────────────────────────────────────
 CHAINS = {
@@ -132,6 +137,12 @@ week_events        = []    # eventos importantes de la semana
 last_weekly_week   = None  # ISO week del ultimo reporte enviado
 cycle_count        = 0
 
+# Estado de tracking post-notificacion y deteccion de rugpull
+tracked_tokens     = {}    # contract -> {symbol, chain, notified_at, notified_price, notified_liq, max_price, max_mult, pump_prob, source, url, status}
+rugged_tokens      = {}    # contract -> {symbol, chain, rugged_at, liq_before, liq_after, was_tracked}
+daily_notif_count  = 0     # notificaciones de nuevos tokens hoy
+last_daily_day     = None  # dia del ultimo resumen diario
+
 # ─── UTILS ────────────────────────────────────────────────────────────────────
 def log(msg):
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
@@ -225,12 +236,197 @@ def passes_quality_filter(dex, chain, contract="", check_hp=False):
     age = dex.get("age_hours")
     if age is not None and age < MIN_AGE_HOURS:
         return False, f"Par demasiado nuevo: {age:.1f}h"
+    # ── Filtros reforzados (moderados pero mejores que los anteriores) ──
+    # 1. Volumen/liquidez sano: vol muerto = probable trampa
+    liq = dex.get("liq", 1)
+    vol = dex.get("vol", 0)
+    if liq > 0 and vol / liq < 0.02:
+        return False, f"Volumen casi nulo vs liquidez (turnover {vol/liq:.3f})"
+    # 2. Liquidez sospechosamente baja para el volumen (posible wash trading/trampa)
+    if vol > 0 and liq > 0 and vol / liq > 50:
+        return False, f"Volumen irreal vs liquidez (posible wash trading)"
+    # 3. Numero minimo de transacciones (evita tokens fantasma)
+    if dex.get("txns", 0) < 20:
+        return False, f"Muy pocas transacciones: {dex.get('txns', 0)}"
+    # 4. Sells = 0 con muchos buys es señal clasica de honeypot (no se puede vender)
+    if dex.get("buys", 0) > 30 and dex.get("sells", 0) == 0:
+        return False, "Cero ventas con muchas compras (posible honeypot)"
     if check_hp and chain == "ETH" and contract:
         is_hp, reason = check_honeypot_eth(contract)
         if is_hp:
             return False, f"Honeypot: {reason}"
         time.sleep(0.3)
     return True, "OK"
+
+# ─── PROBABILIDAD DE PUMP (0-100%) ───────────────────────────────────────────
+def pump_probability(dex):
+    """
+    Score de PROBABILIDAD DE PUMP, distinto al de riesgo.
+    No es prediccion magica: identifica condiciones que suelen PRECEDER
+    movimientos. Baja si el pump ya esta ocurriendo (mal punto de entrada).
+    Retorna (probabilidad 0-100, factores).
+    """
+    p = 30
+    factors = []
+    def add(v, reason):
+        nonlocal p
+        p += v
+        factors.append({"effect": v, "reason": reason})
+
+    liq   = dex.get("liq", 0)
+    vol   = dex.get("vol", 0)
+    bp    = dex.get("bp", 50)
+    ch5m  = float(dex.get("ch5m", 0) or 0)
+    ch1h  = float(dex.get("ch1h", 0) or 0)
+    ch6h  = float(dex.get("ch6h", 0) or 0)
+    txns  = dex.get("txns", 0)
+    age   = dex.get("age_hours")
+    vol_accel = dex.get("vol_accel", False)
+    multi_dex = dex.get("multi_dex", False)
+
+    # Presion compradora — el factor mas importante para un pump temprano
+    if bp >= 70:    add(18, f"Presion compradora muy fuerte ({bp}% buys)")
+    elif bp >= 60:  add(12, f"Presion compradora alta ({bp}%)")
+    elif bp >= 52:  add(5,  f"Mas compras que ventas ({bp}%)")
+    elif bp < 45:   add(-12, f"Presion vendedora ({bp}% buys)")
+
+    # Volumen acelerando = interes creciente AHORA
+    if vol_accel:   add(15, "Volumen acelerando en 5min")
+
+    # Turnover alto sin que el precio haya volado todavia
+    if liq > 0:
+        turnover = vol / liq
+        if turnover > 2:    add(12, "Turnover muy alto (interes intenso)")
+        elif turnover > 0.8: add(7, "Turnover saludable")
+        elif turnover < 0.1: add(-10, "Sin interes real (turnover bajo)")
+
+    # Liquidez en zona ideal: ni microscopica (rug) ni gigante (ya despego)
+    if 15000 <= liq <= 300000:  add(8, "Liquidez en rango ideal de entrada")
+    elif liq < 8000:            add(-10, "Liquidez muy baja (riesgo rug)")
+    elif liq > 2000000:         add(-5, "Liquidez muy alta (poco margen)")
+
+    # Actividad
+    if txns > 500:   add(8, "Actividad alta")
+    elif txns > 150: add(4, "Actividad media")
+    elif txns < 40:  add(-6, "Poca actividad")
+
+    # Edad — el sweet spot es joven pero no recien nacido
+    if age is not None:
+        if 2 <= age <= 24:   add(8, f"Edad ideal ({age:.0f}h)")
+        elif age < 1:        add(-12, "Demasiado nuevo (riesgo rug alto)")
+        elif age > 72:       add(-4, "Ya no es nuevo")
+
+    # Multi-DEX = mas traccion organica
+    if multi_dex:   add(6, "Cotiza en multiples DEX")
+
+    # ── PENALIZACIONES: si el pump YA esta ocurriendo, baja la probabilidad ──
+    if ch5m > 15:   add(-15, "Pump explotando AHORA (5min) — entrada tardia")
+    if ch1h > 40:   add(-20, "Ya subio +40% en 1h — entrada muy tardia")
+    elif ch1h > 20: add(-10, "Ya subio +20% en 1h — entrada tardia")
+    elif 3 < ch1h <= 15: add(6, "Momentum iniciando (buena entrada)")
+    if ch6h > 80:   add(-12, "Ya hizo +80% en 6h — pico probable")
+
+    return max(2, min(98, round(p))), factors
+
+# ─── TRACKING POST-NOTIFICACIÓN ──────────────────────────────────────────────
+def start_tracking(contract, symbol, chain, dex, pump_prob, source):
+    """Registra un token al momento de notificarlo para medir su rendimiento."""
+    try:
+        price = float(dex.get("price", 0) or 0)
+    except:
+        price = 0
+    if contract in tracked_tokens or price <= 0:
+        return
+    tracked_tokens[contract] = {
+        "symbol": symbol, "chain": chain,
+        "notified_at": int(time.time()),
+        "notified_price": price,
+        "notified_liq": dex.get("liq", 0),
+        "max_price": price,
+        "max_mult": 1.0,
+        "pump_prob": pump_prob,
+        "source": source,
+        "url": dex.get("url", ""),
+        "buy_url": dex.get("buy_url", ""),
+        "status": "tracking",  # tracking | pumped | rugged | expired
+        "result_pct": 0,
+    }
+    global daily_notif_count
+    daily_notif_count += 1
+
+def update_tracking():
+    """Actualiza el rendimiento de los tokens trackeados y detecta rugpulls."""
+    now = time.time()
+    to_remove = []
+    for contract, t in list(tracked_tokens.items()):
+        # Expirar tras TRACK_HOURS
+        age_h = (now - t["notified_at"]) / 3600
+        if age_h > TRACK_HOURS and t["status"] == "tracking":
+            t["status"] = "expired"
+            to_remove.append(contract)
+            continue
+        if t["status"] not in ("tracking",):
+            if age_h > TRACK_HOURS:
+                to_remove.append(contract)
+            continue
+
+        dex = get_dex(contract, t["chain"])
+        time.sleep(0.35)
+        if not dex:
+            continue
+
+        try:
+            cur_price = float(dex.get("price", 0) or 0)
+        except:
+            cur_price = 0
+        cur_liq = dex.get("liq", 0)
+
+        # ── Deteccion de RUGPULL: caida brutal de liquidez ──
+        if t["notified_liq"] > 0:
+            liq_drop = (1 - cur_liq / t["notified_liq"]) * 100
+            if liq_drop >= RUG_LIQ_DROP:
+                t["status"] = "rugged"
+                t["result_pct"] = -100
+                rugged_tokens[contract] = {
+                    "symbol": t["symbol"], "chain": t["chain"],
+                    "rugged_at": int(now),
+                    "liq_before": t["notified_liq"], "liq_after": cur_liq,
+                    "liq_drop_pct": round(liq_drop),
+                    "was_tracked": True,
+                    "hours_after_notif": round(age_h, 1),
+                }
+                log(f"  RUGPULL detectado: {t['symbol']} — liquidez cayo {liq_drop:.0f}%")
+                notify(
+                    f"RUGPULL: {t['symbol']} ({t['chain']})",
+                    f"Liquidez colapso {liq_drop:.0f}%\n"
+                    f"Antes: {fmt_usd(t['notified_liq'])} -> Ahora: {fmt_usd(cur_liq)}\n"
+                    f"Habian pasado {age_h:.1f}h desde la alerta\n"
+                    f"Marcada y removida del seguimiento.",
+                    priority="high", tags="warning,skull",
+                )
+                register_week_event(t["symbol"], "rugpull",
+                                    f"Rugpull {liq_drop:.0f}% caida liquidez, {age_h:.1f}h tras alerta")
+                continue
+
+        # ── Actualizar maximo y multiplicador ──
+        if cur_price > t["max_price"]:
+            t["max_price"] = cur_price
+            if t["notified_price"] > 0:
+                t["max_mult"] = cur_price / t["notified_price"]
+
+        if t["notified_price"] > 0:
+            t["result_pct"] = round((cur_price / t["notified_price"] - 1) * 100)
+
+        # ── Marcar como "pumped" si alcanzo +30% en algun momento ──
+        if t["max_mult"] >= 1.3 and t["status"] == "tracking":
+            t["status"] = "pumped"
+            mult_str = f"x{t['max_mult']:.2f}" if t["max_mult"] >= 2 else f"+{(t['max_mult']-1)*100:.0f}%"
+            log(f"  PUMP confirmado: {t['symbol']} hizo {mult_str} desde la alerta")
+            register_week_event(t["symbol"], "pump_confirmed",
+                                f"Hizo {mult_str} desde la notificacion ({age_h:.1f}h)")
+
+    for c in to_remove:
+        tracked_tokens.pop(c, None)
 
 # ─── DEXSCREENER ──────────────────────────────────────────────────────────────
 def get_dex(address, chain):
@@ -276,6 +472,7 @@ def get_dex(address, chain):
             "liq":        best.get("liquidity", {}).get("usd", 0),
             "vol":        best.get("volume",    {}).get("h24", 0),
             "vol5m":      best.get("volume",    {}).get("m5", 0),
+            "ch5m":       best.get("priceChange", {}).get("m5",  0),
             "ch1h":       best.get("priceChange", {}).get("h1",  0),
             "ch6h":       best.get("priceChange", {}).get("h6",  0),
             "ch24h":      best.get("priceChange", {}).get("h24", 0),
@@ -680,17 +877,23 @@ def scan_exchange_wallets_eth():
             )
             verified = check_contract_verified_evm(contract, "ETH")
             time.sleep(0.3)
+            vol_accel, _ = detect_volume_acceleration(contract, dex.get("vol5m", 0))
             dex["verified"] = verified
+            dex["vol_accel"] = vol_accel
             token_name = watchlist_eth[contract]["name"] if is_watchlist else dex["name"]
             score = compute_score({**dex, "src": wallet["exchange"], "chain": "ETH",
-                                   "multi": multi, "verified": verified})
+                                   "multi": multi, "verified": verified, "vol_accel": vol_accel})
+            pprob, _ = pump_probability(dex)
+            dex["pump_prob"] = pprob
             if is_watchlist:
                 notify_exchange_move(wallet["exchange"], token_name, "ETH", dex, is_watchlist=True)
             elif contract not in seen_contracts:
                 origins = get_exchange_origin_evm(contract, "ETH")
                 time.sleep(0.3)
                 origin_str = f"Origen: {', '.join(origins)}\n" if origins else ""
+                origin_str += f"Prob. de pump: {pprob}%\n"
                 notify_new_token(dex["name"], "ETH", score, dex, wallet["exchange"], origin_str)
+                start_tracking(contract, dex["name"], "ETH", dex, pprob, wallet["exchange"])
                 seen_contracts.add(contract)
             if float(dex.get("ch1h", 0) or 0) >= PUMP_THRESHOLD:
                 analyze_insiders(contract, "ETH", dex)
@@ -716,12 +919,17 @@ def scan_exchange_wallets_sol():
             passed, _ = passes_quality_filter(dex, "SOL")
             if not passed and not is_watchlist:
                 continue
+            vol_accel, _ = detect_volume_acceleration(mint, dex.get("vol5m", 0))
+            dex["vol_accel"] = vol_accel
             token_name = watchlist_sol[mint]["name"] if is_watchlist else dex["name"]
-            score = compute_score({**dex, "src": wallet["exchange"], "chain": "SOL"})
+            score = compute_score({**dex, "src": wallet["exchange"], "chain": "SOL", "vol_accel": vol_accel})
+            pprob, _ = pump_probability(dex)
+            dex["pump_prob"] = pprob
             if is_watchlist:
                 notify_exchange_move(wallet["exchange"], token_name, "SOL", dex, is_watchlist=True)
             elif mint not in seen_contracts:
-                notify_new_token(dex["name"], "SOL", score, dex, wallet["exchange"])
+                notify_new_token(dex["name"], "SOL", score, dex, wallet["exchange"], f"Prob. de pump: {pprob}%\n")
+                start_tracking(mint, dex["name"], "SOL", dex, pprob, wallet["exchange"])
                 seen_contracts.add(mint)
             time.sleep(0.4)
         time.sleep(0.4)
@@ -858,12 +1066,19 @@ def scan_new_tokens():
                 if chain_label == "ETH":
                     time.sleep(0.3)
                 vol_accel, _ = detect_volume_acceleration(addr, dex.get("vol5m", 0))
+                dex["vol_accel"] = vol_accel
                 dex["verified"] = verified
                 score = compute_score({**dex, "src": src_label, "chain": chain_label,
                                        "multi": dex.get("multi_dex", False),
                                        "verified": verified, "vol_accel": vol_accel})
-                if score >= MIN_SCORE:
+                # Probabilidad de pump (distinta al score de riesgo)
+                pprob, pfactors = pump_probability(dex)
+                dex["pump_prob"] = pprob
+
+                # Solo notifica si el score Y la probabilidad de pump pasan el umbral
+                if score >= MIN_SCORE and pprob >= MIN_PUMP_PROB:
                     extra = []
+                    extra.append(f"Prob. de pump: {pprob}%")
                     if verified: extra.append("Contrato verificado")
                     if dex.get("multi_dex"): extra.append("Multi-DEX")
                     if vol_accel: extra.append("Volumen acelerando")
@@ -871,6 +1086,8 @@ def scan_new_tokens():
                     if age is not None: extra.append(f"Edad: {age:.1f}h")
                     extra_str = " | ".join(extra) + "\n" if extra else ""
                     notify_new_token(dex["name"], chain_label, score, dex, src_label, extra_str)
+                    # Iniciar tracking post-notificacion
+                    start_tracking(addr, dex["name"], chain_label, dex, pprob, src_label)
                 if float(dex.get("ch1h", 0) or 0) >= PUMP_THRESHOLD and chain_label == "ETH":
                     analyze_insiders(addr, "ETH", dex)
                 time.sleep(0.3)
@@ -1183,6 +1400,82 @@ def weekly_report():
     week_events = []
     log("=== REPORTE SEMANAL ENVIADO ===")
 
+def daily_report():
+    """Resumen diario: cuantas notifico, cuantas pumpearon, mejor resultado, win rate, rugpulls."""
+    global daily_notif_count
+    log("=== GENERANDO RESUMEN DIARIO ===")
+
+    # Actualizar tracking antes del resumen
+    update_tracking()
+
+    now = time.time()
+    day_ago = now - 86400
+
+    # Tokens trackeados en las ultimas 24h (incluye los ya removidos via week_events)
+    recent_tracked = [t for t in tracked_tokens.values() if t["notified_at"] >= day_ago]
+    all_recent = recent_tracked[:]
+
+    pumped = [t for t in all_recent if t["status"] == "pumped" or t["max_mult"] >= 1.3]
+    rugged_today = [r for r in rugged_tokens.values() if r["rugged_at"] >= day_ago]
+
+    total_notif = daily_notif_count if daily_notif_count > 0 else len(all_recent)
+    pumped_count = len(pumped)
+    win_rate = round((pumped_count / total_notif) * 100) if total_notif > 0 else 0
+
+    # Mejor resultado
+    best = max(all_recent, key=lambda t: t["max_mult"], default=None)
+    best_str = ""
+    if best and best["max_mult"] > 1.0:
+        m = best["max_mult"]
+        ms = f"x{m:.2f}" if m >= 2 else f"+{(m-1)*100:.0f}%"
+        best_str = f"Mejor: {best['symbol']} {ms}\n"
+
+    # Lista de pumps
+    pump_lines = []
+    for t in sorted(pumped, key=lambda x: x["max_mult"], reverse=True)[:5]:
+        m = t["max_mult"]
+        ms = f"x{m:.2f}" if m >= 2 else f"+{(m-1)*100:.0f}%"
+        pump_lines.append(f"  {t['symbol']} ({t['chain']}): {ms} [prob era {t['pump_prob']}%]")
+    pump_str = "\n".join(pump_lines) if pump_lines else "  Ninguna alcanzo +30% aun"
+
+    rug_str = ""
+    if rugged_today:
+        rug_lines = [f"  {r['symbol']}: -{r['liq_drop_pct']}% liq" for r in rugged_today[:5]]
+        rug_str = f"\nRUGPULLS hoy ({len(rugged_today)}):\n" + "\n".join(rug_lines)
+
+    body = (
+        f"Resumen de las ultimas 24h:\n\n"
+        f"Tokens notificados: {total_notif}\n"
+        f"Pumpearon (+30%+): {pumped_count}\n"
+        f"Win rate: {win_rate}%\n"
+        f"{best_str}"
+        f"\nMejores resultados:\n{pump_str}"
+        f"{rug_str}\n\n"
+        f"Recuerda: la mayoria de memecoins van a cero. "
+        f"Esto mide si el filtro mejora el ratio.\n"
+        f"{VERCEL_URL or ''}"
+    )
+
+    notify(
+        f"RESUMEN DIARIO — {pumped_count}/{total_notif} pumpearon ({win_rate}%)",
+        body,
+        priority="high", tags="bar_chart,sunrise",
+        click_url=VERCEL_URL,
+    )
+
+    # Reset contador diario
+    daily_notif_count = 0
+    log("=== RESUMEN DIARIO ENVIADO ===")
+
+def check_daily_report():
+    """Verifica si toca el resumen diario (cada dia a DAILY_UTC_HOUR)."""
+    global last_daily_day
+    t = time.gmtime()
+    today = time.strftime("%Y-%m-%d", t)
+    if t.tm_hour >= DAILY_UTC_HOUR and last_daily_day != today:
+        last_daily_day = today
+        daily_report()
+
 def check_weekly_report():
     """Verifica si toca generar el reporte (Lunes a la hora configurada)."""
     global last_weekly_week
@@ -1209,11 +1502,19 @@ def start_api_server():
         @app.route("/api/live")
         def api_live():
             tokens = sorted(accum_state.values(), key=lambda t: t.get("score", 0), reverse=True)
+            # Datos de tracking para el panel de rendimiento
+            tracking = sorted(
+                tracked_tokens.values(),
+                key=lambda t: t.get("max_mult", 1), reverse=True
+            )
             return jsonify({
                 "updated_at": int(time.time()),
                 "tokens": tokens,
                 "events": week_events[-30:],
                 "week": iso_week_now(),
+                "tracking": tracking,
+                "rugged": list(rugged_tokens.values())[-20:],
+                "daily_notif_count": daily_notif_count,
             })
 
         @app.route("/api/health")
@@ -1237,12 +1538,17 @@ def scan():
     scan_new_tokens()
     if cycle_count % ACCUM_EVERY == 1:
         scan_accumulation()
+    # Actualizar tracking post-notificacion cada 3 ciclos (no en cada uno por velocidad)
+    if cycle_count % 3 == 0 and tracked_tokens:
+        log(f"-- Actualizando tracking de {len(tracked_tokens)} tokens --")
+        update_tracking()
+    check_daily_report()
     check_weekly_report()
     log(f"=== Ciclo {cycle_count} completo. Esperando {SCAN_INTERVAL}s ===\n")
 
 # ─── INICIO ───────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    log("Alpha Terminal Bot v3 iniciado")
+    log("Alpha Terminal Bot v4 iniciado")
     log(f"  Ntfy           : {NTFY_TOPIC}")
     log(f"  Etherscan V2   : {'OK (ETH+BNB+BASE)' if ETHERSCAN_KEY else 'sin key'}")
     log(f"  GitHub         : {'OK' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar'}")
@@ -1250,6 +1556,8 @@ if __name__ == "__main__":
     log(f"  Acumulacion    : {len(ACCUMULATION_LIST)} tokens DEX + {len(COINGECKO_TOKENS)} CEX")
     log(f"  Watchlist      : {len(WATCHLIST)} | Exchanges: {len(EXCHANGE_WALLETS_ETH)+len(EXCHANGE_WALLETS_SOL)} | Whales: {len(WHALE_WALLETS)}")
     log(f"  Reporte semanal: Lunes {WEEKLY_UTC_HOUR}:00 UTC ({WEEKLY_UTC_HOUR-5}:00 Peru)")
+    log(f"  Resumen diario : {DAILY_UTC_HOUR}:00 UTC ({DAILY_UTC_HOUR-5}:00 Peru)")
+    log(f"  Prob pump min  : {MIN_PUMP_PROB}% | Rug si liq cae >{RUG_LIQ_DROP}% | Track {TRACK_HOURS}h")
     log("")
 
     # Iniciar API en thread separado
@@ -1257,13 +1565,15 @@ if __name__ == "__main__":
     api_thread.start()
 
     notify(
-        "Alpha Terminal v3 activo",
-        f"Modulo de ACUMULACION iniciado:\n"
-        f"{len(ACCUMULATION_LIST)} tokens DEX (ETH/SOL/BNB/BASE)\n"
-        f"{len(COINGECKO_TOKENS)} tokens CEX (RON, AR via CoinGecko)\n"
-        f"Reporte semanal: Lunes {WEEKLY_UTC_HOUR-5}:00 am Peru\n"
-        f"Alertas urgentes mid-week: activas\n"
-        f"Sniper + Watchlist + Whales: activos",
+        "Alpha Terminal v4 activo",
+        f"Nuevas mejoras activas:\n"
+        f"Probabilidad de pump (0-100%)\n"
+        f"Tracking post-notificacion ({TRACK_HOURS}h)\n"
+        f"Deteccion de rugpull (liq -{RUG_LIQ_DROP}%)\n"
+        f"Resumen diario: {DAILY_UTC_HOUR-5}:00 am Peru\n"
+        f"Filtros reforzados en Nuevos y Sniper\n\n"
+        f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX\n"
+        f"Reporte semanal: Lunes {WEEKLY_UTC_HOUR-5}:00 am Peru",
         priority="high", tags="white_check_mark",
     )
 
