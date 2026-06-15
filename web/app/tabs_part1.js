@@ -112,10 +112,14 @@ export function TokenCard({item, onRemove, accent}) {
       borderRadius:10,overflow:"hidden",transition:"border-color 0.2s",
       animation:isNew?"slideDown 0.3s ease":"none",
     }}>
-      <div onClick={()=>setOpen(o=>!o)} style={{padding:"12px 14px",cursor:"pointer",display:"flex",alignItems:"center",gap:12}}>
+      <div onClick={()=>setOpen(o=>!o)} style={{padding:"12px 14px",cursor:"pointer",display:"flex",alignItems:"center",gap:12,opacity:item.status==="rugged"?0.5:1}}>
         <div style={{display:"flex",flexDirection:"column",gap:4,flexShrink:0}}>
           <Badge color={chainCol(item.chain)}>{item.chain}</Badge>
-          {item.source&&item.source!=="WATCHLIST"&&<Badge color="#555" small>{item.source}</Badge>}
+          {item.source==="DEXSCREENER"
+            ? <Badge color={T.orange} small>💰 BOOSTED</Badge>
+            : item.source&&item.source!=="WATCHLIST"&&item.source!=="NEW_PAIR"
+              ? <Badge color={T.green} small>{item.source}</Badge>
+              : item.source==="NEW_PAIR"&&<Badge color="#555" small>NUEVO PAR</Badge>}
         </div>
         <div style={{flex:1,minWidth:0}}>
           <div style={{display:"flex",alignItems:"center",gap:5,flexWrap:"wrap",marginBottom:5}}>
@@ -301,18 +305,30 @@ export function Setup({onSave,initial}) {
 }
 
 // ─── TAB: SNIPER ──────────────────────────────────────────────────────────────
-export function SniperTab({alerts,running,scanning,countdown,scanLog}) {
+export function SniperTab({alerts,running,scanning,countdown,scanLog,ruggedSet={}}) {
   const [filter,setFilter]=useState("ALL");
-  const vis=alerts.filter(a=>{
+  // Marcar las que ruggearon segun el bot
+  const marked = alerts.map(a=>{
+    const rug = a.contract && ruggedSet[a.contract.toLowerCase()];
+    return rug ? {...a, status:"rugged", rugData:rug} : a;
+  });
+  const vis=marked.filter(a=>{
     if(filter==="ETH") return a.chain==="ETH";
     if(filter==="SOL") return a.chain==="SOL";
-    if(filter==="HIGH") return a.score>=70;
+    if(filter==="HIGH") return a.score>=70 && a.status!=="rugged";
     if(filter==="WHALE") return (a.wc||0)>=1;
+    if(filter==="BOOSTED") return a.source==="DEXSCREENER";
+    if(filter==="HIDE_RUG") return a.status!=="rugged";
     return true;
+  }).sort((x,y)=>{
+    // Rugpulls siempre al fondo
+    if((x.status==="rugged")!==(y.status==="rugged")) return x.status==="rugged"?1:-1;
+    return 0;
   });
   const hc=alerts.filter(a=>a.score>=70).length;
   const mc=alerts.filter(a=>a.score>=45&&a.score<70).length;
   const lc=alerts.filter(a=>a.score<45).length;
+  const rugCount=marked.filter(a=>a.status==="rugged").length;
   return (
     <div>
       <div style={{display:"flex",gap:8,marginBottom:14,flexWrap:"wrap",alignItems:"center"}}>
@@ -322,12 +338,18 @@ export function SniperTab({alerts,running,scanning,countdown,scanLog}) {
             <span style={{fontSize:10,color:c,fontFamily:"monospace"}}>{l}</span>
           </div>
         ))}
+        {rugCount>0&&(
+          <div style={{background:T.red+"0d",border:"1px solid "+T.red+"22",borderRadius:6,padding:"5px 12px",display:"flex",alignItems:"center",gap:8}}>
+            <span style={{fontSize:18,fontWeight:700,color:T.red,fontFamily:"monospace"}}>{rugCount}</span>
+            <span style={{fontSize:10,color:T.red,fontFamily:"monospace"}}>💀 rug</span>
+          </div>
+        )}
         <span style={{marginLeft:"auto",fontSize:10,fontFamily:"monospace",color:scanning?T.yellow:running?T.green:T.muted}}>
           {scanning?"Escaneando...":running?("Prox. "+countdown+"s"):"Inactivo"}
         </span>
       </div>
       <div style={{display:"flex",gap:4,marginBottom:12,flexWrap:"wrap"}}>
-        {[["ALL","Todas"],["ETH","ETH"],["SOL","SOL"],["HIGH","Bajo riesgo"],["WHALE","Whales"]].map(([k,l])=>(
+        {[["ALL","Todas"],["ETH","ETH"],["SOL","SOL"],["HIGH","Bajo riesgo"],["WHALE","Whales"],["BOOSTED","💰 Boosted"],["HIDE_RUG","Ocultar rugs"]].map(([k,l])=>(
           <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.green+"0d":"transparent",border:"1px solid "+(filter===k?T.green+"33":T.border),color:filter===k?T.green:T.muted,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
         ))}
         {vis.length>0&&<span style={{marginLeft:"auto",fontSize:10,color:T.dim,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} alertas</span>}
@@ -349,14 +371,24 @@ export function SniperTab({alerts,running,scanning,countdown,scanLog}) {
 }
 
 // ─── TAB: NUEVOS TOKENS ───────────────────────────────────────────────────────
-export function NewPairsTab({newPairs,running,scanning}) {
+export function NewPairsTab({newPairs,running,scanning,ruggedSet={}}) {
   const [filter,setFilter]=useState("ALL");
-  const vis=newPairs.filter(p=>{
+  const marked = newPairs.map(p=>{
+    const rug = p.contract && ruggedSet[p.contract.toLowerCase()];
+    return rug ? {...p, status:"rugged", rugData:rug} : p;
+  });
+  const vis=marked.filter(p=>{
     if(filter==="ETH") return p.chain==="ETH";
     if(filter==="SOL") return p.chain==="SOL";
-    if(filter==="HOT") return parseFloat(p.ch1h||0)>20;
+    if(filter==="HOT") return parseFloat(p.ch1h||0)>20 && p.status!=="rugged";
+    if(filter==="PUMP") return (p.pump_prob||0)>=60 && p.status!=="rugged";
+    if(filter==="HIDE_RUG") return p.status!=="rugged";
     return true;
+  }).sort((x,y)=>{
+    if((x.status==="rugged")!==(y.status==="rugged")) return x.status==="rugged"?1:-1;
+    return 0;
   });
+  const rugCount=marked.filter(p=>p.status==="rugged").length;
   return (
     <div>
       <div style={{background:T.cyan+"08",border:"1px solid "+T.cyan+"20",borderRadius:8,padding:"10px 14px",marginBottom:14}}>
@@ -370,9 +402,10 @@ export function NewPairsTab({newPairs,running,scanning}) {
       </div>
       <PerformancePanel/>
       <div style={{display:"flex",gap:4,marginBottom:12,flexWrap:"wrap"}}>
-        {[["ALL","Todos"],["ETH","ETH"],["SOL","SOL"],["HOT","🔥 Pump >20%"]].map(([k,l])=>(
+        {[["ALL","Todos"],["ETH","ETH"],["SOL","SOL"],["HOT","🔥 Pump >20%"],["PUMP","⚡ Prob alta"],["HIDE_RUG","Ocultar rugs"]].map(([k,l])=>(
           <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.cyan+"0d":"transparent",border:"1px solid "+(filter===k?T.cyan+"33":T.border),color:filter===k?T.cyan:T.muted,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
         ))}
+        {rugCount>0&&<span style={{fontSize:9,color:T.red,fontFamily:"monospace",alignSelf:"center"}}>{rugCount} 💀</span>}
         {vis.length>0&&<span style={{marginLeft:"auto",fontSize:10,color:T.dim,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} pares</span>}
       </div>
       {vis.length===0?(
@@ -387,68 +420,139 @@ export function NewPairsTab({newPairs,running,scanning}) {
 }
 
 // ─── TAB: INSIDERS ────────────────────────────────────────────────────────────
-export function InsidersTab({insiderAlerts,onAddWhale,pumpThreshold}) {
+export function InsidersTab({pumpThreshold}) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [forcing, setForcing] = useState(false);
+  const [filter, setFilter] = useState("ALL");
+  const intRef = useRef(null);
+
+  async function refresh() {
+    const live = await getLiveAccumData();
+    if (live) setData(live);
+    setLoading(false);
+  }
+  useEffect(()=>{
+    refresh();
+    intRef.current = setInterval(refresh, 120000);
+    return ()=>clearInterval(intRef.current);
+  },[]);
+
+  async function forceForensic() {
+    setForcing(true);
+    try { await fetch("https://listing-sniper-production.up.railway.app/api/forensic"); } catch {}
+    setTimeout(()=>{ setForcing(false); refresh(); }, 5000);
+  }
+
+  const wallets = data?.smart_wallets || [];
+  const alerts = data?.insider_alerts || [];
+  const trackedCount = data?.tracked_whales || 0;
+
+  const tagInfo = {
+    insider_activo:    {label:"INSIDER ACTIVO",    color:T.red},
+    insider_historico: {label:"INSIDER HISTORICO", color:T.orange},
+    smart:             {label:"SMART",             color:T.cyan},
+  };
+
+  const vis = wallets.filter(w=>{
+    if (filter==="ACTIVO") return w.tag==="insider_activo";
+    if (filter==="TRACKED") return w.tracked;
+    if (filter==="FORENSIC") return w.forensic;
+    return true;
+  });
+
   return (
     <div>
       <div style={{background:T.orange+"08",border:"1px solid "+T.orange+"20",borderRadius:8,padding:"10px 14px",marginBottom:14}}>
-        <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
-          <span style={{fontSize:11,color:T.orange,fontFamily:"monospace",fontWeight:700}}>🎯 Detector de Insiders</span>
+        <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4,flexWrap:"wrap"}}>
+          <span style={{fontSize:11,color:T.orange,fontFamily:"monospace",fontWeight:700}}>🎯 Detector de Insiders y Smart Money</span>
+          {data&&<Pulse color={T.green}/>}
         </div>
         <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
-          Cuando un token sube mas de +{pumpThreshold}% en 1h, se analiza quien compro antes del pump.
+          Wallets que compran 2+ monedas de tu lista de acumulacion, rankeadas por dinero movido, coincidencias y actividad. El forense historico busca quien compro antes de pumps pasados.
+        </div>
+        <div style={{display:"flex",gap:8,marginTop:8,alignItems:"center",flexWrap:"wrap"}}>
+          <span style={{fontSize:10,color:T.dim,fontFamily:"monospace"}}>{wallets.length} smart wallets · {trackedCount} en seguimiento activo</span>
+          <button onClick={forceForensic} disabled={forcing} style={{background:forcing?T.orange+"15":"transparent",border:"1px solid "+T.orange+"33",color:T.orange,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:9,fontFamily:"monospace",fontWeight:700}}>
+            {forcing?"Analizando...":"🔍 Forzar forense"}
+          </button>
         </div>
       </div>
-      {insiderAlerts.length===0?(
-        <EmptyState icon="🎯" text={"Esperando tokens con pump >+"+pumpThreshold+"%"} sub="El analisis se ejecuta automaticamente"/>
-      ):(
-        <div style={{display:"flex",flexDirection:"column",gap:10}}>
-          {insiderAlerts.map(alert=>(
-            <div key={alert.id} style={{background:T.card,border:"1px solid "+T.orange+"33",borderLeft:"2px solid "+T.orange,borderRadius:10,overflow:"hidden"}}>
-              <div style={{padding:"12px 14px",borderBottom:"1px solid "+T.border}}>
-                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
-                  <span style={{fontSize:14,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{alert.name}</span>
-                  <Badge color={chainCol(alert.chain)}>{alert.chain}</Badge>
-                  <span style={{background:T.orange+"15",border:"1px solid "+T.orange+"33",color:T.orange,fontSize:9,padding:"1px 7px",borderRadius:4,fontFamily:"monospace",fontWeight:700}}>
-                    +{parseFloat(alert.ch1h||0).toFixed(0)}% en 1h
-                  </span>
-                  <span style={{marginLeft:"auto",fontSize:9,color:T.dim,fontFamily:"monospace"}}>{timeAgo(alert.ts)}</span>
-                </div>
-                <div style={{display:"flex",gap:12}}>
-                  <Stat label="Liq" value={fmtUSD(alert.liq)}/>
-                  <Stat label="Vol" value={fmtUSD(alert.vol)}/>
-                  <Stat label="Pump 1h" value={pct(alert.ch1h)} color={T.orange}/>
-                  {alert.earlyBuyers&&<Stat label="Compradores" value={alert.earlyBuyers.length} color={T.orange}/>}
-                </div>
-              </div>
-              <div style={{padding:"10px 14px"}}>
-                <div style={{fontSize:9,color:T.orange,fontFamily:"monospace",fontWeight:700,marginBottom:8}}>COMPRADORES ANTES DEL PUMP</div>
-                {(alert.earlyBuyers||[]).map((b,i)=>(
-                  <div key={b.address} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 0",borderBottom:"1px solid "+T.border}}>
-                    <span style={{fontSize:10,color:T.dim,fontFamily:"monospace",minWidth:20}}>#{i+1}</span>
-                    <a href={"https://etherscan.io/address/"+b.address} target="_blank" rel="noopener noreferrer"
-                      style={{fontSize:10,color:T.orange,fontFamily:"monospace",textDecoration:"none",flex:1}}>
-                      {shortAddr(b.address)}
-                    </a>
-                    <span style={{fontSize:9,color:T.muted,fontFamily:"monospace"}}>{b.txCount} txns</span>
-                    <div style={{display:"flex",gap:4}}>
-                      {b.appearsInMultiple&&<Badge color={T.pink} small>RECURRENTE</Badge>}
-                      <button onClick={()=>onAddWhale(b.address,"ETH","Insider #"+b.address.slice(-4))} style={{background:T.pink+"10",border:"1px solid "+T.pink+"30",color:T.pink,padding:"2px 7px",borderRadius:4,cursor:"pointer",fontSize:8,fontFamily:"monospace",fontWeight:700}}>
-                        + Seguir
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                <div style={{display:"flex",gap:5,marginTop:10}}>
-                  <a href={alert.dexUrl||"https://dexscreener.com"} target="_blank" rel="noopener noreferrer"
-                    style={{flex:1,textAlign:"center",background:T.orange+"10",border:"1px solid "+T.orange+"33",color:T.orange,padding:"7px",borderRadius:6,fontSize:9,fontWeight:700,fontFamily:"monospace",textDecoration:"none",display:"block"}}>
-                    ↗ Ver chart
-                  </a>
-                </div>
-              </div>
+
+      {alerts.length>0&&(
+        <div style={{background:T.red+"08",border:"1px solid "+T.red+"20",borderRadius:8,padding:12,marginBottom:14}}>
+          <div style={{fontSize:10,color:T.red,fontFamily:"monospace",fontWeight:700,marginBottom:8,display:"flex",alignItems:"center",gap:6}}>
+            <Pulse color={T.red}/> <span>Compras recientes de insiders ({alerts.length})</span>
+          </div>
+          {alerts.slice(0,6).map((a,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",borderBottom:"1px solid "+T.bg}}>
+              <Badge color={chainCol(a.chain)} small>{a.chain}</Badge>
+              <a href={(a.chain==="ETH"?"https://etherscan.io/address/":a.chain==="BNB"?"https://bscscan.com/address/":"https://basescan.org/address/")+a.wallet} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:tagInfo[a.tag]?.color||T.muted,fontFamily:"monospace",textDecoration:"none"}}>{shortAddr(a.wallet)}</a>
+              <span style={{fontSize:10,color:T.dim}}>compro</span>
+              <span style={{fontSize:11,fontWeight:700,color:T.text,fontFamily:"monospace",flex:1}}>{a.token}</span>
+              {a.tag==="insider_activo"&&<Badge color={T.red} small>ACTIVO</Badge>}
+              <span style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>{timeAgo(a.ts)}</span>
             </div>
           ))}
         </div>
       )}
+
+      <div style={{display:"flex",gap:4,marginBottom:12,flexWrap:"wrap"}}>
+        {[["ALL","Todas"],["ACTIVO","🔴 Insiders activos"],["TRACKED","En seguimiento"],["FORENSIC","Forense"]].map(([k,l])=>(
+          <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.orange+"0d":"transparent",border:"1px solid "+(filter===k?T.orange+"33":T.border),color:filter===k?T.orange:T.muted,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
+        ))}
+        {vis.length>0&&<span style={{marginLeft:"auto",fontSize:10,color:T.dim,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} wallets</span>}
+      </div>
+
+      {loading&&!data&&(
+        <div style={{padding:"30px",textAlign:"center"}}>
+          <div style={{width:24,height:24,border:"2px solid "+T.orange+"22",borderTop:"2px solid "+T.orange,borderRadius:"50%",margin:"0 auto 12px",animation:"spin 1s linear infinite"}}/>
+          <div style={{fontSize:11,color:T.muted,fontFamily:"monospace"}}>Conectando con Railway...</div>
+        </div>
+      )}
+
+      {!loading&&vis.length===0&&(
+        <EmptyState icon="🎯" text="Aun no hay smart wallets detectadas" sub="El forense corre al inicio y cada dia a las 7am. Puedes forzarlo arriba."/>
+      )}
+
+      <div style={{display:"flex",flexDirection:"column",gap:6}}>
+        {vis.map((w,i)=>{
+          const ti = tagInfo[w.tag] || tagInfo.smart;
+          const rank = wallets.indexOf(w)+1;
+          const explorer = w.chain==="ETH"?"https://etherscan.io/address/":w.chain==="BNB"?"https://bscscan.com/address/":w.chain==="BASE"?"https://basescan.org/address/":"https://solscan.io/account/";
+          return (
+            <div key={w.address} style={{background:T.card,border:"1px solid "+(w.tag==="insider_activo"?T.red+"33":T.border),borderLeft:"3px solid "+ti.color,borderRadius:10,padding:"12px 14px"}}>
+              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+                <div style={{fontSize:15,fontWeight:900,color:rank<=3?ti.color:T.dim,fontFamily:"monospace",minWidth:24}}>#{rank}</div>
+                <div style={{flex:1,minWidth:0}}>
+                  <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap",marginBottom:3}}>
+                    <Badge color={ti.color}>{ti.label}</Badge>
+                    <Badge color={chainCol(w.chain)} small>{w.chain}</Badge>
+                    {w.tracked&&<Badge color={T.green} small>SIGUIENDO</Badge>}
+                    {w.forensic&&<Badge color={T.orange} small>📜 FORENSE</Badge>}
+                  </div>
+                  <a href={explorer+w.address} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:T.muted,fontFamily:"monospace",textDecoration:"none"}}>{shortAddr(w.address)} ↗</a>
+                </div>
+                <div style={{textAlign:"center",flexShrink:0}}>
+                  <div style={{fontSize:18,fontWeight:900,color:ti.color,fontFamily:"monospace",lineHeight:1}}>{w.insider_score}</div>
+                  <div style={{fontSize:7,color:T.muted,fontFamily:"monospace"}}>SCORE</div>
+                </div>
+              </div>
+              <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:8}}>
+                <Stat label="Coincidencias" value={w.n_tokens+" tokens"} color={ti.color}/>
+                {w.total_usd>0&&<Stat label="Dinero movido" value={fmtUSD(w.total_usd)} color={T.green}/>}
+                <Stat label="Compras" value={w.buys}/>
+                {w.last_seen>0&&<Stat label="Ultima vez" value={timeAgo(w.last_seen)}/>}
+              </div>
+              {w.tokens&&w.tokens.length>0&&(
+                <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+                  {w.tokens.map(t=><Badge key={t} color={T.purple} small>{t}</Badge>)}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

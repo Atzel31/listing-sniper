@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   T, Pulse, sleep, fmtUSD, pct,
   getDex, getBoosted, getNewPairs, getEthTxs, getEarlyBuyers, sendNtfy, calcScore,
-  EX_ETH,
+  calcPumpProb, getLiveAccumData, EX_ETH,
 } from "./shared";
 import { Setup, SniperTab, NewPairsTab, InsidersTab } from "./tabs_part1";
 import { WatchlistTab, WhalesTab } from "./tabs_part2";
@@ -81,6 +81,7 @@ export default function App() {
   const [countdown,setCountdown]   = useState(45);
   const [externalAddWhale,setExternalAddWhale] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [ruggedSet, setRuggedSet] = useState({}); // contract -> rug data, del bot
 
   const runRef  = useRef(false);
   const scanRef = useRef(false);
@@ -90,6 +91,22 @@ export default function App() {
   const pumpAnalyzedRef = useRef(new Set());
   const insiderAlertsRef = useRef([]);
   useEffect(()=>{ keysRef.current=keys; },[keys]);
+
+  // Traer lista de rugpulls del bot cada 2 min para marcar/ocultar cards
+  useEffect(()=>{
+    let alive = true;
+    async function pull() {
+      const live = await getLiveAccumData();
+      if (alive && live && live.rugged) {
+        const map = {};
+        live.rugged.forEach(r=>{ if(r.contract) map[r.contract.toLowerCase()]=r; });
+        setRuggedSet(map);
+      }
+    }
+    pull();
+    const id = setInterval(pull, 120000);
+    return ()=>{ alive=false; clearInterval(id); };
+  },[]);
 
   // Cargar preferencias guardadas (localStorage solo en cliente)
   useEffect(()=>{
@@ -108,13 +125,15 @@ export default function App() {
   function log(msg){setScanLog(p=>["["+new Date().toLocaleTimeString()+"] "+msg,...p].slice(0,15));}
 
   function pushAlert(a){
-    const full={...a,id:gId++};
+    // Calcular probabilidad de pump para cada alerta automaticamente
+    const pump_prob = (a.pump_prob!==undefined && a.pump_prob!==null) ? a.pump_prob : calcPumpProb(a);
+    const full={...a,pump_prob,id:gId++};
     setAlerts(p=>[full,...p].slice(0,100));
     const e=a.score>=70?"🟢":a.score>=45?"🟡":"🔴";
     log(e+" "+a.name+" ("+a.chain+") — "+a.score+"/100");
     if (a.source!=="WATCHLIST"){
       const t=keysRef.current.ntfyTopic;
-      sendNtfy(t,e+" "+a.name+" ("+a.chain+") — "+a.score+"/100","Fuente: "+a.source+" | Liq: "+fmtUSD(a.liq)+" | 1h: "+pct(a.ch1h)+"\n"+(a.dexScreen||""),a.score>=70?"urgent":a.score>=45?"high":"default");
+      sendNtfy(t,e+" "+a.name+" ("+a.chain+") — "+a.score+"/100","Fuente: "+a.source+" | Pump "+pump_prob+"% | Liq: "+fmtUSD(a.liq)+" | 1h: "+pct(a.ch1h)+"\n"+(a.dexScreen||""),a.score>=70?"urgent":a.score>=45?"high":"default");
     }
   }
 
@@ -292,9 +311,9 @@ export default function App() {
       />
 
       <div style={{maxWidth:840,margin:"0 auto",padding:"20px 16px 0"}}>
-        {tab===0&&<SniperTab alerts={alerts} running={running} scanning={scanning} countdown={countdown} scanLog={scanLog}/>}
-        {tab===1&&<NewPairsTab newPairs={newPairs} running={running} scanning={scanning}/>}
-        {tab===2&&<InsidersTab insiderAlerts={insiderAlerts} onAddWhale={(address,chain,label)=>setExternalAddWhale({address,chain,label})} pumpThreshold={keys.pumpThreshold||30}/>}
+        {tab===0&&<SniperTab alerts={alerts} running={running} scanning={scanning} countdown={countdown} scanLog={scanLog} ruggedSet={ruggedSet}/>}
+        {tab===1&&<NewPairsTab newPairs={newPairs} running={running} scanning={scanning} ruggedSet={ruggedSet}/>}
+        {tab===2&&<InsidersTab pumpThreshold={keys.pumpThreshold||30}/>}
         {tab===3&&<WatchlistTab running={running} keys={keys} ntfyTopic={keys.ntfyTopic} onNewAlert={pushAlert}/>}
         {tab===4&&<WhalesTab running={running} ntfyTopic={keys.ntfyTopic} onNewAlert={pushAlert} externalAddWhale={externalAddWhale} setExternalAddWhale={setExternalAddWhale}/>}
         {tab===5&&<AccumulationTab githubRepo={keys.githubRepo}/>}

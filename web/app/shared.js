@@ -125,6 +125,25 @@ export function calcScore(d) {
   return {score:Math.max(5,Math.min(95,Math.round(s))),factors:f};
 }
 
+// ─── PROBABILIDAD DE PUMP (cliente, replica del bot) ──────────────────────────
+export function calcPumpProb(d) {
+  let p = 30;
+  const bp = d.bp||50, liq = d.liq||0, vol = d.vol||0;
+  const ch5m = parseFloat(d.ch5m||0), ch1h = parseFloat(d.ch1h||0), ch6h = parseFloat(d.ch6h||0);
+  const txns = d.txns||0, age = d.ageHours;
+  if (bp>=70) p+=18; else if (bp>=60) p+=12; else if (bp>=52) p+=5; else if (bp<45) p-=12;
+  if (d.vol_accel) p+=15;
+  if (liq>0) { const tv=vol/liq; if(tv>2)p+=12; else if(tv>0.8)p+=7; else if(tv<0.1)p-=10; }
+  if (liq>=15000&&liq<=300000) p+=8; else if (liq<8000) p-=10; else if (liq>2000000) p-=5;
+  if (txns>500) p+=8; else if (txns>150) p+=4; else if (txns<40) p-=6;
+  if (age!==null&&age!==undefined) { if(age>=2&&age<=24)p+=8; else if(age<1)p-=12; else if(age>72)p-=4; }
+  if (d.multi_dex) p+=6;
+  if (ch5m>15) p-=15;
+  if (ch1h>40) p-=20; else if (ch1h>20) p-=10; else if (ch1h>3&&ch1h<=15) p+=6;
+  if (ch6h>80) p-=12;
+  return Math.max(2, Math.min(98, Math.round(p)));
+}
+
 // ─── DEXSCREENER (cliente, para Sniper/Watchlist/Whales) ─────────────────────
 export async function getDex(address, chain) {
   const chainId = chain==="SOL"?"solana":chain==="BNB"?"bsc":chain==="BASE"?"base":"ethereum";
@@ -143,11 +162,13 @@ export async function getDex(address, chain) {
       const buys=best.txns?.h24?.buys||0, sells=best.txns?.h24?.sells||0, total=buys+sells;
       const rc=best.chainId||chainId, pair=best.pairAddress||"";
       const createdAt = best.pairCreatedAt ? Math.floor(best.pairCreatedAt/1000) : null;
+      const dexIds = [...new Set((data.pairs||[]).filter(p=>p.chainId===rc).map(p=>p.dexId).filter(Boolean))];
       return {
         name:best.baseToken?.symbol||"UNKNOWN",
         liq:best.liquidity?.usd||0,
         vol:best.volume?.h24||0,
         vol5m:best.volume?.m5||0,
+        ch5m:best.priceChange?.m5||0,
         ch1h:best.priceChange?.h1||0,
         ch6h:best.priceChange?.h6||0,
         ch24h:best.priceChange?.h24||0,
@@ -158,6 +179,7 @@ export async function getDex(address, chain) {
         mcap:best.marketCap||0,
         pair,realChain:rc,
         createdAt,
+        multi_dex: dexIds.length>=2,
         ageHours: createdAt ? Math.floor((Date.now()/1000-createdAt)/3600) : null,
         chartUrl: pair?"https://dexscreener.com/"+rc+"/"+pair+"?embed=1&theme=dark&trades=0&info=0":null,
         dexUrl:   pair?"https://dexscreener.com/"+rc+"/"+pair:"https://dexscreener.com/"+chainId+"/"+address,
