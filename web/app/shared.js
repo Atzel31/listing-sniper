@@ -27,6 +27,9 @@ export const scoreColor = s => s>=70?"#22c55e":s>=45?"#eab308":"#ef4444";
 export const scoreLabel = s => s>=70?"Bajo riesgo":s>=45?"Riesgo medio":"Alto riesgo";
 export const accumColor = s => s>=70?"#22c55e":s>=50?"#06b6d4":s>=30?"#eab308":"#ef4444";
 export const accumLabel = s => s>=70?"Excelente":s>=50?"Bueno":s>=30?"Neutral":"Evitar";
+export const pumpColor = p => p>=70?"#22c55e":p>=45?"#eab308":"#ef4444";
+export const pumpLabel = p => p>=70?"Alta":p>=45?"Media":"Baja";
+export const multStr = m => m>=2?("x"+m.toFixed(2)):("+"+((m-1)*100).toFixed(0)+"%");
 export const chainCol = c => ({SOL:"#9945ff",ETH:"#6366f1",BNB:"#f0b90b",BASE:"#0052ff",CEX:"#888"})[c]||"#666";
 
 // ─── EXCHANGE WALLETS (para referencia visual) ────────────────────────────────

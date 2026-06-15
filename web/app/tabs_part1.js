@@ -1,9 +1,96 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   T, Badge, Stat, ScoreRing, Pulse, ChartEmbed, EmptyState,
   fmtUSD, pct, shortAddr, timeAgo, scoreColor, scoreLabel, chainCol, sendNtfy,
+  pumpColor, pumpLabel, multStr, getLiveAccumData,
 } from "./shared";
+
+// ─── PANEL DE RENDIMIENTO (tracking post-notificacion) ───────────────────────
+export function PerformancePanel() {
+  const [data, setData] = useState(null);
+  const intRef = useRef(null);
+  async function refresh() {
+    const live = await getLiveAccumData();
+    if (live) setData(live);
+  }
+  useEffect(()=>{
+    refresh();
+    intRef.current = setInterval(refresh, 120000);
+    return ()=>clearInterval(intRef.current);
+  },[]);
+
+  if (!data) return null;
+  const tracking = data.tracking || [];
+  const rugged = data.rugged || [];
+  if (!tracking.length && !rugged.length) return null;
+
+  const pumped = tracking.filter(t=>t.max_mult>=1.3);
+  const active = tracking.filter(t=>t.status==="tracking");
+  const winRate = tracking.length ? Math.round((pumped.length/tracking.length)*100) : 0;
+  const best = tracking.reduce((a,t)=>(t.max_mult>(a?.max_mult||0)?t:a), null);
+
+  return (
+    <div style={{background:T.green+"06",border:"1px solid "+T.green+"20",borderRadius:8,padding:"12px 14px",marginBottom:14}}>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10,flexWrap:"wrap"}}>
+        <span style={{fontSize:11,color:T.green,fontFamily:"monospace",fontWeight:700}}>📊 Rendimiento de alertas</span>
+        <Pulse color={T.green}/>
+      </div>
+      <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:tracking.length?10:0}}>
+        <div style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"7px 12px",flex:1,minWidth:75}}>
+          <div style={{fontSize:8,color:T.muted,fontFamily:"monospace"}}>TRACKEADOS</div>
+          <div style={{fontSize:16,fontWeight:900,color:T.text,fontFamily:"monospace"}}>{tracking.length}</div>
+        </div>
+        <div style={{background:T.green+"0a",border:"1px solid "+T.green+"22",borderRadius:6,padding:"7px 12px",flex:1,minWidth:75}}>
+          <div style={{fontSize:8,color:T.green,fontFamily:"monospace"}}>PUMPEARON</div>
+          <div style={{fontSize:16,fontWeight:900,color:T.green,fontFamily:"monospace"}}>{pumped.length}</div>
+        </div>
+        <div style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"7px 12px",flex:1,minWidth:75}}>
+          <div style={{fontSize:8,color:T.muted,fontFamily:"monospace"}}>WIN RATE</div>
+          <div style={{fontSize:16,fontWeight:900,color:pumpColor(winRate),fontFamily:"monospace"}}>{winRate}%</div>
+        </div>
+        <div style={{background:T.red+"0a",border:"1px solid "+T.red+"22",borderRadius:6,padding:"7px 12px",flex:1,minWidth:75}}>
+          <div style={{fontSize:8,color:T.red,fontFamily:"monospace"}}>RUGPULLS</div>
+          <div style={{fontSize:16,fontWeight:900,color:T.red,fontFamily:"monospace"}}>{rugged.length}</div>
+        </div>
+      </div>
+      {best&&best.max_mult>1.05&&(
+        <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",marginBottom:8}}>
+          Mejor resultado: <span style={{color:T.green,fontWeight:700}}>{best.symbol} {multStr(best.max_mult)}</span>
+          {" "}(prob. era {best.pump_prob}%)
+        </div>
+      )}
+      {tracking.length>0&&(
+        <div style={{maxHeight:200,overflowY:"auto"}}>
+          {tracking.slice(0,12).map((t,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 0",borderBottom:"1px solid "+T.bg}}>
+              <Badge color={chainCol(t.chain)} small>{t.chain}</Badge>
+              <span style={{fontSize:10,fontWeight:700,color:T.text,fontFamily:"monospace",flex:1}}>{t.symbol}</span>
+              {t.status==="rugged"
+                ? <Badge color={T.red} small>RUG</Badge>
+                : <span style={{fontSize:10,fontWeight:700,fontFamily:"monospace",color:t.max_mult>=1.3?T.green:t.max_mult>=1?T.muted:T.red}}>{multStr(t.max_mult||1)}</span>
+              }
+              <span style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>prob {t.pump_prob}%</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {rugged.length>0&&(
+        <div style={{marginTop:10}}>
+          <div style={{fontSize:9,color:T.red,fontFamily:"monospace",fontWeight:700,marginBottom:5}}>RUGPULLS DETECTADOS</div>
+          {rugged.slice(0,5).map((r,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"3px 0"}}>
+              <Badge color={chainCol(r.chain)} small>{r.chain}</Badge>
+              <span style={{fontSize:10,color:T.muted,fontFamily:"monospace",flex:1}}>{r.symbol}</span>
+              <span style={{fontSize:9,color:T.red,fontFamily:"monospace"}}>-{r.liq_drop_pct}% liq</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 
 // ─── TOKEN CARD ───────────────────────────────────────────────────────────────
 export function TokenCard({item, onRemove, accent}) {
@@ -41,6 +128,15 @@ export function TokenCard({item, onRemove, accent}) {
             {item.accum&&<Badge color={T.purple}>ACUM</Badge>}
             {item.flow==="OUT"&&<Badge color={T.green}>↑ RETIRO</Badge>}
             {item.multi&&<Badge color={T.blue}>MULTI-EX</Badge>}
+            {item.pump_prob!==undefined&&item.pump_prob!==null&&(
+              <Badge color={item.pump_prob>=70?T.green:item.pump_prob>=45?T.yellow:T.red}>
+                {"⚡ Pump "+item.pump_prob+"%"}
+              </Badge>
+            )}
+            {item.status==="rugged"&&<Badge color={T.red}>💀 RUGPULL</Badge>}
+            {(item.status==="pumped"||item.max_mult>=1.3)&&item.max_mult&&(
+              <Badge color={T.green}>{"📈 "+(item.max_mult>=2?"x"+item.max_mult.toFixed(1):"+"+((item.max_mult-1)*100).toFixed(0)+"%")}</Badge>
+            )}
           </div>
           <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
             <Stat label="Liq" value={fmtUSD(item.liq)}/>
@@ -269,9 +365,10 @@ export function NewPairsTab({newPairs,running,scanning}) {
           {running&&<Pulse color={T.cyan}/>}
         </div>
         <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
-          Monitorea pares creados recientemente en ETH y SOL.
+          Pares nuevos en ETH y SOL con filtros reforzados. Cada alerta incluye probabilidad de pump y se trackea su rendimiento.
         </div>
       </div>
+      <PerformancePanel/>
       <div style={{display:"flex",gap:4,marginBottom:12,flexWrap:"wrap"}}>
         {[["ALL","Todos"],["ETH","ETH"],["SOL","SOL"],["HOT","🔥 Pump >20%"]].map(([k,l])=>(
           <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.cyan+"0d":"transparent",border:"1px solid "+(filter===k?T.cyan+"33":T.border),color:filter===k?T.cyan:T.muted,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
