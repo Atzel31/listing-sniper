@@ -196,6 +196,88 @@ function WeekEventsLog({events}) {
   );
 }
 
+// ─── PANEL DE COMBOS ──────────────────────────────────────────────────────────
+function CombosPanel({combos}) {
+  if (!combos || !combos.length) return null;
+  const sigLabels = {
+    prelisting_unconfirmed:"Pre-listing NO confirmado",
+    prelisting_confirmed:"Exchange activo",
+    multi_exchange:"Multi-exchange",
+    insider_buy:"Insider dentro",
+    high_pump_prob:"Prob. pump alta",
+    whale_convergence:"Convergencia whales",
+    exchange_out:"Retiro exchanges",
+    vol_accel:"Volumen acelerando",
+  };
+  return (
+    <div style={{background:T.orange+"08",border:"1px solid "+T.orange+"25",borderRadius:10,padding:14,marginBottom:16}}>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
+        <span style={{fontSize:12,color:T.orange,fontFamily:"monospace",fontWeight:700}}>🎯 COMBOS ACTIVOS</span>
+        <Pulse color={T.orange}/>
+        <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>senales apiladas en el mismo token</span>
+      </div>
+      <div style={{display:"flex",flexDirection:"column",gap:6}}>
+        {combos.map((c,i)=>(
+          <div key={i} style={{background:T.card,border:"1px solid "+(c.n_signals>=3?T.orange+"44":T.border),borderLeft:"3px solid "+(c.score>=7?T.red:T.orange),borderRadius:8,padding:"10px 12px"}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+              <span style={{fontSize:13,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{c.symbol}</span>
+              <Badge color={chainCol(c.chain)} small>{c.chain}</Badge>
+              <Badge color={c.score>=7?T.red:T.orange}>{"x"+c.n_signals+" senales"}</Badge>
+              <span style={{marginLeft:"auto",fontSize:11,fontWeight:900,color:c.score>=7?T.red:T.orange,fontFamily:"monospace"}}>score {c.score}</span>
+            </div>
+            <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+              {c.signals.map(s=><Badge key={s} color={T.purple} small>{sigLabels[s]||s}</Badge>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── PANEL DE WIN RATE ────────────────────────────────────────────────────────
+function WinRatePanel({bySignal, byHour}) {
+  const hasSignal = bySignal && bySignal.filter(s=>s.total>=2).length>0;
+  const hasHour = byHour && byHour.filter(h=>h.total>=2).length>0;
+  if (!hasSignal && !hasHour) return null;
+  return (
+    <div style={{background:T.cyan+"06",border:"1px solid "+T.cyan+"20",borderRadius:10,padding:14,marginBottom:16}}>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
+        <span style={{fontSize:12,color:T.cyan,fontFamily:"monospace",fontWeight:700}}>📊 WIN RATE POR TIPO</span>
+        <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>que senales aciertan mas (se afina con el tiempo)</span>
+      </div>
+      {hasSignal&&(
+        <div style={{marginBottom:hasHour?12:0}}>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:6}}>POR SEÑAL</div>
+          {bySignal.filter(s=>s.total>=2).slice(0,8).map((s,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"4px 0",borderBottom:"1px solid "+T.bg}}>
+              <span style={{fontSize:10,color:T.text,fontFamily:"monospace",flex:1}}>{s.signal}</span>
+              <span style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>{s.total} alertas</span>
+              <div style={{width:60,height:4,background:T.dim,borderRadius:2,overflow:"hidden"}}>
+                <div style={{width:s.win_rate+"%",height:"100%",background:s.win_rate>=40?T.green:s.win_rate>=20?T.yellow:T.red}}/>
+              </div>
+              <span style={{fontSize:10,fontWeight:700,color:s.win_rate>=40?T.green:s.win_rate>=20?T.yellow:T.red,fontFamily:"monospace",minWidth:32,textAlign:"right"}}>{s.win_rate}%</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {hasHour&&(
+        <div>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:6}}>MEJORES HORAS (PERU)</div>
+          <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+            {byHour.filter(h=>h.total>=2).slice(0,6).map((h,i)=>(
+              <div key={i} style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"5px 10px"}}>
+                <div style={{fontSize:11,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{String(h.hour_peru).padStart(2,"0")}:00</div>
+                <div style={{fontSize:10,fontWeight:700,color:h.win_rate>=40?T.green:T.yellow,fontFamily:"monospace"}}>{h.win_rate}%</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── TAB: ACUMULACIÓN ─────────────────────────────────────────────────────────
 export function AccumulationTab({githubRepo}) {
   const [liveData, setLiveData] = useState(null);
@@ -257,6 +339,10 @@ export function AccumulationTab({githubRepo}) {
 
       {/* Weekly report */}
       <WeeklyBanner weekly={weekly}/>
+
+      {/* Combos activos y win rate por tipo */}
+      <CombosPanel combos={liveData?.combos}/>
+      <WinRatePanel bySignal={liveData?.winrate_by_signal} byHour={liveData?.winrate_by_hour}/>
 
       {!liveData&&loading&&(
         <div style={{padding:"30px 20px",textAlign:"center"}}>
