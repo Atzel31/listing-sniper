@@ -32,6 +32,10 @@ TRACK_HOURS     = int(os.environ.get("TRACK_HOURS",     "48"))   # horas de segu
 MAX_TRACKED_WHALES = int(os.environ.get("MAX_TRACKED_WHALES", "20"))  # top wallets a seguir
 INSIDER_MIN_TOKENS = int(os.environ.get("INSIDER_MIN_TOKENS", "2"))   # min monedas de la lista para ser smart wallet
 FORENSIC_LOOKBACK_H = int(os.environ.get("FORENSIC_LOOKBACK_H", "48"))# ventana antes del pump para buscar insiders
+# Modulo de combo y verificacion de listing
+COMBO_WINDOW_H  = int(os.environ.get("COMBO_WINDOW_H", "3"))     # horas para apilar senales del mismo token
+COMBO_MIN_SCORE = int(os.environ.get("COMBO_MIN_SCORE", "2"))    # min senales apiladas para alerta combo
+LISTING_CACHE_MIN = int(os.environ.get("LISTING_CACHE_MIN", "60")) # min entre refrescos de listas de exchanges
 
 # ─── CHAINS ───────────────────────────────────────────────────────────────────
 CHAINS = {
@@ -153,6 +157,12 @@ tracked_whale_set  = {}    # address -> {chain, label, last_check, last_seen_tok
 forensic_done      = set() # symbols ya analizados forensicamente (para no repetir el mismo dia)
 last_forensic_day  = None  # dia del ultimo analisis forense
 insider_alerts     = []    # historico de alertas de insiders activos
+
+# Estado de verificacion de listing y combo
+exchange_pairs     = {}    # exchange -> set de simbolos listados
+exchange_pairs_ts  = {}    # exchange -> timestamp del ultimo refresco
+combo_signals      = {}    # contract -> {symbol, chain, signals:{tipo: ts}, first_seen, notified_combo}
+signal_outcomes    = []    # [{signals:[tipos], result_pct, max_mult, hour_utc, status}] para win rate por tipo
 
 # ─── UTILS ────────────────────────────────────────────────────────────────────
 def log(msg):
@@ -348,6 +358,19 @@ def start_tracking(contract, symbol, chain, dex, pump_prob, source):
         price = 0
     if contract in tracked_tokens or price <= 0:
         return
+    # Etiquetar con las señales activas de este token (para win rate por tipo)
+    sig_entry = combo_signals.get(contract.lower(), {})
+    active_signals = list(sig_entry.get("signals", {}).keys())
+    # La fuente tambien cuenta como "tipo" para el analisis
+    signal_tags = active_signals[:]
+    if source == "DEXSCREENER":
+        signal_tags.append("boosted")
+    elif source == "NEW_PAIR":
+        signal_tags.append("new_pair")
+    elif source in ("MEXC", "BINANCE", "BITGET", "BYBIT", "OKX"):
+        signal_tags.append("exchange_wallet")
+    if pump_prob >= 60:
+        signal_tags.append("high_pump_prob")
     tracked_tokens[contract] = {
         "symbol": symbol, "chain": chain,
         "notified_at": int(time.time()),
@@ -361,9 +384,66 @@ def start_tracking(contract, symbol, chain, dex, pump_prob, source):
         "buy_url": dex.get("buy_url", ""),
         "status": "tracking",  # tracking | pumped | rugged | expired
         "result_pct": 0,
+        "signal_tags": list(set(signal_tags)),
+        "hour_utc": time.gmtime().tm_hour,
+        "outcome_recorded": False,
     }
     global daily_notif_count
     daily_notif_count += 1
+
+def record_outcome(t):
+    """Guarda el resultado final de un token trackeado para el analisis de win rate."""
+    if t.get("outcome_recorded"):
+        return
+    t["outcome_recorded"] = True
+    signal_outcomes.append({
+        "symbol": t["symbol"],
+        "signals": t.get("signal_tags", []),
+        "result_pct": t.get("result_pct", 0),
+        "max_mult": t.get("max_mult", 1),
+        "hour_utc": t.get("hour_utc", 0),
+        "status": t.get("status", "expired"),
+        "pumped": t.get("max_mult", 1) >= 1.3,
+        "ts": int(time.time()),
+    })
+    # Mantener maximo 500 outcomes
+    if len(signal_outcomes) > 500:
+        del signal_outcomes[:100]
+
+def compute_winrate_by_type():
+    """Calcula win rate por tipo de señal y por horario a partir de los outcomes."""
+    by_signal = {}
+    by_hour = {}
+    for o in signal_outcomes:
+        for s in o["signals"]:
+            d = by_signal.setdefault(s, {"total": 0, "pumped": 0, "best": 1.0})
+            d["total"] += 1
+            if o["pumped"]: d["pumped"] += 1
+            d["best"] = max(d["best"], o["max_mult"])
+        h = o["hour_utc"]
+        dh = by_hour.setdefault(h, {"total": 0, "pumped": 0})
+        dh["total"] += 1
+        if o["pumped"]: dh["pumped"] += 1
+    # Calcular porcentajes
+    sig_rates = []
+    for s, d in by_signal.items():
+        if d["total"] >= 1:
+            sig_rates.append({
+                "signal": s, "total": d["total"],
+                "win_rate": round(d["pumped"] / d["total"] * 100),
+                "best_mult": round(d["best"], 2),
+            })
+    sig_rates.sort(key=lambda x: x["win_rate"], reverse=True)
+    hour_rates = []
+    for h, d in by_hour.items():
+        if d["total"] >= 1:
+            hour_rates.append({
+                "hour_peru": (h - 5) % 24, "hour_utc": h,
+                "total": d["total"],
+                "win_rate": round(d["pumped"] / d["total"] * 100),
+            })
+    hour_rates.sort(key=lambda x: x["win_rate"], reverse=True)
+    return sig_rates, hour_rates
 
 def update_tracking():
     """Actualiza el rendimiento de los tokens trackeados y detecta rugpulls."""
@@ -374,6 +454,7 @@ def update_tracking():
         age_h = (now - t["notified_at"]) / 3600
         if age_h > TRACK_HOURS and t["status"] == "tracking":
             t["status"] = "expired"
+            record_outcome(t)
             to_remove.append(contract)
             continue
         if t["status"] not in ("tracking",):
@@ -417,6 +498,7 @@ def update_tracking():
                 )
                 register_week_event(t["symbol"], "rugpull",
                                     f"Rugpull {liq_drop:.0f}% caida liquidez, {age_h:.1f}h tras alerta")
+                record_outcome(t)
                 continue
 
         # ── Actualizar maximo y multiplicador ──
@@ -435,6 +517,7 @@ def update_tracking():
             log(f"  PUMP confirmado: {t['symbol']} hizo {mult_str} desde la alerta")
             register_week_event(t["symbol"], "pump_confirmed",
                                 f"Hizo {mult_str} desde la notificacion ({age_h:.1f}h)")
+            record_outcome(t)
 
     for c in to_remove:
         tracked_tokens.pop(c, None)
@@ -625,6 +708,74 @@ def get_exchange_origin_evm(contract, chain="ETH"):
         if fa in ETH_WALLET_MAP: found.add(ETH_WALLET_MAP[fa])
         if ta in ETH_WALLET_MAP: found.add(ETH_WALLET_MAP[ta])
     return list(found)
+
+# ─── VERIFICACIÓN DE LISTING (APIs publicas de exchanges) ────────────────────
+def fetch_exchange_pairs(exchange):
+    """
+    Trae la lista de simbolos listados en un exchange via su API publica.
+    Retorna set de simbolos en mayuscula (ej. {'BTC', 'ETH', ...}).
+    """
+    try:
+        symbols = set()
+        if exchange == "MEXC":
+            r = requests.get("https://api.mexc.com/api/v3/exchangeInfo", timeout=12)
+            if r.ok:
+                for s in r.json().get("symbols", []):
+                    base = s.get("baseAsset", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "BINANCE":
+            r = requests.get("https://api.binance.com/api/v3/exchangeInfo", timeout=12)
+            if r.ok:
+                for s in r.json().get("symbols", []):
+                    base = s.get("baseAsset", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "BITGET":
+            r = requests.get("https://api.bitget.com/api/v2/spot/public/symbols", timeout=12)
+            if r.ok:
+                for s in r.json().get("data", []):
+                    base = s.get("baseCoin", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "BYBIT":
+            r = requests.get("https://api.bybit.com/v5/market/instruments-info?category=spot", timeout=12)
+            if r.ok:
+                for s in r.json().get("result", {}).get("list", []):
+                    base = s.get("baseCoin", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "OKX":
+            r = requests.get("https://www.okx.com/api/v5/public/instruments?instType=SPOT", timeout=12)
+            if r.ok:
+                for s in r.json().get("data", []):
+                    base = s.get("baseCcy", "")
+                    if base: symbols.add(base.upper())
+        return symbols
+    except Exception as e:
+        log(f"[listing {exchange}] {e}")
+        return set()
+
+def get_exchange_listing(exchange):
+    """Devuelve el set de simbolos listados, con cache de LISTING_CACHE_MIN minutos."""
+    now = time.time()
+    last = exchange_pairs_ts.get(exchange, 0)
+    if exchange not in exchange_pairs or now - last > LISTING_CACHE_MIN * 60:
+        pairs = fetch_exchange_pairs(exchange)
+        if pairs:  # solo actualizar si trajo algo
+            exchange_pairs[exchange] = pairs
+            exchange_pairs_ts[exchange] = now
+            log(f"  Listing {exchange}: {len(pairs)} simbolos cacheados")
+        time.sleep(0.3)
+    return exchange_pairs.get(exchange, set())
+
+def is_listed_on(exchange, symbol):
+    """
+    Verifica si un simbolo esta listado en un exchange.
+    Retorna: True (listado), False (NO listado), None (no se pudo verificar).
+    """
+    if not symbol or symbol == "UNKNOWN":
+        return None
+    listing = get_exchange_listing(exchange)
+    if not listing:
+        return None  # no se pudo traer la lista
+    return symbol.upper() in listing
 
 # ─── NTFY ─────────────────────────────────────────────────────────────────────
 def notify(title, body, priority="default", tags="bell", click_url=""):
@@ -857,6 +1008,109 @@ def notify_insider(token_name, chain, buyers, pump_pct, dex):
         priority="urgent", tags="eyes,rotating_light",
     )
 
+# ─── SISTEMA DE COMBO (apila senales del mismo token) ────────────────────────
+# Pesos de cada tipo de senal (prioridad confirmada por el usuario)
+COMBO_WEIGHTS = {
+    "prelisting_unconfirmed": 4,  # exchange toca token NO listado aun (lo mas fuerte)
+    "multi_exchange":         3,  # varios exchanges tocan el mismo token
+    "insider_buy":            3,  # smart wallet / insider activo compro
+    "high_pump_prob":         2,  # probabilidad de pump alta
+    "whale_convergence":      2,  # convergencia de whales conocidas
+    "exchange_out":           1,  # retiro neto de exchanges
+    "vol_accel":              1,  # volumen acelerando
+    "prelisting_confirmed":   1,  # exchange toca token YA listado (menos jugoso)
+}
+COMBO_LABELS = {
+    "prelisting_unconfirmed": "Pre-listing NO confirmado",
+    "multi_exchange":         "Multi-exchange",
+    "insider_buy":            "Insider/smart wallet dentro",
+    "high_pump_prob":         "Prob. de pump alta",
+    "whale_convergence":      "Convergencia de whales",
+    "exchange_out":           "Retiro de exchanges",
+    "vol_accel":              "Volumen acelerando",
+    "prelisting_confirmed":   "Exchange activo (ya listado)",
+}
+
+def register_signal(contract, symbol, chain, signal_type, dex=None):
+    """Apila una senal sobre un token. Si se acumulan varias en la ventana, dispara combo."""
+    if not contract:
+        return
+    contract = contract.lower()
+    now = time.time()
+    entry = combo_signals.setdefault(contract, {
+        "symbol": symbol, "chain": chain, "signals": {},
+        "first_seen": now, "notified_combo": 0,
+        "dex": dex,
+    })
+    entry["symbol"] = symbol
+    entry["chain"] = chain
+    if dex:
+        entry["dex"] = dex
+    # Registrar/refrescar la senal
+    entry["signals"][signal_type] = now
+    # Limpiar senales viejas (fuera de la ventana)
+    cutoff = now - COMBO_WINDOW_H * 3600
+    entry["signals"] = {k: v for k, v in entry["signals"].items() if v >= cutoff}
+    # Evaluar combo
+    evaluate_combo(contract, entry)
+
+def evaluate_combo(contract, entry):
+    """Calcula el score de combo y notifica si supera el umbral."""
+    signals = entry["signals"]
+    if len(signals) < COMBO_MIN_SCORE:
+        return
+    combo_score = sum(COMBO_WEIGHTS.get(s, 1) for s in signals)
+    now = time.time()
+    # No re-notificar el mismo combo en menos de 1h, salvo que crezca
+    n_signals = len(signals)
+    last_notified = entry.get("notified_combo", 0)
+    last_count = entry.get("notified_count", 0)
+    if last_notified and (now - last_notified < 3600) and n_signals <= last_count:
+        return
+    # Umbral: al menos 2 senales y score combinado >= 5, o 3+ senales
+    if not (combo_score >= 5 or n_signals >= 3):
+        return
+
+    entry["notified_combo"] = now
+    entry["notified_count"] = n_signals
+    dex = entry.get("dex") or {}
+    symbol = entry["symbol"]
+    chain = entry["chain"]
+
+    signal_lines = "\n".join(f"  + {COMBO_LABELS.get(s, s)}" for s in sorted(signals, key=lambda x: -COMBO_WEIGHTS.get(x, 1)))
+    buy_url = dex.get("buy_url", "")
+    url = dex.get("url", "")
+    extra = ""
+    if dex:
+        extra = (f"Liq: {fmt_usd(dex.get('liq', 0))} | Vol: {fmt_usd(dex.get('vol', 0))}\n"
+                 f"1h: {pct(dex.get('ch1h', 0))} | Prob pump: {dex.get('pump_prob', '?')}%\n")
+
+    log(f"  COMBO {symbol}: {n_signals} senales, score {combo_score}")
+    notify(
+        f"COMBO x{n_signals}: {symbol} ({chain}) — score {combo_score}",
+        f"Varias senales se alinearon en este token:\n{signal_lines}\n\n"
+        f"{extra}"
+        f"{'Comprar: ' + buy_url + chr(10) if buy_url else ''}"
+        f"{'Chart: ' + url if url else ''}",
+        priority="urgent", tags="rotating_light,fire,dart",
+        click_url=VERCEL_URL,
+    )
+    register_week_event(symbol, "combo",
+                        f"Combo de {n_signals} senales (score {combo_score}): " +
+                        ", ".join(COMBO_LABELS.get(s, s) for s in signals))
+
+def cleanup_combo_signals():
+    """Elimina tokens cuyas senales ya expiraron todas."""
+    now = time.time()
+    cutoff = now - COMBO_WINDOW_H * 3600
+    to_remove = []
+    for contract, entry in combo_signals.items():
+        entry["signals"] = {k: v for k, v in entry["signals"].items() if v >= cutoff}
+        if not entry["signals"]:
+            to_remove.append(contract)
+    for c in to_remove:
+        combo_signals.pop(c, None)
+
 # ─── MÓDULOS SNIPER (1-6, igual que v2 pero con Etherscan V2) ────────────────
 def scan_exchange_wallets_eth():
     log("-- Scan exchange wallets ETH --")
@@ -896,16 +1150,39 @@ def scan_exchange_wallets_eth():
                                    "multi": multi, "verified": verified, "vol_accel": vol_accel})
             pprob, _ = pump_probability(dex)
             dex["pump_prob"] = pprob
+
+            # ── Verificacion de listing: el token esta listado en el exchange que lo toco?
+            listed = is_listed_on(wallet["exchange"], dex["name"])
+            listing_str = ""
+            if listed is False:
+                listing_str = f"*** NO LISTADO en {wallet['exchange']} aun — posible pre-listing ***\n"
+            elif listed is True:
+                listing_str = f"Ya listado en {wallet['exchange']} (actividad normal)\n"
+
             if is_watchlist:
                 notify_exchange_move(wallet["exchange"], token_name, "ETH", dex, is_watchlist=True)
             elif contract not in seen_contracts:
                 origins = get_exchange_origin_evm(contract, "ETH")
                 time.sleep(0.3)
                 origin_str = f"Origen: {', '.join(origins)}\n" if origins else ""
+                origin_str += listing_str
                 origin_str += f"Prob. de pump: {pprob}%\n"
                 notify_new_token(dex["name"], "ETH", score, dex, wallet["exchange"], origin_str)
                 start_tracking(contract, dex["name"], "ETH", dex, pprob, wallet["exchange"])
                 seen_contracts.add(contract)
+
+            # ── Registrar senales para el sistema de combo
+            if listed is False:
+                register_signal(contract, dex["name"], "ETH", "prelisting_unconfirmed", dex)
+            elif listed is True:
+                register_signal(contract, dex["name"], "ETH", "prelisting_confirmed", dex)
+            if multi:
+                register_signal(contract, dex["name"], "ETH", "multi_exchange", dex)
+            if pprob >= 60:
+                register_signal(contract, dex["name"], "ETH", "high_pump_prob", dex)
+            if vol_accel:
+                register_signal(contract, dex["name"], "ETH", "vol_accel", dex)
+
             if float(dex.get("ch1h", 0) or 0) >= PUMP_THRESHOLD:
                 analyze_insiders(contract, "ETH", dex)
             time.sleep(0.4)
@@ -936,12 +1213,32 @@ def scan_exchange_wallets_sol():
             score = compute_score({**dex, "src": wallet["exchange"], "chain": "SOL", "vol_accel": vol_accel})
             pprob, _ = pump_probability(dex)
             dex["pump_prob"] = pprob
+
+            # Verificacion de listing (SOL no esta en EVM pero igual puede estar en CEX)
+            listed = is_listed_on(wallet["exchange"], dex["name"])
+            listing_str = ""
+            if listed is False:
+                listing_str = f"*** NO LISTADO en {wallet['exchange']} aun — posible pre-listing ***\n"
+            elif listed is True:
+                listing_str = f"Ya listado en {wallet['exchange']}\n"
+
             if is_watchlist:
                 notify_exchange_move(wallet["exchange"], token_name, "SOL", dex, is_watchlist=True)
             elif mint not in seen_contracts:
-                notify_new_token(dex["name"], "SOL", score, dex, wallet["exchange"], f"Prob. de pump: {pprob}%\n")
+                notify_new_token(dex["name"], "SOL", score, dex, wallet["exchange"], listing_str + f"Prob. de pump: {pprob}%\n")
                 start_tracking(mint, dex["name"], "SOL", dex, pprob, wallet["exchange"])
                 seen_contracts.add(mint)
+
+            # Registrar senales de combo
+            if listed is False:
+                register_signal(mint, dex["name"], "SOL", "prelisting_unconfirmed", dex)
+            elif listed is True:
+                register_signal(mint, dex["name"], "SOL", "prelisting_confirmed", dex)
+            if pprob >= 60:
+                register_signal(mint, dex["name"], "SOL", "high_pump_prob", dex)
+            if vol_accel:
+                register_signal(mint, dex["name"], "SOL", "vol_accel", dex)
+
             time.sleep(0.4)
         time.sleep(0.4)
 
@@ -976,6 +1273,7 @@ def scan_whale_wallets():
                 wc = len(whale_buys[contract])
                 if wc >= 2:
                     notify_whale_move(whale["label"], token_name, "ETH", dex, wc=wc, convergence=True)
+                    register_signal(contract, dex["name"], "ETH", "whale_convergence", dex)
                 else:
                     notify_whale_move(whale["label"], token_name, "ETH", dex)
                 if is_watchlist:
@@ -1005,6 +1303,7 @@ def scan_whale_wallets():
                 wc = len(whale_buys[mint])
                 if wc >= 2:
                     notify_whale_move(whale["label"], token_name, "SOL", dex, wc=wc, convergence=True)
+                    register_signal(mint, dex["name"], "SOL", "whale_convergence", dex)
                 else:
                     notify_whale_move(whale["label"], token_name, "SOL", dex)
                 if is_watchlist:
@@ -1560,6 +1859,7 @@ def scan_tracked_whales():
             )
             register_week_event(dex["name"], "insider_buy",
                                 f"{tag_label} {short(addr)} compro {dex['name']}")
+            register_signal(c, dex["name"], chain, "insider_buy", dex)
             insider_alerts.insert(0, {
                 "ts": int(now), "wallet": addr, "token": dex["name"],
                 "chain": chain, "tag": w.get("tag"), "score": w.get("insider_score"),
@@ -1733,6 +2033,21 @@ def daily_report():
         rug_lines = [f"  {r['symbol']}: -{r['liq_drop_pct']}% liq" for r in rugged_today[:5]]
         rug_str = f"\nRUGPULLS hoy ({len(rugged_today)}):\n" + "\n".join(rug_lines)
 
+    # ── Win rate por tipo de señal y horario (si hay suficientes datos) ──
+    sig_rates, hour_rates = compute_winrate_by_type()
+    type_str = ""
+    if sig_rates:
+        top_types = [s for s in sig_rates if s["total"] >= 3][:5]
+        if top_types:
+            lines = [f"  {s['signal']}: {s['win_rate']}% ({s['total']} alertas)" for s in top_types]
+            type_str = "\n\nWin rate por tipo de senal:\n" + "\n".join(lines)
+    hour_str = ""
+    if hour_rates:
+        top_hours = [h for h in hour_rates if h["total"] >= 3][:3]
+        if top_hours:
+            lines = [f"  {h['hour_peru']:02d}:00 Peru: {h['win_rate']}% ({h['total']})" for h in top_hours]
+            hour_str = "\n\nMejores horas (hora Peru):\n" + "\n".join(lines)
+
     body = (
         f"Resumen de las ultimas 24h:\n\n"
         f"Tokens notificados: {total_notif}\n"
@@ -1740,7 +2055,9 @@ def daily_report():
         f"Win rate: {win_rate}%\n"
         f"{best_str}"
         f"\nMejores resultados:\n{pump_str}"
-        f"{rug_str}\n\n"
+        f"{rug_str}"
+        f"{type_str}"
+        f"{hour_str}\n\n"
         f"Recuerda: la mayoria de memecoins van a cero. "
         f"Esto mide si el filtro mejora el ratio.\n"
         f"{VERCEL_URL or ''}"
@@ -1820,6 +2137,18 @@ def start_api_server():
                     "last_seen": sw.get("last_seen", 0),
                     "tracked": addr in tracked_whale_set,
                 })
+            # Combos activos
+            combos_out = []
+            for c, e in combo_signals.items():
+                if len(e.get("signals", {})) >= 2:
+                    combos_out.append({
+                        "symbol": e["symbol"], "chain": e["chain"],
+                        "signals": list(e["signals"].keys()),
+                        "n_signals": len(e["signals"]),
+                        "score": sum(COMBO_WEIGHTS.get(s, 1) for s in e["signals"]),
+                    })
+            combos_out.sort(key=lambda x: x["score"], reverse=True)
+            sig_rates, hour_rates = compute_winrate_by_type()
             return jsonify({
                 "updated_at": int(time.time()),
                 "tokens": tokens,
@@ -1831,6 +2160,9 @@ def start_api_server():
                 "smart_wallets": wallets_out,
                 "insider_alerts": insider_alerts[:30],
                 "tracked_whales": len(tracked_whale_set),
+                "combos": combos_out[:15],
+                "winrate_by_signal": sig_rates,
+                "winrate_by_hour": hour_rates,
             })
 
         @app.route("/api/forensic")
@@ -1870,6 +2202,13 @@ def scan():
     if cycle_count % 3 == 0 and tracked_tokens:
         log(f"-- Actualizando tracking de {len(tracked_tokens)} tokens --")
         update_tracking()
+    # Limpiar señales de combo expiradas
+    cleanup_combo_signals()
+    # Precargar listas de exchanges en el primer ciclo (para verificacion de listing)
+    if cycle_count == 1:
+        log("-- Precargando listas de exchanges --")
+        for ex in ["MEXC", "BINANCE", "BITGET", "BYBIT", "OKX"]:
+            get_exchange_listing(ex)
     # Bootstrap: correr forense una vez al arrancar (tras acumular algo de datos)
     if cycle_count == 3:
         log("-- Bootstrap forense inicial --")
@@ -1883,7 +2222,7 @@ def scan():
 
 # ─── INICIO ───────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    log("Alpha Terminal Bot v5 iniciado")
+    log("Alpha Terminal Bot v6 iniciado")
     log(f"  Ntfy           : {NTFY_TOPIC}")
     log(f"  Etherscan V2   : {'OK (ETH+BNB+BASE)' if ETHERSCAN_KEY else 'sin key'}")
     log(f"  GitHub         : {'OK' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar'}")
@@ -1893,6 +2232,7 @@ if __name__ == "__main__":
     log(f"  Reporte semanal: Lunes {WEEKLY_UTC_HOUR}:00 UTC ({WEEKLY_UTC_HOUR-5}:00 Peru)")
     log(f"  Forense+diario : {DAILY_UTC_HOUR}:00 UTC ({DAILY_UTC_HOUR-5}:00 Peru)")
     log(f"  Insiders       : top {MAX_TRACKED_WHALES} smart wallets, min {INSIDER_MIN_TOKENS} tokens")
+    log(f"  Combo          : ventana {COMBO_WINDOW_H}h | Listing cache {LISTING_CACHE_MIN}min")
     log(f"  Prob pump min  : {MIN_PUMP_PROB}% | Rug si liq cae >{RUG_LIQ_DROP}% | Track {TRACK_HOURS}h")
     log("")
 
@@ -1901,13 +2241,12 @@ if __name__ == "__main__":
     api_thread.start()
 
     notify(
-        "Alpha Terminal v5 activo",
-        f"Nuevo modulo de INSIDERS:\n"
-        f"Forense historico diario ({DAILY_UTC_HOUR-5}:00 am Peru)\n"
-        f"Smart wallets que compran 2+ tokens de tu lista\n"
-        f"Score de insider (dinero + coincidencias + actividad)\n"
-        f"Seguimiento de top {MAX_TRACKED_WHALES} wallets activas\n\n"
-        f"Mantiene: prob. pump, tracking, rugpull, resumen diario\n"
+        "Alpha Terminal v6 activo",
+        f"Nuevas mejoras:\n"
+        f"Verificacion de listing (NO listado = jugoso)\n"
+        f"Sistema de COMBO (apila senales del mismo token)\n"
+        f"Win rate por tipo de senal y por horario\n\n"
+        f"Mantiene: insiders, forense, prob. pump, tracking, rugpull\n"
         f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
         priority="high", tags="white_check_mark",
     )
