@@ -167,6 +167,8 @@ exchange_futures   = {}    # exchange -> set de simbolos en futuros
 exchange_futures_ts= {}    # exchange -> timestamp del ultimo refresco de futuros
 korean_seen_notices= set() # IDs de anuncios de Upbit/Bithumb ya vistos
 combo_history      = []    # combos que terminaron en pump [{signals, symbol, max_mult, ts}]
+my_positions       = {}    # contract -> {symbol, chain, entry_price, entry_ts, peak_price, peak_mult, targets_hit:set, last_price, last_alert_ts}
+holder_counts      = {}    # contract -> {symbol, chain, count, ts} para detectar crecimiento
 combo_signals      = {}    # contract -> {symbol, chain, signals:{tipo: ts}, first_seen, notified_combo}
 signal_outcomes    = []    # [{signals:[tipos], result_pct, max_mult, hour_utc, status}] para win rate por tipo
 
@@ -487,6 +489,93 @@ def compute_winrate_by_type():
     hour_rates.sort(key=lambda x: x["win_rate"], reverse=True)
     return sig_rates, hour_rates
 
+def add_position(contract, symbol, chain, entry_price):
+    """Marca una moneda como 'estoy dentro' para vigilar la salida."""
+    contract = contract.lower()
+    my_positions[contract] = {
+        "symbol": symbol, "chain": chain,
+        "entry_price": float(entry_price),
+        "entry_ts": int(time.time()),
+        "peak_price": float(entry_price),
+        "peak_mult": 1.0,
+        "targets_hit": [],
+        "last_price": float(entry_price),
+        "last_alert_ts": 0,
+    }
+    log(f"  Posicion agregada: {symbol} @ {entry_price}")
+    return my_positions[contract]
+
+def remove_position(contract):
+    my_positions.pop(contract.lower(), None)
+
+def monitor_positions():
+    """
+    Vigila las posiciones marcadas 'estoy dentro'.
+    Avisa al llegar a multiplos objetivo (x2, x3, x5, x10) o al caer fuerte tras un pico.
+    """
+    if not my_positions:
+        return
+    log(f"-- Monitoreando {len(my_positions)} posiciones propias --")
+    now = time.time()
+    TARGETS = [2, 3, 5, 10]
+    for contract, p in list(my_positions.items()):
+        chain = p["chain"]
+        dex = get_dex(contract, chain)
+        time.sleep(0.3)
+        if not dex:
+            continue
+        try:
+            cur = float(dex.get("price", 0) or 0)
+        except:
+            cur = 0
+        if cur <= 0 or p["entry_price"] <= 0:
+            continue
+        p["last_price"] = cur
+        mult = cur / p["entry_price"]
+        # Actualizar pico
+        if cur > p["peak_price"]:
+            p["peak_price"] = cur
+            p["peak_mult"] = mult
+
+        # 1. Alertas de objetivo alcanzado (x2, x3, x5, x10)
+        for tgt in TARGETS:
+            if mult >= tgt and tgt not in p["targets_hit"]:
+                p["targets_hit"].append(tgt)
+                gain_pct = (mult - 1) * 100
+                notify(
+                    f"OBJETIVO x{tgt}: {p['symbol']} ({chain})",
+                    f"Tu posicion en {p['symbol']} alcanzo x{tgt}\n"
+                    f"Entrada: {p['entry_price']:.8f}\n"
+                    f"Ahora: {cur:.8f} (+{gain_pct:.0f}%)\n"
+                    f"Considera tomar ganancias parciales.\n"
+                    f"{market_ctx_str()}\n"
+                    f"Chart: {dex.get('url','')}",
+                    priority="urgent", tags="moneybag,rocket",
+                    click_url=VERCEL_URL,
+                )
+                register_week_event(p["symbol"], "exit_target",
+                                    f"{p['symbol']} alcanzo x{tgt} desde tu entrada")
+
+        # 2. Alerta de caida fuerte tras pico (proteccion de ganancias)
+        if p["peak_mult"] >= 1.5:  # solo si llego a subir al menos 50%
+            drop_from_peak = (1 - cur / p["peak_price"]) * 100
+            # Avisar si cae 25%+ desde el pico, max 1 alerta cada 2h
+            if drop_from_peak >= 25 and (now - p["last_alert_ts"]) > 7200:
+                p["last_alert_ts"] = now
+                still_up = (mult - 1) * 100
+                notify(
+                    f"CAIDA TRAS PICO: {p['symbol']} ({chain}) -{drop_from_peak:.0f}%",
+                    f"{p['symbol']} cayo {drop_from_peak:.0f}% desde su pico\n"
+                    f"Pico fue: x{p['peak_mult']:.2f}\n"
+                    f"Ahora: {'+'if still_up>=0 else ''}{still_up:.0f}% vs tu entrada\n"
+                    f"Posible momento de salir para proteger ganancias.\n"
+                    f"Chart: {dex.get('url','')}",
+                    priority="urgent", tags="warning,chart_with_downwards_trend",
+                    click_url=VERCEL_URL,
+                )
+                register_week_event(p["symbol"], "exit_drop",
+                                    f"{p['symbol']} cayo {drop_from_peak:.0f}% desde pico")
+
 def update_tracking():
     """Actualiza el rendimiento de los tokens trackeados y detecta rugpulls."""
     now = time.time()
@@ -681,7 +770,49 @@ def get_coingecko(coin_id):
         log(f"[coingecko error] {e}")
         return None
 
-# ─── ETHERSCAN V2 MULTICHAIN ─────────────────────────────────────────────────
+# ─── CONTEXTO DE MERCADO (BTC verde/rojo) ────────────────────────────────────
+_market_ctx = {"ch24h": 0, "ts": 0, "status": "neutral", "btc_price": 0}
+
+def get_market_context():
+    """
+    Devuelve el contexto de mercado global via BTC. Cache de 5 min.
+    Retorna {ch24h, status: 'verde'|'rojo'|'neutral', btc_price, emoji}.
+    """
+    now = time.time()
+    if now - _market_ctx["ts"] < 300 and _market_ctx["ts"] > 0:
+        return _market_ctx
+    try:
+        r = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price"
+            "?ids=bitcoin&vs_currencies=usd&include_24hr_change=true",
+            timeout=10
+        )
+        if r.ok:
+            d = r.json().get("bitcoin", {})
+            ch = d.get("usd_24h_change", 0) or 0
+            _market_ctx["ch24h"] = round(ch, 1)
+            _market_ctx["btc_price"] = d.get("usd", 0)
+            _market_ctx["ts"] = now
+            if ch >= 1.5:
+                _market_ctx["status"] = "verde"
+                _market_ctx["emoji"] = "🟢"
+            elif ch <= -1.5:
+                _market_ctx["status"] = "rojo"
+                _market_ctx["emoji"] = "🔴"
+            else:
+                _market_ctx["status"] = "neutral"
+                _market_ctx["emoji"] = "⚪"
+    except Exception as e:
+        log(f"[market ctx] {e}")
+    return _market_ctx
+
+def market_ctx_str():
+    """String corto del contexto de mercado para meter en notificaciones."""
+    m = get_market_context()
+    emoji = m.get("emoji", "⚪")
+    return f"Mercado: BTC {pct(m['ch24h'])} 24h {emoji}"
+
+
 def get_evm_token_txs_v2(address, chain="ETH", by_contract=False, sort="desc", offset=25):
     """Transacciones de token via Etherscan V2 multichain (ETH/BNB/BASE)."""
     try:
@@ -1187,6 +1318,7 @@ def notify_new_token(name, chain, score, dex, source, extra_info=""):
         f"Liq: {fmt_usd(dex['liq'])} | Vol: {fmt_usd(dex['vol'])}\n"
         f"1h: {pct(dex['ch1h'])} | Buys: {dex['buys']} / Sells: {dex['sells']}\n"
         f"{extra_info}"
+        f"{market_ctx_str()}\n"
         f"Comprar: {dex['buy_url']}\n"
         f"Chart: {dex['url']}",
         priority=prio, tags="rocket,fire" if score >= 70 else "bell",
@@ -1609,7 +1741,57 @@ def scan_watchlist():
                                             origins if signal == "exchange_out" else None)
                     if signal == "pump" and chain == "ETH":
                         analyze_insiders(contract, "ETH", dex)
+        # Deteccion de crecimiento de holders (solo EVM)
+        if chain in ("ETH", "BNB", "BASE"):
+            check_holder_growth(contract, name, chain)
+            time.sleep(0.3)
         time.sleep(0.3)
+
+def check_holder_growth(contract, symbol, chain):
+    """
+    Detecta crecimiento inusual de holders aproximado contando direcciones unicas
+    que recibieron el token recientemente. Es un proxy gratuito, no el conteo exacto
+    de holders (eso requiere API PRO). Sirve como señal temprana de interes.
+    """
+    txs = get_evm_token_txs_v2(contract, chain, by_contract=True, sort="desc", offset=100)
+    if not txs:
+        return
+    now = time.time()
+    # Direcciones unicas que recibieron en las ultimas 6h
+    recent_receivers = set()
+    for tx in txs:
+        ts = int(tx.get("timeStamp", 0))
+        if now - ts > 21600:  # 6h
+            continue
+        to = tx.get("to", "").lower()
+        if to and to not in ETH_WALLET_MAP:
+            recent_receivers.add(to)
+    cur_count = len(recent_receivers)
+    prev = holder_counts.get(contract.lower())
+    holder_counts[contract.lower()] = {"symbol": symbol, "chain": chain, "count": cur_count, "ts": now}
+    if not prev:
+        return  # primera medicion, solo guardar baseline
+    prev_count = prev["count"]
+    if prev_count < 5:
+        return  # muy pocos para comparar
+    growth = (cur_count - prev_count) / prev_count * 100
+    # Alertar si crecio 50%+ y hay al menos 10 receptores nuevos
+    if growth >= 50 and cur_count >= prev_count + 8:
+        k = dedup_key("holdergrowth-" + contract, 180)
+        if k not in seen_signals:
+            seen_signals.add(k)
+            log(f"  CRECIMIENTO HOLDERS: {symbol} +{growth:.0f}%")
+            notify(
+                f"HOLDERS CRECIENDO: {symbol} ({chain}) +{growth:.0f}%",
+                f"{symbol} esta atrayendo compradores nuevos rapido\n"
+                f"Receptores recientes (6h): {prev_count} -> {cur_count}\n"
+                f"Puede ser señal temprana de interes antes de que el precio se mueva.\n"
+                f"{market_ctx_str()}",
+                priority="high", tags="busts_in_silhouette,chart_with_upwards_trend",
+                click_url=VERCEL_URL,
+            )
+            register_week_event(symbol, "holder_growth",
+                                f"{symbol} holders +{growth:.0f}% ({prev_count}->{cur_count})")
 
 def scan_new_tokens():
     log("-- Scan nuevos tokens --")
@@ -2482,6 +2664,7 @@ def serialize_state():
         "discovered_whales": list(discovered_whales)[-500:],
         "insider_convergences": insider_convergences,
         "combo_history": combo_history[-200:],
+        "my_positions": my_positions,
     }
 
 def save_state(force=False):
@@ -2538,6 +2721,7 @@ def load_state():
         discovered_whales.update(state.get("discovered_whales", []))
         insider_convergences.update(state.get("insider_convergences", {}))
         combo_history.extend(state.get("combo_history", []))
+        my_positions.update(state.get("my_positions", {}))
         saved_ago = (time.time() - state.get("saved_at", 0)) / 3600
         log(f"[estado] Cargado: {len(smart_wallets)} smart wallets, {len(tracked_whale_set)} en seguimiento (guardado hace {saved_ago:.1f}h)")
     except Exception as e:
@@ -2790,6 +2974,17 @@ def start_api_server():
                 "winrate_by_combo": combo_rates[:15],
                 "insider_convergences": sorted(insider_convergences.values(), key=lambda x: x["detected_at"], reverse=True)[:15],
                 "insider_sells": insider_sells[:20],
+                "market_context": get_market_context(),
+                "positions": [
+                    {
+                        "contract": c, "symbol": p["symbol"], "chain": p["chain"],
+                        "entry_price": p["entry_price"], "last_price": p["last_price"],
+                        "mult": round(p["last_price"]/p["entry_price"], 2) if p["entry_price"]>0 else 1,
+                        "peak_mult": round(p["peak_mult"], 2),
+                        "targets_hit": p["targets_hit"],
+                        "entry_ts": p["entry_ts"],
+                    } for c, p in my_positions.items()
+                ],
             })
 
         @app.route("/api/forensic")
@@ -2830,6 +3025,33 @@ def start_api_server():
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 
+        @app.route("/api/position/add/<chain>/<address>/<price>")
+        def api_add_position(chain, address, price):
+            # Marca una moneda como 'estoy dentro'
+            try:
+                # Si no pasan precio (price=0 o 'auto'), usar el precio actual del dex
+                p = float(price) if price not in ("0", "auto", "") else 0
+                dex = get_dex(address, chain.upper())
+                symbol = dex["name"] if dex else address[:6]
+                if p <= 0 and dex:
+                    p = float(dex.get("price", 0) or 0)
+                if p <= 0:
+                    return jsonify({"status": "error", "msg": "no se pudo determinar precio de entrada"})
+                pos = add_position(address, symbol, chain.upper(), p)
+                save_state(force=True)
+                return jsonify({"status": "added", "symbol": symbol, "entry_price": p})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/position/remove/<address>")
+        def api_remove_position(address):
+            try:
+                remove_position(address)
+                save_state(force=True)
+                return jsonify({"status": "removed"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
         @app.route("/api/health")
         def api_health():
             return jsonify({"status": "ok", "cycle": cycle_count})
@@ -2858,6 +3080,12 @@ def scan():
     if cycle_count % 3 == 0 and tracked_tokens:
         log(f"-- Actualizando tracking de {len(tracked_tokens)} tokens --")
         update_tracking()
+    # Monitorear posiciones propias (alertas de salida) cada 2 ciclos
+    if cycle_count % 2 == 0 and my_positions:
+        try:
+            monitor_positions()
+        except Exception as e:
+            log(f"[posiciones error] {e}")
     # Limpiar señales de combo expiradas
     cleanup_combo_signals()
     # Monitor de anuncios coreanos (Upbit/Bithumb) cada 2 ciclos
@@ -2911,12 +3139,12 @@ if __name__ == "__main__":
     load_state()
 
     notify(
-        "Alpha Terminal v8 activo",
-        f"Nuevas mejoras (Grupo C):\n"
-        f"Futuros vs spot (sin falsos pre-listing)\n"
-        f"Monitor de listings Upbit/Bithumb (Corea)\n"
-        f"Historico de combos que pumpearon\n"
-        f"Cards de combos con contrato y links\n\n"
+        "Alpha Terminal v9 activo",
+        f"Nuevas mejoras (Grupo D - final):\n"
+        f"Alertas de SALIDA (x2/x3 y caida tras pico)\n"
+        f"Contexto de mercado BTC en cada alerta\n"
+        f"Alertas de crecimiento de holders\n\n"
+        f"Marca posiciones con 'estoy dentro' para vigilar salida.\n"
         f"Smart wallets cargadas: {len(smart_wallets)}\n"
         f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
         priority="high", tags="white_check_mark",
