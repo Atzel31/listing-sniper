@@ -157,6 +157,8 @@ tracked_whale_set  = {}    # address -> {chain, label, last_check, last_seen_tok
 forensic_done      = set() # symbols ya analizados forensicamente (para no repetir el mismo dia)
 last_forensic_day  = None  # dia del ultimo analisis forense
 insider_alerts     = []    # historico de alertas de insiders activos
+insider_convergences = {}  # contract -> {symbol, chain, n_insiders, avg_score, holders, detected_at}
+insider_sells      = []    # historico de ventas de insiders [{wallet, token, chain, ts, score}]
 
 # Estado de verificacion de listing y combo
 exchange_pairs     = {}    # exchange -> set de simbolos listados
@@ -777,6 +779,47 @@ def is_listed_on(exchange, symbol):
         return None  # no se pudo traer la lista
     return symbol.upper() in listing
 
+def get_wallet_portfolio(address, chain="ETH", max_tokens=15):
+    """
+    Portfolio superficial de una wallet: tokens que ha recibido recientemente
+    y que probablemente aun tiene. Usa el historial de transferencias (gratis).
+    No es valoracion exacta, es un vistazo de en que esta metida la wallet.
+    """
+    if CHAINS.get(chain, {}).get("escan") is None:
+        return []  # SOL no soportado con APIs gratis de forma confiable
+    txs = get_evm_token_txs_v2(address, chain, sort="desc", offset=100)
+    if not txs:
+        return []
+    addr_l = address.lower()
+    balances = {}  # contract -> {symbol, net_amount, last_ts}
+    for tx in txs:
+        c = tx.get("contractAddress", "").lower()
+        if not c:
+            continue
+        sym = tx.get("tokenSymbol", "?")
+        try:
+            amt = float(tx.get("value", 0)) / (10 ** int(tx.get("tokenDecimal", 18)))
+        except:
+            continue
+        ts = int(tx.get("timeStamp", 0))
+        b = balances.setdefault(c, {"symbol": sym, "net": 0.0, "last_ts": ts, "contract": c})
+        if tx.get("to", "").lower() == addr_l:
+            b["net"] += amt   # recibio
+        elif tx.get("from", "").lower() == addr_l:
+            b["net"] -= amt   # envio
+        b["last_ts"] = max(b["last_ts"], ts)
+    # Quedarse con las que tienen balance neto positivo (aun las tiene)
+    holding = [v for v in balances.values() if v["net"] > 0]
+    holding.sort(key=lambda x: x["last_ts"], reverse=True)
+    out = []
+    for h in holding[:max_tokens]:
+        out.append({
+            "symbol": h["symbol"],
+            "contract": h["contract"],
+            "last_activity": h["last_ts"],
+        })
+    return out
+
 # ─── NTFY ─────────────────────────────────────────────────────────────────────
 def notify(title, body, priority="default", tags="bell", click_url=""):
     try:
@@ -1011,7 +1054,8 @@ def notify_insider(token_name, chain, buyers, pump_pct, dex):
 # ─── SISTEMA DE COMBO (apila senales del mismo token) ────────────────────────
 # Pesos de cada tipo de senal (prioridad confirmada por el usuario)
 COMBO_WEIGHTS = {
-    "prelisting_unconfirmed": 4,  # exchange toca token NO listado aun (lo mas fuerte)
+    "insider_convergence":    5,  # 2+ insiders en la misma moneda (lo mas fuerte de todo)
+    "prelisting_unconfirmed": 4,  # exchange toca token NO listado aun
     "multi_exchange":         3,  # varios exchanges tocan el mismo token
     "insider_buy":            3,  # smart wallet / insider activo compro
     "high_pump_prob":         2,  # probabilidad de pump alta
@@ -1021,6 +1065,7 @@ COMBO_WEIGHTS = {
     "prelisting_confirmed":   1,  # exchange toca token YA listado (menos jugoso)
 }
 COMBO_LABELS = {
+    "insider_convergence":    "CONVERGENCIA INSIDER",
     "prelisting_unconfirmed": "Pre-listing NO confirmado",
     "multi_exchange":         "Multi-exchange",
     "insider_buy":            "Insider/smart wallet dentro",
@@ -1416,6 +1461,60 @@ def analyze_insiders(contract, chain, dex):
     notify_insider(dex["name"], chain, buyers, float(dex.get("ch1h", 0) or 0), dex)
 
 # ─── MÓDULO 7: ACUMULACIÓN ────────────────────────────────────────────────────
+def check_insider_convergence(contract, symbol, chain):
+    """
+    Detecta cuando 2+ smart wallets distintas (insiders) tienen el mismo token.
+    Si hay convergencia, etiqueta el token y lo agrega a seguimiento automatico.
+    """
+    if not contract:
+        return
+    contract = contract.lower()
+    # Contar cuantas smart wallets tienen este symbol entre sus tokens
+    holders = [addr for addr, sw in smart_wallets.items() if symbol in sw.get("tokens", set())]
+    if len(holders) < 2:
+        return
+    # Hay convergencia: 2+ insiders en la misma moneda
+    k = dedup_key("convergencia-" + contract, 360)  # no repetir en 6h
+    if k in seen_signals:
+        return
+    seen_signals.add(k)
+    # Score promedio de los insiders involucrados
+    scores = [smart_wallets[a].get("insider_score", 0) for a in holders]
+    avg_score = round(sum(scores) / len(scores))
+    top_holders = sorted(holders, key=lambda a: smart_wallets[a].get("insider_score", 0), reverse=True)[:3]
+    holders_str = "\n".join(
+        f"  {smart_wallets[a].get('label', short(a))} (score {smart_wallets[a].get('insider_score', 0)})"
+        for a in top_holders
+    )
+    # Registrar en convergencias para la UI
+    insider_convergences[contract] = {
+        "symbol": symbol, "chain": chain,
+        "n_insiders": len(holders),
+        "avg_score": avg_score,
+        "holders": [short(a) for a in top_holders],
+        "detected_at": int(time.time()),
+    }
+    # Registrar como señal de combo de maximo peso
+    register_signal(contract, symbol, chain, "insider_convergence", None)
+    # Iniciar tracking automatico de precio sobre esta moneda
+    dex = get_dex(contract, chain)
+    time.sleep(0.3)
+    if dex and dex.get("liq", 0) >= MIN_LIQUIDITY:
+        if contract not in tracked_tokens:
+            start_tracking(contract, symbol, chain, dex, dex.get("pump_prob", 0), "CONVERGENCIA")
+    log(f"  CONVERGENCIA INSIDER: {symbol} con {len(holders)} insiders")
+    notify(
+        f"CONVERGENCIA INSIDER: {symbol} ({chain}) — {len(holders)} insiders",
+        f"{len(holders)} smart wallets distintas tienen {symbol}:\n{holders_str}\n\n"
+        f"Score promedio: {avg_score}\n"
+        f"Agregada a seguimiento automatico.\n"
+        f"{'Chart: ' + dex.get('url', '') if dex else ''}",
+        priority="urgent", tags="rotating_light,busts_in_silhouette,dart",
+        click_url=VERCEL_URL,
+    )
+    register_week_event(symbol, "insider_convergence",
+                        f"{len(holders)} insiders convergen en {symbol} (score prom. {avg_score})")
+
 def detect_big_buyers(contract, chain, symbol, price_usd=0):
     """Registra compradores grandes recientes en tokens EVM de la lista.
     Captura monto en USD y frecuencia para alimentar el score de insider."""
@@ -1454,25 +1553,165 @@ def detect_big_buyers(contract, chain, symbol, price_usd=0):
             new_count += 1
             # Registrar/actualizar como smart wallet si compra 2+ tokens de la lista
             if len(entry["tokens"]) >= INSIDER_MIN_TOKENS:
-                register_smart_wallet(to_addr, chain, entry)
-                k = dedup_key("smartmoney-" + to_addr, 240)
-                if k not in seen_signals:
-                    seen_signals.add(k)
-                    tokens_str = ", ".join(sorted(entry["tokens"]))
-                    usd_str = f" | ~{fmt_usd(entry['total_usd'])} movidos" if entry["total_usd"] > 0 else ""
-                    notify(
-                        f"SMART MONEY: wallet en {len(entry['tokens'])} tokens de tu lista",
-                        f"Wallet: {short(to_addr)}\n"
-                        f"Comprando: {tokens_str}{usd_str}\n"
-                        f"Ver: https://etherscan.io/address/{to_addr}",
-                        priority="high", tags="eyes,moneybag",
-                    )
-                    register_week_event(symbol, "smart_money",
-                                        f"Wallet {short(to_addr)} en {len(entry['tokens'])} tokens: {tokens_str}")
+                sw = register_smart_wallet(to_addr, chain, entry)
+                # Solo notificar si paso el filtro de calidad (sw no es None)
+                if sw is not None:
+                    # Registrar señal de insider para el combo
+                    register_signal(contract, symbol, chain, "insider_buy", None)
+                    # Detectar convergencia: 2+ insiders distintos en el mismo token
+                    check_insider_convergence(contract, symbol, chain)
+                    k = dedup_key("smartmoney-" + to_addr, 240)
+                    if k not in seen_signals:
+                        seen_signals.add(k)
+                        tokens_str = ", ".join(sorted(entry["tokens"]))
+                        usd_str = f" | ~{fmt_usd(entry['total_usd'])} movidos" if entry["total_usd"] > 0 else ""
+                        notify(
+                            f"SMART MONEY: wallet en {len(entry['tokens'])} tokens de tu lista",
+                            f"Wallet: {short(to_addr)}\n"
+                            f"Comprando: {tokens_str}{usd_str}\n"
+                            f"Ver: https://etherscan.io/address/{to_addr}",
+                            priority="high", tags="eyes,moneybag",
+                        )
+                        register_week_event(symbol, "smart_money",
+                                            f"Wallet {short(to_addr)} en {len(entry['tokens'])} tokens: {tokens_str}")
     return new_count
 
-def register_smart_wallet(addr, chain, entry, forensic=False, label=""):
+def assess_wallet_quality(addr, chain):
+    """
+    Evalua si una wallet parece bot/market-maker (baja calidad) o insider real.
+    Retorna (es_calidad: bool, razon: str, n_txs: int, n_tokens_distintos: int).
+    Un insider real es SELECTIVO: pocas monedas, no miles de transacciones.
+    """
+    if CHAINS.get(chain, {}).get("escan") is None:
+        return True, "SOL (no verificable)", 0, 0  # en SOL no podemos verificar, aceptar
+    txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=100)
+    time.sleep(0.3)
+    if not txs:
+        return True, "sin historial visible", 0, 0
+    n_txs = len(txs)
+    distinct_tokens = len({tx.get("contractAddress", "").lower() for tx in txs if tx.get("contractAddress")})
+    # Bot/market-maker: muchisimas transacciones tocando muchos tokens distintos
+    # (offset es 100, asi que si llena los 100 es muy activa)
+    if n_txs >= 100 and distinct_tokens >= 50:
+        return False, f"posible bot ({distinct_tokens} tokens en {n_txs} txs)", n_txs, distinct_tokens
+    if distinct_tokens >= 70:
+        return False, f"toca demasiados tokens ({distinct_tokens})", n_txs, distinct_tokens
+    return True, "selectiva (insider real)", n_txs, distinct_tokens
+
+def examine_wallet(addr, chain):
+    """
+    Examen manual de una wallet. Devuelve un veredicto honesto:
+    comportamiento, coincidencias con la lista de acumulacion, portfolio y score estimado.
+    """
+    addr = addr.lower().strip()
+    if not addr.startswith("0x") or len(addr) != 42:
+        if chain != "SOL":
+            return {"error": "Direccion EVM invalida (debe empezar con 0x y tener 42 caracteres)"}
+    if CHAINS.get(chain, {}).get("escan") is None:
+        return {"error": f"La cadena {chain} no es verificable con APIs gratuitas (solo ETH/BNB/BASE)"}
+
+    # 1. Comportamiento (filtro de calidad)
+    is_quality, reason, n_txs, distinct_tokens = assess_wallet_quality(addr, chain)
+
+    # 2. Coincidencias con la lista de acumulacion
+    accum_symbols = {t["name"].upper() for t in ACCUMULATION_LIST}
+    txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=100)
+    time.sleep(0.3)
+    touched_symbols = {}
+    for tx in txs:
+        sym = tx.get("tokenSymbol", "").upper()
+        if sym:
+            touched_symbols[sym] = touched_symbols.get(sym, 0) + 1
+    matches = sorted(set(touched_symbols.keys()) & accum_symbols)
+
+    # 3. Portfolio actual
+    portfolio = get_wallet_portfolio(addr, chain, max_tokens=12)
+    time.sleep(0.2)
+
+    # 4. Score estimado (simula lo que tendria como smart wallet)
+    fake_entry = {
+        "tokens": set(matches),
+        "total_usd": 0,  # no calculable sin precios historicos por wallet
+        "buys": sum(touched_symbols.get(m, 0) for m in matches),
+        "last_buy": int(time.time()),
+    }
+    fake_sw = {
+        "tokens": set(matches), "total_usd": 0,
+        "buys": fake_entry["buys"], "last_seen": int(time.time()),
+        "forensic": False,
+    }
+    est_score = compute_insider_score(fake_sw)
+
+    # 5. Veredicto honesto
+    if not is_quality:
+        verdict = "DESCARTAR"
+        verdict_detail = f"Parece bot o infraestructura ({reason}). No es un insider selectivo."
+        verdict_color = "red"
+    elif len(matches) == 0:
+        verdict = "SIN RELACION"
+        verdict_detail = "Wallet valida pero no ha tocado ninguna moneda de tu lista de acumulacion. No aporta como insider."
+        verdict_color = "gray"
+    elif len(matches) >= 3:
+        verdict = "POSIBLE INSIDER FUERTE"
+        verdict_detail = f"Toca {len(matches)} monedas de tu lista y es selectiva. Buen candidato a seguir."
+        verdict_color = "green"
+    else:
+        verdict = "POSIBLE INSIDER DEBIL"
+        verdict_detail = f"Toca {len(matches)} moneda(s) de tu lista. Selectiva, pero pocas coincidencias. Vigilar."
+        verdict_color = "yellow"
+
+    return {
+        "address": addr,
+        "chain": chain,
+        "is_quality": is_quality,
+        "behavior": reason,
+        "n_txs_sample": n_txs,
+        "distinct_tokens": distinct_tokens,
+        "matches": matches,
+        "n_matches": len(matches),
+        "portfolio": portfolio,
+        "est_score": est_score,
+        "verdict": verdict,
+        "verdict_detail": verdict_detail,
+        "verdict_color": verdict_color,
+        "already_tracked": addr in smart_wallets,
+    }
+
+def add_manual_wallet(addr, chain):
+    """Agrega una wallet examinada a las smart wallets (tras el visto bueno del usuario)."""
+    addr = addr.lower().strip()
+    accum_symbols = {t["name"].upper() for t in ACCUMULATION_LIST}
+    txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=100)
+    time.sleep(0.3)
+    touched = {}
+    for tx in txs:
+        sym = tx.get("tokenSymbol", "").upper()
+        if sym in accum_symbols:
+            touched[sym] = touched.get(sym, 0) + 1
+    entry = accum_big_buyers.setdefault(addr, {
+        "tokens": set(), "count": 0, "total_usd": 0.0,
+        "last_buy": int(time.time()), "buys": 0, "chain": chain,
+    })
+    entry["tokens"] = set(touched.keys())
+    entry["count"] = len(touched)
+    entry["buys"] = sum(touched.values())
+    entry["chain"] = chain
+    # Registrar sin filtro de calidad (el usuario ya lo vio y decidio)
+    sw = register_smart_wallet(addr, chain, entry, label=f"Manual {short(addr)}", check_quality=False)
+    if sw:
+        update_tracked_whales()
+        save_state(force=True)
+        return sw
+    return None
+
+def register_smart_wallet(addr, chain, entry, forensic=False, label="", check_quality=True):
     """Crea o actualiza una smart wallet y recalcula su score de insider."""
+    # Filtro de calidad: descartar bots/market-makers (solo al registrar por primera vez)
+    if check_quality and addr not in smart_wallets:
+        is_quality, reason, n_txs, n_tok = assess_wallet_quality(addr, chain)
+        if not is_quality:
+            log(f"  Wallet descartada (no insider): {short(addr)} — {reason}")
+            return None
     sw = smart_wallets.setdefault(addr, {
         "chain": chain, "tokens": set(), "total_usd": 0.0,
         "buys": 0, "insider_score": 0, "last_seen": 0,
@@ -1755,9 +1994,11 @@ def forensic_analysis_token(token):
         existing["buys"] += b["count"]
         existing["chain"] = chain
         # Marcar como forense (compro antes de un pump real)
+        # check_quality=False: el forense consultaria demasiadas APIs; ya filtra por comportamiento
         sw = register_smart_wallet(addr, chain, existing, forensic=True,
-                                   label=f"Insider hist. {symbol}")
-        found += 1
+                                   label=f"Insider hist. {symbol}", check_quality=False)
+        if sw is not None:
+            found += 1
 
     if found > 0:
         log(f"  Forense {symbol}: {found} wallets compraron antes del pico historico")
@@ -1781,6 +2022,7 @@ def run_forensic_analysis():
     update_tracked_whales()
     last_forensic_day = time.strftime("%Y-%m-%d", time.gmtime())
     log(f"=== FORENSE COMPLETO: {total} wallets analizadas, {len(smart_wallets)} smart wallets totales ===")
+    save_state(force=True)  # persistir los insiders recien encontrados
     if total > 0:
         top = sorted(smart_wallets.items(), key=lambda kv: kv[1]["insider_score"], reverse=True)[:5]
         top_str = "\n".join(
@@ -1830,13 +2072,50 @@ def scan_tracked_whales():
             continue
         recent = [tx for tx in txs if now - int(tx.get("timeStamp", 0)) < 7200]  # ultimas 2h
         new_tokens = set()
+        sold_tokens = set()
         for tx in recent:
             c = tx.get("contractAddress", "").lower()
             to_addr = tx.get("to", "").lower()
-            if c and to_addr == addr:  # la wallet RECIBIO el token (compro)
+            from_addr = tx.get("from", "").lower()
+            if c and to_addr == addr:      # la wallet RECIBIO el token (compro)
                 new_tokens.add(c)
+            elif c and from_addr == addr:  # la wallet ENVIO el token (vendio/movio)
+                sold_tokens.add(c)
         prev_seen = w.get("last_seen_tokens", set())
         fresh = new_tokens - prev_seen
+
+        # ── DETECCION DE VENTA: insider vendiendo una posicion que tenia ──
+        for c in sold_tokens:
+            # Solo alertar si era un token que la wallet tenia trackeado como posicion
+            if c not in prev_seen:
+                continue
+            k = dedup_key(f"insidersell-{addr}-{c}", 180)
+            if k in seen_signals:
+                continue
+            seen_signals.add(k)
+            dex = get_dex(c, chain)
+            time.sleep(0.3)
+            sym = dex["name"] if dex else short(c)
+            tag_label = {"insider_activo": "INSIDER ACTIVO", "insider_historico": "INSIDER HIST."}.get(w.get("tag"), "SMART MONEY")
+            log(f"  INSIDER VENDIENDO: {short(addr)} solto {sym}")
+            notify(
+                f"INSIDER VENDIENDO: {sym} ({chain})",
+                f"{tag_label} (score {w.get('insider_score','?')}) esta saliendo de {sym}\n"
+                f"Wallet: {short(addr)}\n"
+                f"El dinero inteligente puede estar tomando ganancias o saliendo antes del resto.\n"
+                f"{'Chart: ' + dex.get('url','') if dex else ''}",
+                priority="high", tags="warning,chart_with_downwards_trend",
+                click_url=VERCEL_URL,
+            )
+            insider_sells.insert(0, {
+                "ts": int(now), "wallet": addr, "token": sym,
+                "chain": chain, "tag": w.get("tag"), "score": w.get("insider_score"),
+                "url": dex.get("url", "") if dex else "",
+            })
+            del insider_sells[50:]
+            register_week_event(sym, "insider_sell",
+                                f"{tag_label} {short(addr)} vendiendo {sym}")
+
         for c in fresh:
             dex = get_dex(c, chain)
             time.sleep(0.35)
@@ -1866,7 +2145,8 @@ def scan_tracked_whales():
                 "url": dex.get("url", ""),
             })
             del insider_alerts[50:]
-        w["last_seen_tokens"] = new_tokens
+        # Acumular tokens vistos (comprados) menos los que ya vendio, para detectar ventas futuras
+        w["last_seen_tokens"] = (prev_seen | new_tokens) - sold_tokens
         w["last_check"] = int(now)
 
 # ─── MÓDULO 8: REPORTE SEMANAL ────────────────────────────────────────────────
@@ -1927,6 +2207,127 @@ def github_commit_json(path, obj, message):
     except Exception as e:
         log(f"[github] {e}")
         return False
+
+def github_read_json(path):
+    """Lee un JSON desde el repo de GitHub. Retorna el objeto o None."""
+    if not GITHUB_TOKEN or not GITHUB_REPO:
+        return None
+    try:
+        url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/{path}?t={int(time.time())}"
+        r = requests.get(url, timeout=12)
+        if r.ok:
+            return r.json()
+        return None
+    except Exception as e:
+        log(f"[github read] {e}")
+        return None
+
+# ─── PERSISTENCIA DE ESTADO (sobrevive redeploys de Railway) ─────────────────
+STATE_PATH = "data/state.json"
+last_state_save = 0
+
+def serialize_state():
+    """Convierte el estado en memoria a un dict JSON-serializable (sets -> listas)."""
+    sw = {}
+    for addr, w in smart_wallets.items():
+        sw[addr] = {
+            "chain": w.get("chain"),
+            "tokens": sorted(w.get("tokens", set())),
+            "total_usd": w.get("total_usd", 0),
+            "buys": w.get("buys", 0),
+            "insider_score": w.get("insider_score", 0),
+            "last_seen": w.get("last_seen", 0),
+            "tag": w.get("tag", "smart"),
+            "forensic": w.get("forensic", False),
+            "label": w.get("label", ""),
+        }
+    bb = {}
+    for addr, e in accum_big_buyers.items():
+        bb[addr] = {
+            "tokens": sorted(e.get("tokens", set())),
+            "count": e.get("count", 0),
+            "total_usd": e.get("total_usd", 0),
+            "last_buy": e.get("last_buy", 0),
+            "buys": e.get("buys", 0),
+            "chain": e.get("chain", "ETH"),
+        }
+    tw = {}
+    for addr, w in tracked_whale_set.items():
+        tw[addr] = {
+            "chain": w.get("chain"),
+            "label": w.get("label", ""),
+            "last_check": w.get("last_check", 0),
+            "last_seen_tokens": sorted(w.get("last_seen_tokens", set())),
+            "insider_score": w.get("insider_score", 0),
+            "tag": w.get("tag", "smart"),
+        }
+    return {
+        "saved_at": int(time.time()),
+        "smart_wallets": sw,
+        "accum_big_buyers": bb,
+        "tracked_whale_set": tw,
+        "signal_outcomes": signal_outcomes[-300:],
+        "discovered_whales": list(discovered_whales)[-500:],
+        "insider_convergences": insider_convergences,
+    }
+
+def save_state(force=False):
+    """Guarda el estado a GitHub. Throttle de 10 min salvo force=True."""
+    global last_state_save
+    now = time.time()
+    if not force and now - last_state_save < 600:
+        return
+    if not (GITHUB_TOKEN and GITHUB_REPO):
+        return
+    state = serialize_state()
+    if github_commit_json(STATE_PATH, state, f"Estado {time.strftime('%Y-%m-%d %H:%M', time.gmtime())}"):
+        last_state_save = now
+        log(f"[estado] Guardado: {len(smart_wallets)} smart wallets, {len(accum_big_buyers)} big buyers")
+
+def load_state():
+    """Carga el estado desde GitHub al arrancar."""
+    state = github_read_json(STATE_PATH)
+    if not state:
+        log("[estado] Sin estado previo (primer arranque o sin GitHub)")
+        return
+    try:
+        for addr, w in state.get("smart_wallets", {}).items():
+            smart_wallets[addr] = {
+                "chain": w.get("chain"),
+                "tokens": set(w.get("tokens", [])),
+                "total_usd": w.get("total_usd", 0),
+                "buys": w.get("buys", 0),
+                "insider_score": w.get("insider_score", 0),
+                "last_seen": w.get("last_seen", 0),
+                "tag": w.get("tag", "smart"),
+                "forensic": w.get("forensic", False),
+                "label": w.get("label", ""),
+            }
+        for addr, e in state.get("accum_big_buyers", {}).items():
+            accum_big_buyers[addr] = {
+                "tokens": set(e.get("tokens", [])),
+                "count": e.get("count", 0),
+                "total_usd": e.get("total_usd", 0),
+                "last_buy": e.get("last_buy", 0),
+                "buys": e.get("buys", 0),
+                "chain": e.get("chain", "ETH"),
+            }
+        for addr, w in state.get("tracked_whale_set", {}).items():
+            tracked_whale_set[addr] = {
+                "chain": w.get("chain"),
+                "label": w.get("label", ""),
+                "last_check": w.get("last_check", 0),
+                "last_seen_tokens": set(w.get("last_seen_tokens", [])),
+                "insider_score": w.get("insider_score", 0),
+                "tag": w.get("tag", "smart"),
+            }
+        signal_outcomes.extend(state.get("signal_outcomes", []))
+        discovered_whales.update(state.get("discovered_whales", []))
+        insider_convergences.update(state.get("insider_convergences", {}))
+        saved_ago = (time.time() - state.get("saved_at", 0)) / 3600
+        log(f"[estado] Cargado: {len(smart_wallets)} smart wallets, {len(tracked_whale_set)} en seguimiento (guardado hace {saved_ago:.1f}h)")
+    except Exception as e:
+        log(f"[estado load] {e}")
 
 def weekly_report():
     """Genera el analisis semanal, lo sube a GitHub y notifica por Ntfy."""
@@ -2103,7 +2504,7 @@ def check_weekly_report():
 # ─── FLASK API (datos en tiempo real para Vercel) ────────────────────────────
 def start_api_server():
     try:
-        from flask import Flask, jsonify
+        from flask import Flask, jsonify, request
         app = Flask(__name__)
 
         @app.after_request
@@ -2163,6 +2564,8 @@ def start_api_server():
                 "combos": combos_out[:15],
                 "winrate_by_signal": sig_rates,
                 "winrate_by_hour": hour_rates,
+                "insider_convergences": sorted(insider_convergences.values(), key=lambda x: x["detected_at"], reverse=True)[:15],
+                "insider_sells": insider_sells[:20],
             })
 
         @app.route("/api/forensic")
@@ -2171,6 +2574,35 @@ def start_api_server():
             try:
                 threading.Thread(target=run_forensic_analysis, daemon=True).start()
                 return jsonify({"status": "started"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/portfolio/<chain>/<address>")
+        def api_portfolio(chain, address):
+            # Portfolio superficial de una wallet (tokens que tiene actualmente)
+            try:
+                holdings = get_wallet_portfolio(address, chain.upper())
+                return jsonify({"address": address, "chain": chain, "holdings": holdings})
+            except Exception as e:
+                return jsonify({"address": address, "holdings": [], "error": str(e)})
+
+        @app.route("/api/examine/<chain>/<address>")
+        def api_examine(chain, address):
+            # Examen manual de una wallet: veredicto honesto
+            try:
+                result = examine_wallet(address, chain.upper())
+                return jsonify(result)
+            except Exception as e:
+                return jsonify({"error": str(e)})
+
+        @app.route("/api/add_wallet/<chain>/<address>")
+        def api_add_wallet(chain, address):
+            # Agrega una wallet examinada a seguimiento (tras visto bueno del usuario)
+            try:
+                sw = add_manual_wallet(address, chain.upper())
+                if sw:
+                    return jsonify({"status": "added", "score": sw["insider_score"], "tag": sw["tag"]})
+                return jsonify({"status": "error", "msg": "no se pudo agregar"})
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 
@@ -2209,13 +2641,16 @@ def scan():
         log("-- Precargando listas de exchanges --")
         for ex in ["MEXC", "BINANCE", "BITGET", "BYBIT", "OKX"]:
             get_exchange_listing(ex)
-    # Bootstrap: correr forense una vez al arrancar (tras acumular algo de datos)
-    if cycle_count == 3:
-        log("-- Bootstrap forense inicial --")
+    # Bootstrap: correr forense una vez al arrancar SOLO si no se cargo estado previo
+    if cycle_count == 3 and len(smart_wallets) < 5:
+        log("-- Bootstrap forense inicial (sin estado previo) --")
         try:
             run_forensic_analysis()
         except Exception as e:
             log(f"[forense bootstrap error] {e}")
+    # Guardar estado cada 5 ciclos (con throttle interno de 10 min)
+    if cycle_count % 5 == 0:
+        save_state()
     check_daily_report()
     check_weekly_report()
     log(f"=== Ciclo {cycle_count} completo. Esperando {SCAN_INTERVAL}s ===\n")
@@ -2240,13 +2675,19 @@ if __name__ == "__main__":
     api_thread = threading.Thread(target=start_api_server, daemon=True)
     api_thread.start()
 
+    # Cargar estado persistido (insiders/smart wallets de sesiones anteriores)
+    log("-- Cargando estado persistido --")
+    load_state()
+
     notify(
-        "Alpha Terminal v6 activo",
-        f"Nuevas mejoras:\n"
-        f"Verificacion de listing (NO listado = jugoso)\n"
-        f"Sistema de COMBO (apila senales del mismo token)\n"
-        f"Win rate por tipo de senal y por horario\n\n"
-        f"Mantiene: insiders, forense, prob. pump, tracking, rugpull\n"
+        "Alpha Terminal v7 activo",
+        f"Nuevas mejoras (Grupo A+B):\n"
+        f"Persistencia: insiders sobreviven redeploys\n"
+        f"Filtro de calidad de insiders (anti-bot)\n"
+        f"Convergencia de insiders (2+ en misma moneda)\n"
+        f"Deteccion de insider VENDIENDO\n"
+        f"Portfolio por wallet\n\n"
+        f"Smart wallets cargadas: {len(smart_wallets)}\n"
         f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
         priority="high", tags="white_check_mark",
     )
