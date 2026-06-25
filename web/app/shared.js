@@ -16,6 +16,16 @@ export const fmtUSD = n => {
 };
 export const pct = n => (parseFloat(n||0) >= 0 ? "+" : "") + parseFloat(n||0).toFixed(1) + "%";
 export const shortAddr = a => a ? a.slice(0,5)+"..."+a.slice(-4) : "—";
+export const copyText = (txt) => {
+  try {
+    if (navigator?.clipboard) { navigator.clipboard.writeText(txt); return true; }
+  } catch(e) {}
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = txt; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); document.body.removeChild(ta); return true;
+  } catch(e) { return false; }
+};
 export const timeAgo = ts => {
   const d = Math.floor(Date.now()/1000 - ts);
   if (d < 60) return d+"s";

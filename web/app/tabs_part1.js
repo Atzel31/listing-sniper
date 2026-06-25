@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   T, Badge, Stat, ScoreRing, Pulse, ChartEmbed, EmptyState,
   fmtUSD, pct, shortAddr, timeAgo, scoreColor, scoreLabel, chainCol, sendNtfy,
-  pumpColor, pumpLabel, multStr, getLiveAccumData,
+  pumpColor, pumpLabel, multStr, getLiveAccumData, copyText, RAILWAY_API,
 } from "./shared";
 
 // ─── PANEL DE RENDIMIENTO (tracking post-notificacion) ───────────────────────
@@ -420,6 +420,196 @@ export function NewPairsTab({newPairs,running,scanning,ruggedSet={}}) {
 }
 
 // ─── TAB: INSIDERS ────────────────────────────────────────────────────────────
+// ─── CARD DE WALLET (con copiar direccion y portfolio expandible) ────────────
+function WalletCard({w, rank, tagInfo}) {
+  const [copied, setCopied] = useState(false);
+  const [showPort, setShowPort] = useState(false);
+  const [port, setPort] = useState(null);
+  const [loadingPort, setLoadingPort] = useState(false);
+  const ti = tagInfo[w.tag] || tagInfo.smart;
+  const explorer = w.chain==="ETH"?"https://etherscan.io/address/":w.chain==="BNB"?"https://bscscan.com/address/":w.chain==="BASE"?"https://basescan.org/address/":"https://solscan.io/account/";
+
+  function doCopy(e) {
+    e.stopPropagation();
+    if (copyText(w.address)) { setCopied(true); setTimeout(()=>setCopied(false), 1500); }
+  }
+  async function togglePort(e) {
+    e.stopPropagation();
+    if (showPort) { setShowPort(false); return; }
+    setShowPort(true);
+    if (port===null && w.chain!=="SOL") {
+      setLoadingPort(true);
+      try {
+        const r = await fetch(RAILWAY_API+"/api/portfolio/"+w.chain+"/"+w.address);
+        const d = await r.json();
+        setPort(d.holdings||[]);
+      } catch { setPort([]); }
+      setLoadingPort(false);
+    }
+  }
+
+  return (
+    <div style={{background:T.card,border:"1px solid "+(w.tag==="insider_activo"?T.red+"33":T.border),borderLeft:"3px solid "+ti.color,borderRadius:10,padding:"12px 14px"}}>
+      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+        <div style={{fontSize:15,fontWeight:900,color:rank<=3?ti.color:T.dim,fontFamily:"monospace",minWidth:24}}>#{rank}</div>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap",marginBottom:3}}>
+            <Badge color={ti.color}>{ti.label}</Badge>
+            <Badge color={chainCol(w.chain)} small>{w.chain}</Badge>
+            {w.tracked&&<Badge color={T.green} small>SIGUIENDO</Badge>}
+            {w.forensic&&<Badge color={T.orange} small>📜 FORENSE</Badge>}
+          </div>
+          <div style={{display:"flex",alignItems:"center",gap:6}}>
+            <a href={explorer+w.address} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:T.muted,fontFamily:"monospace",textDecoration:"none"}}>{shortAddr(w.address)} ↗</a>
+            <button onClick={doCopy} style={{background:copied?T.green+"15":"transparent",border:"1px solid "+(copied?T.green+"44":T.border),color:copied?T.green:T.dim,padding:"1px 6px",borderRadius:4,cursor:"pointer",fontSize:8,fontFamily:"monospace"}}>{copied?"✓ copiado":"copiar"}</button>
+            {w.chain!=="SOL"&&<button onClick={togglePort} style={{background:showPort?T.purple+"15":"transparent",border:"1px solid "+(showPort?T.purple+"44":T.border),color:showPort?T.purple:T.dim,padding:"1px 6px",borderRadius:4,cursor:"pointer",fontSize:8,fontFamily:"monospace"}}>portfolio</button>}
+          </div>
+        </div>
+        <div style={{textAlign:"center",flexShrink:0}}>
+          <div style={{fontSize:18,fontWeight:900,color:ti.color,fontFamily:"monospace",lineHeight:1}}>{w.insider_score}</div>
+          <div style={{fontSize:7,color:T.muted,fontFamily:"monospace"}}>SCORE</div>
+        </div>
+      </div>
+      <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:8}}>
+        <Stat label="Coincidencias" value={w.n_tokens+" tokens"} color={ti.color}/>
+        {w.total_usd>0&&<Stat label="Dinero movido" value={fmtUSD(w.total_usd)} color={T.green}/>}
+        <Stat label="Compras" value={w.buys}/>
+        {w.last_seen>0&&<Stat label="Ultima vez" value={timeAgo(w.last_seen)}/>}
+      </div>
+      {w.tokens&&w.tokens.length>0&&(
+        <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+          {w.tokens.map(t=><Badge key={t} color={T.purple} small>{t}</Badge>)}
+        </div>
+      )}
+      {showPort&&(
+        <div style={{marginTop:10,paddingTop:10,borderTop:"1px solid "+T.border}}>
+          <div style={{fontSize:8,color:T.purple,fontFamily:"monospace",fontWeight:700,marginBottom:6}}>PORTFOLIO ACTUAL (tokens que tiene)</div>
+          {loadingPort&&<div style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>Consultando...</div>}
+          {!loadingPort&&port&&port.length===0&&<div style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>Sin holdings visibles con datos gratuitos</div>}
+          {!loadingPort&&port&&port.length>0&&(
+            <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+              {port.map((h,i)=>(
+                <a key={i} href={"https://dexscreener.com/"+(w.chain==="ETH"?"ethereum":w.chain==="BNB"?"bsc":"base")+"/"+h.contract} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
+                  <Badge color={T.cyan} small>{h.symbol} ↗</Badge>
+                </a>
+              ))}
+            </div>
+          )}
+          <div style={{fontSize:7,color:T.dim,fontFamily:"monospace",marginTop:6}}>Vista superficial via transferencias. No es valoracion exacta.</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── EXAMINADOR MANUAL DE WALLETS ─────────────────────────────────────────────
+function WalletExaminer() {
+  const [open, setOpen] = useState(false);
+  const [addr, setAddr] = useState("");
+  const [chain, setChain] = useState("ETH");
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [added, setAdded] = useState(false);
+
+  const vColors = {red:T.red, gray:T.dim, green:T.green, yellow:T.yellow};
+
+  async function examine() {
+    if (!addr.trim()) return;
+    setLoading(true); setResult(null); setAdded(false);
+    try {
+      const r = await fetch(RAILWAY_API+"/api/examine/"+chain+"/"+addr.trim());
+      const d = await r.json();
+      setResult(d);
+    } catch { setResult({error:"No se pudo conectar con Railway"}); }
+    setLoading(false);
+  }
+  async function addToTracking() {
+    setAdding(true);
+    try {
+      const r = await fetch(RAILWAY_API+"/api/add_wallet/"+chain+"/"+addr.trim());
+      const d = await r.json();
+      if (d.status==="added") setAdded(true);
+    } catch {}
+    setAdding(false);
+  }
+
+  return (
+    <div style={{background:T.purple+"08",border:"1px solid "+T.purple+"25",borderRadius:10,marginBottom:14,overflow:"hidden"}}>
+      <div onClick={()=>setOpen(o=>!o)} style={{padding:"10px 14px",cursor:"pointer",display:"flex",alignItems:"center",gap:8}}>
+        <span style={{fontSize:11,color:T.purple,fontFamily:"monospace",fontWeight:700}}>🔬 Examinar wallet manualmente</span>
+        <span style={{marginLeft:"auto",fontSize:12,color:T.purple}}>{open?"−":"+"}</span>
+      </div>
+      {open&&(
+        <div style={{padding:"0 14px 14px"}}>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:10,lineHeight:1.5}}>
+            Pega una direccion y el bot la analiza: comportamiento, coincidencias con tu lista, portfolio y un veredicto. Solo ETH/BNB/BASE.
+          </div>
+          <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>
+            {["ETH","BNB","BASE"].map(c=>(
+              <button key={c} onClick={()=>setChain(c)} style={{background:chain===c?T.purple+"15":"transparent",border:"1px solid "+(chain===c?T.purple+"44":T.border),color:chain===c?T.purple:T.muted,padding:"3px 10px",borderRadius:5,cursor:"pointer",fontSize:9,fontFamily:"monospace",fontWeight:700}}>{c}</button>
+            ))}
+          </div>
+          <div style={{display:"flex",gap:6,marginBottom:10}}>
+            <input value={addr} onChange={e=>setAddr(e.target.value)} placeholder="0x..." style={{flex:1,background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"8px 10px",color:T.text,fontSize:10,fontFamily:"monospace",outline:"none"}}/>
+            <button onClick={examine} disabled={loading} style={{background:T.purple+"15",border:"1px solid "+T.purple+"44",color:T.purple,padding:"8px 14px",borderRadius:6,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700}}>{loading?"...":"Examinar"}</button>
+          </div>
+
+          {result&&result.error&&(
+            <div style={{background:T.red+"0d",border:"1px solid "+T.red+"33",borderRadius:6,padding:"8px 10px",fontSize:10,color:T.red,fontFamily:"monospace"}}>{result.error}</div>
+          )}
+          {result&&!result.error&&(
+            <div style={{background:T.card,border:"1px solid "+(vColors[result.verdict_color]||T.border)+"44",borderRadius:8,padding:"12px"}}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
+                <Badge color={vColors[result.verdict_color]||T.dim}>{result.verdict}</Badge>
+                {result.already_tracked&&<Badge color={T.green} small>YA EN SEGUIMIENTO</Badge>}
+                <span style={{marginLeft:"auto",fontSize:14,fontWeight:900,color:vColors[result.verdict_color]||T.dim,fontFamily:"monospace"}}>~{result.est_score}</span>
+              </div>
+              <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.5,marginBottom:10}}>{result.verdict_detail}</div>
+              <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:10}}>
+                <Stat label="Comportamiento" value={result.behavior}/>
+                <Stat label="Txs (muestra)" value={result.n_txs_sample}/>
+                <Stat label="Tokens distintos" value={result.distinct_tokens}/>
+                <Stat label="Coincidencias" value={result.n_matches} color={result.n_matches>0?T.green:T.dim}/>
+              </div>
+              {result.matches&&result.matches.length>0&&(
+                <div style={{marginBottom:10}}>
+                  <div style={{fontSize:8,color:T.green,fontFamily:"monospace",marginBottom:4}}>COINCIDE CON TU LISTA:</div>
+                  <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+                    {result.matches.map(m=><Badge key={m} color={T.green} small>{m}</Badge>)}
+                  </div>
+                </div>
+              )}
+              {result.portfolio&&result.portfolio.length>0&&(
+                <div style={{marginBottom:10}}>
+                  <div style={{fontSize:8,color:T.cyan,fontFamily:"monospace",marginBottom:4}}>PORTFOLIO ACTUAL:</div>
+                  <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+                    {result.portfolio.map((h,i)=>(
+                      <a key={i} href={"https://dexscreener.com/"+(chain==="ETH"?"ethereum":chain==="BNB"?"bsc":"base")+"/"+h.contract} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
+                        <Badge color={T.cyan} small>{h.symbol} ↗</Badge>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {/* Boton agregar: solo si paso el filtro y no esta ya en seguimiento */}
+              {result.is_quality && !result.already_tracked && result.n_matches>0 && (
+                added ? (
+                  <div style={{fontSize:10,color:T.green,fontFamily:"monospace",fontWeight:700}}>✓ Agregada a seguimiento</div>
+                ) : (
+                  <button onClick={addToTracking} disabled={adding} style={{width:"100%",background:T.green+"12",border:"1px solid "+T.green+"44",color:T.green,padding:"8px",borderRadius:6,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700}}>
+                    {adding?"Agregando...":"+ Agregar a seguimiento"}
+                  </button>
+                )
+              )}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function InsidersTab({pumpThreshold}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -446,6 +636,8 @@ export function InsidersTab({pumpThreshold}) {
 
   const wallets = data?.smart_wallets || [];
   const alerts = data?.insider_alerts || [];
+  const convergences = data?.insider_convergences || [];
+  const sells = data?.insider_sells || [];
   const trackedCount = data?.tracked_whales || 0;
 
   const tagInfo = {
@@ -469,7 +661,7 @@ export function InsidersTab({pumpThreshold}) {
           {data&&<Pulse color={T.green}/>}
         </div>
         <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
-          Wallets que compran 2+ monedas de tu lista de acumulacion, rankeadas por dinero movido, coincidencias y actividad. El forense historico busca quien compro antes de pumps pasados.
+          Wallets que compran 2+ monedas de tu lista, rankeadas por dinero, coincidencias y actividad. Filtra bots automaticamente. El forense busca quien compro antes de pumps pasados.
         </div>
         <div style={{display:"flex",gap:8,marginTop:8,alignItems:"center",flexWrap:"wrap"}}>
           <span style={{fontSize:10,color:T.dim,fontFamily:"monospace"}}>{wallets.length} smart wallets · {trackedCount} en seguimiento activo</span>
@@ -479,10 +671,54 @@ export function InsidersTab({pumpThreshold}) {
         </div>
       </div>
 
+      {/* Examinador manual de wallets */}
+      <WalletExaminer/>
+
+      {/* CONVERGENCIA DE INSIDERS — la señal mas fuerte */}
+      {convergences.length>0&&(
+        <div style={{background:T.red+"0c",border:"1px solid "+T.red+"33",borderRadius:10,padding:12,marginBottom:14}}>
+          <div style={{fontSize:11,color:T.red,fontFamily:"monospace",fontWeight:700,marginBottom:8,display:"flex",alignItems:"center",gap:6}}>
+            <Pulse color={T.red}/> <span>🎯 CONVERGENCIA INSIDER ({convergences.length})</span>
+          </div>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:8}}>2+ insiders distintos en la misma moneda. La señal mas fuerte del sistema.</div>
+          {convergences.map((c,i)=>(
+            <div key={i} style={{background:T.card,border:"1px solid "+T.red+"33",borderRadius:8,padding:"10px 12px",marginBottom:6}}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                <span style={{fontSize:13,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{c.symbol}</span>
+                <Badge color={chainCol(c.chain)} small>{c.chain}</Badge>
+                <Badge color={T.red}>{c.n_insiders+" insiders"}</Badge>
+                <span style={{marginLeft:"auto",fontSize:10,color:T.red,fontFamily:"monospace",fontWeight:700}}>score prom {c.avg_score}</span>
+              </div>
+              <div style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>Wallets: {(c.holders||[]).join(", ")}</div>
+              <div style={{fontSize:8,color:T.green,fontFamily:"monospace",marginTop:3}}>✓ En seguimiento automatico · {timeAgo(c.detected_at)}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* INSIDERS VENDIENDO */}
+      {sells.length>0&&(
+        <div style={{background:T.yellow+"0a",border:"1px solid "+T.yellow+"25",borderRadius:10,padding:12,marginBottom:14}}>
+          <div style={{fontSize:10,color:T.yellow,fontFamily:"monospace",fontWeight:700,marginBottom:8,display:"flex",alignItems:"center",gap:6}}>
+            <span>⚠️ Insiders vendiendo ({sells.length})</span>
+          </div>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:6}}>Dinero inteligente saliendo. Puede ser toma de ganancias o salida anticipada.</div>
+          {sells.slice(0,6).map((s,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 0",borderBottom:"1px solid "+T.bg}}>
+              <Badge color={chainCol(s.chain)} small>{s.chain}</Badge>
+              <span style={{fontSize:10,color:T.muted,fontFamily:"monospace"}}>{shortAddr(s.wallet)}</span>
+              <span style={{fontSize:9,color:T.dim}}>vendio</span>
+              <span style={{fontSize:11,fontWeight:700,color:T.yellow,fontFamily:"monospace",flex:1}}>{s.token}</span>
+              <span style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>{timeAgo(s.ts)}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       {alerts.length>0&&(
-        <div style={{background:T.red+"08",border:"1px solid "+T.red+"20",borderRadius:8,padding:12,marginBottom:14}}>
-          <div style={{fontSize:10,color:T.red,fontFamily:"monospace",fontWeight:700,marginBottom:8,display:"flex",alignItems:"center",gap:6}}>
-            <Pulse color={T.red}/> <span>Compras recientes de insiders ({alerts.length})</span>
+        <div style={{background:T.green+"08",border:"1px solid "+T.green+"20",borderRadius:8,padding:12,marginBottom:14}}>
+          <div style={{fontSize:10,color:T.green,fontFamily:"monospace",fontWeight:700,marginBottom:8,display:"flex",alignItems:"center",gap:6}}>
+            <Pulse color={T.green}/> <span>Compras recientes de insiders ({alerts.length})</span>
           </div>
           {alerts.slice(0,6).map((a,i)=>(
             <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",borderBottom:"1px solid "+T.bg}}>
@@ -516,42 +752,9 @@ export function InsidersTab({pumpThreshold}) {
       )}
 
       <div style={{display:"flex",flexDirection:"column",gap:6}}>
-        {vis.map((w,i)=>{
-          const ti = tagInfo[w.tag] || tagInfo.smart;
-          const rank = wallets.indexOf(w)+1;
-          const explorer = w.chain==="ETH"?"https://etherscan.io/address/":w.chain==="BNB"?"https://bscscan.com/address/":w.chain==="BASE"?"https://basescan.org/address/":"https://solscan.io/account/";
-          return (
-            <div key={w.address} style={{background:T.card,border:"1px solid "+(w.tag==="insider_activo"?T.red+"33":T.border),borderLeft:"3px solid "+ti.color,borderRadius:10,padding:"12px 14px"}}>
-              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
-                <div style={{fontSize:15,fontWeight:900,color:rank<=3?ti.color:T.dim,fontFamily:"monospace",minWidth:24}}>#{rank}</div>
-                <div style={{flex:1,minWidth:0}}>
-                  <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap",marginBottom:3}}>
-                    <Badge color={ti.color}>{ti.label}</Badge>
-                    <Badge color={chainCol(w.chain)} small>{w.chain}</Badge>
-                    {w.tracked&&<Badge color={T.green} small>SIGUIENDO</Badge>}
-                    {w.forensic&&<Badge color={T.orange} small>📜 FORENSE</Badge>}
-                  </div>
-                  <a href={explorer+w.address} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:T.muted,fontFamily:"monospace",textDecoration:"none"}}>{shortAddr(w.address)} ↗</a>
-                </div>
-                <div style={{textAlign:"center",flexShrink:0}}>
-                  <div style={{fontSize:18,fontWeight:900,color:ti.color,fontFamily:"monospace",lineHeight:1}}>{w.insider_score}</div>
-                  <div style={{fontSize:7,color:T.muted,fontFamily:"monospace"}}>SCORE</div>
-                </div>
-              </div>
-              <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:8}}>
-                <Stat label="Coincidencias" value={w.n_tokens+" tokens"} color={ti.color}/>
-                {w.total_usd>0&&<Stat label="Dinero movido" value={fmtUSD(w.total_usd)} color={T.green}/>}
-                <Stat label="Compras" value={w.buys}/>
-                {w.last_seen>0&&<Stat label="Ultima vez" value={timeAgo(w.last_seen)}/>}
-              </div>
-              {w.tokens&&w.tokens.length>0&&(
-                <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
-                  {w.tokens.map(t=><Badge key={t} color={T.purple} small>{t}</Badge>)}
-                </div>
-              )}
-            </div>
-          );
-        })}
+        {vis.map((w,i)=>(
+          <WalletCard key={w.address} w={w} rank={wallets.indexOf(w)+1} tagInfo={tagInfo}/>
+        ))}
       </div>
     </div>
   );
