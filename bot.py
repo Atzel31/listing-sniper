@@ -161,8 +161,12 @@ insider_convergences = {}  # contract -> {symbol, chain, n_insiders, avg_score, 
 insider_sells      = []    # historico de ventas de insiders [{wallet, token, chain, ts, score}]
 
 # Estado de verificacion de listing y combo
-exchange_pairs     = {}    # exchange -> set de simbolos listados
+exchange_pairs     = {}    # exchange -> set de simbolos listados (spot)
 exchange_pairs_ts  = {}    # exchange -> timestamp del ultimo refresco
+exchange_futures   = {}    # exchange -> set de simbolos en futuros
+exchange_futures_ts= {}    # exchange -> timestamp del ultimo refresco de futuros
+korean_seen_notices= set() # IDs de anuncios de Upbit/Bithumb ya vistos
+combo_history      = []    # combos que terminaron en pump [{signals, symbol, max_mult, ts}]
 combo_signals      = {}    # contract -> {symbol, chain, signals:{tipo: ts}, first_seen, notified_combo}
 signal_outcomes    = []    # [{signals:[tipos], result_pct, max_mult, hour_utc, status}] para win rate por tipo
 
@@ -398,19 +402,55 @@ def record_outcome(t):
     if t.get("outcome_recorded"):
         return
     t["outcome_recorded"] = True
+    pumped = t.get("max_mult", 1) >= 1.3
+    tags = t.get("signal_tags", [])
     signal_outcomes.append({
         "symbol": t["symbol"],
-        "signals": t.get("signal_tags", []),
+        "signals": tags,
         "result_pct": t.get("result_pct", 0),
         "max_mult": t.get("max_mult", 1),
         "hour_utc": t.get("hour_utc", 0),
         "status": t.get("status", "expired"),
-        "pumped": t.get("max_mult", 1) >= 1.3,
+        "pumped": pumped,
         "ts": int(time.time()),
     })
     # Mantener maximo 500 outcomes
     if len(signal_outcomes) > 500:
         del signal_outcomes[:100]
+    # Historico de combos: si tenia 2+ señales reales de combo, guardar el resultado
+    combo_tags = [s for s in tags if s in COMBO_WEIGHTS]
+    if len(combo_tags) >= 2:
+        combo_history.append({
+            "symbol": t["symbol"],
+            "signals": sorted(combo_tags),
+            "combo_key": "+".join(sorted(combo_tags)),
+            "max_mult": round(t.get("max_mult", 1), 2),
+            "pumped": pumped,
+            "ts": int(time.time()),
+        })
+        if len(combo_history) > 300:
+            del combo_history[:50]
+
+def compute_combo_winrate():
+    """Calcula que COMBINACIONES de señales aciertan mas, a partir del historico."""
+    by_combo = {}
+    for c in combo_history:
+        key = c["combo_key"]
+        d = by_combo.setdefault(key, {"total": 0, "pumped": 0, "best": 1.0, "signals": c["signals"]})
+        d["total"] += 1
+        if c["pumped"]: d["pumped"] += 1
+        d["best"] = max(d["best"], c["max_mult"])
+    out = []
+    for key, d in by_combo.items():
+        out.append({
+            "combo": key,
+            "signals": d["signals"],
+            "total": d["total"],
+            "win_rate": round(d["pumped"] / d["total"] * 100) if d["total"] else 0,
+            "best_mult": round(d["best"], 2),
+        })
+    out.sort(key=lambda x: (x["win_rate"], x["total"]), reverse=True)
+    return out
 
 def compute_winrate_by_type():
     """Calcula win rate por tipo de señal y por horario a partir de los outcomes."""
@@ -754,8 +794,53 @@ def fetch_exchange_pairs(exchange):
         log(f"[listing {exchange}] {e}")
         return set()
 
+def fetch_exchange_futures(exchange):
+    """
+    Trae la lista de simbolos en FUTUROS (perpetuos) de un exchange.
+    Retorna set de simbolos base en mayuscula.
+    """
+    try:
+        symbols = set()
+        if exchange == "MEXC":
+            r = requests.get("https://contract.mexc.com/api/v1/contract/detail", timeout=12)
+            if r.ok:
+                for s in r.json().get("data", []):
+                    base = s.get("baseCoin", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "BINANCE":
+            r = requests.get("https://fapi.binance.com/fapi/v1/exchangeInfo", timeout=12)
+            if r.ok:
+                for s in r.json().get("symbols", []):
+                    base = s.get("baseAsset", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "BITGET":
+            r = requests.get("https://api.bitget.com/api/v2/mix/market/contracts?productType=usdt-futures", timeout=12)
+            if r.ok:
+                for s in r.json().get("data", []):
+                    base = s.get("baseCoin", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "BYBIT":
+            r = requests.get("https://api.bybit.com/v5/market/instruments-info?category=linear", timeout=12)
+            if r.ok:
+                for s in r.json().get("result", {}).get("list", []):
+                    base = s.get("baseCoin", "")
+                    if base: symbols.add(base.upper())
+        elif exchange == "OKX":
+            r = requests.get("https://www.okx.com/api/v5/public/instruments?instType=SWAP", timeout=12)
+            if r.ok:
+                for s in r.json().get("data", []):
+                    base = s.get("ctValCcy", "") or s.get("settleCcy", "")
+                    # OKX swap: el simbolo base esta en instId tipo "BTC-USDT-SWAP"
+                    inst = s.get("instId", "")
+                    if inst and "-" in inst:
+                        symbols.add(inst.split("-")[0].upper())
+        return symbols
+    except Exception as e:
+        log(f"[futures {exchange}] {e}")
+        return set()
+
 def get_exchange_listing(exchange):
-    """Devuelve el set de simbolos listados, con cache de LISTING_CACHE_MIN minutos."""
+    """Devuelve el set de simbolos listados en SPOT, con cache de LISTING_CACHE_MIN minutos."""
     now = time.time()
     last = exchange_pairs_ts.get(exchange, 0)
     if exchange not in exchange_pairs or now - last > LISTING_CACHE_MIN * 60:
@@ -763,14 +848,27 @@ def get_exchange_listing(exchange):
         if pairs:  # solo actualizar si trajo algo
             exchange_pairs[exchange] = pairs
             exchange_pairs_ts[exchange] = now
-            log(f"  Listing {exchange}: {len(pairs)} simbolos cacheados")
+            log(f"  Listing {exchange} spot: {len(pairs)} simbolos cacheados")
         time.sleep(0.3)
     return exchange_pairs.get(exchange, set())
 
+def get_exchange_futures(exchange):
+    """Devuelve el set de simbolos en FUTUROS, con cache."""
+    now = time.time()
+    last = exchange_futures_ts.get(exchange, 0)
+    if exchange not in exchange_futures or now - last > LISTING_CACHE_MIN * 60:
+        futs = fetch_exchange_futures(exchange)
+        if futs:
+            exchange_futures[exchange] = futs
+            exchange_futures_ts[exchange] = now
+            log(f"  Listing {exchange} futuros: {len(futs)} simbolos cacheados")
+        time.sleep(0.3)
+    return exchange_futures.get(exchange, set())
+
 def is_listed_on(exchange, symbol):
     """
-    Verifica si un simbolo esta listado en un exchange.
-    Retorna: True (listado), False (NO listado), None (no se pudo verificar).
+    Verifica si un simbolo esta listado en SPOT de un exchange.
+    Retorna: True (listado spot), False (NO en spot), None (no se pudo verificar).
     """
     if not symbol or symbol == "UNKNOWN":
         return None
@@ -778,6 +876,114 @@ def is_listed_on(exchange, symbol):
     if not listing:
         return None  # no se pudo traer la lista
     return symbol.upper() in listing
+
+def get_listing_status(exchange, symbol):
+    """
+    Estado de listing completo de un simbolo en un exchange.
+    Retorna uno de: 'spot' (ya en spot), 'futures_only' (solo futuros),
+    'not_listed' (en nada), o None (no verificable).
+    """
+    if not symbol or symbol == "UNKNOWN":
+        return None
+    spot = get_exchange_listing(exchange)
+    if not spot:
+        return None
+    sym = symbol.upper()
+    if sym in spot:
+        return "spot"
+    futures = get_exchange_futures(exchange)
+    if sym in futures:
+        return "futures_only"
+    return "not_listed"
+
+# ─── MONITOR DE ANUNCIOS COREANOS (Upbit / Bithumb) ──────────────────────────
+def fetch_upbit_notices():
+    """
+    Consulta los anuncios oficiales de Upbit buscando nuevos listings.
+    Retorna lista de {id, title, symbols:set}.
+    """
+    out = []
+    try:
+        # API publica de anuncios de Upbit
+        url = "https://api-manager.upbit.com/api/v1/announcements?os=web&page=1&per_page=20&category=trade"
+        r = requests.get(url, timeout=12, headers={"Accept": "application/json"})
+        if not r.ok:
+            return out
+        data = r.json().get("data", {})
+        notices = data.get("notices", []) if isinstance(data, dict) else []
+        for n in notices:
+            title = n.get("title", "")
+            nid = str(n.get("id", ""))
+            # Buscar tickers entre parentesis tipo "(BTC)" o listings de mercado
+            syms = set(re.findall(r"\(([A-Z0-9]{2,10})\)", title))
+            # Solo anuncios que parecen de listing
+            low = title.lower()
+            if any(k in low for k in ["디지털 자산 추가", "신규 거래", "market support", "거래 지원", "listing", "추가"]):
+                out.append({"id": "upbit-" + nid, "title": title, "symbols": syms})
+    except Exception as e:
+        log(f"[upbit] {e}")
+    return out
+
+def fetch_bithumb_notices():
+    """
+    Consulta los anuncios oficiales de Bithumb buscando nuevos listings.
+    Retorna lista de {id, title, symbols:set}.
+    """
+    out = []
+    try:
+        url = "https://api.bithumb.com/v1/notices?count=20"
+        r = requests.get(url, timeout=12, headers={"Accept": "application/json"})
+        if not r.ok:
+            return out
+        data = r.json()
+        notices = data if isinstance(data, list) else data.get("data", [])
+        for n in notices:
+            title = n.get("title", "") if isinstance(n, dict) else ""
+            nid = str(n.get("id", "") or n.get("pid", "")) if isinstance(n, dict) else ""
+            syms = set(re.findall(r"\(([A-Z0-9]{2,10})\)", title))
+            low = title.lower()
+            if any(k in low for k in ["원화 마켓", "신규", "거래지원", "마켓 추가", "listing", "상장"]):
+                out.append({"id": "bithumb-" + nid, "title": title, "symbols": syms})
+    except Exception as e:
+        log(f"[bithumb] {e}")
+    return out
+
+def scan_korean_listings():
+    """
+    Revisa anuncios de Upbit y Bithumb. Si un token de la watchlist o
+    lista de acumulacion aparece en un anuncio nuevo, notifica al instante.
+    """
+    log("-- Scan anuncios Upbit/Bithumb --")
+    # Simbolos que nos importan: watchlist + acumulacion
+    watched = {w["name"].upper() for w in WATCHLIST}
+    watched |= {t["name"].upper() for t in ACCUMULATION_LIST}
+
+    notices = fetch_upbit_notices() + fetch_bithumb_notices()
+    time.sleep(0.3)
+    for n in notices:
+        if n["id"] in korean_seen_notices:
+            continue
+        korean_seen_notices.add(n["id"])
+        # Coincidencia con nuestros tokens
+        matched = n["symbols"] & watched
+        exchange = "Upbit" if n["id"].startswith("upbit") else "Bithumb"
+        if matched:
+            for sym in matched:
+                log(f"  LISTING COREANO: {sym} en {exchange}")
+                notify(
+                    f"LISTING COREANO: {sym} en {exchange}",
+                    f"{exchange} anuncio listing de un token de tu lista:\n{sym}\n\n"
+                    f"Titulo: {n['title'][:120]}\n\n"
+                    f"Los listings en Upbit/Bithumb suelen mover fuerte el precio. "
+                    f"Revisa rapido antes de que reaccione el mercado.",
+                    priority="urgent", tags="rotating_light,kr,fire",
+                    click_url=VERCEL_URL,
+                )
+                register_week_event(sym, "korean_listing",
+                                    f"{exchange} anuncio listing de {sym}")
+    # Limpiar IDs viejos para no crecer infinito
+    if len(korean_seen_notices) > 500:
+        korean_seen_notices.clear()
 
 def get_wallet_portfolio(address, chain="ETH", max_tokens=15):
     """
@@ -1090,7 +1296,7 @@ def register_signal(contract, symbol, chain, signal_type, dex=None):
     entry["symbol"] = symbol
     entry["chain"] = chain
     if dex:
-        entry["dex"] = dex
+        entry["dex"] = dex  # solo actualizar si viene un dex valido (no pisar con None)
     # Registrar/refrescar la senal
     entry["signals"][signal_type] = now
     # Limpiar senales viejas (fuera de la ventana)
@@ -1196,13 +1402,15 @@ def scan_exchange_wallets_eth():
             pprob, _ = pump_probability(dex)
             dex["pump_prob"] = pprob
 
-            # ── Verificacion de listing: el token esta listado en el exchange que lo toco?
-            listed = is_listed_on(wallet["exchange"], dex["name"])
+            # ── Verificacion de listing: spot / solo-futuros / no-listado
+            lstatus = get_listing_status(wallet["exchange"], dex["name"])
             listing_str = ""
-            if listed is False:
-                listing_str = f"*** NO LISTADO en {wallet['exchange']} aun — posible pre-listing ***\n"
-            elif listed is True:
-                listing_str = f"Ya listado en {wallet['exchange']} (actividad normal)\n"
+            if lstatus == "not_listed":
+                listing_str = f"*** NO LISTADO en {wallet['exchange']} (ni spot ni futuros) — posible pre-listing ***\n"
+            elif lstatus == "futures_only":
+                listing_str = f"Solo en FUTUROS de {wallet['exchange']} (no spot aun) — movimiento normal de futuros\n"
+            elif lstatus == "spot":
+                listing_str = f"Ya en SPOT de {wallet['exchange']} (actividad normal)\n"
 
             if is_watchlist:
                 notify_exchange_move(wallet["exchange"], token_name, "ETH", dex, is_watchlist=True)
@@ -1217,10 +1425,12 @@ def scan_exchange_wallets_eth():
                 seen_contracts.add(contract)
 
             # ── Registrar senales para el sistema de combo
-            if listed is False:
+            # Solo "no listado en nada" es pre-listing jugoso. Futuros-solo NO cuenta como pre-listing.
+            if lstatus == "not_listed":
                 register_signal(contract, dex["name"], "ETH", "prelisting_unconfirmed", dex)
-            elif listed is True:
+            elif lstatus == "spot":
                 register_signal(contract, dex["name"], "ETH", "prelisting_confirmed", dex)
+            # futures_only: no registra señal de prelisting (era el falso positivo que arreglamos)
             if multi:
                 register_signal(contract, dex["name"], "ETH", "multi_exchange", dex)
             if pprob >= 60:
@@ -1259,13 +1469,15 @@ def scan_exchange_wallets_sol():
             pprob, _ = pump_probability(dex)
             dex["pump_prob"] = pprob
 
-            # Verificacion de listing (SOL no esta en EVM pero igual puede estar en CEX)
-            listed = is_listed_on(wallet["exchange"], dex["name"])
+            # Verificacion de listing: spot / solo-futuros / no-listado
+            lstatus = get_listing_status(wallet["exchange"], dex["name"])
             listing_str = ""
-            if listed is False:
-                listing_str = f"*** NO LISTADO en {wallet['exchange']} aun — posible pre-listing ***\n"
-            elif listed is True:
-                listing_str = f"Ya listado en {wallet['exchange']}\n"
+            if lstatus == "not_listed":
+                listing_str = f"*** NO LISTADO en {wallet['exchange']} (ni spot ni futuros) — posible pre-listing ***\n"
+            elif lstatus == "futures_only":
+                listing_str = f"Solo en FUTUROS de {wallet['exchange']} (no spot aun)\n"
+            elif lstatus == "spot":
+                listing_str = f"Ya en SPOT de {wallet['exchange']}\n"
 
             if is_watchlist:
                 notify_exchange_move(wallet["exchange"], token_name, "SOL", dex, is_watchlist=True)
@@ -1275,9 +1487,9 @@ def scan_exchange_wallets_sol():
                 seen_contracts.add(mint)
 
             # Registrar senales de combo
-            if listed is False:
+            if lstatus == "not_listed":
                 register_signal(mint, dex["name"], "SOL", "prelisting_unconfirmed", dex)
-            elif listed is True:
+            elif lstatus == "spot":
                 register_signal(mint, dex["name"], "SOL", "prelisting_confirmed", dex)
             if pprob >= 60:
                 register_signal(mint, dex["name"], "SOL", "high_pump_prob", dex)
@@ -2269,6 +2481,7 @@ def serialize_state():
         "signal_outcomes": signal_outcomes[-300:],
         "discovered_whales": list(discovered_whales)[-500:],
         "insider_convergences": insider_convergences,
+        "combo_history": combo_history[-200:],
     }
 
 def save_state(force=False):
@@ -2324,6 +2537,7 @@ def load_state():
         signal_outcomes.extend(state.get("signal_outcomes", []))
         discovered_whales.update(state.get("discovered_whales", []))
         insider_convergences.update(state.get("insider_convergences", {}))
+        combo_history.extend(state.get("combo_history", []))
         saved_ago = (time.time() - state.get("saved_at", 0)) / 3600
         log(f"[estado] Cargado: {len(smart_wallets)} smart wallets, {len(tracked_whale_set)} en seguimiento (guardado hace {saved_ago:.1f}h)")
     except Exception as e:
@@ -2542,14 +2756,23 @@ def start_api_server():
             combos_out = []
             for c, e in combo_signals.items():
                 if len(e.get("signals", {})) >= 2:
+                    dex = e.get("dex") or {}
+                    chain = e["chain"]
+                    buy_url = dex.get("buy_url", "")
                     combos_out.append({
-                        "symbol": e["symbol"], "chain": e["chain"],
+                        "symbol": e["symbol"], "chain": chain,
+                        "contract": c,
                         "signals": list(e["signals"].keys()),
                         "n_signals": len(e["signals"]),
                         "score": sum(COMBO_WEIGHTS.get(s, 1) for s in e["signals"]),
+                        "url": dex.get("url", ""),
+                        "buy_url": buy_url,
+                        "liq": dex.get("liq", 0),
+                        "pump_prob": dex.get("pump_prob", 0),
                     })
             combos_out.sort(key=lambda x: x["score"], reverse=True)
             sig_rates, hour_rates = compute_winrate_by_type()
+            combo_rates = compute_combo_winrate()
             return jsonify({
                 "updated_at": int(time.time()),
                 "tokens": tokens,
@@ -2564,6 +2787,7 @@ def start_api_server():
                 "combos": combos_out[:15],
                 "winrate_by_signal": sig_rates,
                 "winrate_by_hour": hour_rates,
+                "winrate_by_combo": combo_rates[:15],
                 "insider_convergences": sorted(insider_convergences.values(), key=lambda x: x["detected_at"], reverse=True)[:15],
                 "insider_sells": insider_sells[:20],
             })
@@ -2636,11 +2860,18 @@ def scan():
         update_tracking()
     # Limpiar señales de combo expiradas
     cleanup_combo_signals()
+    # Monitor de anuncios coreanos (Upbit/Bithumb) cada 2 ciclos
+    if cycle_count % 2 == 0:
+        try:
+            scan_korean_listings()
+        except Exception as e:
+            log(f"[korean error] {e}")
     # Precargar listas de exchanges en el primer ciclo (para verificacion de listing)
     if cycle_count == 1:
-        log("-- Precargando listas de exchanges --")
+        log("-- Precargando listas de exchanges (spot + futuros) --")
         for ex in ["MEXC", "BINANCE", "BITGET", "BYBIT", "OKX"]:
             get_exchange_listing(ex)
+            get_exchange_futures(ex)
     # Bootstrap: correr forense una vez al arrancar SOLO si no se cargo estado previo
     if cycle_count == 3 and len(smart_wallets) < 5:
         log("-- Bootstrap forense inicial (sin estado previo) --")
@@ -2680,13 +2911,12 @@ if __name__ == "__main__":
     load_state()
 
     notify(
-        "Alpha Terminal v7 activo",
-        f"Nuevas mejoras (Grupo A+B):\n"
-        f"Persistencia: insiders sobreviven redeploys\n"
-        f"Filtro de calidad de insiders (anti-bot)\n"
-        f"Convergencia de insiders (2+ en misma moneda)\n"
-        f"Deteccion de insider VENDIENDO\n"
-        f"Portfolio por wallet\n\n"
+        "Alpha Terminal v8 activo",
+        f"Nuevas mejoras (Grupo C):\n"
+        f"Futuros vs spot (sin falsos pre-listing)\n"
+        f"Monitor de listings Upbit/Bithumb (Corea)\n"
+        f"Historico de combos que pumpearon\n"
+        f"Cards de combos con contrato y links\n\n"
         f"Smart wallets cargadas: {len(smart_wallets)}\n"
         f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
         priority="high", tags="white_check_mark",
