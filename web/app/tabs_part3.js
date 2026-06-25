@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   T, Badge, Stat, Pulse, EmptyState, ChartEmbed,
   fmtUSD, pct, timeAgo, chainCol, accumColor, accumLabel,
-  getLiveAccumData, getWeeklyReport, ACCUMULATION_LIST, copyText,
+  getLiveAccumData, getWeeklyReport, ACCUMULATION_LIST, copyText, RAILWAY_API,
 } from "./shared";
 
 // ─── ACCUMULATION CARD ────────────────────────────────────────────────────────
@@ -197,6 +197,81 @@ function WeekEventsLog({events}) {
 }
 
 // ─── PANEL DE COMBOS ──────────────────────────────────────────────────────────
+// ─── PANEL DE POSICIONES (alertas de salida) ─────────────────────────────────
+function PositionsPanel({positions, onRefresh}) {
+  const [showAdd, setShowAdd] = useState(false);
+  const [addr, setAddr] = useState("");
+  const [chain, setChain] = useState("ETH");
+  const [price, setPrice] = useState("");
+  const [adding, setAdding] = useState(false);
+
+  async function addPosition() {
+    if (!addr.trim()) return;
+    setAdding(true);
+    try {
+      const p = price.trim() || "auto";
+      await fetch(RAILWAY_API+"/api/position/add/"+chain+"/"+addr.trim()+"/"+p);
+      setAddr(""); setPrice(""); setShowAdd(false);
+      setTimeout(()=>onRefresh&&onRefresh(), 1500);
+    } catch {}
+    setAdding(false);
+  }
+  async function removePos(contract) {
+    try {
+      await fetch(RAILWAY_API+"/api/position/remove/"+contract);
+      setTimeout(()=>onRefresh&&onRefresh(), 1000);
+    } catch {}
+  }
+
+  const pos = positions || [];
+  return (
+    <div style={{background:T.green+"06",border:"1px solid "+T.green+"22",borderRadius:10,padding:14,marginBottom:16}}>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
+        <span style={{fontSize:12,color:T.green,fontFamily:"monospace",fontWeight:700}}>💼 MIS POSICIONES</span>
+        <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>alertas de salida (x2/x3 y caida tras pico)</span>
+        <button onClick={()=>setShowAdd(s=>!s)} style={{marginLeft:"auto",background:T.green+"12",border:"1px solid "+T.green+"33",color:T.green,padding:"3px 10px",borderRadius:5,cursor:"pointer",fontSize:9,fontFamily:"monospace",fontWeight:700}}>{showAdd?"cancelar":"+ estoy dentro"}</button>
+      </div>
+      {showAdd&&(
+        <div style={{background:T.card,border:"1px solid "+T.border,borderRadius:8,padding:10,marginBottom:10}}>
+          <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>
+            {["ETH","BNB","BASE","SOL"].map(c=>(
+              <button key={c} onClick={()=>setChain(c)} style={{background:chain===c?T.green+"15":"transparent",border:"1px solid "+(chain===c?T.green+"44":T.border),color:chain===c?T.green:T.muted,padding:"3px 10px",borderRadius:5,cursor:"pointer",fontSize:9,fontFamily:"monospace",fontWeight:700}}>{c}</button>
+            ))}
+          </div>
+          <input value={addr} onChange={e=>setAddr(e.target.value)} placeholder="Contrato del token (0x...)" style={{width:"100%",background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"8px 10px",color:T.text,fontSize:10,fontFamily:"monospace",outline:"none",marginBottom:6,boxSizing:"border-box"}}/>
+          <input value={price} onChange={e=>setPrice(e.target.value)} placeholder="Precio de entrada (vacio = precio actual)" style={{width:"100%",background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"8px 10px",color:T.text,fontSize:10,fontFamily:"monospace",outline:"none",marginBottom:8,boxSizing:"border-box"}}/>
+          <button onClick={addPosition} disabled={adding} style={{width:"100%",background:T.green+"15",border:"1px solid "+T.green+"44",color:T.green,padding:"8px",borderRadius:6,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700}}>{adding?"Agregando...":"Marcar posicion"}</button>
+        </div>
+      )}
+      {pos.length===0?(
+        <div style={{fontSize:10,color:T.dim,fontFamily:"monospace",textAlign:"center",padding:"10px"}}>Sin posiciones marcadas. Marca una para recibir alertas de salida.</div>
+      ):(
+        <div style={{display:"flex",flexDirection:"column",gap:6}}>
+          {pos.map((p,i)=>{
+            const mc = p.mult>=2?T.green:p.mult>=1?T.cyan:T.red;
+            return (
+            <div key={i} style={{background:T.card,border:"1px solid "+T.border,borderRadius:8,padding:"10px 12px"}}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+                <span style={{fontSize:13,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{p.symbol}</span>
+                <Badge color={chainCol(p.chain)} small>{p.chain}</Badge>
+                <span style={{fontSize:14,fontWeight:900,color:mc,fontFamily:"monospace"}}>x{p.mult}</span>
+                {p.peak_mult>p.mult&&<span style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>pico x{p.peak_mult}</span>}
+                <button onClick={()=>removePos(p.contract)} style={{marginLeft:"auto",background:"transparent",border:"1px solid "+T.border,color:T.dim,padding:"2px 8px",borderRadius:4,cursor:"pointer",fontSize:8,fontFamily:"monospace"}}>salir</button>
+              </div>
+              <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+                <Stat label="Entrada" value={p.entry_price.toPrecision(4)}/>
+                <Stat label="Ahora" value={p.last_price.toPrecision(4)} color={mc}/>
+                {p.targets_hit&&p.targets_hit.length>0&&<Stat label="Objetivos" value={p.targets_hit.map(t=>"x"+t).join(" ")} color={T.green}/>}
+              </div>
+            </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function CombosPanel({combos}) {
   const [copiedIdx, setCopiedIdx] = useState(-1);
   if (!combos || !combos.length) return null;
@@ -376,10 +451,21 @@ export function AccumulationTab({githubRepo}) {
         <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
           Datos en vivo desde Railway · {ACCUMULATION_LIST.length} tokens en seguimiento · ETH, SOL, BNB, BASE + CEX (CoinGecko)
         </div>
+        {liveData?.market_context&&(
+          <div style={{display:"flex",alignItems:"center",gap:6,marginTop:8,padding:"6px 10px",background:T.bg,border:"1px solid "+T.border,borderRadius:6}}>
+            <span style={{fontSize:10}}>{liveData.market_context.emoji||"⚪"}</span>
+            <span style={{fontSize:10,color:T.muted,fontFamily:"monospace"}}>Mercado:</span>
+            <span style={{fontSize:10,fontWeight:700,color:liveData.market_context.status==="verde"?T.green:liveData.market_context.status==="rojo"?T.red:T.dim,fontFamily:"monospace"}}>BTC {liveData.market_context.ch24h>=0?"+":""}{liveData.market_context.ch24h}% 24h</span>
+            <span style={{fontSize:8,color:T.dim,fontFamily:"monospace",marginLeft:"auto"}}>{liveData.market_context.status==="rojo"?"cuidado con pumps aislados":liveData.market_context.status==="verde"?"viento a favor":"lateral"}</span>
+          </div>
+        )}
       </div>
 
       {/* Weekly report */}
       <WeeklyBanner weekly={weekly}/>
+
+      {/* Mis posiciones (alertas de salida) */}
+      <PositionsPanel positions={liveData?.positions} onRefresh={refresh}/>
 
       {/* Combos activos y win rate por tipo */}
       <CombosPanel combos={liveData?.combos}/>
