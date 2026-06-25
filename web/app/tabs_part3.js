@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   T, Badge, Stat, Pulse, EmptyState, ChartEmbed,
   fmtUSD, pct, timeAgo, chainCol, accumColor, accumLabel,
-  getLiveAccumData, getWeeklyReport, ACCUMULATION_LIST,
+  getLiveAccumData, getWeeklyReport, ACCUMULATION_LIST, copyText,
 } from "./shared";
 
 // ─── ACCUMULATION CARD ────────────────────────────────────────────────────────
@@ -198,8 +198,10 @@ function WeekEventsLog({events}) {
 
 // ─── PANEL DE COMBOS ──────────────────────────────────────────────────────────
 function CombosPanel({combos}) {
+  const [copiedIdx, setCopiedIdx] = useState(-1);
   if (!combos || !combos.length) return null;
   const sigLabels = {
+    insider_convergence:"CONVERGENCIA INSIDER",
     prelisting_unconfirmed:"Pre-listing NO confirmado",
     prelisting_confirmed:"Exchange activo",
     multi_exchange:"Multi-exchange",
@@ -209,6 +211,10 @@ function CombosPanel({combos}) {
     exchange_out:"Retiro exchanges",
     vol_accel:"Volumen acelerando",
   };
+  function doCopy(contract, idx) {
+    if (copyText(contract)) { setCopiedIdx(idx); setTimeout(()=>setCopiedIdx(-1), 1500); }
+  }
+  const dexChain = ch => ch==="ETH"?"ethereum":ch==="BNB"?"bsc":ch==="BASE"?"base":"solana";
   return (
     <div style={{background:T.orange+"08",border:"1px solid "+T.orange+"25",borderRadius:10,padding:14,marginBottom:16}}>
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
@@ -217,7 +223,9 @@ function CombosPanel({combos}) {
         <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>senales apiladas en el mismo token</span>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:6}}>
-        {combos.map((c,i)=>(
+        {combos.map((c,i)=>{
+          const dexUrl = c.url || (c.contract?("https://dexscreener.com/"+dexChain(c.chain)+"/"+c.contract):"");
+          return (
           <div key={i} style={{background:T.card,border:"1px solid "+(c.n_signals>=3?T.orange+"44":T.border),borderLeft:"3px solid "+(c.score>=7?T.red:T.orange),borderRadius:8,padding:"10px 12px"}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
               <span style={{fontSize:13,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{c.symbol}</span>
@@ -225,30 +233,63 @@ function CombosPanel({combos}) {
               <Badge color={c.score>=7?T.red:T.orange}>{"x"+c.n_signals+" senales"}</Badge>
               <span style={{marginLeft:"auto",fontSize:11,fontWeight:900,color:c.score>=7?T.red:T.orange,fontFamily:"monospace"}}>score {c.score}</span>
             </div>
-            <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
-              {c.signals.map(s=><Badge key={s} color={T.purple} small>{sigLabels[s]||s}</Badge>)}
+            <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:8}}>
+              {c.signals.map(s=><Badge key={s} color={s==="insider_convergence"?T.red:T.purple} small>{sigLabels[s]||s}</Badge>)}
             </div>
+            {(c.liq>0||c.pump_prob>0)&&(
+              <div style={{display:"flex",gap:10,marginBottom:8}}>
+                {c.liq>0&&<Stat label="Liq" value={fmtUSD(c.liq)}/>}
+                {c.pump_prob>0&&<Stat label="Pump" value={c.pump_prob+"%"} color={c.pump_prob>=60?T.green:T.yellow}/>}
+              </div>
+            )}
+            {c.contract&&(
+              <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+                {dexUrl&&<a href={dexUrl} target="_blank" rel="noopener noreferrer" style={{flex:1,minWidth:90,textAlign:"center",background:T.cyan+"10",border:"1px solid "+T.cyan+"33",color:T.cyan,padding:"6px",borderRadius:5,fontSize:9,fontWeight:700,fontFamily:"monospace",textDecoration:"none"}}>📊 DexScreener</a>}
+                {c.buy_url&&<a href={c.buy_url} target="_blank" rel="noopener noreferrer" style={{flex:1,minWidth:90,textAlign:"center",background:T.green+"10",border:"1px solid "+T.green+"33",color:T.green,padding:"6px",borderRadius:5,fontSize:9,fontWeight:700,fontFamily:"monospace",textDecoration:"none"}}>💰 Comprar</a>}
+                <button onClick={()=>doCopy(c.contract,i)} style={{flex:1,minWidth:90,background:copiedIdx===i?T.green+"15":T.purple+"10",border:"1px solid "+(copiedIdx===i?T.green+"44":T.purple+"33"),color:copiedIdx===i?T.green:T.purple,padding:"6px",borderRadius:5,cursor:"pointer",fontSize:9,fontWeight:700,fontFamily:"monospace"}}>{copiedIdx===i?"✓ copiado":"copiar CA"}</button>
+              </div>
+            )}
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
 }
 
 // ─── PANEL DE WIN RATE ────────────────────────────────────────────────────────
-function WinRatePanel({bySignal, byHour}) {
+function WinRatePanel({bySignal, byHour, byCombo}) {
   const hasSignal = bySignal && bySignal.filter(s=>s.total>=2).length>0;
   const hasHour = byHour && byHour.filter(h=>h.total>=2).length>0;
-  if (!hasSignal && !hasHour) return null;
+  const hasCombo = byCombo && byCombo.filter(c=>c.total>=2).length>0;
+  if (!hasSignal && !hasHour && !hasCombo) return null;
+  const comboLabel = k => k.split("+").map(s=>({
+    insider_convergence:"conv.insider",prelisting_unconfirmed:"pre-list",prelisting_confirmed:"exch.activo",
+    multi_exchange:"multi-ex",insider_buy:"insider",high_pump_prob:"pump-prob",
+    whale_convergence:"whales",vol_accel:"vol",exchange_out:"retiro"
+  }[s]||s)).join(" + ");
   return (
     <div style={{background:T.cyan+"06",border:"1px solid "+T.cyan+"20",borderRadius:10,padding:14,marginBottom:16}}>
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
         <span style={{fontSize:12,color:T.cyan,fontFamily:"monospace",fontWeight:700}}>📊 WIN RATE POR TIPO</span>
         <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>que senales aciertan mas (se afina con el tiempo)</span>
       </div>
+      {hasCombo&&(
+        <div style={{marginBottom:12}}>
+          <div style={{fontSize:9,color:T.orange,fontFamily:"monospace",marginBottom:6,fontWeight:700}}>POR COMBINACION (lo mas util)</div>
+          {byCombo.filter(c=>c.total>=2).slice(0,6).map((c,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"4px 0",borderBottom:"1px solid "+T.bg}}>
+              <span style={{fontSize:9,color:T.text,fontFamily:"monospace",flex:1}}>{comboLabel(c.combo)}</span>
+              <span style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>{c.total}x</span>
+              <span style={{fontSize:8,color:T.green,fontFamily:"monospace"}}>↑x{c.best_mult}</span>
+              <span style={{fontSize:10,fontWeight:700,color:c.win_rate>=40?T.green:c.win_rate>=20?T.yellow:T.red,fontFamily:"monospace",minWidth:32,textAlign:"right"}}>{c.win_rate}%</span>
+            </div>
+          ))}
+        </div>
+      )}
       {hasSignal&&(
         <div style={{marginBottom:hasHour?12:0}}>
-          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:6}}>POR SEÑAL</div>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:6}}>POR SEÑAL INDIVIDUAL</div>
           {bySignal.filter(s=>s.total>=2).slice(0,8).map((s,i)=>(
             <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"4px 0",borderBottom:"1px solid "+T.bg}}>
               <span style={{fontSize:10,color:T.text,fontFamily:"monospace",flex:1}}>{s.signal}</span>
@@ -342,7 +383,7 @@ export function AccumulationTab({githubRepo}) {
 
       {/* Combos activos y win rate por tipo */}
       <CombosPanel combos={liveData?.combos}/>
-      <WinRatePanel bySignal={liveData?.winrate_by_signal} byHour={liveData?.winrate_by_hour}/>
+      <WinRatePanel bySignal={liveData?.winrate_by_signal} byHour={liveData?.winrate_by_hour} byCombo={liveData?.winrate_by_combo}/>
 
       {!liveData&&loading&&(
         <div style={{padding:"30px 20px",textAlign:"center"}}>
