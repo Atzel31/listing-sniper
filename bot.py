@@ -8,6 +8,7 @@ import requests
 
 import hit_rate  # Modulo 1: hit rate historico via GeckoTerminal
 import insider_quality  # Modulo 2: filtro de calidad de wallets insider
+import outcome_tracker  # Modulo 3: tracker de outcomes hacia adelante
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 NTFY_TOPIC      = os.environ.get("NTFY_TOPIC",      "listingsniper-atzel")
@@ -1484,6 +1485,16 @@ def evaluate_combo(contract, entry):
     register_week_event(symbol, "combo",
                         f"Combo de {n_signals} senales (score {combo_score}): " +
                         ", ".join(COMBO_LABELS.get(s, s) for s in signals))
+    # Modulo 3: registrar la señal en el ledger de outcomes (medicion a 72h).
+    # Nunca debe romper la emision del combo.
+    try:
+        outcome_tracker.register_signal(
+            symbol, contract, chain, list(signals),
+            entry_price=dex.get("price") if dex else None,
+            btc_context=market_ctx_str(),
+        )
+    except Exception as e:
+        log(f"[outcome register] {e}")
 
 def cleanup_combo_signals():
     """Elimina tokens cuyas senales ya expiraron todas."""
@@ -2650,6 +2661,7 @@ def github_read_json(path):
 # ─── PERSISTENCIA DE ESTADO (sobrevive redeploys de Railway) ─────────────────
 STATE_PATH = "data/state.json"
 last_state_save = 0
+last_outcome_check = 0  # Modulo 3: ultimo chequeo del ledger de outcomes (cada 6h)
 
 def serialize_state():
     """Convierte el estado en memoria a un dict JSON-serializable (sets -> listas)."""
@@ -2696,6 +2708,7 @@ def serialize_state():
         "insider_convergences": insider_convergences,
         "combo_history": combo_history[-200:],
         "my_positions": my_positions,
+        "signals_ledger": outcome_tracker.export_ledger(),
     }
 
 def save_state(force=False):
@@ -2753,6 +2766,7 @@ def load_state():
         insider_convergences.update(state.get("insider_convergences", {}))
         combo_history.extend(state.get("combo_history", []))
         my_positions.update(state.get("my_positions", {}))
+        outcome_tracker.load_ledger(state.get("signals_ledger", {}))
         saved_ago = (time.time() - state.get("saved_at", 0)) / 3600
         log(f"[estado] Cargado: {len(smart_wallets)} smart wallets, {len(tracked_whale_set)} en seguimiento (guardado hace {saved_ago:.1f}h)")
     except Exception as e:
@@ -3129,6 +3143,29 @@ def start_api_server():
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 
+        @app.route("/api/outcomes")
+        def api_outcomes():
+            # Modulo 3: ultimas 10 señales cerradas + hit rate rolling 7 y 30 dias.
+            try:
+                return jsonify({
+                    "status": "ok",
+                    "recent_closed": outcome_tracker.recent_closed(10),
+                    "rolling_7d": outcome_tracker.rolling_stats(7),
+                    "rolling_30d": outcome_tracker.rolling_stats(30),
+                    "open": len(outcome_tracker._ledger["pending"]),
+                })
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/recap")
+        def api_recap():
+            # Texto del recap semanal para OnChain Sentinel (consumo en X).
+            try:
+                txt = outcome_tracker.get_weekly_recap()
+                return jsonify({"status": "ok", "recap": txt})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
         @app.route("/api/health")
         def api_health():
             return jsonify({"status": "ok", "cycle": cycle_count})
@@ -3137,6 +3174,17 @@ def start_api_server():
         app.run(host="0.0.0.0", port=PORT, debug=False, use_reloader=False)
     except Exception as e:
         log(f"[api error] {e}")
+
+def _run_outcome_check():
+    """Modulo 3: corre check_pending() del ledger y persiste si cerro algo."""
+    try:
+        res = outcome_tracker.check_pending()
+        log(f"[outcomes] abiertas {res['open']}, cerradas ahora {res['closed_now']}, "
+            f"total cerradas {res['total_closed']}")
+        if res["closed_now"]:
+            save_state(force=True)
+    except Exception as e:
+        log(f"[outcomes error] {e}")
 
 # ─── CICLO PRINCIPAL ──────────────────────────────────────────────────────────
 def scan():
@@ -3184,6 +3232,11 @@ def scan():
             run_forensic_analysis()
         except Exception as e:
             log(f"[forense bootstrap error] {e}")
+    # Modulo 3: chequear/cerrar outcomes del ledger cada 6h (en background)
+    global last_outcome_check
+    if time.time() - last_outcome_check >= 6 * 3600:
+        last_outcome_check = time.time()
+        threading.Thread(target=_run_outcome_check, daemon=True).start()
     # Guardar estado cada 5 ciclos (con throttle interno de 10 min)
     if cycle_count % 5 == 0:
         save_state()
