@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783110224,
+  "saved_at": 1783110456,
   "smart_wallets": {
     "0x7f54f05635d15cde17a49502fedb9d1803a3be8a": {
       "chain": "ETH",
@@ -138,12 +138,13 @@
       "chain": "ETH",
       "tokens": [
         "ENA",
+        "ONDO",
         "SPX6900"
       ],
-      "total_usd": 4080.217664935309,
-      "buys": 3,
-      "insider_score": 29,
-      "last_seen": 1783105715,
+      "total_usd": 13101.620901001113,
+      "buys": 17,
+      "insider_score": 56,
+      "last_seen": 1783110383,
       "tag": "smart",
       "forensic": false,
       "label": "0x7f51...9712"
@@ -660,13 +661,14 @@
     "0x225a38bc71102999dd13478bfabd7c4d53f2dc17": {
       "chain": "ETH",
       "tokens": [
+        "ENA",
         "ONDO",
         "PEPE"
       ],
-      "total_usd": 4634.2,
-      "buys": 2,
-      "insider_score": 29,
-      "last_seen": 1783109291,
+      "total_usd": 21675.737804070246,
+      "buys": 7,
+      "insider_score": 51,
+      "last_seen": 1783110179,
       "tag": "smart",
       "forensic": false,
       "label": "0x225a...dc17"
@@ -768,6 +770,49 @@
       "tag": "smart",
       "forensic": false,
       "label": "0x6946...a22d"
+    },
+    "0xb1f05c103cdd519e9f9785cda23c03635a598be4": {
+      "chain": "ETH",
+      "tokens": [
+        "ONDO",
+        "SPX6900"
+      ],
+      "total_usd": 24.346420000000002,
+      "buys": 12,
+      "insider_score": 35,
+      "last_seen": 1783110383,
+      "tag": "smart",
+      "forensic": false,
+      "label": "0xb1f0...8be4"
+    },
+    "0x02e701c691a47fff9ced9e0ca8c16122cd7ef4c0": {
+      "chain": "ETH",
+      "tokens": [
+        "ENA",
+        "ONDO",
+        "PEPE"
+      ],
+      "total_usd": 48819.18132303178,
+      "buys": 3,
+      "insider_score": 54,
+      "last_seen": 1783110371,
+      "tag": "smart",
+      "forensic": false,
+      "label": "0x02e7...f4c0"
+    },
+    "0xb51bf9029d778899d42e96ebcdc0498bd061006d": {
+      "chain": "ETH",
+      "tokens": [
+        "ENA",
+        "SPX6900"
+      ],
+      "total_usd": 1661.9913158,
+      "buys": 2,
+      "insider_score": 29,
+      "last_seen": 1783110371,
+      "tag": "smart",
+      "forensic": false,
+      "label": "0xb51b...006d"
     }
   },
   "accum_big_buyers": {
@@ -797,9 +842,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 57559.010261800504,
-      "last_buy": 1783109603,
-      "buys": 18,
+      "total_usd": 58884.36007880489,
+      "last_buy": 1783110239,
+      "buys": 19,
       "chain": "ETH"
     },
     "0x8194060799059988b4dc955cf51a726a532177ca": {
@@ -859,9 +904,9 @@
         "PEPE"
       ],
       "count": 2,
-      "total_usd": 56298.35898829522,
+      "total_usd": 58283.02790636709,
       "last_buy": 1783110131,
-      "buys": 11,
+      "buys": 12,
       "chain": "ETH"
     },
     "0xca1ad9c3f5fad67bd60c290b3c8a71987101de87": {
@@ -892,9 +937,9 @@
         "SPX6900"
       ],
       "count": 4,
-      "total_usd": 268774.7470173709,
-      "last_buy": 1783110167,
-      "buys": 108,
+      "total_usd": 300116.45869924634,
+      "last_buy": 1783110395,
+      "buys": 118,
       "chain": "ETH"
     },
     "0xcd6b980029e6e6e0733ac8ec3e02be9410d09799": {
@@ -911,12 +956,13 @@
     "0x7f51c134230eb9e5aba42bc364d3d3eba26d9712": {
       "tokens": [
         "ENA",
+        "ONDO",
         "SPX6900"
       ],
-      "count": 2,
-      "total_usd": 12933.770901001113,
-      "last_buy": 1783106471,
-      "buys": 16,
+      "count": 3,
+      "total_usd": 13101.620901001113,
+      "last_buy": 1783110383,
+      "buys": 17,
       "chain": "ETH"
     },
     "0xd5ef9160b14c3e94964fec8be32eec2384934d83": {
@@ -957,9 +1003,9 @@
         "SPX6900"
       ],
       "count": 4,
-      "total_usd": 641908.7748021177,
-      "last_buy": 1783109015,
-      "buys": 36,
+      "total_usd": 674380.7491603206,
+      "last_buy": 1783110179,
+      "buys": 38,
       "chain": "ETH"
     },
     "0x9be5b8a7314552fa47feb1355cd5b4adc7bb7516": {
@@ -978,9 +1024,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 50521.42735959383,
+      "total_usd": 51846.77717659822,
       "last_buy": 1783110095,
-      "buys": 34,
+      "buys": 35,
       "chain": "ETH"
     },
     "0xae4045ffeddf61d570e6d1fe2d71ded1a2e85a88": {
@@ -1022,9 +1068,9 @@
         "SPX6900"
       ],
       "count": 4,
-      "total_usd": 15062.957657152787,
+      "total_usd": 15818.828425317446,
       "last_buy": 1783109687,
-      "buys": 55,
+      "buys": 58,
       "chain": "ETH"
     },
     "0xc65433845ecd16688eda196497fa9130d6c47bd8": {
@@ -1044,9 +1090,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 30493.26231919968,
-      "last_buy": 1783109675,
-      "buys": 12,
+      "total_usd": 42552.48651838971,
+      "last_buy": 1783110395,
+      "buys": 14,
       "chain": "ETH"
     },
     "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b": {
@@ -1078,9 +1124,9 @@
         "PEPE"
       ],
       "count": 3,
-      "total_usd": 18378.26138033134,
-      "last_buy": 1783109651,
-      "buys": 48,
+      "total_usd": 28992.896532525167,
+      "last_buy": 1783110335,
+      "buys": 50,
       "chain": "ETH"
     },
     "0x50173c959d9f328eab546abb9b27e67dd3b98439": {
@@ -1190,9 +1236,9 @@
         "PEPE"
       ],
       "count": 2,
-      "total_usd": 250368.53168346305,
+      "total_usd": 260476.45868346305,
       "last_buy": 1783110131,
-      "buys": 35,
+      "buys": 36,
       "chain": "ETH"
     },
     "0xeeb2ea7be273fc609be2961781f3c3bea3ac2704": {
@@ -1230,9 +1276,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 1.2764119801197744,
+      "total_usd": 1.3429926765115945,
       "last_buy": 1783110107,
-      "buys": 7,
+      "buys": 8,
       "chain": "ETH"
     },
     "0x9a47f3289794e9bbc6a3c571f6d96ad4e7baed16": {
@@ -1250,9 +1296,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 13.3137125976,
-      "last_buy": 1783105067,
-      "buys": 3,
+      "total_usd": 178.7466725976,
+      "last_buy": 1783110383,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x714b0f8580f79c5c535c4d51aceb42dc9e6d7f67": {
@@ -1260,9 +1306,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 14791.818103763411,
+      "total_usd": 14812.571077763412,
       "last_buy": 1783109639,
-      "buys": 15,
+      "buys": 16,
       "chain": "ETH"
     },
     "0x93228d328c9c74c2bfe9f97638bbb5ef322f2bd5": {
@@ -1304,9 +1350,9 @@
         "SPX6900"
       ],
       "count": 4,
-      "total_usd": 199306.29950343832,
-      "last_buy": 1783109291,
-      "buys": 20,
+      "total_usd": 199760.88900335808,
+      "last_buy": 1783110347,
+      "buys": 21,
       "chain": "ETH"
     },
     "0x6d8c19d21533360bb3c77982b03b501129f545bd": {
@@ -1324,9 +1370,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 0.04734478341315707,
-      "last_buy": 1783110011,
-      "buys": 2,
+      "total_usd": 0.08888901338583055,
+      "last_buy": 1783110383,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xfd57c3dcf86ea89d9ba2c6187f1125ee944f95f2": {
@@ -1407,9 +1453,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 82741.00386805316,
-      "last_buy": 1783110059,
-      "buys": 48,
+      "total_usd": 116617.6509368521,
+      "last_buy": 1783110347,
+      "buys": 59,
       "chain": "ETH"
     },
     "0x56a0d3f18cef5b6e94dd79fa23ffdb5054be65d9": {
@@ -1477,9 +1523,9 @@
         "PEPE"
       ],
       "count": 1,
-      "total_usd": 118.80633605148013,
-      "last_buy": 1783110131,
-      "buys": 12,
+      "total_usd": 149.14929959283722,
+      "last_buy": 1783110383,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x6747bcaf9bd5a5f0758cbe08903490e45ddfacb5": {
@@ -1500,9 +1546,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 6360.518027257076,
+      "total_usd": 6770.218027257076,
       "last_buy": 1783109651,
-      "buys": 21,
+      "buys": 22,
       "chain": "ETH"
     },
     "0xeff6cb8b614999d130e537751ee99724d01aa167": {
@@ -1512,9 +1558,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 9134.892057480913,
-      "last_buy": 1783109603,
-      "buys": 7,
+      "total_usd": 9333.647822050978,
+      "last_buy": 1783110395,
+      "buys": 8,
       "chain": "ETH"
     },
     "0x3c5d22fa3d916f8414141f4a277f59159091f366": {
@@ -1542,9 +1588,9 @@
         "PEPE"
       ],
       "count": 1,
-      "total_usd": 10514.167717442431,
-      "last_buy": 1783110119,
-      "buys": 45,
+      "total_usd": 11259.013337116236,
+      "last_buy": 1783110395,
+      "buys": 60,
       "chain": "ETH"
     },
     "0x2638d32b2caa1386ffe35aee9a363a77cc2b31a0": {
@@ -1664,9 +1710,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 2882.2369310588633,
+      "total_usd": 3068.752549370275,
       "last_buy": 1783109015,
-      "buys": 47,
+      "buys": 49,
       "chain": "ETH"
     },
     "0xa4d9d7068d84bbdf2e3caf1bbf2e1135bcd41984": {
@@ -1701,9 +1747,9 @@
         "SPX6900"
       ],
       "count": 5,
-      "total_usd": 10923.905814782345,
+      "total_usd": 11206.028454815472,
       "last_buy": 1783109567,
-      "buys": 72,
+      "buys": 75,
       "chain": "ETH"
     },
     "0x651641299c7ec0aa44ad7ed9b7e12702fed2022f": {
@@ -1711,9 +1757,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 352315.1812674642,
+      "total_usd": 366477.8772809642,
       "last_buy": 1783110011,
-      "buys": 29,
+      "buys": 31,
       "chain": "ETH"
     },
     "0x0b60c1ee6d01c3d5704eeae6c12552c7a63beead": {
@@ -1751,19 +1797,20 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 4414.409241577355,
+      "total_usd": 5443.754749892825,
       "last_buy": 1783109651,
-      "buys": 12,
+      "buys": 14,
       "chain": "ETH"
     },
     "0xb1f05c103cdd519e9f9785cda23c03635a598be4": {
       "tokens": [
+        "ONDO",
         "SPX6900"
       ],
-      "count": 1,
-      "total_usd": 21.929380000000002,
-      "last_buy": 1783106471,
-      "buys": 11,
+      "count": 2,
+      "total_usd": 24.346420000000002,
+      "last_buy": 1783110383,
+      "buys": 12,
       "chain": "ETH"
     },
     "0x1a4131e3142b7152cf79027aa2b330d168b2a3c2": {
@@ -1831,9 +1878,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 123851.769925,
-      "last_buy": 1783108055,
-      "buys": 9,
+      "total_usd": 124015.649925,
+      "last_buy": 1783110323,
+      "buys": 10,
       "chain": "ETH"
     },
     "0x6eb9fec1aa0e3053b3aba0cc320a87f724e284af": {
@@ -1881,9 +1928,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 45928.93507365638,
+      "total_usd": 50268.19266728038,
       "last_buy": 1783109819,
-      "buys": 49,
+      "buys": 51,
       "chain": "ETH"
     },
     "0xb300000b72deaeb607a12d5f54773d1c19c7028d": {
@@ -1973,9 +2020,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 181425.5717395511,
-      "last_buy": 1783109975,
-      "buys": 28,
+      "total_usd": 181880.16123947085,
+      "last_buy": 1783110347,
+      "buys": 29,
       "chain": "ETH"
     },
     "0x1385fc1fe0418ea0b4fcf7adc61fc7535ab7f80d": {
@@ -1983,9 +2030,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 6166.379492483894,
+      "total_usd": 6585.200954863542,
       "last_buy": 1783107635,
-      "buys": 141,
+      "buys": 151,
       "chain": "ETH"
     },
     "0x9b90a7929ba486693aedf5394025b783d395a1ee": {
@@ -1993,9 +2040,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 15.964545838380001,
+      "total_usd": 17.121599122360003,
       "last_buy": 1783100267,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x60ee1a669133da8e9f6b80dead3e3a2d5fa5e212": {
@@ -2003,9 +2050,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1047.4386732678686,
+      "total_usd": 1123.3532886250207,
       "last_buy": 1783097627,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0xbedfb54088461888a8b472448109c962b0521940": {
@@ -2013,9 +2060,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1547.1171853426993,
+      "total_usd": 1626.1779745731992,
       "last_buy": 1783107623,
-      "buys": 37,
+      "buys": 39,
       "chain": "ETH"
     },
     "0xf7bb0102da2daa5436dce68d7738d8fb4f633c7b": {
@@ -2023,9 +2070,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1047.4386732678686,
+      "total_usd": 1123.3532886250207,
       "last_buy": 1783093343,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0xf84c62572eeafc90c0bce3fb6c85bcb573e68d93": {
@@ -2033,9 +2080,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 222.18396099621455,
+      "total_usd": 238.28706122348925,
       "last_buy": 1783093343,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x17b913cc4e2c1c2530952473c11515af8ae69b26": {
@@ -2043,9 +2090,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1269.6226342640832,
+      "total_usd": 1361.6403498485101,
       "last_buy": 1783093331,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x99b6c301c116c510be5feea1ebc816375bd4cabc": {
@@ -2053,9 +2100,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 272.23653726325983,
+      "total_usd": 310.71608795160574,
       "last_buy": 1783109015,
-      "buys": 23,
+      "buys": 25,
       "chain": "ETH"
     },
     "0xd862cdcfeb856c32b3c4f7563f4811d8ddfd42e2": {
@@ -2063,9 +2110,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 2552.389848790001,
+      "total_usd": 2750.3133270700014,
       "last_buy": 1783107251,
-      "buys": 51,
+      "buys": 55,
       "chain": "ETH"
     },
     "0x3cc936b795a188f0e246cbb2d74c5bd190aecf18": {
@@ -2074,9 +2121,9 @@
         "ONDO"
       ],
       "count": 2,
-      "total_usd": 38965.23945,
+      "total_usd": 41459.8629,
       "last_buy": 1783107587,
-      "buys": 17,
+      "buys": 18,
       "chain": "ETH"
     },
     "0x5be3656927318e906767ccefd62627510cb78760": {
@@ -2084,9 +2131,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 34419.789450000004,
+      "total_usd": 36914.4129,
       "last_buy": 1783075607,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x0340f4ee2a3cd44152a58ab8cb1654bd116b40e2": {
@@ -2094,9 +2141,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 34419.789450000004,
+      "total_usd": 36914.4129,
       "last_buy": 1783075559,
-      "buys": 28,
+      "buys": 30,
       "chain": "ETH"
     },
     "0x2b351f3c14a498f7809f1895698382d4cd9d1b3b": {
@@ -2104,9 +2151,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1319.146405684201,
+      "total_usd": 1414.7534274059165,
       "last_buy": 1783070543,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x8f10b468b06c6fd214b65f87778827f7d113f996": {
@@ -2117,9 +2164,9 @@
         "SPX6900"
       ],
       "count": 4,
-      "total_usd": 11655.501149861537,
+      "total_usd": 11751.108171583252,
       "last_buy": 1783109567,
-      "buys": 23,
+      "buys": 24,
       "chain": "ETH"
     },
     "0xf2b4527fef9c262af44afe419ebee713158aacd0": {
@@ -2127,9 +2174,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 2455.7418449633383,
+      "total_usd": 2633.725246125364,
       "last_buy": 1783057931,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x7bda6b1e231886ecce1b836755e2aba3973d0d53": {
@@ -2137,9 +2184,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1523.5052186632229,
+      "total_usd": 1633.9234375252402,
       "last_buy": 1783054223,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0x59ddbc698923b76fe50a366363c29d860632b038": {
@@ -2159,9 +2206,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 2697.4283917265734,
+      "total_usd": 2883.944010037985,
       "last_buy": 1783109015,
-      "buys": 34,
+      "buys": 36,
       "chain": "ETH"
     },
     "0xb53cbaf4621a292c9483586e02834b4632e82234": {
@@ -2189,9 +2236,9 @@
         "SOIL"
       ],
       "count": 1,
-      "total_usd": 3660.492748094402,
+      "total_usd": 3921.9565158154305,
       "last_buy": 1783086815,
-      "buys": 56,
+      "buys": 60,
       "chain": "ETH"
     },
     "0xa404b46432b3da81d9f81bd0bfcba051dac7fe9a": {
@@ -2199,9 +2246,9 @@
         "SOIL"
       ],
       "count": 1,
-      "total_usd": 2892.712864568229,
+      "total_usd": 3099.3352120373884,
       "last_buy": 1783086815,
-      "buys": 28,
+      "buys": 30,
       "chain": "ETH"
     },
     "0x2567f921a37ff1df89d6a2a1869b533f7374831b": {
@@ -2209,9 +2256,9 @@
         "SOIL"
       ],
       "count": 1,
-      "total_usd": 2892.712864568229,
+      "total_usd": 3099.3352120373884,
       "last_buy": 1783086815,
-      "buys": 28,
+      "buys": 30,
       "chain": "ETH"
     },
     "0xe7206bd77a92d5cf22f3c3927911b5e9dd770b1c": {
@@ -2219,9 +2266,9 @@
         "SOIL"
       ],
       "count": 1,
-      "total_usd": 273.4405247526257,
+      "total_usd": 292.9719908063847,
       "last_buy": 1783040579,
-      "buys": 14,
+      "buys": 15,
       "chain": "ETH"
     },
     "0xb1be96ec8a5943bfaa1e761eff82ca50cd15f1b7": {
@@ -2290,9 +2337,9 @@
         "PEPE"
       ],
       "count": 2,
-      "total_usd": 217770.70072175603,
-      "last_buy": 1783109939,
-      "buys": 7,
+      "total_usd": 285343.15084374003,
+      "last_buy": 1783110347,
+      "buys": 9,
       "chain": "ETH"
     },
     "0x2d7fc99c7af3ef48474f5e55cc5ff418cea3fcc3": {
@@ -2384,9 +2431,9 @@
         "SPX6900"
       ],
       "count": 2,
-      "total_usd": 25366.481989605552,
-      "last_buy": 1783106639,
-      "buys": 10,
+      "total_usd": 29462.2528513027,
+      "last_buy": 1783110311,
+      "buys": 11,
       "chain": "ETH"
     },
     "0x6c1864c54160cf5e593e1b2deb890bea49403172": {
@@ -2476,9 +2523,9 @@
         "PEPE"
       ],
       "count": 1,
-      "total_usd": 24.082566029504378,
-      "last_buy": 1783110035,
-      "buys": 2,
+      "total_usd": 34.49333134163722,
+      "last_buy": 1783110383,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x2dca8b8ccfc3686a1ea1ba0c6ee11f15a0e968cb": {
@@ -2621,9 +2668,9 @@
         "SPX6900"
       ],
       "count": 3,
-      "total_usd": 8269.648409352632,
+      "total_usd": 8277.257631797413,
       "last_buy": 1783110107,
-      "buys": 15,
+      "buys": 16,
       "chain": "ETH"
     },
     "0x25d267573714bddc2988bba5aa773705c7097fdd": {
@@ -2681,9 +2728,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 43800.87198083877,
-      "last_buy": 1783109951,
-      "buys": 28,
+      "total_usd": 52437.264947986936,
+      "last_buy": 1783110347,
+      "buys": 31,
       "chain": "ETH"
     },
     "0xa4312621c412c631b76b9babd86ba48143c9a597": {
@@ -2782,9 +2829,9 @@
         "PEPE"
       ],
       "count": 2,
-      "total_usd": 17.022191786351996,
+      "total_usd": 18.992420925211896,
       "last_buy": 1783110143,
-      "buys": 4,
+      "buys": 5,
       "chain": "ETH"
     },
     "0xb8001c3ec9aa1985f6c747e25c28324e4a361ec1": {
@@ -2874,9 +2921,9 @@
         "PEPE"
       ],
       "count": 1,
-      "total_usd": 333312.0000181968,
-      "last_buy": 1783107227,
-      "buys": 5,
+      "total_usd": 503808.0000181968,
+      "last_buy": 1783110347,
+      "buys": 6,
       "chain": "ETH"
     },
     "0x06cff7088619c7178f5e14f0b119458d08d2f5ef": {
@@ -3176,9 +3223,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 1344.4088356808345,
+      "total_usd": 1494.5332323067762,
       "last_buy": 1783107215,
-      "buys": 9,
+      "buys": 10,
       "chain": "ETH"
     },
     "0x4f63d1d54a984949a1bc82e660937ed09a725ed0": {
@@ -3186,9 +3233,9 @@
         "DEAI"
       ],
       "count": 1,
-      "total_usd": 130.26384054130997,
+      "total_usd": 144.80984763708946,
       "last_buy": 1783107215,
-      "buys": 9,
+      "buys": 10,
       "chain": "ETH"
     },
     "0x4655b6a10c83d6beff1dc7116436cfd8b4f8d48a": {
@@ -3498,9 +3545,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 190049.7296034,
-      "last_buy": 1783108007,
-      "buys": 3,
+      "total_usd": 190504.3186564,
+      "last_buy": 1783110359,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x000000000004444c5dc75cb358380d2e3de08a90": {
@@ -3910,9 +3957,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 24917.395548784396,
+      "total_usd": 49803.847613568796,
       "last_buy": 1783109999,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x2524c41299d5175f1356e802859393436a49d7d0": {
@@ -4090,9 +4137,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 83645.8634470698,
+      "total_usd": 100375.03613648376,
       "last_buy": 1783108979,
-      "buys": 5,
+      "buys": 6,
       "chain": "ETH"
     },
     "0x10c40fec71f6cd0f85613467eba1857ecb1d1308": {
@@ -4100,9 +4147,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 3917.927541577355,
+      "total_usd": 4947.273049892827,
       "last_buy": 1783109651,
-      "buys": 7,
+      "buys": 9,
       "chain": "ETH"
     },
     "0x7c706586679af2ba6d1a9fc2da9c6af59883fdd3": {
@@ -4110,9 +4157,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 2766.377442205583,
+      "total_usd": 3101.245555216843,
       "last_buy": 1783109759,
-      "buys": 24,
+      "buys": 26,
       "chain": "ETH"
     },
     "0x6c715c0df19f07cfa79b76e7ef68ec21c7cdfda3": {
@@ -4230,9 +4277,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 476.55058895999997,
+      "total_usd": 595.6882362,
       "last_buy": 1783109351,
-      "buys": 4,
+      "buys": 5,
       "chain": "ETH"
     },
     "0x4b0ed409e4b66593ca41b0551e1e1aaeed853e23": {
@@ -4240,20 +4287,21 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 219.97402741332,
+      "total_usd": 274.96753426665,
       "last_buy": 1783109351,
-      "buys": 4,
+      "buys": 5,
       "chain": "ETH"
     },
     "0x225a38bc71102999dd13478bfabd7c4d53f2dc17": {
       "tokens": [
+        "ENA",
         "ONDO",
         "PEPE"
       ],
-      "count": 2,
-      "total_usd": 13296.800000000001,
-      "last_buy": 1783109291,
-      "buys": 6,
+      "count": 3,
+      "total_usd": 23689.937804070247,
+      "last_buy": 1783110179,
+      "buys": 8,
       "chain": "ETH"
     },
     "0xa54dc4425190570cb5c841adf445bbecf3b249f5": {
@@ -4393,9 +4441,9 @@
         "PEPE"
       ],
       "count": 1,
-      "total_usd": 905.283985994879,
-      "last_buy": 1783110059,
-      "buys": 4,
+      "total_usd": 1572.103932332857,
+      "last_buy": 1783110323,
+      "buys": 5,
       "chain": "ETH"
     },
     "0x747ebb73dffa38e7653cde1718aae84231b793df": {
@@ -4423,9 +4471,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 1.7302317341940001,
+      "total_usd": 2.162763274556,
       "last_buy": 1783109291,
-      "buys": 4,
+      "buys": 5,
       "chain": "ETH"
     },
     "0x50e2fe6a9c6be905f4dbdb80b81ba21726ec86b2": {
@@ -4433,9 +4481,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 950.1210047879999,
+      "total_usd": 1187.6367627119998,
       "last_buy": 1783109051,
-      "buys": 4,
+      "buys": 5,
       "chain": "ETH"
     },
     "0x266e383dcd24e510dfea6475100aaf522c31d51e": {
@@ -4463,9 +4511,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 1520.3480668416,
+      "total_usd": 2027.1307557888,
       "last_buy": 1783109555,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x1aab567eae76c0f9eb22c8031c38ad9b6e6479cc": {
@@ -4473,9 +4521,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 30.862605100482,
+      "total_usd": 41.150140133976,
       "last_buy": 1783109531,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xbdccfdb40d17b89c462f67dbe6f3a518b0333e02": {
@@ -4483,9 +4531,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 30323.781,
+      "total_usd": 40431.708,
       "last_buy": 1783109471,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x6ebff12986601009059c75c96bd8016e60711f85": {
@@ -4493,9 +4541,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 152.5321382445,
+      "total_usd": 203.376184326,
       "last_buy": 1783109387,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x13c19bc0d5946c59404fea706569f7ce9b6656f4": {
@@ -4503,9 +4551,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 107.05473,
+      "total_usd": 142.73964,
       "last_buy": 1783109375,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xb7131fc8cdc43060a6210257f537dba5fcae6aed": {
@@ -4563,9 +4611,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 1087.5852245421202,
+      "total_usd": 1450.0546514476002,
       "last_buy": 1783109555,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xa06a7d5965bd6204e40b53395b3a2518aa3b35c2": {
@@ -4573,9 +4621,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 56547.8,
+      "total_usd": 75394.0,
       "last_buy": 1783109543,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xab782bc7d4a2b306825de5a7730034f8f63ee1bc": {
@@ -4583,9 +4631,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 5371.7536707200425,
+      "total_usd": 7162.04690987566,
       "last_buy": 1783109531,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xd51b69e2f6155f6aed9452fe1333178e58061f7d": {
@@ -4593,9 +4641,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 52.11290171805,
+      "total_usd": 69.4810428015,
       "last_buy": 1783109447,
-      "buys": 3,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x379b20f5409d34791f0fbef291a0756dd18fc585": {
@@ -4604,9 +4652,9 @@
         "ONDO"
       ],
       "count": 2,
-      "total_usd": 201.86934054306002,
+      "total_usd": 260.12913692586,
       "last_buy": 1783109723,
-      "buys": 4,
+      "buys": 5,
       "chain": "ETH"
     },
     "0x120051a72966950b8ce12eb5496b5d1eeec1541b": {
@@ -4614,9 +4662,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 274.0805865,
+      "total_usd": 411.12087975,
       "last_buy": 1783109663,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x0c15d57e6bf07d91d443a65e01532bd3ab2947ed": {
@@ -4624,9 +4672,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 10.290867037272001,
+      "total_usd": 15.436300555908002,
       "last_buy": 1783109663,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x1fa003b0ec22c9b770eac60d636339252d45d526": {
@@ -4634,9 +4682,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 1.830189193866,
+      "total_usd": 2.745283790799,
       "last_buy": 1783109579,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x71c0175c81d4942813e4d29518a43a65cd4dc4b5": {
@@ -4674,9 +4722,9 @@
         "PEPE"
       ],
       "count": 1,
-      "total_usd": 19.237091568426226,
-      "last_buy": 1783110059,
-      "buys": 2,
+      "total_usd": 34.15031563037734,
+      "last_buy": 1783110323,
+      "buys": 3,
       "chain": "ETH"
     },
     "0xcee88cea32238b78c54b13ae3e1cea15c6d640cb": {
@@ -4685,9 +4733,9 @@
         "SPX6900"
       ],
       "count": 2,
-      "total_usd": 7313.309841534421,
+      "total_usd": 10968.812699322756,
       "last_buy": 1783110071,
-      "buys": 6,
+      "buys": 9,
       "chain": "ETH"
     },
     "0x905184c521129d4f201964a493d1bbd644cbd3e3": {
@@ -4695,9 +4743,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 6127.695154392235,
+      "total_usd": 9783.19801218057,
       "last_buy": 1783110071,
-      "buys": 5,
+      "buys": 8,
       "chain": "ETH"
     },
     "0x6dbc0425ad8669d3677da872b0d8ea41284f67d2": {
@@ -4705,9 +4753,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 327.88,
+      "total_usd": 491.76,
       "last_buy": 1783109747,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x0d488e13cddee7fcc94725cca580763c7dc1dbef": {
@@ -4715,9 +4763,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 1476.680637819947,
+      "total_usd": 2214.7507333607937,
       "last_buy": 1783109687,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x7c1c4a2cf81d2fc83b89bfd34f4d2c7e90044b32": {
@@ -4725,9 +4773,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 636.35556469786,
+      "total_usd": 954.41689793772,
       "last_buy": 1783109687,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0xaf6d057f77284e4c2d84b903a8ec06db49e2c15e": {
@@ -4735,9 +4783,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 636.35556469786,
+      "total_usd": 954.41689793772,
       "last_buy": 1783109687,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0x856b40f70ae8a974e2ea1b00ece77e5f4d71b51a": {
@@ -4745,9 +4793,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 118.935302769367,
+      "total_usd": 178.38118973363402,
       "last_buy": 1783109627,
-      "buys": 2,
+      "buys": 3,
       "chain": "ETH"
     },
     "0xd768efced8e416b8546f9db50584f0ca8158713e": {
@@ -4755,9 +4803,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 2388.0,
+      "total_usd": 4778.1,
       "last_buy": 1783110131,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xf8191d98ae98d2f7abdfb63a9b0b812b93c873aa": {
@@ -4765,9 +4813,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 74670.29240000002,
+      "total_usd": 149406.24963000003,
       "last_buy": 1783110119,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xc8aa941d5e971943ad5105f6345b174240f6e4b3": {
@@ -4775,9 +4823,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 2946.9512,
+      "total_usd": 5896.49394,
       "last_buy": 1783110083,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xc1db853478ee28aed6bfd4257c582d418d699d4e": {
@@ -4785,9 +4833,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 278.5390646856039,
+      "total_usd": 557.323075784876,
       "last_buy": 1783110059,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x1111111254eeb25477b68fb85ed929f73a960582": {
@@ -4795,9 +4843,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 561.228951029022,
+      "total_usd": 1122.9514451054315,
       "last_buy": 1783110059,
-      "buys": 2,
+      "buys": 4,
       "chain": "ETH"
     },
     "0xc3ddc0839941b0555841bba76729ca37e4dea487": {
@@ -4805,9 +4853,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 282.6898863434182,
+      "total_usd": 565.6283693205555,
       "last_buy": 1783109999,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x4e2f7b99a1fb7be33feb1db3316c6c0f43da408a": {
@@ -4815,9 +4863,9 @@
         "ENA"
       ],
       "count": 1,
-      "total_usd": 79.19722690998007,
+      "total_usd": 158.4640996225192,
       "last_buy": 1783109951,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x278d858f05b94576c1e6f73285886876ff6ef8d2": {
@@ -4845,9 +4893,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 7.542641748387605,
+      "total_usd": 15.08528349677521,
       "last_buy": 1783110107,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x111111125421ca6dc452d289314280a0f8842a65": {
@@ -4855,9 +4903,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 7.609222444779424,
+      "total_usd": 15.218444889558848,
       "last_buy": 1783110107,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xc4d31ad85b3cf5aa02095e54c532ccbf06c98192": {
@@ -4865,9 +4913,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 120.87877485459602,
+      "total_usd": 241.75754970919203,
       "last_buy": 1783110095,
-      "buys": 2,
+      "buys": 4,
       "chain": "ETH"
     },
     "0x01772453738695f78fd547f29f153003a0217e68": {
@@ -4875,9 +4923,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 4.992044256044999,
+      "total_usd": 9.984088512089999,
       "last_buy": 1783110071,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x65a80613d145f77e2b031a7ca1d02f743bb31d92": {
@@ -4885,9 +4933,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 43.377154745363995,
+      "total_usd": 86.75430949072799,
       "last_buy": 1783109963,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xb67ae39d7b25d873c996409ef9d34a4e59042f1b": {
@@ -4895,9 +4943,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 6.8486940992741046,
+      "total_usd": 13.697388198548209,
       "last_buy": 1783109927,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x052d38e414b3c1d7b145350595db07c59026360e": {
@@ -4905,9 +4953,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 105.15295592999999,
+      "total_usd": 210.30591185999998,
       "last_buy": 1783109783,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0x72b5bf6557787f2bfaf1721eb8792ba033014532": {
@@ -4915,9 +4963,9 @@
         "ONDO"
       ],
       "count": 1,
-      "total_usd": 2025.5996163393,
+      "total_usd": 4051.1992326786,
       "last_buy": 1783109783,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xfbeedcfe378866dab6abbafd8b2986f5c1768737": {
@@ -4995,9 +5043,9 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 0.4097,
+      "total_usd": 0.8194,
       "last_buy": 1783110143,
-      "buys": 1,
+      "buys": 2,
       "chain": "ETH"
     },
     "0xa6f2eb2bc41e041f44e8296a46a7eb26fa1d45a8": {
@@ -5005,8 +5053,141 @@
         "SPX6900"
       ],
       "count": 1,
-      "total_usd": 409.7,
-      "last_buy": 1783109999,
+      "total_usd": 4302.2597,
+      "last_buy": 1783110239,
+      "buys": 3,
+      "chain": "ETH"
+    },
+    "0x02e701c691a47fff9ced9e0ca8c16122cd7ef4c0": {
+      "tokens": [
+        "ENA",
+        "ONDO",
+        "PEPE"
+      ],
+      "count": 3,
+      "total_usd": 48819.18132303178,
+      "last_buy": 1783110371,
+      "buys": 3,
+      "chain": "ETH"
+    },
+    "0xb51bf9029d778899d42e96ebcdc0498bd061006d": {
+      "tokens": [
+        "ENA",
+        "SPX6900"
+      ],
+      "count": 2,
+      "total_usd": 1661.9913158,
+      "last_buy": 1783110371,
+      "buys": 2,
+      "chain": "ETH"
+    },
+    "0x6118ac2d68d6a37bd09eecebe52c2a5b98b58642": {
+      "tokens": [
+        "ENA"
+      ],
+      "count": 1,
+      "total_usd": 47.802,
+      "last_buy": 1783110311,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0x0c7e8f71ccc08385977b7a51e037acc6293c1ad2": {
+      "tokens": [
+        "ENA"
+      ],
+      "count": 1,
+      "total_usd": 283.52383585900003,
+      "last_buy": 1783110239,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0xcc0c5a6ff6bc10031615fbcf3a96472a4b759d72": {
+      "tokens": [
+        "ENA"
+      ],
+      "count": 1,
+      "total_usd": 171.259284839881,
+      "last_buy": 1783110227,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0xed9b240a5fceffa170bba44ca53b5e786449187c": {
+      "tokens": [
+        "ENA"
+      ],
+      "count": 1,
+      "total_usd": 4195.74088,
+      "last_buy": 1783110179,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0x9365c4992f1b86adc3eb53110a52034f8b3f0c12": {
+      "tokens": [
+        "ENA"
+      ],
+      "count": 1,
+      "total_usd": 8378.937804070247,
+      "last_buy": 1783110179,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0x73263353abadba443b7b5a793271d946205de698": {
+      "tokens": [
+        "ONDO"
+      ],
+      "count": 1,
+      "total_usd": 5.7069,
+      "last_buy": 1783110395,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0x18eb60fe71fcd9a6dbe3b09ab9a0cf38189792b1": {
+      "tokens": [
+        "ONDO"
+      ],
+      "count": 1,
+      "total_usd": 10107.852463246627,
+      "last_buy": 1783110311,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0xae3531f8c2a4b2f7d26333083f7d2352cac38c9a": {
+      "tokens": [
+        "ONDO"
+      ],
+      "count": 1,
+      "total_usd": 127.82983535552914,
+      "last_buy": 1783110299,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0x671a7df18aa02009e8749ca173725ca02af4fb73": {
+      "tokens": [
+        "ONDO"
+      ],
+      "count": 1,
+      "total_usd": 2014.2,
+      "last_buy": 1783110179,
+      "buys": 1,
+      "chain": "ETH"
+    },
+    "0x5c683723f59f02a38a8d2457c253c87ed3e0d037": {
+      "tokens": [
+        "PEPE"
+      ],
+      "count": 1,
+      "total_usd": 10.068122507741094,
+      "last_buy": 1783110395,
+      "buys": 3,
+      "chain": "ETH"
+    },
+    "0x2c242c8da2c5b25191bb6d2d88b8703446d28fc6": {
+      "tokens": [
+        "PEPE"
+      ],
+      "count": 1,
+      "total_usd": 1.6038356021621318,
+      "last_buy": 1783110263,
       "buys": 1,
       "chain": "ETH"
     }
@@ -5100,12 +5281,28 @@
       "insider_score": 57,
       "tag": "smart"
     },
+    "0x7f51c134230eb9e5aba42bc364d3d3eba26d9712": {
+      "chain": "ETH",
+      "label": "0x7f51...9712",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 56,
+      "tag": "smart"
+    },
     "0xbdb3ba9ffe392549e1f8658dd2630c141fdf47b6": {
       "chain": "ETH",
       "label": "0xbdb3...47b6",
       "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 56,
+      "tag": "smart"
+    },
+    "0x02e701c691a47fff9ced9e0ca8c16122cd7ef4c0": {
+      "chain": "ETH",
+      "label": "0x02e7...f4c0",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 54,
       "tag": "smart"
     },
     "0x58edf78281334335effa23101bbe3371b6a36a51": {
@@ -5148,28 +5345,12 @@
       "insider_score": 51,
       "tag": "smart"
     },
-    "0x22ecf2bed494976503a8087add30e134c30fbd98": {
+    "0x225a38bc71102999dd13478bfabd7c4d53f2dc17": {
       "chain": "ETH",
-      "label": "0x22ec...bd98",
+      "label": "0x225a...dc17",
       "last_check": 0,
       "last_seen_tokens": [],
-      "insider_score": 49,
-      "tag": "smart"
-    },
-    "0xde0e4baa56149d7d0fb0cc94e2c82a0fc3387d6c": {
-      "chain": "ETH",
-      "label": "0xde0e...7d6c",
-      "last_check": 0,
-      "last_seen_tokens": [],
-      "insider_score": 49,
-      "tag": "smart"
-    },
-    "0xfc9161b99a3b0691477e12737163d007600ac262": {
-      "chain": "ETH",
-      "label": "0xfc91...c262",
-      "last_check": 0,
-      "last_seen_tokens": [],
-      "insider_score": 49,
+      "insider_score": 51,
       "tag": "smart"
     }
   },
@@ -5179,26 +5360,26 @@
     "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3": {
       "symbol": "ONDO",
       "chain": "ETH",
-      "n_insiders": 26,
+      "n_insiders": 29,
       "avg_score": 44,
       "holders": [
         "0x28c6...1d60",
         "0x9008...ab41",
         "0x51c7...2a7f"
       ],
-      "detected_at": 1783109784
+      "detected_at": 1783110408
     },
     "0x6982508145454ce325ddbe47a25d4ec3d2311933": {
       "symbol": "PEPE",
       "chain": "ETH",
-      "n_insiders": 38,
+      "n_insiders": 40,
       "avg_score": 46,
       "holders": [
         "0x28c6...1d60",
         "0x9008...ab41",
         "0x51c7...2a7f"
       ],
-      "detected_at": 1783110182
+      "detected_at": 1783110412
     },
     "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea": {
       "symbol": "DEAI",
@@ -5214,26 +5395,26 @@
     "0x57e114b691db790c35207b2e685d4a43181e6061": {
       "symbol": "ENA",
       "chain": "ETH",
-      "n_insiders": 35,
+      "n_insiders": 36,
       "avg_score": 48,
       "holders": [
         "0x28c6...1d60",
         "0x9008...ab41",
         "0x51c7...2a7f"
       ],
-      "detected_at": 1783110178
+      "detected_at": 1783110405
     },
     "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c": {
       "symbol": "SPX6900",
       "chain": "ETH",
-      "n_insiders": 22,
-      "avg_score": 48,
+      "n_insiders": 27,
+      "avg_score": 49,
       "holders": [
         "0x28c6...1d60",
         "0x9008...ab41",
         "0x51c7...2a7f"
       ],
-      "detected_at": 1783109392
+      "detected_at": 1783110415
     }
   },
   "combo_history": [],
