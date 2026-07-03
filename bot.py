@@ -6,12 +6,14 @@ import base64
 import threading
 import requests
 
+import hit_rate  # Modulo 1: hit rate historico via GeckoTerminal
+
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 NTFY_TOPIC      = os.environ.get("NTFY_TOPIC",      "listingsniper-atzel")
 ETHERSCAN_KEY   = os.environ.get("ETHERSCAN_KEY",   "")
 HELIUS_KEY      = os.environ.get("HELIUS_KEY",      "")
-GITHUB_TOKEN    = os.environ.get("GITHUB_TOKEN",    "")
-GITHUB_REPO     = os.environ.get("GITHUB_REPO",     "")   # ej: "atzel/listing-sniper"
+GITHUB_TOKEN    = os.environ.get("GITHUB_TOKEN",    "").strip()  # strip: quita espacios/saltos accidentales
+GITHUB_REPO     = os.environ.get("GITHUB_REPO",     "").strip()  # ej: "atzel/listing-sniper"
 VERCEL_URL      = os.environ.get("VERCEL_URL",      "")   # ej: "https://alpha-terminal.vercel.app"
 PUMP_THRESHOLD  = int(os.environ.get("PUMP_THRESHOLD",  "30"))
 SCAN_INTERVAL   = int(os.environ.get("SCAN_INTERVAL",   "60"))
@@ -3052,6 +3054,52 @@ def start_api_server():
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 
+        @app.route("/api/hitrate")
+        def api_hitrate():
+            # Sirve el ultimo reporte de hit rate historico (Modulo 1).
+            # Si aun no se genero, avisa como dispararlo.
+            try:
+                if os.path.exists(hit_rate.REPORT_PATH):
+                    with open(hit_rate.REPORT_PATH, encoding="utf-8") as f:
+                        rep = json.load(f)
+                    # Resumen liviano + top combos (sin volcar todos los results)
+                    return jsonify({
+                        "status": "ok",
+                        "generated_at": rep.get("generated_at"),
+                        "hit_rate_global": rep.get("hit_rate_global"),
+                        "measured": rep.get("measured"),
+                        "no_data": rep.get("no_data"),
+                        "pending": rep.get("pending"),
+                        "no_measurable": rep.get("no_measurable"),
+                        "outcomes": rep.get("outcomes"),
+                        "by_combo": rep.get("by_combo"),
+                        "best": rep.get("best"),
+                        "worst": rep.get("worst"),
+                    })
+                return jsonify({"status": "no_report",
+                                "msg": "Aun no hay reporte. Disparalo con /api/hitrate/run"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/hitrate/run")
+        def api_hitrate_run():
+            # Regenera el reporte en segundo plano usando el estado en memoria.
+            def _job():
+                try:
+                    log("[hitrate] Reconstruyendo historico...")
+                    state = serialize_state()
+                    rep = hit_rate.generate_report(state)
+                    log(f"[hitrate] Listo: {rep['measured']} medibles, "
+                        f"{rep['hit_rate_global']}% hit rate, "
+                        f"{rep['pending']} pendientes")
+                except Exception as e:
+                    log(f"[hitrate error] {e}")
+            try:
+                threading.Thread(target=_job, daemon=True).start()
+                return jsonify({"status": "started"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
         @app.route("/api/health")
         def api_health():
             return jsonify({"status": "ok", "cycle": cycle_count})
@@ -3120,6 +3168,8 @@ if __name__ == "__main__":
     log(f"  Ntfy           : {NTFY_TOPIC}")
     log(f"  Etherscan V2   : {'OK (ETH+BNB+BASE)' if ETHERSCAN_KEY else 'sin key'}")
     log(f"  GitHub         : {'OK' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar'}")
+    # Diagnostico: longitudes (no valores) para detectar variables vacias o con espacios invisibles
+    log(f"  [diag] len(GITHUB_TOKEN)={len(GITHUB_TOKEN)} len(GITHUB_REPO)={len(GITHUB_REPO)} repo='{GITHUB_REPO}'")
     log(f"  Vercel URL     : {VERCEL_URL or 'sin configurar'}")
     log(f"  Acumulacion    : {len(ACCUMULATION_LIST)} tokens DEX + {len(COINGECKO_TOKENS)} CEX")
     log(f"  Watchlist      : {len(WATCHLIST)} | Exchanges: {len(EXCHANGE_WALLETS_ETH)+len(EXCHANGE_WALLETS_SOL)} | Whales: {len(WHALE_WALLETS)}")

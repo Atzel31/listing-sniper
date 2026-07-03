@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+
+# Artefactos generados en runtime / tests locales (no versionar)
+hit_rate_report.json
+hit_rate_cache.json
+state_test5.json
