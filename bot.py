@@ -7,6 +7,7 @@ import threading
 import requests
 
 import hit_rate  # Modulo 1: hit rate historico via GeckoTerminal
+import insider_quality  # Modulo 2: filtro de calidad de wallets insider
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 NTFY_TOPIC      = os.environ.get("NTFY_TOPIC",      "listingsniper-atzel")
@@ -2108,6 +2109,12 @@ def register_smart_wallet(addr, chain, entry, forensic=False, label="", check_qu
         if not is_quality:
             log(f"  Wallet descartada (no insider): {short(addr)} — {reason}")
             return None
+        # Modulo 2: filtro profundo (contrato / tx totales / tokens 30d).
+        # Solo descarta ante veredicto CONFIRMADO; un fallo de API deja pasar.
+        q = insider_quality.wallet_quality(addr, chain)
+        if q["status"] == "ok" and not q["valid"]:
+            log(f"  Wallet descartada (filtro insider): {short(addr)} — {q['reason']}")
+            return None
     sw = smart_wallets.setdefault(addr, {
         "chain": chain, "tokens": set(), "total_usd": 0.0,
         "buys": 0, "insider_score": 0, "last_seen": 0,
@@ -2432,6 +2439,28 @@ def run_forensic_analysis():
             priority="default", tags="detective",
             click_url=VERCEL_URL,
         )
+
+def purge_low_quality_wallets():
+    """
+    Modulo 2: purga inicial. Revisa las smart wallets ya listadas y elimina
+    bots / market makers / contratos segun insider_quality. Las que fallan por
+    API quedan pendientes (no se tocan). Corre una vez al arrancar.
+    """
+    if not smart_wallets:
+        return
+    log(f"-- Purga de calidad de {len(smart_wallets)} smart wallets (Modulo 2) --")
+    chain_of = lambda a: smart_wallets.get(a, {}).get("chain", "ETH")
+    to_remove, reasons = insider_quality.purge_wallets(
+        list(smart_wallets.keys()), chain_of, log=log
+    )
+    for addr in to_remove:
+        smart_wallets.pop(addr, None)
+        tracked_whale_set.pop(addr, None)
+        accum_big_buyers.pop(addr, None)
+    if to_remove:
+        update_tracked_whales()  # recalcular top-N tras la purga
+        save_state(force=True)
+        log(f"-- Purga completa: {len(to_remove)} wallets eliminadas --")
 
 def update_tracked_whales():
     """Selecciona el top N de smart wallets por score y las pone en seguimiento activo."""
@@ -3176,6 +3205,7 @@ if __name__ == "__main__":
     log(f"  Reporte semanal: Lunes {WEEKLY_UTC_HOUR}:00 UTC ({WEEKLY_UTC_HOUR-5}:00 Peru)")
     log(f"  Forense+diario : {DAILY_UTC_HOUR}:00 UTC ({DAILY_UTC_HOUR-5}:00 Peru)")
     log(f"  Insiders       : top {MAX_TRACKED_WHALES} smart wallets, min {INSIDER_MIN_TOKENS} tokens")
+    log(f"  Filtro calidad : max {insider_quality.MAX_TX_COUNT} tx, max {insider_quality.MAX_UNIQUE_TOKENS} tokens/30d, descarta contratos")
     log(f"  Combo          : ventana {COMBO_WINDOW_H}h | Listing cache {LISTING_CACHE_MIN}min")
     log(f"  Prob pump min  : {MIN_PUMP_PROB}% | Rug si liq cae >{RUG_LIQ_DROP}% | Track {TRACK_HOURS}h")
     log("")
@@ -3187,6 +3217,9 @@ if __name__ == "__main__":
     # Cargar estado persistido (insiders/smart wallets de sesiones anteriores)
     log("-- Cargando estado persistido --")
     load_state()
+
+    # Modulo 2: purga inicial de bots/MM en segundo plano (no bloquea el arranque)
+    threading.Thread(target=purge_low_quality_wallets, daemon=True).start()
 
     notify(
         "Alpha Terminal v9 activo",
