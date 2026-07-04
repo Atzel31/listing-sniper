@@ -2658,10 +2658,38 @@ def github_read_json(path):
         log(f"[github read] {e}")
         return None
 
-# ─── PERSISTENCIA DE ESTADO (sobrevive redeploys de Railway) ─────────────────
-STATE_PATH = "data/state.json"
+# ─── PERSISTENCIA DE ESTADO (Railway Volume primero, GitHub como respaldo) ───
+# El Volume de Railway se monta en DATA_DIR (por defecto /data). Sobrevive
+# reinicios y redeploys sin depender de tokens ni llamadas de red.
+DATA_DIR = os.environ.get("DATA_DIR", "/data").strip() or "/data"
+STATE_PATH = "data/state.json"                     # ruta en GitHub (respaldo opcional)
+STATE_FILE = os.path.join(DATA_DIR, "state.json")  # ruta en el Volume (principal)
+BOT_VERSION = "v9.1"
 last_state_save = 0
+last_github_backup = 0
 last_outcome_check = 0  # Modulo 3: ultimo chequeo del ledger de outcomes (cada 6h)
+
+def _ensure_data_dir():
+    """Asegura que el directorio de datos exista. Si /data no es escribible
+    (Volume no montado), usa ./data_local como fallback para no crashear."""
+    global DATA_DIR, STATE_FILE
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        test = os.path.join(DATA_DIR, ".write_test")
+        with open(test, "w") as f:
+            f.write("ok")
+        os.remove(test)
+        return True
+    except Exception:
+        DATA_DIR = "./data_local"
+        STATE_FILE = os.path.join(DATA_DIR, "state.json")
+        try:
+            os.makedirs(DATA_DIR, exist_ok=True)
+            log(f"[estado] AVISO: Volume no montado en /data. Usando {DATA_DIR} (NO sobrevive redeploys). Monta un Volume en Railway.")
+            return False
+        except Exception as e:
+            log(f"[estado] Sin directorio escribible: {e}")
+            return False
 
 def serialize_state():
     """Convierte el estado en memoria a un dict JSON-serializable (sets -> listas)."""
@@ -2700,6 +2728,7 @@ def serialize_state():
         }
     return {
         "saved_at": int(time.time()),
+        "bot_version": BOT_VERSION,
         "smart_wallets": sw,
         "accum_big_buyers": bb,
         "tracked_whale_set": tw,
@@ -2708,28 +2737,64 @@ def serialize_state():
         "insider_convergences": insider_convergences,
         "combo_history": combo_history[-200:],
         "my_positions": my_positions,
-        "signals_ledger": outcome_tracker.export_ledger(),
+        "signals_ledger": outcome_tracker.export_ledger(),  # Modulo 3
+        # Anti-duplicados: recordar que ya se notifico (las keys expiran solas
+        # porque dedup_key embebe la ventana temporal)
+        "seen_signals": list(seen_signals)[-5000:],
+        "seen_contracts": list(seen_contracts)[-2000:],
+        "korean_seen_notices": list(korean_seen_notices)[-500:],
+        "holder_counts": holder_counts,
+        # Reportes: no repetir el diario/semanal tras un reinicio
+        "last_daily_day": last_daily_day,
+        "last_weekly_week": last_weekly_week,
+        "last_forensic_day": last_forensic_day,
+        # Notificacion de arranque: solo una vez por version
+        "announced_version": BOT_VERSION,
     }
 
 def save_state(force=False):
-    """Guarda el estado a GitHub. Throttle de 10 min salvo force=True."""
-    global last_state_save
+    """Guarda el estado. Volume SIEMPRE (barato y local). GitHub como respaldo
+    cada 30 min si esta configurado. Throttle de 60s salvo force=True."""
+    global last_state_save, last_github_backup
     now = time.time()
-    if not force and now - last_state_save < 600:
-        return
-    if not (GITHUB_TOKEN and GITHUB_REPO):
+    if not force and now - last_state_save < 60:
         return
     state = serialize_state()
-    if github_commit_json(STATE_PATH, state, f"Estado {time.strftime('%Y-%m-%d %H:%M', time.gmtime())}"):
+    # 1. Volume (principal): escritura atomica (tmp + rename) para no corromper
+    try:
+        tmp = STATE_FILE + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(state, f)
+        os.replace(tmp, STATE_FILE)
         last_state_save = now
-        log(f"[estado] Guardado: {len(smart_wallets)} smart wallets, {len(accum_big_buyers)} big buyers")
+    except Exception as e:
+        log(f"[estado] Error guardando en Volume: {e}")
+    # 2. GitHub (respaldo opcional, menos frecuente)
+    if GITHUB_TOKEN and GITHUB_REPO and (force or now - last_github_backup > 1800):
+        if github_commit_json(STATE_PATH, state, f"Estado {time.strftime('%Y-%m-%d %H:%M', time.gmtime())}"):
+            last_github_backup = now
 
 def load_state():
-    """Carga el estado desde GitHub al arrancar."""
-    state = github_read_json(STATE_PATH)
+    """Carga el estado al arrancar: Volume primero, GitHub como respaldo."""
+    global last_daily_day, last_weekly_week, last_forensic_day
+    state = None
+    source = ""
+    # 1. Volume
+    try:
+        if os.path.exists(STATE_FILE):
+            with open(STATE_FILE) as f:
+                state = json.load(f)
+            source = "Volume"
+    except Exception as e:
+        log(f"[estado] Error leyendo Volume: {e}")
+    # 2. GitHub (respaldo)
     if not state:
-        log("[estado] Sin estado previo (primer arranque o sin GitHub)")
-        return
+        state = github_read_json(STATE_PATH)
+        if state:
+            source = "GitHub"
+    if not state:
+        log("[estado] Sin estado previo (primer arranque)")
+        return None
     try:
         for addr, w in state.get("smart_wallets", {}).items():
             smart_wallets[addr] = {
@@ -2766,11 +2831,26 @@ def load_state():
         insider_convergences.update(state.get("insider_convergences", {}))
         combo_history.extend(state.get("combo_history", []))
         my_positions.update(state.get("my_positions", {}))
-        outcome_tracker.load_ledger(state.get("signals_ledger", {}))
+        outcome_tracker.load_ledger(state.get("signals_ledger", {}))  # Modulo 3
+        # Anti-duplicados: no re-notificar lo mismo tras un reinicio
+        seen_signals.update(state.get("seen_signals", []))
+        seen_contracts.update(state.get("seen_contracts", []))
+        korean_seen_notices.update(state.get("korean_seen_notices", []))
+        holder_counts.update(state.get("holder_counts", {}))
+        # Reportes: no repetir el diario/semanal del mismo periodo
+        if state.get("last_daily_day"):
+            last_daily_day = state["last_daily_day"]
+        if state.get("last_weekly_week"):
+            last_weekly_week = state["last_weekly_week"]
+        if state.get("last_forensic_day"):
+            last_forensic_day = state["last_forensic_day"]
         saved_ago = (time.time() - state.get("saved_at", 0)) / 3600
-        log(f"[estado] Cargado: {len(smart_wallets)} smart wallets, {len(tracked_whale_set)} en seguimiento (guardado hace {saved_ago:.1f}h)")
+        log(f"[estado] Cargado de {source}: {len(smart_wallets)} smart wallets, "
+            f"{len(seen_signals)} señales recordadas (guardado hace {saved_ago:.1f}h)")
+        return state
     except Exception as e:
         log(f"[estado load] {e}")
+        return None
 
 def weekly_report():
     """Genera el analisis semanal, lo sube a GitHub y notifica por Ntfy."""
@@ -2832,6 +2912,7 @@ def weekly_report():
 
     last_weekly_week = iso_week_now()
     week_events = []
+    save_state(force=True)  # persistir que esta semana ya se envio
     log("=== REPORTE SEMANAL ENVIADO ===")
 
 def daily_report():
@@ -2925,6 +3006,7 @@ def check_daily_report():
     today = time.strftime("%Y-%m-%d", t)
     if t.tm_hour >= DAILY_UTC_HOUR and last_daily_day != today:
         last_daily_day = today
+        save_state(force=True)  # persistir YA que hoy se envio, antes de tareas largas
         # Forense primero (alimenta smart wallets), luego resumen
         if last_forensic_day != today:
             try:
@@ -2932,6 +3014,7 @@ def check_daily_report():
             except Exception as e:
                 log(f"[forense error] {e}")
         daily_report()
+        save_state(force=True)
 
 def check_weekly_report():
     """Verifica si toca generar el reporte (Lunes a la hora configurada)."""
@@ -3237,19 +3320,18 @@ def scan():
     if time.time() - last_outcome_check >= 6 * 3600:
         last_outcome_check = time.time()
         threading.Thread(target=_run_outcome_check, daemon=True).start()
-    # Guardar estado cada 5 ciclos (con throttle interno de 10 min)
-    if cycle_count % 5 == 0:
-        save_state()
+    # Guardar estado cada ciclo (el Volume es local y barato; throttle interno de 60s)
+    save_state()
     check_daily_report()
     check_weekly_report()
     log(f"=== Ciclo {cycle_count} completo. Esperando {SCAN_INTERVAL}s ===\n")
 
 # ─── INICIO ───────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    log("Alpha Terminal Bot v6 iniciado")
+    log(f"Alpha Terminal Bot {BOT_VERSION} iniciado")
     log(f"  Ntfy           : {NTFY_TOPIC}")
     log(f"  Etherscan V2   : {'OK (ETH+BNB+BASE)' if ETHERSCAN_KEY else 'sin key'}")
-    log(f"  GitHub         : {'OK' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar'}")
+    log(f"  GitHub         : {'OK (respaldo)' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar (opcional)'}")
     # Diagnostico: longitudes (no valores) para detectar variables vacias o con espacios invisibles
     log(f"  [diag] len(GITHUB_TOKEN)={len(GITHUB_TOKEN)} len(GITHUB_REPO)={len(GITHUB_REPO)} repo='{GITHUB_REPO}'")
     log(f"  Vercel URL     : {VERCEL_URL or 'sin configurar'}")
@@ -3263,33 +3345,49 @@ if __name__ == "__main__":
     log(f"  Prob pump min  : {MIN_PUMP_PROB}% | Rug si liq cae >{RUG_LIQ_DROP}% | Track {TRACK_HOURS}h")
     log("")
 
+    # Preparar directorio de datos (Railway Volume en /data)
+    volume_ok = _ensure_data_dir()
+    log(f"  Persistencia   : {DATA_DIR} ({'Volume OK' if volume_ok else 'SIN VOLUME - montar en Railway'})")
+
     # Iniciar API en thread separado
     api_thread = threading.Thread(target=start_api_server, daemon=True)
     api_thread.start()
 
-    # Cargar estado persistido (insiders/smart wallets de sesiones anteriores)
+    # Cargar estado persistido (insiders, anti-duplicados, reportes)
     log("-- Cargando estado persistido --")
-    load_state()
+    prev_state = load_state()
 
     # Modulo 2: purga inicial de bots/MM en segundo plano (no bloquea el arranque)
     threading.Thread(target=purge_low_quality_wallets, daemon=True).start()
 
-    notify(
-        "Alpha Terminal v9 activo",
-        f"Nuevas mejoras (Grupo D - final):\n"
-        f"Alertas de SALIDA (x2/x3 y caida tras pico)\n"
-        f"Contexto de mercado BTC en cada alerta\n"
-        f"Alertas de crecimiento de holders\n\n"
-        f"Marca posiciones con 'estoy dentro' para vigilar salida.\n"
-        f"Smart wallets cargadas: {len(smart_wallets)}\n"
-        f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
-        priority="high", tags="white_check_mark",
-    )
+    # Notificar arranque SOLO si es la primera vez con esta version.
+    # Esto corta las notificaciones repetidas cuando Railway reinicia el proceso.
+    already_announced = prev_state and prev_state.get("announced_version") == BOT_VERSION
+    if not already_announced:
+        notify(
+            f"Alpha Terminal {BOT_VERSION} activo",
+            f"Persistencia migrada a Railway Volume:\n"
+            f"Estado sobrevive reinicios y redeploys\n"
+            f"Anti-duplicados persistente (no mas notifs repetidas)\n"
+            f"Reportes diario/semanal no se repiten tras reinicio\n"
+            f"Modulos: hit rate historico, filtro de insiders, outcome tracker\n"
+            f"GitHub queda como respaldo opcional\n\n"
+            f"Smart wallets cargadas: {len(smart_wallets)}\n"
+            f"{len(ACCUMULATION_LIST)} tokens acumulacion + {len(COINGECKO_TOKENS)} CEX",
+            priority="high", tags="white_check_mark",
+        )
+        save_state(force=True)  # persistir de inmediato que ya anunciamos
+    else:
+        log(f"[arranque] Reinicio detectado ({BOT_VERSION} ya anunciado). Sin notificacion duplicada.")
 
     while True:
         try:
             scan()
         except Exception as e:
             log(f"[error critico] {e}")
+            try:
+                save_state(force=True)  # no perder datos si algo grave pasa
+            except Exception:
+                pass
             time.sleep(10)
         time.sleep(SCAN_INTERVAL)
