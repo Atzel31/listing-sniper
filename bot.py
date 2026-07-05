@@ -9,6 +9,7 @@ import requests
 import hit_rate  # Modulo 1: hit rate historico via GeckoTerminal
 import insider_quality  # Modulo 2: filtro de calidad de wallets insider
 import outcome_tracker  # Modulo 3: tracker de outcomes hacia adelante
+import publisher        # Publicacion en X con cola persistente
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 NTFY_TOPIC      = os.environ.get("NTFY_TOPIC",      "listingsniper-atzel")
@@ -816,6 +817,11 @@ def market_ctx_str():
     emoji = m.get("emoji", "⚪")
     return f"Mercado: BTC {pct(m['ch24h'])} 24h {emoji}"
 
+def btc_tweet_ctx():
+    """Contexto BTC compacto para los tweets (ej: 'BTC +1.2% 🟢')."""
+    m = get_market_context()
+    return f"BTC {pct(m['ch24h'])} {m.get('emoji', '')}".strip()
+
 
 def get_evm_token_txs_v2(address, chain="ETH", by_contract=False, sort="desc", offset=25):
     """Transacciones de token via Etherscan V2 multichain (ETH/BNB/BASE)."""
@@ -1116,6 +1122,8 @@ def scan_korean_listings():
                 )
                 register_week_event(sym, "korean_listing",
                                     f"{exchange} anuncio listing de {sym}")
+                # Encolar tweet de nuevo listing
+                publisher.enqueue("listing", token=sym, exchange=exchange)
     # Limpiar IDs viejos para no crecer infinito
     if len(korean_seen_notices) > 500:
         korean_seen_notices.clear()
@@ -1345,6 +1353,10 @@ def notify_whale_move(whale_label, token_name, chain, dex, wc=1, convergence=Fal
             f"1h: {pct(dex['ch1h'])}\nChart: {dex['url']}",
             priority="high", tags="whale",
         )
+    # Encolar tweet (ademas del Ntfy). El publisher deduplica y limita.
+    # (el monto exacto de la compra de la ballena no esta disponible aqui,
+    # se omite en vez de inventarlo)
+    publisher.enqueue("whale", token=token_name, chain=chain, btc=btc_tweet_ctx())
 
 def notify_exchange_move(exchange, token_name, chain, dex, is_watchlist=False):
     prefix = "[WATCHLIST] " if is_watchlist else ""
@@ -1922,6 +1934,9 @@ def check_insider_convergence(contract, symbol, chain):
     )
     register_week_event(symbol, "insider_convergence",
                         f"{len(holders)} insiders convergen en {symbol} (score prom. {avg_score})")
+    # Encolar tweet de convergencia insider (dedup + limites en el publisher)
+    publisher.enqueue("convergence", token=symbol, chain=chain,
+                      n_insiders=len(holders), btc=btc_tweet_ctx())
 
 def detect_big_buyers(contract, chain, symbol, price_usd=0):
     """Registra compradores grandes recientes en tokens EVM de la lista.
@@ -2742,6 +2757,7 @@ def serialize_state():
         "accum_state": accum_state,
         "accum_prev": accum_prev,
         "signals_ledger": outcome_tracker.export_ledger(),  # Modulo 3
+        **publisher.export_state(),  # tweet_queue + published_tweets
         # Anti-duplicados: recordar que ya se notifico (las keys expiran solas
         # porque dedup_key embebe la ventana temporal)
         "seen_signals": list(seen_signals)[-5000:],
@@ -2839,6 +2855,7 @@ def load_state():
         accum_state.update(state.get("accum_state", {}))
         accum_prev.update(state.get("accum_prev", {}))
         outcome_tracker.load_ledger(state.get("signals_ledger", {}))  # Modulo 3
+        publisher.load_state(state.get("tweet_queue"), state.get("published_tweets"))
         # Anti-duplicados: no re-notificar lo mismo tras un reinicio
         seen_signals.update(state.get("seen_signals", []))
         seen_contracts.update(state.get("seen_contracts", []))
@@ -3021,6 +3038,16 @@ def check_daily_report():
             except Exception as e:
                 log(f"[forense error] {e}")
         daily_report()
+        # Encolar recap diario para X (contenido programado del publisher).
+        try:
+            now_ts = time.time()
+            signals_today = sum(1 for e in week_events if now_ts - e.get("ts", 0) < 86400)
+            highlights = [t["symbol"] for t in sorted(
+                accum_state.values(), key=lambda x: x.get("score", 0), reverse=True)[:3]]
+            publisher.enqueue_daily_recap(signals_today=signals_today,
+                                          highlights=highlights, btc=btc_tweet_ctx())
+        except Exception as e:
+            log(f"[publisher recap error] {e}")
         save_state(force=True)
 
 def check_weekly_report():
@@ -3341,6 +3368,9 @@ def scan():
     if time.time() - last_outcome_check >= 6 * 3600:
         last_outcome_check = time.time()
         threading.Thread(target=_run_outcome_check, daemon=True).start()
+    # Publisher: intentar publicar 1 tweet de la cola (throttle interno de 20min).
+    # En background para no bloquear el ciclo con la llamada a la API de X.
+    threading.Thread(target=publisher.tick, daemon=True).start()
     # Guardar estado cada ciclo (el Volume es local y barato; throttle interno de 60s)
     save_state()
     check_daily_report()
@@ -3364,6 +3394,10 @@ if __name__ == "__main__":
     log(f"  Filtro calidad : max {insider_quality.MAX_TX_COUNT} tx, max {insider_quality.MAX_UNIQUE_TOKENS} tokens/30d, descarta contratos")
     log(f"  Combo          : ventana {COMBO_WINDOW_H}h | Listing cache {LISTING_CACHE_MIN}min")
     log(f"  Prob pump min  : {MIN_PUMP_PROB}% | Rug si liq cae >{RUG_LIQ_DROP}% | Track {TRACK_HOURS}h")
+    publisher.set_logger(log)
+    _x_creds = all([publisher.X_API_KEY, publisher.X_API_SECRET, publisher.X_ACCESS_TOKEN, publisher.X_ACCESS_SECRET])
+    log(f"  Publisher X    : DRY_RUN={publisher.DRY_RUN} | creds={'OK' if _x_creds else 'faltan'} | "
+        f"max {publisher.MAX_PER_DAY}/dia, {publisher.MIN_INTERVAL_MIN}min entre tweets")
     log("")
 
     # Preparar directorio de datos (Railway Volume en /data)
