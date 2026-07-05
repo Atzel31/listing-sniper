@@ -2737,6 +2737,10 @@ def serialize_state():
         "insider_convergences": insider_convergences,
         "combo_history": combo_history[-200:],
         "my_positions": my_positions,
+        # Acumulacion: se persiste para que la pestaña del dashboard sobreviva
+        # redeploys y no quede en cero hasta el proximo scan (bug post-migracion).
+        "accum_state": accum_state,
+        "accum_prev": accum_prev,
         "signals_ledger": outcome_tracker.export_ledger(),  # Modulo 3
         # Anti-duplicados: recordar que ya se notifico (las keys expiran solas
         # porque dedup_key embebe la ventana temporal)
@@ -2831,6 +2835,9 @@ def load_state():
         insider_convergences.update(state.get("insider_convergences", {}))
         combo_history.extend(state.get("combo_history", []))
         my_positions.update(state.get("my_positions", {}))
+        # Acumulacion: restaurar para que el dashboard muestre datos al instante
+        accum_state.update(state.get("accum_state", {}))
+        accum_prev.update(state.get("accum_prev", {}))
         outcome_tracker.load_ledger(state.get("signals_ledger", {}))  # Modulo 3
         # Anti-duplicados: no re-notificar lo mismo tras un reinicio
         seen_signals.update(state.get("seen_signals", []))
@@ -3258,6 +3265,15 @@ def start_api_server():
     except Exception as e:
         log(f"[api error] {e}")
 
+def _bootstrap_accumulation():
+    """Puebla la acumulacion al arrancar si quedo vacia (sin esperar al ciclo 1)
+    y persiste el resultado. Corre en segundo plano para no bloquear el arranque."""
+    try:
+        scan_accumulation()
+        save_state(force=True)
+    except Exception as e:
+        log(f"[accum bootstrap error] {e}")
+
 def _run_outcome_check():
     """Modulo 3: corre check_pending() del ledger y persiste si cerro algo."""
     try:
@@ -3280,7 +3296,12 @@ def scan():
     scan_watchlist()
     scan_new_tokens()
     if cycle_count % ACCUM_EVERY == 1:
-        scan_accumulation()
+        # Envuelto para que un fallo de acumulacion no aborte el ciclo entero
+        # (antes podia dejar accum_state vacio si crasheaba a mitad del ciclo 1).
+        try:
+            scan_accumulation()
+        except Exception as e:
+            log(f"[accum error] {e}")
     # Seguir smart wallets cada 2 ciclos (las top 20 por score de insider)
     if cycle_count % 2 == 0 and tracked_whale_set:
         scan_tracked_whales()
@@ -3359,6 +3380,14 @@ if __name__ == "__main__":
 
     # Modulo 2: purga inicial de bots/MM en segundo plano (no bloquea el arranque)
     threading.Thread(target=purge_low_quality_wallets, daemon=True).start()
+
+    # Fix acumulacion: si quedo vacia (primer arranque tras el fix), poblarla ya
+    # en segundo plano en vez de esperar a que el ciclo 1 llegue al scan.
+    if not accum_state:
+        log("-- Bootstrap de acumulacion (vacia tras cargar estado) --")
+        threading.Thread(target=_bootstrap_accumulation, daemon=True).start()
+    else:
+        log(f"-- Acumulacion cargada del estado: {len(accum_state)} tokens --")
 
     # Notificar arranque SOLO si es la primera vez con esta version.
     # Esto corta las notificaciones repetidas cuando Railway reinicia el proceso.
