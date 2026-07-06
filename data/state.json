@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783342855,
+  "saved_at": 1783342859,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -61101,8 +61101,8 @@
         "btc_context": "Mercado: BTC +2.0% 24h 🟢",
         "entry_price": 0.07900576955,
         "max_price": 0.08017342593,
-        "min_price": 0.07781616552,
-        "last_price": 0.07781616552,
+        "min_price": 0.07547634571,
+        "last_price": 0.07547634571,
         "status": "open",
         "ts": "2026-07-04T05:03:08.123204+00:00"
       },
@@ -61120,7 +61120,7 @@
         "entry_price": 0.001993381906,
         "max_price": 0.001993381906,
         "min_price": 0.001891857892,
-        "last_price": 0.001971942759,
+        "last_price": 0.001977190676,
         "status": "open",
         "ts": "2026-07-04T05:29:13.292160+00:00"
       },
@@ -61137,8 +61137,8 @@
         "btc_context": "Mercado: BTC +1.5% 24h ⚪",
         "entry_price": 2.787444735e-06,
         "max_price": 2.787444735e-06,
-        "min_price": 2.656176817e-06,
-        "last_price": 2.692190753e-06,
+        "min_price": 2.648938802e-06,
+        "last_price": 2.648938802e-06,
         "status": "open",
         "ts": "2026-07-04T05:48:46.380050+00:00"
       },
@@ -61182,14 +61182,6 @@
     "closed": []
   },
   "tweet_queue": [
-    {
-      "id": "1783254391283-70b060",
-      "kind": "convergence",
-      "text": "🎯 49 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.2% ⚪",
-      "hash": "70b060187d30c142",
-      "created_ts": 1783254391,
-      "retries": 4
-    },
     {
       "id": "1783256028267-1b5f63",
       "kind": "convergence",
@@ -66400,7 +66392,7 @@
     }
   },
   "last_daily_day": "2026-07-06",
-  "last_weekly_week": null,
+  "last_weekly_week": "2026-W27",
   "last_forensic_day": "2026-07-06",
   "announced_version": "v9.1"
 }
