@@ -145,6 +145,7 @@ vol5m_prev         = {}
 # Estado del modulo de acumulacion
 accum_state        = {}    # symbol -> datos completos
 accum_prev         = {}    # symbol -> snapshot anterior (para detectar cambios)
+custom_accum_tokens = []   # tokens agregados por el usuario desde el dashboard [{contract, chain, name}]
 accum_big_buyers   = {}    # wallet -> {"tokens": set, "count": int, "total_usd": float, "last_buy": ts, "buys": int}
 week_events        = []    # eventos importantes de la semana
 last_weekly_week   = None  # ISO week del ultimo reporte enviado
@@ -512,6 +513,62 @@ def add_position(contract, symbol, chain, entry_price):
 
 def remove_position(contract):
     my_positions.pop(contract.lower(), None)
+
+def add_custom_accum_token(contract, chain):
+    """Agrega un token (contract) a la lista de acumulacion del usuario, lo
+    evalua al instante para que aparezca ya en el ranking, y lo persiste para
+    que reciba seguimiento en cada scan. Devuelve dict de resultado."""
+    chain = str(chain).upper().strip()
+    contract = str(contract).strip()
+    if chain not in CHAINS:
+        return {"status": "error", "msg": f"cadena invalida: {chain} (usa ETH/SOL/BNB/BASE)"}
+    # Validacion de formato de direccion segun cadena
+    if chain == "SOL":
+        if contract.startswith("0x") or not (32 <= len(contract) <= 44):
+            return {"status": "error", "msg": "direccion Solana invalida"}
+    else:  # EVM
+        if not re.fullmatch(r"0x[0-9a-fA-F]{40}", contract) or int(contract, 16) == 0:
+            return {"status": "error", "msg": "direccion EVM invalida (0x + 40 hex)"}
+    low = contract.lower()
+    if any(t["contract"].lower() == low for t in ACCUMULATION_LIST) or \
+       any(t["contract"].lower() == low for t in custom_accum_tokens):
+        return {"status": "error", "msg": "ese token ya esta en la lista de acumulacion"}
+    dex = get_dex(contract, chain)
+    if not dex:
+        return {"status": "error", "msg": "no se encontro el token en DexScreener (revisa contract y cadena)"}
+    symbol = dex.get("name") or contract[:6]
+    custom_accum_tokens.append({"contract": contract, "chain": chain, "name": symbol})
+    # Poblar accum_state de inmediato (misma logica que scan_accumulation, sin
+    # eventos/big-buyers; el scan periodico lo completa en el proximo ciclo).
+    flow = ("OUT" if dex["buys"] > dex["sells"] * 1.3
+            else "IN" if dex["sells"] > dex["buys"] * 1.3 else "NEUTRAL")
+    data = {**dex, "symbol": symbol, "chain": chain, "contract": contract,
+            "flow": flow, "whale_count": 0, "big_buyers": 0, "source": "dexscreener",
+            "custom": True}
+    score, reasons = accum_score(data)
+    data["score"] = score
+    data["reasons"] = reasons
+    data["updated_at"] = int(time.time())
+    accum_state[symbol] = data
+    save_state(force=True)
+    log(f"[accum] Token agregado por usuario: {symbol} ({chain}) score {score}%")
+    return {"status": "added", "symbol": symbol, "chain": chain, "score": score}
+
+def remove_custom_accum_token(contract):
+    """Quita un token agregado por el usuario (no toca la lista base)."""
+    low = str(contract).strip().lower()
+    removed = None
+    for t in list(custom_accum_tokens):
+        if t["contract"].lower() == low:
+            custom_accum_tokens.remove(t)
+            removed = t
+    if not removed:
+        return {"status": "error", "msg": "ese token no esta en la lista agregada por ti"}
+    accum_state.pop(removed["name"], None)
+    accum_prev.pop(removed["name"], None)
+    save_state(force=True)
+    log(f"[accum] Token removido por usuario: {removed['name']}")
+    return {"status": "removed", "symbol": removed["name"]}
 
 def monitor_positions():
     """
@@ -2227,7 +2284,7 @@ def scan_accumulation():
     """Scan completo de la lista de acumulacion. Detecta eventos urgentes mid-week."""
     log("== Scan ACUMULACION ==")
 
-    for token in ACCUMULATION_LIST:
+    for token in ACCUMULATION_LIST + custom_accum_tokens:
         symbol, chain, contract = token["name"], token["chain"], token["contract"]
         dex = get_dex(contract, chain)
         time.sleep(0.5)
@@ -2756,6 +2813,12 @@ def serialize_state():
         # redeploys y no quede en cero hasta el proximo scan (bug post-migracion).
         "accum_state": accum_state,
         "accum_prev": accum_prev,
+        "custom_accum_tokens": custom_accum_tokens,
+        # Tracking post-notificacion: se persiste para que el ciclo de 48h
+        # sobreviva redeploys y los outcomes lleguen a registrarse (win rate por
+        # tipo / mejores horas dependian de esto y quedaban vacios al reiniciar).
+        "tracked_tokens": tracked_tokens,
+        "rugged_tokens": dict(list(rugged_tokens.items())[-50:]),
         "signals_ledger": outcome_tracker.export_ledger(),  # Modulo 3
         **publisher.export_state(),  # tweet_queue + published_tweets
         # Anti-duplicados: recordar que ya se notifico (las keys expiran solas
@@ -2854,6 +2917,12 @@ def load_state():
         # Acumulacion: restaurar para que el dashboard muestre datos al instante
         accum_state.update(state.get("accum_state", {}))
         accum_prev.update(state.get("accum_prev", {}))
+        for t in state.get("custom_accum_tokens", []):
+            if not any(x["contract"].lower() == t["contract"].lower() for x in custom_accum_tokens):
+                custom_accum_tokens.append(t)
+        # Tracking post-notificacion (para que los outcomes/win rate acumulen)
+        tracked_tokens.update(state.get("tracked_tokens", {}))
+        rugged_tokens.update(state.get("rugged_tokens", {}))
         outcome_tracker.load_ledger(state.get("signals_ledger", {}))  # Modulo 3
         publisher.load_state(state.get("tweet_queue"), state.get("published_tweets"))
         # Anti-duplicados: no re-notificar lo mismo tras un reinicio
@@ -3122,6 +3191,7 @@ def start_api_server():
             return jsonify({
                 "updated_at": int(time.time()),
                 "tokens": tokens,
+                "custom_accum": [t["contract"] for t in custom_accum_tokens],
                 "events": week_events[-30:],
                 "week": iso_week_now(),
                 "tracking": tracking,
@@ -3211,6 +3281,22 @@ def start_api_server():
                 remove_position(address)
                 save_state(force=True)
                 return jsonify({"status": "removed"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/accum/add/<chain>/<address>")
+        def api_accum_add(chain, address):
+            # Agrega un contract a la lista de acumulacion del usuario
+            try:
+                return jsonify(add_custom_accum_token(address, chain))
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/accum/remove/<address>")
+        def api_accum_remove(address):
+            # Quita un token agregado por el usuario
+            try:
+                return jsonify(remove_custom_accum_token(address))
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 

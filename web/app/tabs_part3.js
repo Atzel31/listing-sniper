@@ -395,6 +395,84 @@ function WinRatePanel({bySignal, byHour, byCombo}) {
 }
 
 // ─── TAB: ACUMULACIÓN ─────────────────────────────────────────────────────────
+// ─── AGREGAR MONEDA A ACUMULACION ─────────────────────────────────────────────
+function AddAccumToken({customContracts=[], tokens=[], onRefresh}) {
+  const [addr, setAddr] = useState("");
+  const [chain, setChain] = useState("ETH");
+  const [msg, setMsg] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  async function add() {
+    const a = addr.trim();
+    if (!a) return;
+    setLoading(true); setMsg(null);
+    try {
+      const r = await fetch(RAILWAY_API+"/api/accum/add/"+chain+"/"+a);
+      const d = await r.json();
+      if (d.status === "added") {
+        setMsg({ok:true, text:`Agregado $${d.symbol} (${d.chain}) · score ${d.score}%`});
+        setAddr("");
+        onRefresh && onRefresh();
+      } else {
+        setMsg({ok:false, text:d.msg || "no se pudo agregar"});
+      }
+    } catch(e) {
+      setMsg({ok:false, text:"error de conexion con el bot"});
+    }
+    setLoading(false);
+  }
+
+  async function remove(contract) {
+    setLoading(true);
+    try { await fetch(RAILWAY_API+"/api/accum/remove/"+contract); onRefresh && onRefresh(); }
+    catch(e) {}
+    setLoading(false);
+  }
+
+  const customSet = new Set((customContracts||[]).map(c=>String(c).toLowerCase()));
+  const mine = (tokens||[]).filter(t=>t.contract && customSet.has(String(t.contract).toLowerCase()));
+
+  return (
+    <div style={{background:T.cyan+"08",border:"1px solid "+T.cyan+"22",borderRadius:8,padding:"12px 14px",marginBottom:14}}>
+      <div style={{fontSize:11,color:T.cyan,fontFamily:"monospace",fontWeight:700,marginBottom:8}}>➕ Agregar moneda al ranking</div>
+      <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+        <input
+          value={addr} onChange={e=>setAddr(e.target.value)}
+          onKeyDown={e=>e.key==="Enter"&&add()}
+          placeholder="Contract address del token"
+          style={{flex:1,minWidth:180,background:T.bg,border:"1px solid "+T.border,color:T.text,padding:"8px 10px",borderRadius:6,fontSize:10,fontFamily:"monospace"}}
+        />
+        <select value={chain} onChange={e=>setChain(e.target.value)}
+          style={{background:T.bg,border:"1px solid "+T.border,color:T.text,padding:"8px 8px",borderRadius:6,fontSize:10,fontFamily:"monospace",cursor:"pointer"}}>
+          {["ETH","SOL","BNB","BASE"].map(c=><option key={c} value={c}>{c}</option>)}
+        </select>
+        <button onClick={add} disabled={loading||!addr.trim()}
+          style={{background:T.cyan+"15",border:"1px solid "+T.cyan+"44",color:T.cyan,padding:"8px 14px",borderRadius:6,cursor:loading?"default":"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700,opacity:loading||!addr.trim()?0.5:1}}>
+          {loading?"...":"Agregar"}
+        </button>
+      </div>
+      {msg&&(
+        <div style={{marginTop:8,fontSize:10,fontFamily:"monospace",color:msg.ok?T.green:T.red}}>{msg.text}</div>
+      )}
+      {mine.length>0&&(
+        <div style={{marginTop:10}}>
+          <div style={{fontSize:8,color:T.muted,fontFamily:"monospace",marginBottom:6,letterSpacing:1}}>TUS TOKENS AGREGADOS</div>
+          <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+            {mine.map(t=>(
+              <span key={t.contract} style={{display:"inline-flex",alignItems:"center",gap:6,background:T.bg,border:"1px solid "+T.border,borderRadius:5,padding:"4px 8px"}}>
+                <span style={{fontSize:10,color:T.text,fontFamily:"monospace",fontWeight:700}}>${t.symbol}</span>
+                <span style={{fontSize:8,color:chainCol(t.chain),fontFamily:"monospace"}}>{t.chain}</span>
+                <button onClick={()=>remove(t.contract)} title="Quitar"
+                  style={{background:"none",border:"none",color:T.red,cursor:"pointer",fontSize:12,lineHeight:1,padding:0,fontWeight:700}}>×</button>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function AccumulationTab({githubRepo}) {
   const [liveData, setLiveData] = useState(null);
   const [weekly, setWeekly] = useState(null);
@@ -510,6 +588,9 @@ export function AccumulationTab({githubRepo}) {
             ))}
             <span style={{marginLeft:"auto",fontSize:10,color:T.dim,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} tokens</span>
           </div>
+
+          {/* Agregar moneda al ranking */}
+          <AddAccumToken customContracts={liveData.custom_accum} tokens={ranking} onRefresh={refresh}/>
 
           {/* Ranking */}
           <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",marginBottom:8,letterSpacing:1}}>
