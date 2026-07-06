@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783339306,
+  "saved_at": 1783339326,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -57455,6 +57455,14 @@
     }
   },
   "tracked_whale_set": {
+    "0x8f10b468b06c6fd214b65f87778827f7d113f996": {
+      "chain": "ETH",
+      "label": "0x8f10...f996",
+      "last_check": 1783339147,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x8e101ce0cd87c816dcfd4d02f7e21983901def94": {
       "chain": "ETH",
       "label": "0x8e10...ef94",
@@ -57506,6 +57514,30 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
+    "0x58edf78281334335effa23101bbe3371b6a36a51": {
+      "chain": "ETH",
+      "label": "0x58ed...6a51",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0x709de0b97e369661c99ad54f2b858139897d3dba": {
+      "chain": "ETH",
+      "label": "0x709d...3dba",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0x91dca37856240e5e1906222ec79278b16420dc92": {
+      "chain": "ETH",
+      "label": "0x91dc...dc92",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
     "0x09ad820aac5779683b481c4674208a4e1b024afa": {
       "chain": "ETH",
       "label": "0x09ad...4afa",
@@ -57521,6 +57553,14 @@
       "last_seen_tokens": [
         "0x0f2d719407fdbeff09d87557abb7232601fd9f29"
       ],
+      "insider_score": 77,
+      "tag": "insider_activo"
+    },
+    "0xea6e3fbdc91c377d09432af9997378d6b4551a64": {
+      "chain": "ETH",
+      "label": "0xea6e...1a64",
+      "last_check": 0,
+      "last_seen_tokens": [],
       "insider_score": 77,
       "tag": "insider_activo"
     },
@@ -57558,6 +57598,14 @@
       "insider_score": 77,
       "tag": "insider_activo"
     },
+    "0xfe9529b753b412941127fea1981e5ce0a85c101e": {
+      "chain": "ETH",
+      "label": "0xfe95...101e",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 77,
+      "tag": "insider_activo"
+    },
     "0xf824dca44691bc2af8829051f4c5e6a2566060f3": {
       "chain": "ETH",
       "label": "0xf824...60f3",
@@ -57566,82 +57614,21 @@
       "insider_score": 77,
       "tag": "insider_activo"
     },
-    "0x69460570c93f9de5e2edbc3052bf10125f0ca22d": {
+    "0xebae2d568b9853dcecd328276241a63345b3ce7a": {
       "chain": "ETH",
-      "label": "0x6946...a22d",
-      "last_check": 1783339147,
+      "label": "0xebae...ce7a",
+      "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 77,
       "tag": "insider_activo"
     },
-    "0x06fd4ba7973a0d39a91734bbc35bc2bcaa99e3b0": {
+    "0x337685fdab40d39bd02028545a4ffa7d287cc3e2": {
       "chain": "ETH",
-      "label": "0x06fd...e3b0",
-      "last_check": 1783339147,
-      "last_seen_tokens": [
-        "0x000006c2a22ff4a44ff1f5d0f2ed65f781f55555",
-        "0x0f2d719407fdbeff09d87557abb7232601fd9f29",
-        "0x163f8c2467924be0ae7b5347228cabf260318753",
-        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
-      ],
-      "insider_score": 75,
-      "tag": "insider_activo"
-    },
-    "0x26b3663abc1e2e478ef60055713b1d5811be085e": {
-      "chain": "ETH",
-      "label": "0x26b3...085e",
-      "last_check": 1783339147,
-      "last_seen_tokens": [],
-      "insider_score": 72,
-      "tag": "smart"
-    },
-    "0xcffad3200574698b78f32232aa9d63eabd290703": {
-      "chain": "ETH",
-      "label": "0xcffa...0703",
+      "label": "0x3376...c3e2",
       "last_check": 0,
       "last_seen_tokens": [],
-      "insider_score": 72,
-      "tag": "smart"
-    },
-    "0x187fe1a8b76c60b85c00a2819152ff00ff642386": {
-      "chain": "ETH",
-      "label": "0x187f...2386",
-      "last_check": 1783339147,
-      "last_seen_tokens": [
-        "0x514910771af9ca656af840dff83e8264ecf986ca",
-        "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
-        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-        "0xdac17f958d2ee523a2206206994597c13d831ec7",
-        "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
-      ],
-      "insider_score": 69,
-      "tag": "smart"
-    },
-    "0x7db3f0cc952919558584047f72965e4103ec644a": {
-      "chain": "ETH",
-      "label": "0x7db3...644a",
-      "last_check": 1783339147,
-      "last_seen_tokens": [
-        "0xdac17f958d2ee523a2206206994597c13d831ec7"
-      ],
-      "insider_score": 69,
-      "tag": "smart"
-    },
-    "0x8f10b468b06c6fd214b65f87778827f7d113f996": {
-      "chain": "ETH",
-      "label": "0x8f10...f996",
-      "last_check": 1783339147,
-      "last_seen_tokens": [],
-      "insider_score": 69,
-      "tag": "smart"
-    },
-    "0x1b6257cae4192e62b629efca21771be3d759183d": {
-      "chain": "ETH",
-      "label": "0x1b62...183d",
-      "last_check": 1783339147,
-      "last_seen_tokens": [],
-      "insider_score": 69,
-      "tag": "smart"
+      "insider_score": 77,
+      "tag": "insider_activo"
     }
   },
   "signal_outcomes": [
@@ -64400,6 +64387,6 @@
   },
   "last_daily_day": "2026-07-06",
   "last_weekly_week": null,
-  "last_forensic_day": "2026-07-05",
+  "last_forensic_day": "2026-07-06",
   "announced_version": "v9.1"
 }
