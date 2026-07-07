@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783399902,
+  "saved_at": 1783399923,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -69394,46 +69394,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +2.1% 24h 🟢",
-        "entry_price": 0.3365793775,
-        "max_price": 0.3431207077,
-        "min_price": 0.3237975996,
-        "last_price": 0.3281753464,
-        "status": "open",
-        "ts": "2026-07-04T04:50:23.643873+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 1.9,
-        "min_loss_pct": -3.8,
-        "closed_at": "2026-07-07T04:51:41.978300+00:00"
-      },
-      {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +2.1% 24h 🟢",
-        "entry_price": 0.4162103197,
-        "max_price": 0.4212324538,
-        "min_price": 0.3799208983,
-        "last_price": 0.4063451785,
-        "status": "open",
-        "ts": "2026-07-04T04:50:27.382646+00:00"
-      },
-      {
         "token": "ENA",
         "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
         "chain": "ETH",
@@ -69447,7 +69407,7 @@
         "entry_price": 0.07900576955,
         "max_price": 0.08017342593,
         "min_price": 0.07547634571,
-        "last_price": 0.07874012904,
+        "last_price": 0.07687548478,
         "status": "open",
         "ts": "2026-07-04T05:03:08.123204+00:00"
       },
@@ -69463,9 +69423,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +1.5% 24h ⚪",
         "entry_price": 0.001993381906,
-        "max_price": 0.002106246294,
+        "max_price": 0.002121088079,
         "min_price": 0.001891857892,
-        "last_price": 0.002106246294,
+        "last_price": 0.002121088079,
         "status": "open",
         "ts": "2026-07-04T05:29:13.292160+00:00"
       },
@@ -69483,7 +69443,7 @@
         "entry_price": 2.787444735e-06,
         "max_price": 2.787444735e-06,
         "min_price": 2.633798678e-06,
-        "last_price": 2.753655166e-06,
+        "last_price": 2.692027664e-06,
         "status": "open",
         "ts": "2026-07-04T05:48:46.380050+00:00"
       },
@@ -69524,7 +69484,52 @@
         "ts": "2026-07-04T10:54:20.279299+00:00"
       }
     ],
-    "closed": []
+    "closed": [
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +2.1% 24h 🟢",
+        "entry_price": 0.3365793775,
+        "max_price": 0.3431207077,
+        "min_price": 0.3237975996,
+        "last_price": 0.3281753464,
+        "status": "open",
+        "ts": "2026-07-04T04:50:23.643873+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 1.9,
+        "min_loss_pct": -3.8,
+        "closed_at": "2026-07-07T04:51:41.978300+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +2.1% 24h 🟢",
+        "entry_price": 0.4162103197,
+        "max_price": 0.4212324538,
+        "min_price": 0.3799208983,
+        "last_price": 0.3870652713,
+        "status": "open",
+        "ts": "2026-07-04T04:50:27.382646+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 1.2,
+        "min_loss_pct": -8.7,
+        "closed_at": "2026-07-07T04:51:41.978300+00:00"
+      }
+    ]
   },
   "tweet_queue": [
     {
