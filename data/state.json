@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783425711,
+  "saved_at": 1783425731,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -71513,6 +71513,14 @@
     }
   },
   "tracked_whale_set": {
+    "0x7f51c134230eb9e5aba42bc364d3d3eba26d9712": {
+      "chain": "ETH",
+      "label": "0x7f51...9712",
+      "last_check": 1783345196,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x8f10b468b06c6fd214b65f87778827f7d113f996": {
       "chain": "ETH",
       "label": "0x8f10...f996",
@@ -71571,18 +71579,18 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
-    "0x7f51c134230eb9e5aba42bc364d3d3eba26d9712": {
+    "0x10c40fec71f6cd0f85613467eba1857ecb1d1308": {
       "chain": "ETH",
-      "label": "0x7f51...9712",
+      "label": "0x10c4...1308",
       "last_check": 1783345196,
       "last_seen_tokens": [],
       "insider_score": 85,
       "tag": "insider_activo"
     },
-    "0x10c40fec71f6cd0f85613467eba1857ecb1d1308": {
+    "0x28b1dc1a5e3699a428bc51d234dfab7c9cb2a183": {
       "chain": "ETH",
-      "label": "0x10c4...1308",
-      "last_check": 1783345196,
+      "label": "0x28b1...a183",
+      "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 85,
       "tag": "insider_activo"
@@ -71626,6 +71634,14 @@
         "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "0xddb3422497e61e13543bea06989c0789117555c5"
       ],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0xe95b0243a5c5e6fa4b8f34cb525a64e6a1b9aec9": {
+      "chain": "ETH",
+      "label": "0xe95b...aec9",
+      "last_check": 0,
+      "last_seen_tokens": [],
       "insider_score": 85,
       "tag": "insider_activo"
     },
@@ -71696,6 +71712,14 @@
       "insider_score": 77,
       "tag": "insider_activo"
     },
+    "0xc80afd311c9626528de66d86814770361fe92416": {
+      "chain": "ETH",
+      "label": "0xc80a...2416",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 77,
+      "tag": "insider_activo"
+    },
     "0xfe9529b753b412941127fea1981e5ce0a85c101e": {
       "chain": "ETH",
       "label": "0xfe95...101e",
@@ -71705,34 +71729,6 @@
         "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
         "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
       ],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xf824dca44691bc2af8829051f4c5e6a2566060f3": {
-      "chain": "ETH",
-      "label": "0xf824...60f3",
-      "last_check": 1783345196,
-      "last_seen_tokens": [
-        "0x3073f7aaa4db83f95e9fff17424f71d4751a3073"
-      ],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xebae2d568b9853dcecd328276241a63345b3ce7a": {
-      "chain": "ETH",
-      "label": "0xebae...ce7a",
-      "last_check": 1783345196,
-      "last_seen_tokens": [
-        "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
-      ],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x337685fdab40d39bd02028545a4ffa7d287cc3e2": {
-      "chain": "ETH",
-      "label": "0x3376...c3e2",
-      "last_check": 1783345196,
-      "last_seen_tokens": [],
       "insider_score": 77,
       "tag": "insider_activo"
     }
@@ -76382,9 +76378,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.7% 24h ⚪",
         "entry_price": 0.3255139351,
-        "max_price": 0.3319532386,
+        "max_price": 0.3327399682,
         "min_price": 0.3255139351,
-        "last_price": 0.3319532386,
+        "last_price": 0.3327399682,
         "status": "open",
         "ts": "2026-07-07T07:17:34.298702+00:00"
       },
@@ -76400,9 +76396,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.2% 24h ⚪",
         "entry_price": 0.3829648696,
-        "max_price": 0.3829648696,
+        "max_price": 0.3857118151,
         "min_price": 0.3818581589,
-        "last_price": 0.3818581589,
+        "last_price": 0.3857118151,
         "status": "open",
         "ts": "2026-07-07T07:54:05.439436+00:00"
       }
@@ -82058,8 +82054,8 @@
       "ts": 1783425669.0165553
     }
   },
-  "last_daily_day": "2026-07-06",
+  "last_daily_day": "2026-07-07",
   "last_weekly_week": "2026-W27",
-  "last_forensic_day": "2026-07-06",
+  "last_forensic_day": "2026-07-07",
   "announced_version": "v9.1"
 }
