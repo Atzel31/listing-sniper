@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783526775,
+  "saved_at": 1783528691,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -86261,6 +86261,180 @@
       "status": "rugged",
       "pumped": false,
       "ts": 1783512129
+    },
+    {
+      "symbol": "CashCow",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 3,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783527049
+    },
+    {
+      "symbol": "HOODRAT",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": 40,
+      "max_mult": 1.4028793418647165,
+      "hour_utc": 11,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1783527060
+    },
+    {
+      "symbol": "Joel",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 11,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783527060
+    },
+    {
+      "symbol": "Cupseyina",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 12,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783527063
+    },
+    {
+      "symbol": "Jeffery",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": 47,
+      "max_mult": 1.4728739002932552,
+      "hour_utc": 13,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1783527064
+    },
+    {
+      "symbol": "Bullcat",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": 79,
+      "max_mult": 1.7854614756329976,
+      "hour_utc": 13,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1783527065
+    },
+    {
+      "symbol": "okdog",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 13,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783527067
+    },
+    {
+      "symbol": "ANSEY",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 14,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783527071
+    },
+    {
+      "symbol": "Binface ",
+      "signals": [
+        "high_pump_prob",
+        "boosted"
+      ],
+      "result_pct": 30,
+      "max_mult": 1.3023668639053256,
+      "hour_utc": 15,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1783527072
+    },
+    {
+      "symbol": "Space Dog",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.134394341290893,
+      "hour_utc": 15,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783527497
+    },
+    {
+      "symbol": "GM🐂🀄️",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 13,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783528300
+    },
+    {
+      "symbol": "$TWM$",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": 36,
+      "max_mult": 1.3586243573834427,
+      "hour_utc": 15,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1783528303
+    },
+    {
+      "symbol": "CASHDOG",
+      "signals": [
+        "new_pair",
+        "high_pump_prob"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.048951048951049,
+      "hour_utc": 11,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1783528682
+    },
+    {
+      "symbol": "CAP",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": 70,
+      "max_mult": 1.699119911991199,
+      "hour_utc": 16,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1783528691
     }
   ],
   "discovered_whales": [
@@ -86460,23 +86634,23 @@
   "accum_state": {
     "ENA": {
       "name": "ENA",
-      "liq": 2393927.14,
-      "vol": 1168923.08,
+      "liq": 2395568.68,
+      "vol": 1155686.69,
       "vol5m": 0,
       "ch5m": 0,
-      "ch1h": -0.66,
-      "ch6h": 0.19,
-      "ch24h": -5.79,
-      "txns": 483,
-      "buys": 197,
-      "sells": 286,
-      "bp": 41,
-      "price": "0.07323",
-      "fdv": 1098567845,
-      "mcap": 700222567,
+      "ch1h": 0.03,
+      "ch6h": 0.43,
+      "ch24h": -6.02,
+      "txns": 476,
+      "buys": 191,
+      "sells": 285,
+      "bp": 40,
+      "price": "0.07335",
+      "fdv": 1100391341,
+      "mcap": 701384856,
       "pair": "0x8c52de694f5a4ce27ea85fe4bc47e08d22c5dfb5f9b38b2a63765ed52cd3b147",
       "real_chain": "ethereum",
-      "age_hours": 12556.987308194835,
+      "age_hours": 12557.358029406601,
       "multi_dex": true,
       "dex_list": [
         "pancakeswap",
@@ -86493,7 +86667,7 @@
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 70,
+      "score": 62,
       "reasons": [
         {
           "effect": 15,
@@ -86502,6 +86676,10 @@
         {
           "effect": 5,
           "reason": "Turnover saludable"
+        },
+        {
+          "effect": -8,
+          "reason": "Presion vendedora (40% buys)"
         },
         {
           "effect": 12,
@@ -86520,27 +86698,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526750
+      "updated_at": 1783528084
     },
     "ONDO": {
       "name": "ONDO",
-      "liq": 592090,
-      "vol": 355689.75,
-      "vol5m": 0,
-      "ch5m": 0,
-      "ch1h": -0.63,
-      "ch6h": -1.99,
-      "ch24h": -7.74,
-      "txns": 276,
-      "buys": 131,
+      "liq": 596499.01,
+      "vol": 356161.58,
+      "vol5m": 196.36,
+      "ch5m": 0.25,
+      "ch1h": 0.8,
+      "ch6h": -1.08,
+      "ch24h": -7.07,
+      "txns": 277,
+      "buys": 132,
       "sells": 145,
-      "bp": 47,
-      "price": "0.3107",
-      "fdv": 3107094472,
-      "mcap": 1512947035,
+      "bp": 48,
+      "price": "0.3131",
+      "fdv": 3131817580,
+      "mcap": 1524985533,
       "pair": "0x7b1E5D984A43eE732de195628d20d05CFaBc3cC7",
       "real_chain": "ethereum",
-      "age_hours": 21651.57761654311,
+      "age_hours": 21651.948335507248,
       "multi_dex": true,
       "dex_list": [
         "pancakeswap",
@@ -86577,27 +86755,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526751
+      "updated_at": 1783528086
     },
     "PEPE": {
       "name": "PEPE",
-      "liq": 19261667.39,
-      "vol": 442261.31,
+      "liq": 19340580.36,
+      "vol": 438869.19,
       "vol5m": 0,
       "ch5m": 0,
-      "ch1h": -0.42,
-      "ch6h": 0.18,
-      "ch24h": -5.28,
-      "txns": 286,
-      "buys": 132,
+      "ch1h": 0.66,
+      "ch6h": 0.51,
+      "ch24h": -5.31,
+      "txns": 285,
+      "buys": 131,
       "sells": 154,
       "bp": 46,
-      "price": "0.000002571",
-      "fdv": 1063968733,
-      "mcap": 1063968733,
+      "price": "0.000002581",
+      "fdv": 1068333980,
+      "mcap": 1068333980,
       "pair": "0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
       "real_chain": "ethereum",
-      "age_hours": 28342.74459906611,
+      "age_hours": 28343.115307303735,
       "multi_dex": false,
       "dex_list": [
         "uniswap"
@@ -86632,27 +86810,27 @@
           "reason": "Presencia social activa"
         }
       ],
-      "updated_at": 1783526752
+      "updated_at": 1783528087
     },
     "SPX6900": {
       "name": "SPX",
-      "liq": 9011758.3,
-      "vol": 808846.92,
-      "vol5m": 7057.25,
-      "ch5m": -0.2,
-      "ch1h": -0.6,
-      "ch6h": -1.98,
-      "ch24h": -5.25,
-      "txns": 559,
-      "buys": 253,
-      "sells": 306,
-      "bp": 45,
-      "price": "0.3682",
-      "fdv": 342840555,
-      "mcap": 342840555,
+      "liq": 9021922.93,
+      "vol": 798784.38,
+      "vol5m": 0,
+      "ch5m": 0,
+      "ch1h": 0.26,
+      "ch6h": -1.63,
+      "ch24h": -5.12,
+      "txns": 555,
+      "buys": 255,
+      "sells": 300,
+      "bp": 46,
+      "price": "0.3688",
+      "fdv": 343356802,
+      "mcap": 343356802,
       "pair": "0x52c77b0CB827aFbAD022E6d6CAF2C44452eDbc39",
       "real_chain": "ethereum",
-      "age_hours": 25381.228226873478,
+      "age_hours": 25381.598931564953,
       "multi_dex": true,
       "dex_list": [
         "supernova",
@@ -86688,27 +86866,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526753
+      "updated_at": 1783528088
     },
     "DEAI": {
       "name": "DEAI",
-      "liq": 39120.89,
-      "vol": 3994.42,
-      "vol5m": 0,
-      "ch5m": 0,
-      "ch1h": -5.77,
-      "ch6h": -7.23,
-      "ch24h": -10.86,
-      "txns": 44,
-      "buys": 22,
-      "sells": 22,
-      "bp": 50,
-      "price": "0.001697",
-      "fdv": 1697379,
-      "mcap": 493805,
+      "liq": 41135.51,
+      "vol": 4254.24,
+      "vol5m": 207.37,
+      "ch5m": 3.82,
+      "ch1h": 0.34,
+      "ch6h": -1.33,
+      "ch24h": -5.07,
+      "txns": 47,
+      "buys": 24,
+      "sells": 23,
+      "bp": 51,
+      "price": "0.001807",
+      "fdv": 1807518,
+      "mcap": 525847,
       "pair": "0x1385Fc1Fe0418ea0B4Fcf7Adc61FC7535AB7F80d",
       "real_chain": "ethereum",
-      "age_hours": 20163.925212255584,
+      "age_hours": 20164.295911245677,
       "multi_dex": false,
       "dex_list": [
         "uniswap"
@@ -86724,18 +86902,22 @@
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 32,
+      "score": 44,
       "reasons": [
         {
           "effect": -12,
           "reason": "Liquidez fragil (<$50K)"
         },
         {
+          "effect": 12,
+          "reason": "Dip estabilizandose (ideal para DCA)"
+        },
+        {
           "effect": 4,
           "reason": "Presencia social activa"
         }
       ],
-      "updated_at": 1783526754
+      "updated_at": 1783528090
     },
     "SOIL": {
       "name": "SOIL",
@@ -86755,7 +86937,7 @@
       "mcap": 5747964,
       "pair": "0x7090Cc8DFA04b0BBAc6520063c9c1ea677C368a0",
       "real_chain": "ethereum",
-      "age_hours": 12434.345530696908,
+      "age_hours": 12434.716506171822,
       "multi_dex": false,
       "dex_list": [
         "uniswap"
@@ -86790,27 +86972,27 @@
           "reason": "Retiro neto de exchanges (alcista)"
         }
       ],
-      "updated_at": 1783526755
+      "updated_at": 1783528091
     },
     "LKI": {
       "name": "LKI",
-      "liq": 1536.61,
-      "vol": 45.7,
+      "liq": 1478.01,
+      "vol": 75.34,
       "vol5m": 0,
       "ch5m": 0,
-      "ch1h": 0,
-      "ch6h": 0.01,
-      "ch24h": -1.87,
-      "txns": 8,
-      "buys": 3,
-      "sells": 5,
+      "ch1h": -7.49,
+      "ch6h": -7.49,
+      "ch24h": -9.22,
+      "txns": 13,
+      "buys": 5,
+      "sells": 8,
       "bp": 38,
-      "price": "0.00006959",
-      "fdv": 69594,
-      "mcap": 29802,
+      "price": "0.00006437",
+      "fdv": 64380,
+      "mcap": 27570,
       "pair": "0x712903c3cA65aEeb2E5452d04Da090796fCAE0dF",
       "real_chain": "bsc",
-      "age_hours": 18294.772786961064,
+      "age_hours": 18295.143774966,
       "multi_dex": false,
       "dex_list": [
         "pancakeswap"
@@ -86826,15 +87008,11 @@
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 8,
+      "score": 14,
       "reasons": [
         {
           "effect": -12,
           "reason": "Liquidez fragil (<$50K)"
-        },
-        {
-          "effect": -6,
-          "reason": "Volumen muerto"
         },
         {
           "effect": -8,
@@ -86849,27 +87027,27 @@
           "reason": "Presencia social activa"
         }
       ],
-      "updated_at": 1783526757
+      "updated_at": 1783528092
     },
     "RAY": {
       "name": "RAY",
-      "liq": 3823677.57,
-      "vol": 304808.29,
-      "vol5m": 1118.9,
-      "ch5m": 0.11,
-      "ch1h": -0.62,
-      "ch6h": -0.07,
-      "ch24h": -9.49,
-      "txns": 2220,
-      "buys": 988,
-      "sells": 1232,
+      "liq": 3835237.64,
+      "vol": 305823.71,
+      "vol5m": 0,
+      "ch5m": 0,
+      "ch1h": 1.39,
+      "ch6h": 0.18,
+      "ch24h": -9.08,
+      "txns": 2207,
+      "buys": 1001,
+      "sells": 1206,
       "bp": 45,
-      "price": "0.6721",
-      "fdv": 373064622,
-      "mcap": 181029986,
+      "price": "0.6762",
+      "fdv": 375320962,
+      "mcap": 182124878,
       "pair": "6UmmUiYoBjSrhakAobJw8BvkmJtDVxaeBtbt7rxWo1mg",
       "real_chain": "solana",
-      "age_hours": 31645.679503920874,
+      "age_hours": 31646.050474589534,
       "multi_dex": true,
       "dex_list": [
         "meteora",
@@ -86906,27 +87084,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526758
+      "updated_at": 1783528093
     },
     "TROLL": {
       "name": "TROLL",
-      "liq": 2701518.48,
-      "vol": 2079098.93,
-      "vol5m": 4992.49,
-      "ch5m": -0.51,
-      "ch1h": -0.85,
-      "ch6h": 0.38,
-      "ch24h": -17.36,
-      "txns": 5528,
-      "buys": 3431,
-      "sells": 2097,
+      "liq": 2706026.43,
+      "vol": 2006574.56,
+      "vol5m": 0,
+      "ch5m": 0,
+      "ch1h": -0.02,
+      "ch6h": -0.48,
+      "ch24h": -16.74,
+      "txns": 5394,
+      "buys": 3357,
+      "sells": 2037,
       "bp": 62,
-      "price": "0.05069",
-      "fdv": 50633675,
-      "mcap": 50633675,
+      "price": "0.05074",
+      "fdv": 50683661,
+      "mcap": 50683661,
       "pair": "4w2cysotX6czaUGmmWg13hDpY4QEMG2CzeKYEQyK9Ama",
       "real_chain": "solana",
-      "age_hours": 10653.592232594225,
+      "age_hours": 10653.963204519021,
       "multi_dex": true,
       "dex_list": [
         "pumpswap",
@@ -86976,27 +87154,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526758
+      "updated_at": 1783528094
     },
     "GIGA": {
       "name": "GIGA",
-      "liq": 1425789.61,
-      "vol": 132656.57,
-      "vol5m": 1.69,
-      "ch5m": 0.04,
-      "ch1h": 0.01,
-      "ch6h": 0.98,
-      "ch24h": -7.86,
-      "txns": 1428,
-      "buys": 813,
-      "sells": 615,
+      "liq": 1428170.13,
+      "vol": 131648.82,
+      "vol5m": 235.56,
+      "ch5m": -0.11,
+      "ch1h": 0.28,
+      "ch6h": 0.62,
+      "ch24h": -7.55,
+      "txns": 1422,
+      "buys": 814,
+      "sells": 608,
       "bp": 57,
-      "price": "0.002315",
-      "fdv": 22240789,
-      "mcap": 22240789,
+      "price": "0.002318",
+      "fdv": 22265789,
+      "mcap": 22265789,
       "pair": "4xxM4cdb6MEsCxM52xvYqkNbzvdeWWsPDZrBcTqVGUar",
       "real_chain": "solana",
-      "age_hours": 21978.770254415274,
+      "age_hours": 21979.141210979553,
       "multi_dex": true,
       "dex_list": [
         "meteora",
@@ -87041,27 +87219,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526759
+      "updated_at": 1783528095
     },
     "NUB": {
       "name": "nub",
-      "liq": 568632.72,
-      "vol": 64006.1,
-      "vol5m": 251.07,
-      "ch5m": 0.2,
-      "ch1h": 0.98,
-      "ch6h": -3.13,
-      "ch24h": -22.43,
-      "txns": 694,
-      "buys": 531,
-      "sells": 163,
+      "liq": 566895.01,
+      "vol": 65180.14,
+      "vol5m": 0,
+      "ch5m": 0,
+      "ch1h": -0.83,
+      "ch6h": -4.67,
+      "ch24h": -23.18,
+      "txns": 697,
+      "buys": 536,
+      "sells": 161,
       "bp": 77,
-      "price": "0.002010",
-      "fdv": 2010531,
-      "mcap": 2010531,
+      "price": "0.001992",
+      "fdv": 1992525,
+      "mcap": 1992525,
       "pair": "83G6VzJzLRCnHBsLATj94VCpRimyyqwuN6ZfL11McADL",
       "real_chain": "solana",
-      "age_hours": 20053.73634272357,
+      "age_hours": 20054.107283415065,
       "multi_dex": true,
       "dex_list": [
         "pumpswap",
@@ -87107,27 +87285,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526760
+      "updated_at": 1783528096
     },
     "USELESS": {
       "name": "USELESS",
-      "liq": 2230954.37,
-      "vol": 886466.59,
-      "vol5m": 1993.63,
-      "ch5m": -0.12,
-      "ch1h": -1.7,
-      "ch6h": -1.22,
-      "ch24h": -10.64,
-      "txns": 6088,
-      "buys": 2937,
-      "sells": 3151,
-      "bp": 48,
-      "price": "0.08229",
-      "fdv": 82295231,
-      "mcap": 82295231,
+      "liq": 2231831.76,
+      "vol": 774135.72,
+      "vol5m": 98.22,
+      "ch5m": -0.05,
+      "ch1h": 0.31,
+      "ch6h": -1.62,
+      "ch24h": -13.05,
+      "txns": 5763,
+      "buys": 2872,
+      "sells": 2891,
+      "bp": 50,
+      "price": "0.08217",
+      "fdv": 82177594,
+      "mcap": 82177594,
       "pair": "Q2sPHPdUWFMg7M7wwrQKLrn619cAucfRsmhVJffodSp",
       "real_chain": "solana",
-      "age_hours": 10177.712429787052,
+      "age_hours": 10178.083345063395,
       "multi_dex": true,
       "dex_list": [
         "meteora",
@@ -87168,27 +87346,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526761
+      "updated_at": 1783528096
     },
     "URANUS": {
       "name": "URANUS",
-      "liq": 141926.07,
-      "vol": 23695.4,
-      "vol5m": 3.8,
-      "ch5m": 0.01,
-      "ch1h": -0.46,
-      "ch6h": -7.27,
-      "ch24h": -13.92,
+      "liq": 143800.23,
+      "vol": 24495.1,
+      "vol5m": 190.3,
+      "ch5m": 1.21,
+      "ch1h": 2.05,
+      "ch6h": -4.92,
+      "ch24h": -12.03,
       "txns": 330,
-      "buys": 175,
-      "sells": 155,
-      "bp": 53,
-      "price": "0.01121",
-      "fdv": 1121356,
-      "mcap": 1121356,
+      "buys": 173,
+      "sells": 157,
+      "bp": 52,
+      "price": "0.01151",
+      "fdv": 1151167,
+      "mcap": 1151167,
       "pair": "7ccKzmrXBpFHwyZGPqPuKL6bEyWAETSnHwnWe3jEneVc",
       "real_chain": "solana",
-      "age_hours": 8891.761294748121,
+      "age_hours": 8892.132206838594,
       "multi_dex": true,
       "dex_list": [
         "meteora",
@@ -87206,15 +87384,11 @@
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 64,
+      "score": 52,
       "reasons": [
         {
           "effect": 4,
           "reason": "Liquidez media"
-        },
-        {
-          "effect": 12,
-          "reason": "Dip estabilizandose (ideal para DCA)"
         },
         {
           "effect": 4,
@@ -87225,27 +87399,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526762
+      "updated_at": 1783528097
     },
     "67": {
       "name": "67",
-      "liq": 303921.34,
-      "vol": 124566.15,
-      "vol5m": 1.24,
-      "ch5m": 0.22,
-      "ch1h": -3.22,
-      "ch6h": 4.68,
-      "ch24h": -11.62,
-      "txns": 1049,
-      "buys": 580,
-      "sells": 469,
+      "liq": 305075.24,
+      "vol": 124232.81,
+      "vol5m": 70.66,
+      "ch5m": -0.93,
+      "ch1h": 1.33,
+      "ch6h": 3.28,
+      "ch24h": -10.97,
+      "txns": 1046,
+      "buys": 575,
+      "sells": 471,
       "bp": 55,
-      "price": "0.002341",
-      "fdv": 2340954,
-      "mcap": 2340954,
+      "price": "0.002355",
+      "fdv": 2354442,
+      "mcap": 2354442,
       "pair": "DMAFL613XTipuA3jFNYczavWT7XsiYf9cR3qmRMZQhB6",
       "real_chain": "solana",
-      "age_hours": 7014.573190129068,
+      "age_hours": 7014.944122636186,
       "multi_dex": true,
       "dex_list": [
         "pumpswap",
@@ -87263,7 +87437,7 @@
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 68,
+      "score": 80,
       "reasons": [
         {
           "effect": 10,
@@ -87278,6 +87452,10 @@
           "reason": "Presion compradora positiva (55%)"
         },
         {
+          "effect": 12,
+          "reason": "Dip estabilizandose (ideal para DCA)"
+        },
+        {
           "effect": 4,
           "reason": "Presencia social activa"
         },
@@ -87286,27 +87464,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526763
+      "updated_at": 1783528098
     },
     "WIF": {
       "name": "$WIF",
-      "liq": 4268588.34,
-      "vol": 222341.58,
-      "vol5m": 976.59,
-      "ch5m": -0.02,
-      "ch1h": 0.1,
-      "ch6h": 1.14,
-      "ch24h": -8.08,
-      "txns": 1544,
-      "buys": 840,
-      "sells": 704,
-      "bp": 54,
+      "liq": 4273542.37,
+      "vol": 219848.33,
+      "vol5m": 739.63,
+      "ch5m": -0.05,
+      "ch1h": 0.37,
+      "ch6h": 0.72,
+      "ch24h": -7.73,
+      "txns": 1521,
+      "buys": 833,
+      "sells": 688,
+      "bp": 55,
       "price": "0.1567",
-      "fdv": 156557582,
-      "mcap": 156557582,
+      "fdv": 156574236,
+      "mcap": 156574236,
       "pair": "EP2ib6dYdEeqD8MfE2ezHCxX3kP3K2eLKkirfPm5eyMx",
       "real_chain": "solana",
-      "age_hours": 23060.192585507168,
+      "age_hours": 23060.563518711195,
       "multi_dex": true,
       "dex_list": [
         "meteora",
@@ -87325,11 +87503,15 @@
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 75,
+      "score": 80,
       "reasons": [
         {
           "effect": 15,
           "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 5,
+          "reason": "Presion compradora positiva (55%)"
         },
         {
           "effect": 12,
@@ -87344,24 +87526,24 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526764
+      "updated_at": 1783528099
     },
     "THE": {
       "name": "THE",
       "liq": 80648.12,
-      "vol": 21106.95,
+      "vol": 17492.52,
       "vol5m": 0,
       "ch5m": 0,
-      "ch1h": -0.9,
-      "ch6h": -0.43,
-      "ch24h": -11.41,
-      "txns": 167,
+      "ch1h": -0.04,
+      "ch6h": -0.31,
+      "ch24h": -10.66,
+      "txns": 141,
       "buys": 1,
-      "sells": 166,
+      "sells": 140,
       "bp": 1,
       "price": "0.05059",
       "fdv": 14441482,
-      "mcap": 6785280,
+      "mcap": 6785258,
       "pair": "0x51Bd5e6d3da9064D59BcaA5A76776560aB42cEb8",
       "real_chain": "bsc",
       "age_hours": null,
@@ -87410,27 +87592,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526765
+      "updated_at": 1783528100
     },
     "4": {
       "name": "4",
-      "liq": 782431.95,
-      "vol": 612612.3,
-      "vol5m": 395.88,
-      "ch5m": 0.17,
-      "ch1h": 3.15,
-      "ch6h": -0.22,
-      "ch24h": -4.02,
-      "txns": 4153,
-      "buys": 2356,
-      "sells": 1797,
-      "bp": 57,
-      "price": "0.008408",
-      "fdv": 8404329,
-      "mcap": 8404329,
+      "liq": 782447.62,
+      "vol": 610972.55,
+      "vol5m": 0,
+      "ch5m": 0,
+      "ch1h": 2.01,
+      "ch6h": -0.98,
+      "ch24h": -3.77,
+      "txns": 4150,
+      "buys": 2344,
+      "sells": 1806,
+      "bp": 56,
+      "price": "0.008395",
+      "fdv": 8391716,
+      "mcap": 8391716,
       "pair": "0xF0a949d3D93B833C183a27Ee067165B6F2C9625e",
       "real_chain": "bsc",
-      "age_hours": 6731.956752622525,
+      "age_hours": 6732.327675499718,
       "multi_dex": true,
       "dex_list": [
         "pancakeswap",
@@ -87446,11 +87628,11 @@
       "symbol": "4",
       "chain": "BNB",
       "contract": "0x0A43fC31a73013089DF59194872Ecae4cAe14444",
-      "flow": "OUT",
+      "flow": "NEUTRAL",
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 80,
+      "score": 68,
       "reasons": [
         {
           "effect": 10,
@@ -87462,11 +87644,7 @@
         },
         {
           "effect": 5,
-          "reason": "Presion compradora positiva (57%)"
-        },
-        {
-          "effect": 12,
-          "reason": "Retiro neto de exchanges (alcista)"
+          "reason": "Presion compradora positiva (56%)"
         },
         {
           "effect": 4,
@@ -87477,27 +87655,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526766
+      "updated_at": 1783528101
     },
     "TOSHI": {
       "name": "TOSHI",
       "liq": 912905.51,
-      "vol": 79564.56,
+      "vol": 78715.92,
       "vol5m": 0,
       "ch5m": 0,
-      "ch1h": -0.75,
+      "ch1h": 0,
       "ch6h": -0.77,
-      "ch24h": -7.73,
-      "txns": 122,
+      "ch24h": -7.51,
+      "txns": 115,
       "buys": 62,
-      "sells": 60,
-      "bp": 51,
+      "sells": 53,
+      "bp": 54,
       "price": "0.0001106",
       "fdv": 46564850,
       "mcap": 46564850,
       "pair": "0x4b0Aaf3EBb163dd45F663b38b6d93f6093EBC2d3",
       "real_chain": "base",
-      "age_hours": 23392.37926518864,
+      "age_hours": 23392.750188263522,
       "multi_dex": true,
       "dex_list": [
         "hydrex",
@@ -87541,27 +87719,27 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526767
+      "updated_at": 1783528102
     },
     "BRETT": {
       "name": "BRETT",
-      "liq": 940189.86,
-      "vol": 10388.06,
-      "vol5m": 0,
-      "ch5m": 0,
-      "ch1h": -0.74,
-      "ch6h": -6.56,
-      "ch24h": -10.47,
-      "txns": 165,
-      "buys": 68,
+      "liq": 960415.64,
+      "vol": 13197.92,
+      "vol5m": 2809.85,
+      "ch5m": 3.65,
+      "ch1h": 3.65,
+      "ch6h": 2.48,
+      "ch24h": -7.2,
+      "txns": 174,
+      "buys": 77,
       "sells": 97,
-      "bp": 41,
-      "price": "0.005037",
-      "fdv": 49923346,
-      "mcap": 49923346,
+      "bp": 44,
+      "price": "0.005221",
+      "fdv": 51746445,
+      "mcap": 51746445,
       "pair": "0xBA3F945812a83471d709BCe9C3CA699A19FB46f7",
       "real_chain": "base",
-      "age_hours": 20690.45289571292,
+      "age_hours": 20690.823817154964,
       "multi_dex": true,
       "dex_list": [
         "hydrex",
@@ -87583,11 +87761,11 @@
       "symbol": "BRETT",
       "chain": "BASE",
       "contract": "0x532f27101965dd16442E59d40670FaF5eBB142E4",
-      "flow": "IN",
+      "flow": "NEUTRAL",
       "whale_count": 0,
       "big_buyers": 0,
       "source": "dexscreener",
-      "score": 54,
+      "score": 52,
       "reasons": [
         {
           "effect": 10,
@@ -87598,14 +87776,6 @@
           "reason": "Volumen muerto"
         },
         {
-          "effect": 12,
-          "reason": "Dip estabilizandose (ideal para DCA)"
-        },
-        {
-          "effect": -10,
-          "reason": "Deposito neto a exchanges (bajista)"
-        },
-        {
           "effect": 4,
           "reason": "Presencia social activa"
         },
@@ -87614,7 +87784,7 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526768
+      "updated_at": 1783528103
     },
     "RON": {
       "symbol": "RON",
@@ -87622,14 +87792,14 @@
       "contract": "ronin",
       "name": "RON",
       "liq": 0,
-      "vol": 1749337,
+      "vol": 1695483,
       "bp": 50,
       "ch1h": 0,
-      "ch24h": -4.01942,
-      "ch7d": -3.57245,
-      "ath_change": -98.76515,
-      "price": 0.054854,
-      "mcap": 42392673,
+      "ch24h": -4.46476,
+      "ch7d": -3.42375,
+      "ath_change": -98.76726,
+      "price": 0.054938,
+      "mcap": 42434311,
       "flow": "NEUTRAL",
       "whale_count": 0,
       "big_buyers": 0,
@@ -87648,7 +87818,7 @@
           "reason": "Lejos del ATH (-99%)"
         }
       ],
-      "updated_at": 1783526770
+      "updated_at": 1783528105
     },
     "AR": {
       "symbol": "AR",
@@ -87656,14 +87826,14 @@
       "contract": "arweave",
       "name": "AR",
       "liq": 0,
-      "vol": 9954210,
+      "vol": 6638993,
       "bp": 50,
       "ch1h": 0,
-      "ch24h": -3.39664,
-      "ch7d": -2.83226,
-      "ath_change": -97.84039,
+      "ch24h": -3.5065,
+      "ch7d": -2.72602,
+      "ath_change": -97.82505,
       "price": 1.94,
-      "mcap": 127489040,
+      "mcap": 127683777,
       "flow": "NEUTRAL",
       "whale_count": 0,
       "big_buyers": 0,
@@ -87686,27 +87856,27 @@
           "reason": "Market cap medio"
         }
       ],
-      "updated_at": 1783526771
+      "updated_at": 1783528107
     },
     "ANSEM": {
       "name": "ANSEM",
-      "liq": 2655405.27,
-      "vol": 38051892.73,
-      "vol5m": 61255.32,
-      "ch5m": 1.56,
-      "ch1h": -10.91,
-      "ch6h": 0.32,
-      "ch24h": -27.55,
-      "txns": 48157,
-      "buys": 27465,
-      "sells": 20692,
+      "liq": 2618234.45,
+      "vol": 38024845.26,
+      "vol5m": 62642.63,
+      "ch5m": -1.59,
+      "ch1h": -9.14,
+      "ch6h": -0.64,
+      "ch24h": -27.83,
+      "txns": 48085,
+      "buys": 27349,
+      "sells": 20736,
       "bp": 57,
-      "price": "0.2795",
-      "fdv": 279537056,
-      "mcap": 279537056,
+      "price": "0.2720",
+      "fdv": 272012626,
+      "mcap": 272012626,
       "pair": "6e7V9eegCHw997T72MxgwwJipZ6GJyZF8NvjkzT1rvpN",
       "real_chain": "solana",
-      "age_hours": 249.45346456256178,
+      "age_hours": 249.82438437521458,
       "multi_dex": true,
       "dex_list": [
         "pumpswap",
@@ -87752,34 +87922,34 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "updated_at": 1783526769
+      "updated_at": 1783528104
     }
   },
   "accum_prev": {
     "ENA": {
-      "score": 70,
-      "liq": 2393927.14,
-      "vol": 1168923.08
+      "score": 62,
+      "liq": 2395568.68,
+      "vol": 1155686.69
     },
     "ONDO": {
       "score": 71,
-      "liq": 592090,
-      "vol": 355689.75
+      "liq": 596499.01,
+      "vol": 356161.58
     },
     "PEPE": {
       "score": 65,
-      "liq": 19261667.39,
-      "vol": 442261.31
+      "liq": 19340580.36,
+      "vol": 438869.19
     },
     "SPX6900": {
       "score": 75,
-      "liq": 9011758.3,
-      "vol": 808846.92
+      "liq": 9021922.93,
+      "vol": 798784.38
     },
     "DEAI": {
-      "score": 32,
-      "liq": 39120.89,
-      "vol": 3994.42
+      "score": 44,
+      "liq": 41135.51,
+      "vol": 4254.24
     },
     "SOIL": {
       "score": 55,
@@ -87787,74 +87957,74 @@
       "vol": 372.75
     },
     "LKI": {
-      "score": 8,
-      "liq": 1536.61,
-      "vol": 45.7
+      "score": 14,
+      "liq": 1478.01,
+      "vol": 75.34
     },
     "RAY": {
       "score": 75,
-      "liq": 3823677.57,
-      "vol": 304808.29
+      "liq": 3835237.64,
+      "vol": 305823.71
     },
     "TROLL": {
       "score": 97,
-      "liq": 2701518.48,
-      "vol": 2079098.93
+      "liq": 2706026.43,
+      "vol": 2006574.56
     },
     "GIGA": {
       "score": 92,
-      "liq": 1425789.61,
-      "vol": 132656.57
+      "liq": 1428170.13,
+      "vol": 131648.82
     },
     "NUB": {
       "score": 92,
-      "liq": 568632.72,
-      "vol": 64006.1
+      "liq": 566895.01,
+      "vol": 65180.14
     },
     "USELESS": {
       "score": 80,
-      "liq": 2230954.37,
-      "vol": 886466.59
+      "liq": 2231831.76,
+      "vol": 774135.72
     },
     "URANUS": {
-      "score": 64,
-      "liq": 141926.07,
-      "vol": 23695.4
+      "score": 52,
+      "liq": 143800.23,
+      "vol": 24495.1
     },
     "67": {
-      "score": 68,
-      "liq": 303921.34,
-      "vol": 124566.15
+      "score": 80,
+      "liq": 305075.24,
+      "vol": 124232.81
     },
     "WIF": {
-      "score": 75,
-      "liq": 4268588.34,
-      "vol": 222341.58
+      "score": 80,
+      "liq": 4273542.37,
+      "vol": 219848.33
     },
     "THE": {
       "score": 46,
       "liq": 80648.12,
-      "vol": 21106.95
+      "vol": 17492.52
     },
     "4": {
-      "score": 80,
-      "liq": 782431.95,
-      "vol": 612612.3
+      "score": 68,
+      "liq": 782447.62,
+      "vol": 610972.55
     },
     "TOSHI": {
       "score": 70,
       "liq": 912905.51,
-      "vol": 79564.56
+      "vol": 78715.92
     },
     "BRETT": {
-      "score": 54,
-      "liq": 940189.86,
-      "vol": 10388.06
+      "score": 52,
+      "liq": 960415.64,
+      "vol": 13197.92
     },
     "ANSEM": {
       "score": 88,
-      "liq": 2655405.27,
-      "vol": 38051892.73
+      "liq": 2618234.45,
+      "vol": 38024845.26
     }
   },
   "custom_accum_tokens": [
@@ -87918,7 +88088,7 @@
       "url": "https://dexscreener.com/solana/4FsJvbRPUs55eXoR2mLdbAKhceusQxSyK5NDu62ntQme",
       "buy_url": "https://jup.ag/swap/SOL-2q68mqEbjwmnMjs1o3KZDNZVyMv6RZKkHcm64iinpump",
       "status": "tracking",
-      "result_pct": -50,
+      "result_pct": -49,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -88060,7 +88230,7 @@
       "url": "https://dexscreener.com/solana/EZcZi9p43EGYrUwcLjN1CCA8kCaPnbkwppVtZf4yV2y8",
       "buy_url": "https://jup.ag/swap/SOL-2Gt16sPz97kjvVXAz7aRbKG718hmY9HiyboieZKBpump",
       "status": "tracking",
-      "result_pct": -29,
+      "result_pct": -35,
       "signal_tags": [
         "boosted"
       ],
@@ -88201,7 +88371,7 @@
       "url": "https://dexscreener.com/solana/6e7V9eegCHw997T72MxgwwJipZ6GJyZF8NvjkzT1rvpN",
       "buy_url": "https://jup.ag/swap/SOL-9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
       "status": "tracking",
-      "result_pct": -32,
+      "result_pct": -36,
       "signal_tags": [
         "boosted"
       ],
@@ -88221,7 +88391,7 @@
       "url": "https://dexscreener.com/solana/7XtHCxoV94rSLLPz6fCUoM3U4BLagjXjdZ5wqCfGM5sg",
       "buy_url": "https://jup.ag/swap/SOL-hhB7CZU8rtKgaNoQu8a4DoBkQJTuUZy8Z1nB9CSEASY",
       "status": "tracking",
-      "result_pct": -20,
+      "result_pct": -29,
       "signal_tags": [
         "new_pair"
       ],
@@ -88321,7 +88491,7 @@
       "url": "https://dexscreener.com/solana/9Z4pCzKZNP9gbRtCQoZVQXczb8RHHZcFhG5cNXtRLfWT",
       "buy_url": "https://jup.ag/swap/SOL-GLdhqrRriPGbK2qko1rkBcNWcqaBk1Mv4EN8SUdFpump",
       "status": "tracking",
-      "result_pct": -76,
+      "result_pct": -72,
       "signal_tags": [
         "boosted"
       ],
@@ -88383,7 +88553,7 @@
       "url": "https://dexscreener.com/solana/Ck9otpDEfjvuvw7VCrWLY3F3i3LyYp18ky5M6cEeiLpM",
       "buy_url": "https://jup.ag/swap/SOL-6iJxbADkc98FoDwv8f9PRJjweQgKyExmPBdFk6qRpump",
       "status": "tracking",
-      "result_pct": -84,
+      "result_pct": -90,
       "signal_tags": [
         "new_pair"
       ],
@@ -88463,7 +88633,7 @@
       "url": "https://dexscreener.com/solana/6wjSpKYMm4UQ7qEKcnfsU9jQ7Pf3ZZjBMhw6EfABMexC",
       "buy_url": "https://jup.ag/swap/SOL-62YE1d4sRArBQzR5bdbxsx2k9LV3MdPV4xMC4Di2pump",
       "status": "tracking",
-      "result_pct": -84,
+      "result_pct": -87,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -88645,7 +88815,7 @@
       "url": "https://dexscreener.com/solana/Cziy1XcQczeqjUATrMarNaQpDfGeWRpcwsX1s6CE8ETT",
       "buy_url": "https://jup.ag/swap/SOL-9NWqau1jLKUUWPAkGpNpsPka9yKskoMppER4ueZTpump",
       "status": "tracking",
-      "result_pct": -35,
+      "result_pct": -36,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -88726,7 +88896,7 @@
       "url": "https://dexscreener.com/solana/6XVQY8PAaRBpKp1F22QoVb11r9rWnjjyjG1qhZSGHnjv",
       "buy_url": "https://jup.ag/swap/SOL-93DB6Wsm1QjxXLXm9eEtTkUCpkYD69XbfgHoZBSpump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -49,
       "signal_tags": [
         "new_pair"
       ],
@@ -88746,7 +88916,7 @@
       "url": "https://dexscreener.com/solana/Ey5o3wr3xeawcworExc7EjBSpUvrzHtRFHWvpi4dXq7h",
       "buy_url": "https://jup.ag/swap/SOL-HBibqRqqzAbnvZ4ogkcma6nzaoNWgpEimajVjHA3pump",
       "status": "tracking",
-      "result_pct": -89,
+      "result_pct": -92,
       "signal_tags": [
         "new_pair"
       ],
@@ -88806,7 +88976,7 @@
       "url": "https://dexscreener.com/ethereum/0xb6A880455f062b15fDADBbC2DFcb00610CF4e558",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x25f8087ead173b73d6e8b84329989a8eea16cf73",
       "status": "tracking",
-      "result_pct": -10,
+      "result_pct": -11,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -88826,7 +88996,7 @@
       "url": "https://dexscreener.com/ethereum/0x1385Fc1Fe0418ea0B4Fcf7Adc61FC7535AB7F80d",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
       "status": "tracking",
-      "result_pct": -17,
+      "result_pct": -14,
       "signal_tags": [
         "insider_convergence",
         "insider_buy"
@@ -88847,7 +89017,7 @@
       "url": "https://dexscreener.com/ethereum/0x3c8AD34155B83ddB7f43119A19503d34Ed2B5c7a",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xa849eaae994fb86afa73382e9bd88c2b6b18dc71",
       "status": "tracking",
-      "result_pct": -4,
+      "result_pct": -5,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -88907,7 +89077,7 @@
       "url": "https://dexscreener.com/ethereum/0x31227b50eCCDC9C589826AA2D9E7C5619B1895Da",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xf6b1117ec07684d3958cad8beb1b302bfd21103f",
       "status": "tracking",
-      "result_pct": -3,
+      "result_pct": -5,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -88927,7 +89097,7 @@
       "url": "https://dexscreener.com/ethereum/0x7b1E5D984A43eE732de195628d20d05CFaBc3cC7",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
       "status": "tracking",
-      "result_pct": -5,
+      "result_pct": -7,
       "signal_tags": [
         "insider_buy",
         "insider_convergence"
@@ -88948,7 +89118,7 @@
       "url": "https://dexscreener.com/ethereum/0x52c77b0CB827aFbAD022E6d6CAF2C44452eDbc39",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
       "status": "tracking",
-      "result_pct": -7,
+      "result_pct": -8,
       "signal_tags": [
         "insider_buy",
         "insider_convergence"
@@ -88969,7 +89139,7 @@
       "url": "https://dexscreener.com/ethereum/0xde9207a409e92b8ce53435694f78390358acfd1d8ed710ef55a53aa0daf6c4b0",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x1776e1f26f98b1a5df9cd347953a26dd3cb46671",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -2,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89030,7 +89200,7 @@
       "url": "https://dexscreener.com/solana/5ZumoW6SjDzTQ1ovZaK6KRZTZvjFDUNP3oacPfcpcPYm",
       "buy_url": "https://jup.ag/swap/SOL-9ijGFsNFVoug3Rzw2x5XS6D8biTLjyWyk5M17QD1pump",
       "status": "tracking",
-      "result_pct": -67,
+      "result_pct": -70,
       "signal_tags": [
         "new_pair"
       ],
@@ -89050,7 +89220,7 @@
       "url": "https://dexscreener.com/solana/Fex8CSkNXfaxAPRqQARKGchYAMVfwDg28sfmBXXGkNGX",
       "buy_url": "https://jup.ag/swap/SOL-9Pfync3ejPC9eHqVzq3nYQJAhyhjqpnB9UsaSfLxpump",
       "status": "tracking",
-      "result_pct": -14,
+      "result_pct": -11,
       "signal_tags": [
         "new_pair"
       ],
@@ -89070,7 +89240,7 @@
       "url": "https://dexscreener.com/ethereum/0x8c52de694f5a4ce27ea85fe4bc47e08d22c5dfb5f9b38b2a63765ed52cd3b147",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x57e114b691db790c35207b2e685d4a43181e6061",
       "status": "tracking",
-      "result_pct": -5,
+      "result_pct": -6,
       "signal_tags": [
         "insider_buy",
         "insider_convergence"
@@ -89091,7 +89261,7 @@
       "url": "https://dexscreener.com/solana/FnVzFadyrBH8f458JjNPocMA12A7tmGH7rGWdSvMYQeQ",
       "buy_url": "https://jup.ag/swap/SOL-C843mf3Jucz6mcq9Ljuc4C1wZLggMwtfGTqjH2dkpump",
       "status": "tracking",
-      "result_pct": -49,
+      "result_pct": -43,
       "signal_tags": [
         "new_pair"
       ],
@@ -89111,7 +89281,7 @@
       "url": "https://dexscreener.com/ethereum/0x7DD3F5705504002dc946AEAfE6629b9481b72272",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x0f51bb10119727a7e5ea3538074fb341f56b09ad",
       "status": "tracking",
-      "result_pct": -1,
+      "result_pct": -2,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89124,14 +89294,14 @@
       "notified_at": 1783387457,
       "notified_price": 0.0001822,
       "notified_liq": 34220.28,
-      "max_price": 0.0001892,
-      "max_mult": 1.0384193194291986,
+      "max_price": 0.0001992,
+      "max_mult": 1.0933040614709109,
       "pump_prob": 69,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/CRTZqiVLUdQGA8oDCWFz5pJVLig8MvhxoG26DcMKkwWA",
       "buy_url": "https://jup.ag/swap/SOL-3gDAjymqTF19GVw4TcB8sAKd3yLR2dfEzJ4Wztm2pump",
       "status": "tracking",
-      "result_pct": 4,
+      "result_pct": 6,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -89213,7 +89383,7 @@
       "url": "https://dexscreener.com/solana/2XFxGptL2BbbtifoLswDb6xSANzBPxb2uuE3zY4FQcjy",
       "buy_url": "https://jup.ag/swap/SOL-kWYUB5EQ8hhr6x6TcdcV8bV1ZPoCo5JmsujobH7pump",
       "status": "tracking",
-      "result_pct": -71,
+      "result_pct": -69,
       "signal_tags": [
         "new_pair"
       ],
@@ -89274,7 +89444,7 @@
       "url": "https://dexscreener.com/solana/23veRo1FxmWvUatobCrwjxPDrM2mEghvymH9dEmedC3s",
       "buy_url": "https://jup.ag/swap/SOL-CcvoEuSi2hzyqoHPx3HBLs6rfeXdentKCBQZTNyBpump",
       "status": "tracking",
-      "result_pct": -92,
+      "result_pct": -93,
       "signal_tags": [
         "new_pair"
       ],
@@ -89294,7 +89464,7 @@
       "url": "https://dexscreener.com/ethereum/0xF260d15e8eBe54D210ef53F5b61Cb46bD9Aa29EE",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x6b0b3a982b4634ac68dd83a4dbf02311ce324181",
       "status": "tracking",
-      "result_pct": -3,
+      "result_pct": -2,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89314,7 +89484,7 @@
       "url": "https://dexscreener.com/solana/B8FzsaNkDjjVdX1yKDrUFsk9udKjayB7AqFSH68xzsYN",
       "buy_url": "https://jup.ag/swap/SOL-73Avdj3wc3eg4qrWRmqRPWkZvRz7YxwPs4wpgnzVpump",
       "status": "tracking",
-      "result_pct": -60,
+      "result_pct": -61,
       "signal_tags": [
         "new_pair"
       ],
@@ -89354,7 +89524,7 @@
       "url": "https://dexscreener.com/solana/C3YT6tSJngFB5DSvirD3yQseqXxJV2g148Gf8EnSwRRr",
       "buy_url": "https://jup.ag/swap/SOL-ESAYabnPzfaZGcwNtTL5RL1RBaoW7vYUNx5n6QfTpump",
       "status": "tracking",
-      "result_pct": -68,
+      "result_pct": -65,
       "signal_tags": [
         "boosted"
       ],
@@ -89374,7 +89544,7 @@
       "url": "https://dexscreener.com/ethereum/0x63CAA808CBDe017d88F8A5aA4EFBE02710F356c3",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x90685e300a4c4532efcefe91202dfe1dfd572f47",
       "status": "tracking",
-      "result_pct": -72,
+      "result_pct": -75,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89394,7 +89564,7 @@
       "url": "https://dexscreener.com/solana/559KtFUGF3QTbfqbLJjjhGmHV2qKUe5grrJxvewVmmiL",
       "buy_url": "https://jup.ag/swap/SOL-DKKPHp36b6N2BH2UKGCjuQRPeCCHw1uyLKkhzH3vfsjB",
       "status": "tracking",
-      "result_pct": -61,
+      "result_pct": -63,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -89415,7 +89585,7 @@
       "url": "https://dexscreener.com/solana/4CfR6CSN9BJ8LQETjqswghXBC2HFkYXY9dAcAKDEmZoP",
       "buy_url": "https://jup.ag/swap/SOL-2rovxjbNfyVuTdDTpH3EtsWEFJKCmYasuLud3MRHpump",
       "status": "tracking",
-      "result_pct": -40,
+      "result_pct": -34,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -89436,7 +89606,7 @@
       "url": "https://dexscreener.com/solana/BWFZkx1pMpvwxammwTrizvoWzZZGiFEYUYW6Ee51SHLy",
       "buy_url": "https://jup.ag/swap/SOL-ACtfUWtgvaXrQGNMiohTusi5jcx5RJf5zwu9aAxkpump",
       "status": "tracking",
-      "result_pct": -31,
+      "result_pct": -36,
       "signal_tags": [
         "boosted"
       ],
@@ -89517,7 +89687,7 @@
       "url": "https://dexscreener.com/ethereum/0xc2eaB7d33d3cB97692eCB231A5D0e4A649Cb539d",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
       "status": "tracking",
-      "result_pct": -6,
+      "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89557,7 +89727,7 @@
       "url": "https://dexscreener.com/solana/7Cvbv7R3S2cPuPxQp7CFDTzEwkJ3AFcZMZWYXQhJ24qU",
       "buy_url": "https://jup.ag/swap/SOL-6mNBeqQJSWoeSx8R46HxGqPFw6DtMRHJE71NGqRCpump",
       "status": "tracking",
-      "result_pct": -74,
+      "result_pct": -73,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -89598,7 +89768,7 @@
       "url": "https://dexscreener.com/solana/8zz7Z9TbpKGA1JEfUT1LbdPtSzwgHNQnT8vqztWF9j2v",
       "buy_url": "https://jup.ag/swap/SOL-HBKmnamsDdyjpYEPpuWt6y7PheNvhUAnmFCYQr8epump",
       "status": "tracking",
-      "result_pct": -86,
+      "result_pct": -83,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -89619,7 +89789,7 @@
       "url": "https://dexscreener.com/solana/CFewdGnZGJjN1PYKxGFpAzFq1Eq1XMVZns1ksWsWHsXA",
       "buy_url": "https://jup.ag/swap/SOL-B6f27ETGcjgGNB1fqULJbXVmw9FnL8HgBp7R83hmpump",
       "status": "tracking",
-      "result_pct": -36,
+      "result_pct": -44,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -89720,7 +89890,7 @@
       "url": "https://dexscreener.com/ethereum/0x8ee28047ee72104999ce30d35f92e1757a7a94a5ac2bc200f4c2da1eabfe6429",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x27702a26126e0b3702af63ee09ac4d1a084ef628",
       "status": "tracking",
-      "result_pct": 5,
+      "result_pct": 4,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89740,7 +89910,7 @@
       "url": "https://dexscreener.com/solana/52JCSvUFAuumZPB6G4Vw5reGy5pKj2Vk6pDsS1cFJbdu",
       "buy_url": "https://jup.ag/swap/SOL-8Z3QCZvyuD9zDg2MQ2AUbGPdhKkDwnwdjbYfzQhdpump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -78,
       "signal_tags": [
         "new_pair"
       ],
@@ -89800,7 +89970,7 @@
       "url": "https://dexscreener.com/solana/2dKaC52fWeswkLE4KdmEaQUs7Y6U2ute9uzhR6CPWGzy",
       "buy_url": "https://jup.ag/swap/SOL-F1N5fdDGQd7eCHxpLc9iYKPWzjDjheHBJaDVEJmFpump",
       "status": "tracking",
-      "result_pct": -76,
+      "result_pct": -82,
       "signal_tags": [
         "new_pair"
       ],
@@ -89840,7 +90010,7 @@
       "url": "https://dexscreener.com/ethereum/0x3902428a74A08a91e2Cb2Fd834De75E69974FE67",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xfc82bb4ba86045af6f327323a46e80412b91b27d",
       "status": "tracking",
-      "result_pct": 1,
+      "result_pct": 2,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89880,7 +90050,7 @@
       "url": "https://dexscreener.com/ethereum/0x8DE7a9540E0eDb617D78Ca5a7c6CC18295Fd8bB9",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x562e362876c8aee4744fc2c6aac8394c312d215d",
       "status": "tracking",
-      "result_pct": -4,
+      "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -89921,7 +90091,7 @@
       "url": "https://dexscreener.com/solana/GerK1Di6ftw1Eag4E7d4MhPXY63s6cJubXPH9cCvKQ1C",
       "buy_url": "https://jup.ag/swap/SOL-7Y6vf7NPVMSFYmwSGijxzzGo9VemqsNmj7zZf259pump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -78,
       "signal_tags": [
         "new_pair"
       ],
@@ -89941,7 +90111,7 @@
       "url": "https://dexscreener.com/ethereum/0xd4405F0704621DBe9d4dEA60E128E0C3b26bddbD",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x3449fc1cd036255ba1eb19d65ff4ba2b8903a69a",
       "status": "tracking",
-      "result_pct": -1,
+      "result_pct": -5,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90021,7 +90191,7 @@
       "url": "https://dexscreener.com/ethereum/0xf7Fd0860922bD3352E2DBAf725A182b74bf7A2e1",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x28d38df637db75533bd3f71426f3410a82041544",
       "status": "tracking",
-      "result_pct": -8,
+      "result_pct": -10,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90061,7 +90231,7 @@
       "url": "https://dexscreener.com/solana/8YjJAzeDedkGSqvxyTEDEmxxAY4wcHeCa4sXp2k1P2m1",
       "buy_url": "https://jup.ag/swap/SOL-9NWobJJceLBysgC2WzzBPFRqhx1qfYN2uQvUecdopump",
       "status": "tracking",
-      "result_pct": -87,
+      "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
@@ -90121,7 +90291,7 @@
       "url": "https://dexscreener.com/solana/8URriMuuqyyUnjn66VjYzsPQNKwpWYRK7P4wdawZUB4q",
       "buy_url": "https://jup.ag/swap/SOL-VxGc1Pad7B8kuefUUS5YFBsbKaJet8dQu2gTKvhpump",
       "status": "tracking",
-      "result_pct": -84,
+      "result_pct": -89,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
@@ -90162,7 +90332,7 @@
       "url": "https://dexscreener.com/solana/3Y5q7zPn6kFvNm2rLXGcQ2jHftQWzmnMCBaanjReigFu",
       "buy_url": "https://jup.ag/swap/SOL-HYwSztsAw2Efi24v2YY5Wn1u2RCJidQQULYNEiaFpump",
       "status": "tracking",
-      "result_pct": -89,
+      "result_pct": -90,
       "signal_tags": [
         "new_pair"
       ],
@@ -90182,7 +90352,7 @@
       "url": "https://dexscreener.com/ethereum/0x75d5fE72dB6e0fec7703E8806b61f6dB08d2037E",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x2e5ef97C96D6a44CcB8Db9C30f2F5DCec04BB6f9",
       "status": "tracking",
-      "result_pct": 2,
+      "result_pct": -6,
       "signal_tags": [
         "boosted"
       ],
@@ -90202,7 +90372,7 @@
       "url": "https://dexscreener.com/solana/DPsSBNyVf65Q4iSL856hTPFYw9YFgy2xLPWfHyUBR56i",
       "buy_url": "https://jup.ag/swap/SOL-4zyzwnRCHNPJSSbxrJTTbwYXX4qYKWivXbeqU5GfEagc",
       "status": "tracking",
-      "result_pct": -15,
+      "result_pct": -14,
       "signal_tags": [
         "new_pair"
       ],
@@ -90222,7 +90392,7 @@
       "url": "https://dexscreener.com/solana/HJ6VPXCRRKe5qtHRK8ecejUjCuHmxoDvVTjYKf6L5RYE",
       "buy_url": "https://jup.ag/swap/SOL-DsUkV9n6n63TgeQKZbwM5rkHpupoA9ofh4VYJxpkpump",
       "status": "tracking",
-      "result_pct": -82,
+      "result_pct": -87,
       "signal_tags": [
         "new_pair"
       ],
@@ -90282,7 +90452,7 @@
       "url": "https://dexscreener.com/ethereum/0x5fa9569B0Ed6Aa01e234468e6A15B77988b950dF",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x5732046a883704404f284ce41ffadd5b007fd668",
       "status": "tracking",
-      "result_pct": -2,
+      "result_pct": -3,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90302,7 +90472,7 @@
       "url": "https://dexscreener.com/ethereum/0x766658180726600DC5e723CF85BBF2Dcd470B2Ad",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x623cd3a3edf080057892aaf8d773bbb7a5c9b6e9",
       "status": "tracking",
-      "result_pct": -4,
+      "result_pct": -8,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90322,7 +90492,7 @@
       "url": "https://dexscreener.com/ethereum/0xAC8bA9D6FA2f9FF7c712Bef5670CB0F7E4177965",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x2d8ea194902bc55431420bd26be92b0782dce91d",
       "status": "tracking",
-      "result_pct": -30,
+      "result_pct": -26,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90342,7 +90512,7 @@
       "url": "https://dexscreener.com/solana/CVdzrsUrvnu14CWyh6vtPEzzvM7qAquLmNyrcqz6T18S",
       "buy_url": "https://jup.ag/swap/SOL-HJafM9Mi1df4VitQy7RjXVQT9wd9Mpin8ceGEYp8pump",
       "status": "tracking",
-      "result_pct": -89,
+      "result_pct": -90,
       "signal_tags": [
         "new_pair"
       ],
@@ -90382,7 +90552,7 @@
       "url": "https://dexscreener.com/solana/EVevj5oqhFj3SjC6nYhWd61kYuPwCXbMrx1gLDq2CWvL",
       "buy_url": "https://jup.ag/swap/SOL-8xEs3GSw4eMjNf7RRDq2jZFT5iMADjytbBb97cFnyCSE",
       "status": "tracking",
-      "result_pct": -74,
+      "result_pct": -78,
       "signal_tags": [
         "new_pair"
       ],
@@ -90402,7 +90572,7 @@
       "url": "https://dexscreener.com/solana/CWsUGJATxTubKD8fSqDgQrVcNhjWNjoJbedh9ge6GdeK",
       "buy_url": "https://jup.ag/swap/SOL-6J5TWGD4EATsuEG3LbqeH7kbfj8w6GYLJUQL5rRLpump",
       "status": "tracking",
-      "result_pct": -88,
+      "result_pct": -89,
       "signal_tags": [
         "new_pair"
       ],
@@ -90502,7 +90672,7 @@
       "url": "https://dexscreener.com/solana/41AJxAskV8uDFQWTMbRCedYn7xepdoM5xEQDmJMiBpSq",
       "buy_url": "https://jup.ag/swap/SOL-AUkJ6UY4vKWWeNksu3qM88Sz8LF5vVzNmwW5CaKypump",
       "status": "tracking",
-      "result_pct": -75,
+      "result_pct": -77,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -90523,7 +90693,7 @@
       "url": "https://dexscreener.com/ethereum/0xC555D55279023E732CcD32D812114cAF5838fD46",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x812ba41e071c7b7fa4ebcfb62df5f45f6fa853ee",
       "status": "tracking",
-      "result_pct": -7,
+      "result_pct": -8,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90543,7 +90713,7 @@
       "url": "https://dexscreener.com/ethereum/0xD90a1ba0cbaaaabfdC6C814cDF1611306A26E1f8",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xcc4304a31d09258b0029ea7fe63d032f52e44efe",
       "status": "tracking",
-      "result_pct": 1,
+      "result_pct": -1,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90563,7 +90733,7 @@
       "url": "https://dexscreener.com/ethereum/0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
       "status": "tracking",
-      "result_pct": -1,
+      "result_pct": -3,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90583,7 +90753,7 @@
       "url": "https://dexscreener.com/solana/5qnvwV7hHHFgZGRTrt4GnNrKHMLAntrxyaUV3YfNXnvB",
       "buy_url": "https://jup.ag/swap/SOL-saTZ9ADxuPYGxCgJMqnRsanza3nT3GnkpKENicKpump",
       "status": "tracking",
-      "result_pct": -60,
+      "result_pct": -67,
       "signal_tags": [
         "new_pair"
       ],
@@ -90603,7 +90773,7 @@
       "url": "https://dexscreener.com/solana/F9UpWTUd23EqqjWgPtzGRcjFneqEAgHZ1HmyizrvP2JQ",
       "buy_url": "https://jup.ag/swap/SOL-DyRMMZHPiqGmnM4TqFNQ7XAoTcsmACT71rJfKqEepump",
       "status": "tracking",
-      "result_pct": -91,
+      "result_pct": -94,
       "signal_tags": [
         "new_pair"
       ],
@@ -90643,7 +90813,7 @@
       "url": "https://dexscreener.com/solana/DLjqg37TJcyDmiYvLh7s6MSLP9b1iqEAsr5L1oLoPg9y",
       "buy_url": "https://jup.ag/swap/SOL-FxYfkGU3iU6oxpoCYPfwHUQfX41XE8cxs9ptpNuCZion",
       "status": "tracking",
-      "result_pct": -64,
+      "result_pct": -77,
       "signal_tags": [
         "new_pair"
       ],
@@ -90663,7 +90833,7 @@
       "url": "https://dexscreener.com/ethereum/0x530581e8b4dff575d96af96cbfb74d0cc4ed0ec0cb7c953f491c7a60a787412d",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xfd36fa88bb3fea8d1264fc89d70723b6a2b56958",
       "status": "tracking",
-      "result_pct": -5,
+      "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90703,7 +90873,7 @@
       "url": "https://dexscreener.com/solana/4N2pE1UCuR3ELp5C7vsRW6d44wqgBc12VduBGNkAKpzj",
       "buy_url": "https://jup.ag/swap/SOL-CtuShQdgEYN7S3raAxJi2QBnpobWea3pv9PaGyRgpump",
       "status": "tracking",
-      "result_pct": -57,
+      "result_pct": -71,
       "signal_tags": [
         "new_pair"
       ],
@@ -90723,7 +90893,7 @@
       "url": "https://dexscreener.com/solana/S6WpK8v9voH5CRmd9pkKZuc4xkNqYBPgvCUDFqLydCb",
       "buy_url": "https://jup.ag/swap/SOL-HeuHp2ZyYjbkg87A7q1KVcYijNQT782AmbA36wQARv6A",
       "status": "tracking",
-      "result_pct": -19,
+      "result_pct": -34,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -90764,7 +90934,7 @@
       "url": "https://dexscreener.com/ethereum/0x3854612b93B140726167cCA5418B01E832515d42",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x71ab77b7dbb4fa7e017bc15090b2163221420282",
       "status": "tracking",
-      "result_pct": -11,
+      "result_pct": -17,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -90804,7 +90974,7 @@
       "url": "https://dexscreener.com/solana/BsiPx7jgY87q8HuAACq4kPgmcDRuX3RBRxeKej2moe4a",
       "buy_url": "https://jup.ag/swap/SOL-D2XvLipYuPFgJ42kB6U4ihmHENStT7h2BS2iN5NtzZKg",
       "status": "tracking",
-      "result_pct": -48,
+      "result_pct": -42,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -90825,7 +90995,7 @@
       "url": "https://dexscreener.com/solana/5ByL7MZoLABYnwMPZKPKjf4MGkZ7FeBzrAnos19Pre2z",
       "buy_url": "https://jup.ag/swap/SOL-FeMbDoX7R1Psc4GEcvJdsbNbZA3bfztcyDCatJVJpump",
       "status": "tracking",
-      "result_pct": -22,
+      "result_pct": -27,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -90906,7 +91076,7 @@
       "url": "https://dexscreener.com/solana/CGKib1WYM8PnD98Eu92gt6bec8Q81PLv59URHHwFwu41",
       "buy_url": "https://jup.ag/swap/SOL-DeqsPTYwvsNjkf5G8zDxziUnFPp55nQZA4vrNM2apump",
       "status": "tracking",
-      "result_pct": -39,
+      "result_pct": -32,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -90987,7 +91157,7 @@
       "url": "https://dexscreener.com/solana/HqvRQi4NFu3GnQkoNPDkoMhrzsMrgbsaX2VGCn9ZmcmQ",
       "buy_url": "https://jup.ag/swap/SOL-JBxEqfH8vzyUCXmWvTesN41ccbxoaESXxuJG9LFWpump",
       "status": "tracking",
-      "result_pct": -17,
+      "result_pct": -27,
       "signal_tags": [
         "boosted"
       ],
@@ -91007,7 +91177,7 @@
       "url": "https://dexscreener.com/ethereum/0xce2899b16743cfd5a954d8122d5e07f410305b1aebee39fd73d9f3b9ebf10c2f",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xa27ec0006e59f245217ff08cd52a7e8b169e62d2",
       "status": "tracking",
-      "result_pct": -4,
+      "result_pct": -5,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -91047,7 +91217,7 @@
       "url": "https://dexscreener.com/ethereum/0x469506E58D4d0D7ABB476Dd5C0a999D46723351F",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x32a7c02e79c4ea1008dd6564b35f131428673c41",
       "status": "tracking",
-      "result_pct": -1,
+      "result_pct": -2,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -91067,7 +91237,7 @@
       "url": "https://dexscreener.com/solana/N5MHieia3yQLsRMErpSAwotf9MVvSf892mhCUg96Zdm",
       "buy_url": "https://jup.ag/swap/SOL-Em7weKB7QriPmYaMDovmprUuNNe8k2HjRg4ekH43face",
       "status": "tracking",
-      "result_pct": -88,
+      "result_pct": -89,
       "signal_tags": [
         "new_pair"
       ],
@@ -91087,7 +91257,7 @@
       "url": "https://dexscreener.com/solana/2HuG5HphMjUMiaiby2vd6zXss1WGwwhk8v6AiwuWZdhG",
       "buy_url": "https://jup.ag/swap/SOL-ExkiBzrL1LZ3RPyRM3UvDqLmu8xdr58nXAqRYZ8ypump",
       "status": "tracking",
-      "result_pct": -80,
+      "result_pct": -79,
       "signal_tags": [
         "new_pair"
       ],
@@ -91127,7 +91297,7 @@
       "url": "https://dexscreener.com/ethereum/0x03296FdD8bf8e0f9def07fAC3466b256Fc8720B0",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x628a3b2e302c7e896acc432d2d0dd22b6cb9bc88",
       "status": "tracking",
-      "result_pct": -6,
+      "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -91147,7 +91317,7 @@
       "url": "https://dexscreener.com/solana/48t6aCVpmWKnEaX3Za9jkqeXgKJeV5uuQZM9DnrqfhY5",
       "buy_url": "https://jup.ag/swap/SOL-7CNkrrFep9ZyNnurJ7wgWNPByTHW8vVeokHpTUgEpump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -83,
       "signal_tags": [
         "new_pair"
       ],
@@ -91187,7 +91357,7 @@
       "url": "https://dexscreener.com/solana/BvryEaadeHLcmYzEEjtaAre9tzCCFGsoXntLdQgK1mG3",
       "buy_url": "https://jup.ag/swap/SOL-73JivGAQigKcL1JHhgeCkB2nbWrCg7qSWzxwaiYGpump",
       "status": "tracking",
-      "result_pct": -82,
+      "result_pct": -84,
       "signal_tags": [
         "new_pair"
       ],
@@ -91207,7 +91377,7 @@
       "url": "https://dexscreener.com/ethereum/0x2828b17a99bf05fdd0ad566f8cf8c25f1cd6ea608ab5e829f36b52c05cd077b7",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xacd2c239012d17beb128b0944d49015104113650",
       "status": "tracking",
-      "result_pct": -12,
+      "result_pct": -14,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -91248,7 +91418,7 @@
       "url": "https://dexscreener.com/solana/HQVzP7hXhCoVjysnp6foFy5adCFiGj1cdwt8gppAPNBV",
       "buy_url": "https://jup.ag/swap/SOL-7LNFZcNigZay5U9e2sq6n2Z4iM8BC2Dd53L14pwvpump",
       "status": "tracking",
-      "result_pct": -9,
+      "result_pct": -16,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -91289,7 +91459,7 @@
       "url": "https://dexscreener.com/solana/oEWoRRVtLLLq6iWtLwEwoVKUsovTQaNZBVym2p9TN5M",
       "buy_url": "https://jup.ag/swap/SOL-xkK2HbpAFhDx2ypjv6aAWTNuam4QiGwdcSGLrTnEASY",
       "status": "tracking",
-      "result_pct": -36,
+      "result_pct": -32,
       "signal_tags": [
         "new_pair"
       ],
@@ -91309,7 +91479,7 @@
       "url": "https://dexscreener.com/solana/ALchxMjsrFEsQjYUy6GRCfYPCzHBpZ4KUpFB9GL57vjT",
       "buy_url": "https://jup.ag/swap/SOL-BrXJz1NyZbeCALn4aWS7ckZqMyQBwENDGVmaRt4ypump",
       "status": "tracking",
-      "result_pct": -91,
+      "result_pct": -93,
       "signal_tags": [
         "new_pair"
       ],
@@ -91329,7 +91499,7 @@
       "url": "https://dexscreener.com/solana/FtUS1hVim2K5q1RnUCthVYHo6SLxSknY1kTjbQjZsVp4",
       "buy_url": "https://jup.ag/swap/SOL-B5BPVt7uZyycC2fKTUM4KYoFsK9WBuX6UhpvqPVbG5YT",
       "status": "tracking",
-      "result_pct": -63,
+      "result_pct": -67,
       "signal_tags": [
         "boosted"
       ],
@@ -91369,7 +91539,7 @@
       "url": "https://dexscreener.com/solana/88aZe5nMFXfGMtm36snWiWLqXwEPasWm7BxkYN4t3tnd",
       "buy_url": "https://jup.ag/swap/SOL-7BeRYW3btb5fnZejwyHwWQQ3yNMpNqpyLBRuiUaXpump",
       "status": "tracking",
-      "result_pct": -63,
+      "result_pct": -45,
       "signal_tags": [
         "new_pair"
       ],
@@ -91409,7 +91579,7 @@
       "url": "https://dexscreener.com/solana/8LGHpd89ExPQMGCCZdgPveDPmQooSAK6Ch2VageDBkEG",
       "buy_url": "https://jup.ag/swap/SOL-FLKVBHbiur4fa6dxXE8S8avryKsxrZR3eyizqpoSrz4p",
       "status": "tracking",
-      "result_pct": -61,
+      "result_pct": -62,
       "signal_tags": [
         "new_pair"
       ],
@@ -91550,7 +91720,7 @@
       "url": "https://dexscreener.com/solana/B4yc4Mh2zEpCGNZKRbEHQHBfktJ3TaqDUGgDRa2mTHsL",
       "buy_url": "https://jup.ag/swap/SOL-BuK3BYo79xiJz8A11LCf2qtbNzQXEoHTsbiHNFgJpump",
       "status": "tracking",
-      "result_pct": -47,
+      "result_pct": -50,
       "signal_tags": [
         "boosted"
       ],
@@ -91650,7 +91820,7 @@
       "url": "https://dexscreener.com/solana/EVmuBDDWWyg3a4gj13dKH5bvUxeJdzUu8RWavBRcnzZZ",
       "buy_url": "https://jup.ag/swap/SOL-DhLMkXYqAHDB3zhbRZ6QoqT5PrEPvjJgCTPJaxdSpump",
       "status": "tracking",
-      "result_pct": -33,
+      "result_pct": -32,
       "signal_tags": [
         "new_pair"
       ],
@@ -91710,7 +91880,7 @@
       "url": "https://dexscreener.com/solana/2YTPTQwKRyBjwVJWuSr4ucFyKxw8bEhQ77DvxmsHUdEv",
       "buy_url": "https://jup.ag/swap/SOL-HoKWQNyiVM9eAV7nTV4r6Wy156DUVLHg7cZLvgEZpump",
       "status": "tracking",
-      "result_pct": -17,
+      "result_pct": -27,
       "signal_tags": [
         "new_pair"
       ],
@@ -91730,7 +91900,7 @@
       "url": "https://dexscreener.com/solana/2NCX2oGUirvasw9sQeFJnRMvoAJYd9fS4CoAzghQEvdo",
       "buy_url": "https://jup.ag/swap/SOL-8b7rPXZ1owSChKM5iFKnrbgbpR2LvB7dMWQg84ugpump",
       "status": "tracking",
-      "result_pct": -92,
+      "result_pct": -91,
       "signal_tags": [
         "new_pair"
       ],
@@ -91831,7 +92001,7 @@
       "url": "https://dexscreener.com/solana/FUSFwNngm3sSaq5TyvBNai59RNTeyNTrR2yCxBNtcCar",
       "buy_url": "https://jup.ag/swap/SOL-3ZV9cZhUkSJXDNy5tiYj13x6hxqfQmxKUYmeNrCsbonk",
       "status": "tracking",
-      "result_pct": -88,
+      "result_pct": -89,
       "signal_tags": [
         "new_pair"
       ],
@@ -91851,7 +92021,7 @@
       "url": "https://dexscreener.com/solana/9JyFh2YAFZXk4JyPGFK8Awq2Diw8eqncW7hKpQyRCcUj",
       "buy_url": "https://jup.ag/swap/SOL-9N7cuuzXjUxXPczKL2TLKN69HuL5W3xX14HaKuunpump",
       "status": "tracking",
-      "result_pct": -90,
+      "result_pct": -81,
       "signal_tags": [
         "new_pair"
       ],
@@ -91931,7 +92101,7 @@
       "url": "https://dexscreener.com/solana/8SEg9BokNM79SvFzwfg72QbdsJi8A9SWPrPcY5Zk7bZW",
       "buy_url": "https://jup.ag/swap/SOL-5RyeWfbjVw6Ktj6j8SmTiAnVXWvmV8YxGtTebNsU2dBo",
       "status": "tracking",
-      "result_pct": -20,
+      "result_pct": -45,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -91993,7 +92163,7 @@
       "url": "https://dexscreener.com/solana/AFaYrFH7hUYnkv5mbvbnRHwX29M9JzUL3ySGtQz69AUv",
       "buy_url": "https://jup.ag/swap/SOL-H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huApump",
       "status": "tracking",
-      "result_pct": -26,
+      "result_pct": -20,
       "signal_tags": [
         "boosted"
       ],
@@ -92033,7 +92203,7 @@
       "url": "https://dexscreener.com/solana/5AXNqh4y4mHRjXf3a28AxgPyRUbCiunDTGnuipF9gwR3",
       "buy_url": "https://jup.ag/swap/SOL-DjY76Xr58e2ASvwBCSuL7sBKmt8hMN3otdqLkn3tpump",
       "status": "tracking",
-      "result_pct": -90,
+      "result_pct": -93,
       "signal_tags": [
         "new_pair"
       ],
@@ -92053,7 +92223,7 @@
       "url": "https://dexscreener.com/solana/CSKxhyPMYkeZzV25fWiRxi6F2LA7i9gSYLHWULCP5RAu",
       "buy_url": "https://jup.ag/swap/SOL-GiSTEPqLMizAd5Su5Q9PSbMfCAPP5oMqYhshAJ2Gpump",
       "status": "tracking",
-      "result_pct": -51,
+      "result_pct": -44,
       "signal_tags": [
         "boosted"
       ],
@@ -92113,7 +92283,7 @@
       "url": "https://dexscreener.com/solana/7ggpr15UDWcJ72goWZezESU9BMaNyXQ2FwvBaHHrrn8Q",
       "buy_url": "https://jup.ag/swap/SOL-2rk3wDTdHiPy8GV4UqxMhaVJmXdPTPN9qn6a9FQDpump",
       "status": "tracking",
-      "result_pct": -83,
+      "result_pct": -79,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -92154,7 +92324,7 @@
       "url": "https://dexscreener.com/solana/9Vxwop1RB1rjdrToEvxLSXxVUxk12PcKchTZNv4VnfyL",
       "buy_url": "https://jup.ag/swap/SOL-D2JK6iYWnBDQrsVq6ePqu3nFHakZij4jPfDazLkJXfr4",
       "status": "tracking",
-      "result_pct": -65,
+      "result_pct": -42,
       "signal_tags": [
         "new_pair"
       ],
@@ -92195,7 +92365,7 @@
       "url": "https://dexscreener.com/solana/8DsWaqWfdFcH4C9WqT8rDW5rjpPAG6AaHNVdLXTHxVsm",
       "buy_url": "https://jup.ag/swap/SOL-7nnb5orfjsaSkEnyDe6qkvctFKAYSH22sZTAWoKApump",
       "status": "tracking",
-      "result_pct": -71,
+      "result_pct": -52,
       "signal_tags": [
         "new_pair"
       ],
@@ -92215,7 +92385,7 @@
       "url": "https://dexscreener.com/solana/2T39djUiDQKUmptE3rJUu5NRs2Jt5sLz1TjaLQkfoWBy",
       "buy_url": "https://jup.ag/swap/SOL-3wDjcX9VaVouNnzedP2NaqdMq83J3ExdDjnG8Cqwpump",
       "status": "tracking",
-      "result_pct": -92,
+      "result_pct": -93,
       "signal_tags": [
         "new_pair"
       ],
@@ -92235,7 +92405,7 @@
       "url": "https://dexscreener.com/solana/AKfQVCwqbohCPjVw9C8fXx72gHUs93ju4GcV7GJ1F317",
       "buy_url": "https://jup.ag/swap/SOL-DWR1DQ1b12hUb5nRnqQxmdyAnk7MhnLrRxNVdo7Jpump",
       "status": "tracking",
-      "result_pct": -89,
+      "result_pct": -87,
       "signal_tags": [
         "new_pair"
       ],
@@ -92275,7 +92445,7 @@
       "url": "https://dexscreener.com/solana/Ev2vAuNNkUSFDF16sEfQJ9Rk4zVfxRGW64Lt2QUhZmrg",
       "buy_url": "https://jup.ag/swap/SOL-6a2QZJjt4y1sYhefLAX39azaCuwZnyTTeFm3dvsarAUS",
       "status": "tracking",
-      "result_pct": -92,
+      "result_pct": -83,
       "signal_tags": [
         "new_pair"
       ],
@@ -92295,7 +92465,7 @@
       "url": "https://dexscreener.com/solana/4coidAfPR7EKFTisiTQcnQawVmqWXPDsHguk4DZ59AhW",
       "buy_url": "https://jup.ag/swap/SOL-FaL1PFQhNo4JAGaQKSnKurWeNtpexqEAduQjR4H6pump",
       "status": "tracking",
-      "result_pct": -36,
+      "result_pct": -19,
       "signal_tags": [
         "new_pair"
       ],
@@ -92315,7 +92485,7 @@
       "url": "https://dexscreener.com/solana/CfizsExLp2VLgreutWDL7WtzSVGpruirKF9kX2wWXNhg",
       "buy_url": "https://jup.ag/swap/SOL-2T1AjGY3fy2rDCRTqPiRbHKWNCW8Q9A3kG2Bxxydpump",
       "status": "tracking",
-      "result_pct": -85,
+      "result_pct": -86,
       "signal_tags": [
         "new_pair"
       ],
@@ -92355,7 +92525,7 @@
       "url": "https://dexscreener.com/solana/9F5ZmHsVMAay5xB4m2L5r5ZZJMAsNKucNfwBaxjai5fr",
       "buy_url": "https://jup.ag/swap/SOL-De11yGf6sfyAzfcec9WZH4boquKqnQc8H5b3JUT6pump",
       "status": "tracking",
-      "result_pct": -26,
+      "result_pct": -18,
       "signal_tags": [
         "boosted"
       ],
@@ -92395,7 +92565,7 @@
       "url": "https://dexscreener.com/solana/436pvkrUpXkhyK1uDbSzpwAeqV1Vi9HzAa6YUSzRJdaz",
       "buy_url": "https://jup.ag/swap/SOL-2ABbnf3EzGfiMa3PE2bseAWwRD4jAE4KgE8YjSTxpump",
       "status": "tracking",
-      "result_pct": -26,
+      "result_pct": -32,
       "signal_tags": [
         "boosted"
       ],
@@ -92415,7 +92585,7 @@
       "url": "https://dexscreener.com/solana/8ThLxEj932tBTXVr43yTFzrzN5YQ6XH6NQtVQLMa3XDc",
       "buy_url": "https://jup.ag/swap/SOL-4bmWyPJhtvxHR4CA9VTaioL5saNA5gUbTZctWTJPpump",
       "status": "tracking",
-      "result_pct": -72,
+      "result_pct": -73,
       "signal_tags": [
         "new_pair"
       ],
@@ -92435,7 +92605,7 @@
       "url": "https://dexscreener.com/solana/4uXf3BuRN2P5YWrQcu916QX2PiSguvbiwYQkviBZe47s",
       "buy_url": "https://jup.ag/swap/SOL-J5bTgnS76LGWt7rQuSi29NCCsT6JqLLxXcPSDGk1pump",
       "status": "tracking",
-      "result_pct": -58,
+      "result_pct": -43,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -92476,7 +92646,7 @@
       "url": "https://dexscreener.com/solana/7fPSRfcGCdELMVnAAdmrJ9BwyMiSFufGmW6zsz5nnijJ",
       "buy_url": "https://jup.ag/swap/SOL-Bw9UZxeuiqLqK3CqtqoCLZBcTvuZyPKLajg3g2JFpump",
       "status": "tracking",
-      "result_pct": -17,
+      "result_pct": -20,
       "signal_tags": [
         "new_pair"
       ],
@@ -92536,7 +92706,7 @@
       "url": "https://dexscreener.com/solana/9nrjcZ8aRsDUjx5bL7rWnNpPSiWfhmEpvWDHB9cQ2eAV",
       "buy_url": "https://jup.ag/swap/SOL-D6sA8hKpreRfWEqLRo2fyx5UpmcHeEmGsQ1UndLWpump",
       "status": "tracking",
-      "result_pct": -6,
+      "result_pct": -3,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -92557,7 +92727,7 @@
       "url": "https://dexscreener.com/solana/A5ifVpU2tH27kFgzUhwswForiZsKKzYFVHv5rMqg85bW",
       "buy_url": "https://jup.ag/swap/SOL-D41mAqyLwbEhVZpRM674oyiQWa4ghYT9zXw4CKQ3pump",
       "status": "tracking",
-      "result_pct": -83,
+      "result_pct": -80,
       "signal_tags": [
         "new_pair"
       ],
@@ -92597,7 +92767,7 @@
       "url": "https://dexscreener.com/ethereum/0xFfA98A091331Df4600F87C9164cD27e8a5CD2405",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x83e6f1e41cdd28eaceb20cb649155049fac3d5aa",
       "status": "tracking",
-      "result_pct": -6,
+      "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -92650,14 +92820,14 @@
       "notified_at": 1783474285,
       "notified_price": 0.0001012,
       "notified_liq": 24053.66,
-      "max_price": 0.0001012,
-      "max_mult": 1.0,
+      "max_price": 0.0001024,
+      "max_mult": 1.0118577075098814,
       "pump_prob": 60,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/7LZjBGL2k339aHh5P5bmC9TEYW5ymxw5aKjB6JU5hHcK",
       "buy_url": "https://jup.ag/swap/SOL-5qzX8fkFtVu7XbopVuHrCYFC2w1YsVAryN3WJeq1pump",
       "status": "tracking",
-      "result_pct": -33,
+      "result_pct": 1,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -92718,7 +92888,7 @@
       "url": "https://dexscreener.com/solana/3fGANHkT84ZLgg449h1BguQtDdp1NMBXCb1oohAp32Ui",
       "buy_url": "https://jup.ag/swap/SOL-CMx1EUTXhnUKYF5xYMCSkDmJfvRSD7a4iwayW1DVpump",
       "status": "tracking",
-      "result_pct": -27,
+      "result_pct": -47,
       "signal_tags": [
         "boosted"
       ],
@@ -92791,14 +92961,14 @@
       "notified_at": 1783476488,
       "notified_price": 0.0001079,
       "notified_liq": 25538.53,
-      "max_price": 0.0001079,
-      "max_mult": 1.0,
+      "max_price": 0.0001361,
+      "max_mult": 1.261353104726599,
       "pump_prob": 50,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/9cove4xkhWWyXwcTudZoHaxshsRD8YcmgBasjipoUVfu",
       "buy_url": "https://jup.ag/swap/SOL-5ECDHLSRpMiyW9wNY5YVZXUst3xTvngWSLmzYvLFpump",
       "status": "tracking",
-      "result_pct": -24,
+      "result_pct": 6,
       "signal_tags": [
         "boosted"
       ],
@@ -92838,7 +93008,7 @@
       "url": "https://dexscreener.com/ethereum/0x4b43f8fb1a3c884261ae6f1e0d6d3d16203475335bdefe45f547f32db15eceb0",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xc4441c2be5d8fa8126822b9929ca0b81ea0de38e",
       "status": "tracking",
-      "result_pct": -1,
+      "result_pct": -2,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -92878,7 +93048,7 @@
       "url": "https://dexscreener.com/solana/7T1mvw5WwDyHv2JSpbPsQJ6uMe2Zhj56yACCf7AgcRdC",
       "buy_url": "https://jup.ag/swap/SOL-5EgbG7BqNVce9aWAqvZMQX7WsGvwVZWVo9WeYM92pump",
       "status": "tracking",
-      "result_pct": -72,
+      "result_pct": -93,
       "signal_tags": [
         "new_pair"
       ],
@@ -92918,7 +93088,7 @@
       "url": "https://dexscreener.com/solana/GXZR3R3b9yRHZgFrDC2HqiLMwcHM2CVEXZTVnhymLQdp",
       "buy_url": "https://jup.ag/swap/SOL-ApWX8nR4monFBRUdN4yrLedsdjZY3vrqCyo4LgEypump",
       "status": "tracking",
-      "result_pct": -68,
+      "result_pct": -69,
       "signal_tags": [
         "new_pair"
       ],
@@ -92958,7 +93128,7 @@
       "url": "https://dexscreener.com/solana/Ar9zmJkb6Qh9GYCBxxsFNvfpFX4ZH9TMBqXmupgHGKQo",
       "buy_url": "https://jup.ag/swap/SOL-4QPBP6A8sKDrP3ANxgKmLTC48j8EYZ2bNUYHxRH2pump",
       "status": "tracking",
-      "result_pct": -58,
+      "result_pct": -60,
       "signal_tags": [
         "new_pair"
       ],
@@ -92998,7 +93168,7 @@
       "url": "https://dexscreener.com/solana/3aHDfE4gS6NKH2Cpu6512zRHQDUZcy42GiAeZJbKwwhu",
       "buy_url": "https://jup.ag/swap/SOL-98j3gy1i8csWqrjkghiKupKzTTDX1WC4TW44puz9pump",
       "status": "tracking",
-      "result_pct": -83,
+      "result_pct": -84,
       "signal_tags": [
         "new_pair"
       ],
@@ -93038,7 +93208,7 @@
       "url": "https://dexscreener.com/solana/39SHSaaKXL1nrJ8Z7UqERXEBXHTPyp7JGnViJWBhf3MB",
       "buy_url": "https://jup.ag/swap/SOL-6pX7JRosaqhQ4E4P8SRCtoPQ4SqAWhkk7TuLQGzwpump",
       "status": "tracking",
-      "result_pct": -92,
+      "result_pct": -94,
       "signal_tags": [
         "new_pair"
       ],
@@ -93058,7 +93228,7 @@
       "url": "https://dexscreener.com/solana/2wC4qzATB6L7HLoqgLM253K18g3qZ2qoNCkPLzG6oXeb",
       "buy_url": "https://jup.ag/swap/SOL-7thY5PzYdH311NXYE6mecBjUs7wcosk1bWw2qfH4pump",
       "status": "tracking",
-      "result_pct": -24,
+      "result_pct": -16,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -93099,7 +93269,7 @@
       "url": "https://dexscreener.com/solana/2exR4k1Ehvn2QuBFH1qMQGXmejgkYsqrq3Wz4Dw65jyj",
       "buy_url": "https://jup.ag/swap/SOL-2vWdN2T4z1w11nK5C1uaxyd9gtLppuwTpeXseFz6pump",
       "status": "tracking",
-      "result_pct": -68,
+      "result_pct": -69,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
@@ -93120,7 +93290,7 @@
       "url": "https://dexscreener.com/solana/3nFYzcKzzfCjUR7NVSmUMuL2VpKtV1qFbxSVE8ujvmzK",
       "buy_url": "https://jup.ag/swap/SOL-E3WNwQ6e2TeQEd6b3yj5vkAMrXym5NUpcjJAE9icpump",
       "status": "tracking",
-      "result_pct": -67,
+      "result_pct": -54,
       "signal_tags": [
         "new_pair"
       ],
@@ -93139,13 +93309,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2Z2omvUwtFHY9DwSRiPFDf5kjMLGgTuoy2A9ns6cUJ18",
       "buy_url": "https://jup.ag/swap/SOL-3gtpAkuPV3vKWmVhjPg7Kq96imW5sGwAMGPtVW25pump",
-      "status": "tracking",
-      "result_pct": -93,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 3,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "22deNCri9bBae1GWZxdaDxipMWdwAUQ2ddvxdSmgpump": {
       "symbol": "CASHCAT",
@@ -93153,14 +93323,14 @@
       "notified_at": 1783483958,
       "notified_price": 0.0002701,
       "notified_liq": 41231.06,
-      "max_price": 0.0002701,
-      "max_mult": 1.0,
+      "max_price": 0.0003055,
+      "max_mult": 1.1310625694187337,
       "pump_prob": 47,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/DsA3Zsbjt5wa5esiWotLceUX1LfcicfocRKApySR5YAu",
       "buy_url": "https://jup.ag/swap/SOL-22deNCri9bBae1GWZxdaDxipMWdwAUQ2ddvxdSmgpump",
       "status": "tracking",
-      "result_pct": -71,
+      "result_pct": 13,
       "signal_tags": [
         "new_pair"
       ],
@@ -93180,7 +93350,7 @@
       "url": "https://dexscreener.com/solana/CfN39pfeQB2F3BJ8bd5MDtbvzp4QtfGU8bvHHuJZZyi7",
       "buy_url": "https://jup.ag/swap/SOL-8GJ9i35icmNKn3KSNtBZ8JSS7ZHxnaZjQTD62GFSpump",
       "status": "tracking",
-      "result_pct": -4,
+      "result_pct": -11,
       "signal_tags": [
         "new_pair"
       ],
@@ -93220,7 +93390,7 @@
       "url": "https://dexscreener.com/solana/7j3BjgoarQa9Sygum2psxJ8ocHudYnrewE8fJU41v6e1",
       "buy_url": "https://jup.ag/swap/SOL-EXWY5tBjQQpb4P2ygtyudQoEbq8ViJWJ31h4VbtBpump",
       "status": "tracking",
-      "result_pct": -90,
+      "result_pct": -92,
       "signal_tags": [
         "new_pair"
       ],
@@ -93240,7 +93410,7 @@
       "url": "https://dexscreener.com/solana/93A5fiZvEYXvxXHTreWVN2ePuj3mvYYbBqudbryUeCeE",
       "buy_url": "https://jup.ag/swap/SOL-6wJMj699GXTivKMroFAp9yEMzAjdnA98F855FAmApump",
       "status": "tracking",
-      "result_pct": -41,
+      "result_pct": -53,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
@@ -93261,7 +93431,7 @@
       "url": "https://dexscreener.com/solana/G3n2xByFzDXT2pwzDYS99mfAzsfy2jijWwHj9NZfzc6q",
       "buy_url": "https://jup.ag/swap/SOL-6VwVrGsyfC4bWYUHRD953gyqjR6zWCqWSCuDZriFpump",
       "status": "tracking",
-      "result_pct": -47,
+      "result_pct": -9,
       "signal_tags": [
         "new_pair"
       ],
@@ -93281,7 +93451,7 @@
       "url": "https://dexscreener.com/solana/GwSMvxQZ2y4iepKWPdPrC7BAckpjJFSmZEYdbLPUqEsC",
       "buy_url": "https://jup.ag/swap/SOL-7CNp5dJCSjk8YXbPvJ63WhQQrrZ8vWFx9SXm5x8gPUmp",
       "status": "tracking",
-      "result_pct": -26,
+      "result_pct": -41,
       "signal_tags": [
         "new_pair"
       ],
@@ -93361,7 +93531,7 @@
       "url": "https://dexscreener.com/solana/5gbEFJr2J5orBsPB4YiGG5QAzf4HVGnRbRZZzfqT4AKs",
       "buy_url": "https://jup.ag/swap/SOL-HKXdkQNqu89jjE7WaMV6NkmRhfQptV9ztQn7rvJ8pump",
       "status": "tracking",
-      "result_pct": -69,
+      "result_pct": -70,
       "signal_tags": [
         "new_pair"
       ],
@@ -93414,8 +93584,8 @@
       "notified_at": 1783494247,
       "notified_price": 0.1714,
       "notified_liq": 417283.09,
-      "max_price": 0.1733,
-      "max_mult": 1.0110851808634773,
+      "max_price": 0.1734,
+      "max_mult": 1.0116686114352391,
       "pump_prob": 54,
       "source": "BINANCE",
       "url": "https://dexscreener.com/ethereum/0xD1D5A4c0eA98971894772Dcd6D2f1dc71083C44E",
@@ -93441,7 +93611,7 @@
       "url": "https://dexscreener.com/solana/7TYum1j9momeCaGFuzD3D4oigws2o94P1TeYA2Pivopr",
       "buy_url": "https://jup.ag/swap/SOL-GQXLWxkw6XGNupviKAzvi1muC4KgfVMi3UHNRbFnpump",
       "status": "tracking",
-      "result_pct": -84,
+      "result_pct": -79,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
@@ -93482,7 +93652,7 @@
       "url": "https://dexscreener.com/solana/8wvMcNgLyJim88kRn9cubfSwW1iCyqWp25gxVBYnXUYS",
       "buy_url": "https://jup.ag/swap/SOL-5wH5pWz9Tbc4mxxzbf799ZfPSoCAQmuKXHpX8BGVpump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -78,
       "signal_tags": [
         "new_pair"
       ],
@@ -93502,7 +93672,7 @@
       "url": "https://dexscreener.com/solana/CoGyP87CLt7cSMzsujcydUw6aNPTck7CWXeiV8KEurhE",
       "buy_url": "https://jup.ag/swap/SOL-98uPGgTeZRhuCtERzBdsjR9oLkNvvqexmNMy7b1hNQi8",
       "status": "tracking",
-      "result_pct": -58,
+      "result_pct": -74,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -93523,7 +93693,7 @@
       "url": "https://dexscreener.com/solana/BbdSk9vXXBNFzxorN71Wyu7t58MfcjnHADUztkJRkLEX",
       "buy_url": "https://jup.ag/swap/SOL-HD8ornFyPFzNAqLRMhpaBMgP12rWiEVMkcXfUr5ypump",
       "status": "tracking",
-      "result_pct": -85,
+      "result_pct": -82,
       "signal_tags": [
         "new_pair"
       ],
@@ -93563,7 +93733,7 @@
       "url": "https://dexscreener.com/solana/8qDidAKuyNYKaR4dh2ZFZZVG5gBTUfyJcwQPgwt9FS1Y",
       "buy_url": "https://jup.ag/swap/SOL-DdPrHYqM8Ueovnk9kAnAgoGhswkuaTqmxcoZzU3Zpump",
       "status": "tracking",
-      "result_pct": 9,
+      "result_pct": -8,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -93604,7 +93774,7 @@
       "url": "https://dexscreener.com/solana/BNCREzaSxxBmDG7QHFeW3GgrJmJJ3DLpud5enYUrJ7sz",
       "buy_url": "https://jup.ag/swap/SOL-FLn5coay3hGapiFZdEgZcPBMTnDF3pJ9uW4BLnM4pump",
       "status": "tracking",
-      "result_pct": 2,
+      "result_pct": -48,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -93625,7 +93795,7 @@
       "url": "https://dexscreener.com/ethereum/0x3bba0ed5f970f1b95bd81b62fba3482bb0d9c45a8ed4ad21ba821113e6f09973",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xb0076de78dc50581770bba1d211ddc0ad4f2a241",
       "status": "tracking",
-      "result_pct": 4,
+      "result_pct": -6,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -93645,7 +93815,7 @@
       "url": "https://dexscreener.com/solana/DUZbafBou5QcK3ksxQE9gAeUgt77kT7TmwoVSPPMoc88",
       "buy_url": "https://jup.ag/swap/SOL-9zvbRSuD62ng1vYZQGX9icq5T4fDm2fNsS1MQeHdpump",
       "status": "tracking",
-      "result_pct": -22,
+      "result_pct": -63,
       "signal_tags": [
         "new_pair"
       ],
@@ -93658,8 +93828,8 @@
       "notified_at": 1783505649,
       "notified_price": 8.039e-07,
       "notified_liq": 60639.89,
-      "max_price": 8.039e-07,
-      "max_mult": 1.0,
+      "max_price": 8.074e-07,
+      "max_mult": 1.004353775345192,
       "pump_prob": 42,
       "source": "BITGET",
       "url": "https://dexscreener.com/ethereum/0xFdc650aac7Faa54BE1B33cD161A9242aAf62c42D",
@@ -93685,7 +93855,7 @@
       "url": "https://dexscreener.com/solana/7FjJT5SfsKqS73ydsqvst2RwfED3n82Z7YQwMtVzvAzy",
       "buy_url": "https://jup.ag/swap/SOL-7vSv7qRi2SopCJW5pEQwVrbxfZ87a7hKUFpeei1Vpump",
       "status": "tracking",
-      "result_pct": -87,
+      "result_pct": -92,
       "signal_tags": [
         "new_pair"
       ],
@@ -93705,7 +93875,7 @@
       "url": "https://dexscreener.com/solana/E48gvP65bY7mDJrifs3Fw6eNM4xamuhXC2qRAaxhUJPt",
       "buy_url": "https://jup.ag/swap/SOL-8G2n3o2T4XbX6dw561RvtpWwef3EamxvDznoqNSGpump",
       "status": "tracking",
-      "result_pct": -92,
+      "result_pct": -93,
       "signal_tags": [
         "new_pair"
       ],
@@ -93725,7 +93895,7 @@
       "url": "https://dexscreener.com/solana/3jEQBiQCWSABEGEmAPFJfr8UEbhfNT7wVEDAcDyuJ1oL",
       "buy_url": "https://jup.ag/swap/SOL-GaZb3DE2U3Jcjx7ddAVwobsBKnCaDoJWLbzTvJYhpump",
       "status": "tracking",
-      "result_pct": 16,
+      "result_pct": 9,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -93746,7 +93916,7 @@
       "url": "https://dexscreener.com/ethereum/0x084B5191Bd08412952337b1108b6e5942418928f",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x744d70fdbe2ba4cf95131626614a1763df805b9e",
       "status": "tracking",
-      "result_pct": 2,
+      "result_pct": 1,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -93759,19 +93929,19 @@
       "notified_at": 1783508781,
       "notified_price": 4.376e-05,
       "notified_liq": 15556.99,
-      "max_price": 4.376e-05,
-      "max_mult": 1.0,
+      "max_price": 6.139e-05,
+      "max_mult": 1.4028793418647165,
       "pump_prob": 47,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/78A8FTPcyyZghVn8QiSL1Uo5nRGZjFFYskJbLoW67UbH",
       "buy_url": "https://jup.ag/swap/SOL-9motHbNmm4Km8u7VYGhg6xJWN5Ro9XDKYmEkaMMYpump",
-      "status": "tracking",
-      "result_pct": -21,
+      "status": "pumped",
+      "result_pct": 40,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "49K2SVmPfP5jXxaJtSfA116sqSRcAsFX44x2EQubpump": {
       "symbol": "Joel",
@@ -93785,13 +93955,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/F4RpL9YWn66LEqQAqR69okWtA36To1qKCpe7kdZUyT9J",
       "buy_url": "https://jup.ag/swap/SOL-49K2SVmPfP5jXxaJtSfA116sqSRcAsFX44x2EQubpump",
-      "status": "tracking",
-      "result_pct": -47,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "BRri8sGqovtT2gTErMUoJ3BTzdLnG2nfAJEcsgVBpump": {
       "symbol": "PUMPDOG",
@@ -93806,7 +93976,7 @@
       "url": "https://dexscreener.com/solana/BVLaes9de1QJcYTZLBmjQbb8WYJmBJzsJWYuuBuq3CcY",
       "buy_url": "https://jup.ag/swap/SOL-BRri8sGqovtT2gTErMUoJ3BTzdLnG2nfAJEcsgVBpump",
       "status": "tracking",
-      "result_pct": -79,
+      "result_pct": -82,
       "signal_tags": [
         "new_pair"
       ],
@@ -93846,14 +94016,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/61qaPD5BiRqSN4i3pPnS8sY8NRGSWXGppLaZuYQx6A87",
       "buy_url": "https://jup.ag/swap/SOL-8YFpCz4pxkNQxowNDyQrPmDizXQLhFF5xn87oG14pump",
-      "status": "tracking",
-      "result_pct": -16,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "9y6hXFBFN1fJGfAAYgkXVVfQATG1mEJsmTrCXcT6pump": {
       "symbol": "Silk",
@@ -93868,7 +94038,7 @@
       "url": "https://dexscreener.com/solana/B5p1EDQmTRPWy5ubMghMYUfvWVeqk3YExuenrPsKrhuV",
       "buy_url": "https://jup.ag/swap/SOL-9y6hXFBFN1fJGfAAYgkXVVfQATG1mEJsmTrCXcT6pump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -49,
       "signal_tags": [
         "new_pair"
       ],
@@ -93888,7 +94058,7 @@
       "url": "https://dexscreener.com/solana/9NFo6Vahh5n3xLNfDMgbtuusnKf1G8ZhuRg6rpfGFfQY",
       "buy_url": "https://jup.ag/swap/SOL-Euh75yr1AzAGEirzcj5g4xYC9zzoJGu3ovF6aUQQr2EG",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
@@ -93908,7 +94078,7 @@
       "url": "https://dexscreener.com/ethereum/0x8973Be4402bf0a39448f419c2D64bD3591Dd2299",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xa1d0e215a23d7030842fc67ce582a6afa3ccab83",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -1,
       "signal_tags": [
         "exchange_wallet"
       ],
@@ -93927,14 +94097,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/6MEUY7JWd6hEosBi6WdGLRfPijtRwfVG2d1M8CoPunJx",
       "buy_url": "https://jup.ag/swap/SOL-4ARYKZQpNgm3bDzVzWB9Cbh3wGRoPPKNyBhxHsQjpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 12,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "DWTab3nroXmi2K4ynJPLXCjGutEDcFcytcva12ekpump": {
       "symbol": "KEY",
@@ -93949,7 +94119,7 @@
       "url": "https://dexscreener.com/solana/D6XTnvWYtXu6AveY4mVDAMNHj5gPhNhquPiN81f1Kugh",
       "buy_url": "https://jup.ag/swap/SOL-DWTab3nroXmi2K4ynJPLXCjGutEDcFcytcva12ekpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -48,
       "signal_tags": [
         "new_pair"
       ],
@@ -93969,7 +94139,7 @@
       "url": "https://dexscreener.com/solana/8y7vxD5BekWkU23u7vLHrWGT2CmpxR6WaDNKfuCUty7r",
       "buy_url": "https://jup.ag/swap/SOL-3cxMS18Lqv9pnpsQ5CedtFP5HHefkHqRwTxoNhbFpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
@@ -93982,19 +94152,19 @@
       "notified_at": 1783516311,
       "notified_price": 2.728e-05,
       "notified_liq": 12582.66,
-      "max_price": 2.728e-05,
-      "max_mult": 1.0,
+      "max_price": 4.018e-05,
+      "max_mult": 1.4728739002932552,
       "pump_prob": 54,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/76p3kvVyMGvZ4N9pcNPRcNpE9UCCunFHuFRybpUpxK5c",
       "buy_url": "https://jup.ag/swap/SOL-CZn8vPpoS6tdTBkZm6waPf1DXuazq3DqAnPDAMeUpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "pumped",
+      "result_pct": 47,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 13,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "G7zeUXZzTUa8iXeUcW5J8oK9zoK4WY75fzmwFMe5pump": {
       "symbol": "RIF",
@@ -94009,7 +94179,7 @@
       "url": "https://dexscreener.com/solana/PAn7XphfksZCYWTGg6k3NxGjx9zTR91LNQSwQfKE4Qw",
       "buy_url": "https://jup.ag/swap/SOL-G7zeUXZzTUa8iXeUcW5J8oK9zoK4WY75fzmwFMe5pump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -46,
       "signal_tags": [
         "boosted"
       ],
@@ -94022,19 +94192,19 @@
       "notified_at": 1783516796,
       "notified_price": 3.673e-05,
       "notified_liq": 14104.24,
-      "max_price": 3.673e-05,
-      "max_mult": 1.0,
+      "max_price": 6.558e-05,
+      "max_mult": 1.7854614756329976,
       "pump_prob": 47,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2GooAQVXhpi1abDZfu3kuvTrmgU5exu1sfpSFD3RFEm2",
       "buy_url": "https://jup.ag/swap/SOL-DrCjaUaVCGSfFEu8i4Gje1CwogUF7nwKFV9Bov5Dpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "pumped",
+      "result_pct": 79,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 13,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "Cx3onEtJqfzfqbVG1mnveskpvA7uMWpq31hhZx2jpump": {
       "symbol": "Butny",
@@ -94049,7 +94219,7 @@
       "url": "https://dexscreener.com/solana/ADH9AwGoU1n2yZZNpdrDr7sYyQHr1T24AZPXHFx37jWb",
       "buy_url": "https://jup.ag/swap/SOL-Cx3onEtJqfzfqbVG1mnveskpvA7uMWpq31hhZx2jpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -12,
       "signal_tags": [
         "new_pair"
       ],
@@ -94069,7 +94239,7 @@
       "url": "https://dexscreener.com/solana/6SmSohU4F8dybszeRGkQ2h1AUrm9b6pVffb1F1S5gVav",
       "buy_url": "https://jup.ag/swap/SOL-HdPwxMu9R2sD8ZU8CoP3JuqUBRX3UpPb2oTc8TZkpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -5,
       "signal_tags": [
         "boosted"
       ],
@@ -94088,13 +94258,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/C7Q2MQRC3cCM8vBjob3nhJC18fx4nznowgk4nPNTkcS",
       "buy_url": "https://jup.ag/swap/SOL-7pncD23yVtmVRRa4fLFsi3pGotbUxrFvR13wTGNCpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 13,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "ECHFvPRtUDDTg53V5k45pLk6E5zCunk5RYXrL1qopump": {
       "symbol": "okdog",
@@ -94108,14 +94278,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/AT16PfD2jYY8S2kectuAqMXgcCUH62xePsHB9bwaiHFC",
       "buy_url": "https://jup.ag/swap/SOL-ECHFvPRtUDDTg53V5k45pLk6E5zCunk5RYXrL1qopump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 13,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "6xCtR2Eq1VumsoRdNutcfSQfLMk7xUa2BrMx18tqpump": {
       "symbol": "DEXBULL",
@@ -94123,14 +94293,14 @@
       "notified_at": 1783519383,
       "notified_price": 0.00154,
       "notified_liq": 94252.53,
-      "max_price": 0.00154,
-      "max_mult": 1.0,
+      "max_price": 0.001688,
+      "max_mult": 1.0961038961038962,
       "pump_prob": 45,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/9x3m3XwFFZeJdSjB9zNSQdw5pooQ5Q7wurB3rSmbmcoj",
       "buy_url": "https://jup.ag/swap/SOL-6xCtR2Eq1VumsoRdNutcfSQfLMk7xUa2BrMx18tqpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": 10,
       "signal_tags": [
         "new_pair"
       ],
@@ -94150,7 +94320,7 @@
       "url": "https://dexscreener.com/solana/GaNo23NXt3p4Jjq49hSjAxUV4xWpXimryTVNcsamqi8V",
       "buy_url": "https://jup.ag/swap/SOL-wobYcxYiABaM6qByXMuBdespq3DPLNuSYqUpMmBpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -26,
       "signal_tags": [
         "boosted"
       ],
@@ -94170,7 +94340,7 @@
       "url": "https://dexscreener.com/solana/5wF6o5HdBFYzZ2tT9HEtoqa1fN9h1futbVm4nLiby9Tb",
       "buy_url": "https://jup.ag/swap/SOL-3ozAqHejKs5SPsHY8PCe9DxqyvJBKSoYQYFrCDvhpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -66,
       "signal_tags": [
         "boosted"
       ],
@@ -94183,14 +94353,14 @@
       "notified_at": 1783520506,
       "notified_price": 0.0001626,
       "notified_liq": 30351.12,
-      "max_price": 0.0001626,
-      "max_mult": 1.0,
+      "max_price": 0.0001664,
+      "max_mult": 1.0233702337023372,
       "pump_prob": 52,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/G9QPNJfpnHnpEqsRr5RoZr4YjKMGio6ahsxri4dwKjbe",
       "buy_url": "https://jup.ag/swap/SOL-2MHbpKfxrnzT1tpmQzWizzc3RfZENRqsK8Vaq4kHpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": 2,
       "signal_tags": [
         "new_pair"
       ],
@@ -94210,7 +94380,7 @@
       "url": "https://dexscreener.com/solana/4rCTpebXepGJXLTKQGtgurJDAN627a6tsBKTdZQRh38p",
       "buy_url": "https://jup.ag/swap/SOL-7AuZpVnXtYZBYqp2oZ7DjA7BZLwbgWJDUk2SYpHppump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -41,
       "signal_tags": [
         "boosted"
       ],
@@ -94230,7 +94400,7 @@
       "url": "https://dexscreener.com/solana/EnYMBPWxnVJ7EBaV3D9sTtiCmiDtM658LorfqVLwvSCF",
       "buy_url": "https://jup.ag/swap/SOL-EhHyfjRwj2jhmSE7GW5uJfizaLcNDa5C4HWPiSqjpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -3,
       "signal_tags": [
         "boosted"
       ],
@@ -94243,14 +94413,14 @@
       "notified_at": 1783521621,
       "notified_price": 0.0001325,
       "notified_liq": 31194.76,
-      "max_price": 0.0001325,
-      "max_mult": 1.0,
+      "max_price": 0.0001402,
+      "max_mult": 1.0581132075471698,
       "pump_prob": 49,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/6fEcPBxipDVkvL5uv6wkPciaQn7bn1CBd6NDevUML2jc",
       "buy_url": "https://jup.ag/swap/SOL-817TC4ut67iRqDA9wAifpf7BD8c4zAeakQCWy7Bwpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": 4,
       "signal_tags": [
         "boosted"
       ],
@@ -94270,7 +94440,7 @@
       "url": "https://dexscreener.com/solana/6mMb95L12BbCfyfTBfYHJ4Z46MP2wScuV57WoGxYZ6HN",
       "buy_url": "https://jup.ag/swap/SOL-6tug4tqgSMKyoXbnq1ufKy9s9hcd8MCnx3ogoYqsnvgJ",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -64,
       "signal_tags": [
         "new_pair"
       ],
@@ -94289,14 +94459,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2qjbMPwgtAcXXL1Nujrk5HQKSXcgg9KK6ZwRKvWHej7R",
       "buy_url": "https://jup.ag/swap/SOL-4yJ3Q6R91dfaBkwWWnv2n6woRjCV8Xp3ECSp9quXpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 14,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "CS2T1HQRPCXaYR5V3SNDb5ceERwZg1Nb5uuw6Dg5hpsn": {
       "symbol": "$TWM$",
@@ -94304,19 +94474,19 @@
       "notified_at": 1783522867,
       "notified_price": 5.641e-05,
       "notified_liq": 28854.72,
-      "max_price": 5.641e-05,
-      "max_mult": 1.0,
+      "max_price": 7.664e-05,
+      "max_mult": 1.3586243573834427,
       "pump_prob": 48,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/5hc8GruCvLQQd8mw85Ai1nV6v1tyuA9a8HMt1quTNA6",
       "buy_url": "https://jup.ag/swap/SOL-CS2T1HQRPCXaYR5V3SNDb5ceERwZg1Nb5uuw6Dg5hpsn",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "pumped",
+      "result_pct": 36,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 15,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "5npesGsnVhcQbh6oVcsLtn5UKqdgYeipgDKsGaappump": {
       "symbol": "BULLWIF",
@@ -94324,14 +94494,14 @@
       "notified_at": 1783524066,
       "notified_price": 9.28e-05,
       "notified_liq": 35120.7,
-      "max_price": 9.28e-05,
-      "max_mult": 1.0,
+      "max_price": 0.0001032,
+      "max_mult": 1.1120689655172413,
       "pump_prob": 60,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/FXfmL53naPn8w5L7xQgaxAchU7Akfqo96eztnqJKi59M",
       "buy_url": "https://jup.ag/swap/SOL-5npesGsnVhcQbh6oVcsLtn5UKqdgYeipgDKsGaappump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": 4,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -94345,20 +94515,20 @@
       "notified_at": 1783524067,
       "notified_price": 0.000169,
       "notified_liq": 31196.84,
-      "max_price": 0.000169,
-      "max_mult": 1.0,
+      "max_price": 0.0002201,
+      "max_mult": 1.3023668639053256,
       "pump_prob": 68,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/BgwnT6xbzqY6JzCvVucDUJ1q816SamfoiWNa9EBPtLv2",
       "buy_url": "https://jup.ag/swap/SOL-FY9yQSFokAyuKm33HBAUCYjvjmEbeXfDTpSiVZNUpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "pumped",
+      "result_pct": 30,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
       ],
       "hour_utc": 15,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "6qbixCFHXM5DNjpBzeGKHeQB65NLjUkQbrTJHDGYpump": {
       "symbol": "ROB",
@@ -94373,7 +94543,7 @@
       "url": "https://dexscreener.com/solana/7TnnMzQ6ESTBSS7LpJJmKSxuSUPVhrnC3eUTtgjdRXBV",
       "buy_url": "https://jup.ag/swap/SOL-6qbixCFHXM5DNjpBzeGKHeQB65NLjUkQbrTJHDGYpump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -61,
       "signal_tags": [
         "boosted"
       ],
@@ -94393,7 +94563,7 @@
       "url": "https://dexscreener.com/solana/DvUNb5KGKme4hvNvYHEwLwLufnZUbyCbpL6TnMeY9ksN",
       "buy_url": "https://jup.ag/swap/SOL-JrfMkrgsr9RQYmccKfu5w7DrxJWobSaYRbHkjzps4yM",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -79,
       "signal_tags": [
         "new_pair"
       ],
@@ -94406,20 +94576,20 @@
       "notified_at": 1783524809,
       "notified_price": 0.0002262,
       "notified_liq": 36446.49,
-      "max_price": 0.0002262,
-      "max_mult": 1.0,
+      "max_price": 0.0002566,
+      "max_mult": 1.134394341290893,
       "pump_prob": 60,
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/BsAbN5drjocQmkbBp5QDtkJrqfjytScBFcDMEmhim9qG",
       "buy_url": "https://jup.ag/swap/SOL-9h6PSCspLh9wvfTgNhyuneX9MAYYZceNdK9hJYh3pump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 15,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "4Gt6eFWCJwQbDYi7ajCN7XtN54pW6JoYZF2kfhQANsii": {
       "symbol": "FERN",
@@ -94434,7 +94604,7 @@
       "url": "https://dexscreener.com/solana/GoCCZQTsLw5wHPoXntPay5yAvoRF95tpPEACukqoZYBB",
       "buy_url": "https://jup.ag/swap/SOL-4Gt6eFWCJwQbDYi7ajCN7XtN54pW6JoYZF2kfhQANsii",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -67,
       "signal_tags": [
         "new_pair"
       ],
@@ -94454,7 +94624,7 @@
       "url": "https://dexscreener.com/solana/6cp2NqhmPBkYiMGLaij8GL4xXUXAYEu8PYXZ98hRyx6a",
       "buy_url": "https://jup.ag/swap/SOL-JCwcSNocw8pVsZGkQe23qyyyJu2DXAiQKbX2gbTypump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -33,
       "signal_tags": [
         "new_pair"
       ],
@@ -94474,95 +94644,35 @@
       "url": "https://dexscreener.com/solana/BwCMeqTvPoWHYC2thNwDZDmJcAfDKZDFdu5kh2Vewi83",
       "buy_url": "https://jup.ag/swap/SOL-Dkz4guV125uxh288SCjkjyfGSEWedCxYv73VkMGapump",
       "status": "tracking",
-      "result_pct": 0,
+      "result_pct": -35,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 15,
       "outcome_recorded": false
+    },
+    "LBxGs6EjKLCjya9KsAgKDvf5dJcJyHFTsrBxHmY3cap": {
+      "symbol": "CAP",
+      "chain": "SOL",
+      "notified_at": 1783527681,
+      "notified_price": 1.818e-05,
+      "notified_liq": 9958.96,
+      "max_price": 3.089e-05,
+      "max_mult": 1.699119911991199,
+      "pump_prob": 56,
+      "source": "NEW_PAIR",
+      "url": "https://dexscreener.com/solana/HZ9HVyBsNvVLBXRHjtGY4uekd4YhztiKXFfkMHe4S7i",
+      "buy_url": "https://jup.ag/swap/SOL-LBxGs6EjKLCjya9KsAgKDvf5dJcJyHFTsrBxHmY3cap",
+      "status": "pumped",
+      "result_pct": 70,
+      "signal_tags": [
+        "new_pair"
+      ],
+      "hour_utc": 16,
+      "outcome_recorded": true
     }
   },
   "rugged_tokens": {
-    "38ov9f633i3usgopDfDxUtTJU5VC6B7v7xncuevfpump": {
-      "symbol": "SPCXAI",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 25006.62,
-      "liq_after": 3413.02,
-      "liq_drop_pct": 86,
-      "was_tracked": true,
-      "hours_after_notif": 21.1
-    },
-    "D71ZjzGKk5duRFBmdzDMNmehyFuoN3xx1bCFiPQPpump": {
-      "symbol": "$LEVICALF",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 20306.85,
-      "liq_after": 4954.67,
-      "liq_drop_pct": 76,
-      "was_tracked": true,
-      "hours_after_notif": 20.2
-    },
-    "776UtMDk4nq25NeT7KnwQbRT1dFXhBvxovHE3Ddtpump": {
-      "symbol": "ciga",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 13989.45,
-      "liq_after": 3322.41,
-      "liq_drop_pct": 76,
-      "was_tracked": true,
-      "hours_after_notif": 17.3
-    },
-    "Fo328gk3ZPm8aHDPFoxhqwTJKdJRVQvYjKARsopwpump": {
-      "symbol": "Oris",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 18845.11,
-      "liq_after": 3571.19,
-      "liq_drop_pct": 81,
-      "was_tracked": true,
-      "hours_after_notif": 17.1
-    },
-    "AshPvt8cwspQuu9dRH8Dvd8bhjWTzMrj4w6L9oYbpump": {
-      "symbol": "SEMAN",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 25876.42,
-      "liq_after": 3336.31,
-      "liq_drop_pct": 87,
-      "was_tracked": true,
-      "hours_after_notif": 16.8
-    },
-    "0x61fac5f038515572d6f42d4bcb6b581642753d50": {
-      "symbol": "IN",
-      "chain": "ETH",
-      "rugged_at": 1783456969,
-      "liq_before": 1762366.44,
-      "liq_after": 11186.16,
-      "liq_drop_pct": 99,
-      "was_tracked": true,
-      "hours_after_notif": 16.2
-    },
-    "L3ot2ZDB2sNsFWLi6ZSswSdQgKVFXXYcTdhvE1Epump": {
-      "symbol": "wide",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 13459.52,
-      "liq_after": 3098.3,
-      "liq_drop_pct": 77,
-      "was_tracked": true,
-      "hours_after_notif": 15.8
-    },
-    "69QoXvsveQUUcRLNWw5WyoDDxMfMXvJWBXcLN8bJpump": {
-      "symbol": "poof",
-      "chain": "SOL",
-      "rugged_at": 1783456969,
-      "liq_before": 14303.9,
-      "liq_after": 3137.81,
-      "liq_drop_pct": 78,
-      "was_tracked": true,
-      "hours_after_notif": 14.7
-    },
     "EFFUiPAzsVNSvvqc5zA3NXuqATReFwMt2V6eAXGSpump": {
       "symbol": "bulitl",
       "chain": "SOL",
@@ -94982,6 +95092,86 @@
       "liq_drop_pct": 86,
       "was_tracked": true,
       "hours_after_notif": 0.5
+    },
+    "3gtpAkuPV3vKWmVhjPg7Kq96imW5sGwAMGPtVW25pump": {
+      "symbol": "CashCow",
+      "chain": "SOL",
+      "rugged_at": 1783526976,
+      "liq_before": 36360.22,
+      "liq_after": 7755.11,
+      "liq_drop_pct": 79,
+      "was_tracked": true,
+      "hours_after_notif": 12.2
+    },
+    "49K2SVmPfP5jXxaJtSfA116sqSRcAsFX44x2EQubpump": {
+      "symbol": "Joel",
+      "chain": "SOL",
+      "rugged_at": 1783526976,
+      "liq_before": 14953.64,
+      "liq_after": 3253.18,
+      "liq_drop_pct": 78,
+      "was_tracked": true,
+      "hours_after_notif": 4.8
+    },
+    "4ARYKZQpNgm3bDzVzWB9Cbh3wGRoPPKNyBhxHsQjpump": {
+      "symbol": "Cupseyina",
+      "chain": "SOL",
+      "rugged_at": 1783526976,
+      "liq_before": 31890.07,
+      "liq_after": 3369.36,
+      "liq_drop_pct": 89,
+      "was_tracked": true,
+      "hours_after_notif": 3.5
+    },
+    "ECHFvPRtUDDTg53V5k45pLk6E5zCunk5RYXrL1qopump": {
+      "symbol": "okdog",
+      "chain": "SOL",
+      "rugged_at": 1783526976,
+      "liq_before": 35279.14,
+      "liq_after": 3365.34,
+      "liq_drop_pct": 90,
+      "was_tracked": true,
+      "hours_after_notif": 2.2
+    },
+    "4yJ3Q6R91dfaBkwWWnv2n6woRjCV8Xp3ECSp9quXpump": {
+      "symbol": "ANSEY",
+      "chain": "SOL",
+      "rugged_at": 1783526976,
+      "liq_before": 30357.28,
+      "liq_after": 3074.84,
+      "liq_drop_pct": 90,
+      "was_tracked": true,
+      "hours_after_notif": 1.4
+    },
+    "9h6PSCspLh9wvfTgNhyuneX9MAYYZceNdK9hJYh3pump": {
+      "symbol": "Space Dog",
+      "chain": "SOL",
+      "rugged_at": 1783527404,
+      "liq_before": 36446.49,
+      "liq_after": 8549.92,
+      "liq_drop_pct": 77,
+      "was_tracked": true,
+      "hours_after_notif": 0.7
+    },
+    "7pncD23yVtmVRRa4fLFsi3pGotbUxrFvR13wTGNCpump": {
+      "symbol": "GM🐂🀄️",
+      "chain": "SOL",
+      "rugged_at": 1783528210,
+      "liq_before": 40299.79,
+      "liq_after": 3755.37,
+      "liq_drop_pct": 91,
+      "was_tracked": true,
+      "hours_after_notif": 2.6
+    },
+    "8YFpCz4pxkNQxowNDyQrPmDizXQLhFF5xn87oG14pump": {
+      "symbol": "CASHDOG",
+      "chain": "SOL",
+      "rugged_at": 1783528599,
+      "liq_before": 30172.88,
+      "liq_after": 5996.76,
+      "liq_drop_pct": 80,
+      "was_tracked": true,
+      "hours_after_notif": 5.1
     }
   },
   "signals_ledger": {
@@ -95018,7 +95208,7 @@
         "entry_price": 0.07684489869,
         "max_price": 0.07861947987,
         "min_price": 0.07297005542,
-        "last_price": 0.07399208035,
+        "last_price": 0.07310832043,
         "status": "open",
         "ts": "2026-07-07T06:50:05.751572+00:00"
       },
@@ -95036,7 +95226,7 @@
         "entry_price": 0.3255139351,
         "max_price": 0.3366360042,
         "min_price": 0.311405169,
-        "last_price": 0.311405169,
+        "last_price": 0.311439114,
         "status": "open",
         "ts": "2026-07-07T07:17:34.298702+00:00"
       },
@@ -95053,8 +95243,8 @@
         "btc_context": "Mercado: BTC +0.2% 24h ⚪",
         "entry_price": 0.3829648696,
         "max_price": 0.3937367978,
-        "min_price": 0.36989383,
-        "last_price": 0.3710511193,
+        "min_price": 0.3664612261,
+        "last_price": 0.3664612261,
         "status": "open",
         "ts": "2026-07-07T07:54:05.439436+00:00"
       },
@@ -95072,7 +95262,7 @@
         "entry_price": 0.002007061069,
         "max_price": 0.002007061069,
         "min_price": 0.001645982736,
-        "last_price": 0.001824590087,
+        "last_price": 0.001734257707,
         "status": "open",
         "ts": "2026-07-07T12:49:00.966887+00:00"
       }
@@ -95235,30 +95425,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1783407006349-ae686b",
-      "kind": "convergence",
-      "text": "🎯 207 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.4% ⚪",
-      "hash": "ae686b6ceeefea9f",
-      "created_ts": 1783407006,
-      "retries": 1
-    },
-    {
-      "id": "1783408654915-1d2939",
-      "kind": "convergence",
-      "text": "🎯 286 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.7% ⚪",
-      "hash": "1d293935bce0f5b5",
-      "created_ts": 1783408654,
-      "retries": 0
-    },
-    {
-      "id": "1783410846083-cb9467",
-      "kind": "convergence",
-      "text": "🎯 95 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.2% ⚪",
-      "hash": "cb94673842cc80f9",
-      "created_ts": 1783410846,
-      "retries": 0
-    },
     {
       "id": "1783411087589-3ac988",
       "kind": "convergence",
@@ -95548,63 +95714,23 @@
       "kind": "convergence",
       "ts": 1783506032,
       "text": "🎯 263 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.9% ⚪"
+    },
+    {
+      "id": "2074889896704303164",
+      "hash": "1d293935bce0f5b5",
+      "kind": "convergence",
+      "ts": 1783527275,
+      "text": "🎯 286 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.7% ⚪"
+    },
+    {
+      "id": "2074895057552015779",
+      "hash": "cb94673842cc80f9",
+      "kind": "convergence",
+      "ts": 1783528505,
+      "text": "🎯 95 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.2% ⚪"
     }
   ],
   "seen_signals": [
-    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944714",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944153",
-    "smartmoney-0x4e5bc1cd2c421ecfef65395b3237f90a97178c55-123855",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5944675",
-    "insidersell-0xbf90664017218ac7d9db5ae0c84873628e9ae1ae-0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3-165140",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944065",
-    "smartmoney-0x37e78fc12bce74d757747a0c8ebff207107546f2-123842",
-    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944597",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944724",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944608",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944191",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944489",
-    "smartmoney-0x5aafc1f252d544f744d17a4e734afd6efc47ede4-123854",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944364",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944677",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944435",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944781",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5943811",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944989",
-    "insidersell-0xbdb3ba9ffe392549e1f8658dd2630c141fdf47b6-0xdac17f958d2ee523a2206206994597c13d831ec7-165139",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944935",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944990",
-    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944483",
-    "smartmoney-0xdcdddf7bfd551c4b402f9ceecfd10214f3269a5d-123829",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944753",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944684",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944113",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944609",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944020",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945088",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5943980",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944201",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5943948",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944773",
-    "smartmoney-0x87a02a11a811b5a4bfdffb5e04f7aac0675a3e56-123848",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944615",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944533",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944951",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944458",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944945",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944666",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944831",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944124",
-    "smartmoney-0xa0b143055acf221843c30e6288b3ddf46aa0c8a0-123843",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944577",
-    "insidersell-0xbdb3ba9ffe392549e1f8658dd2630c141fdf47b6-0x4d224452801aced8b2f0aebe155379bb5d594381-165140",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944459",
-    "smartmoney-0x5aafc1f252d544f744d17a4e734afd6efc47ede4-123831",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945010",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5944610",
-    "smartmoney-0x27626485c05e4c5cc50554301ae206b6d54c12ad-123831",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945033",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944906",
-    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944977",
     "accum-WIF-exchange_out-123836",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944693",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944843",
@@ -95640,6 +95766,7 @@
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944017",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944817",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944964",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945095",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944279",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944831",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944812",
@@ -95901,6 +96028,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944673",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944650",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944532",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945090",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944756",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945089",
     "smartmoney-0x2904b5f6da9a614571905745383b872d836622cb-123848",
@@ -96266,6 +96394,7 @@
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944526",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944806",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944827",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5945093",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944303",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944262",
     "accum-USELESS-score_cross-123851",
@@ -96292,6 +96421,7 @@
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944435",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5943911",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-flow-5945053",
+    "accum-WIF-score_cross-123856",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944287",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5943964",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944910",
@@ -96311,6 +96441,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944875",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944535",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944368",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945093",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-flow-5945068",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944958",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944704",
@@ -96674,6 +96805,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944888",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944823",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944894",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945090",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944900",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5943949",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-flow-5944285",
@@ -96686,6 +96818,7 @@
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945060",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945060",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5943959",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945094",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944398",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944202",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944664",
@@ -96968,6 +97101,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944978",
     "smartmoney-0x4030c00feff476ddc914e3197bdeded8eb9af450-123835",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944386",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945091",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944491",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944349",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5944674",
@@ -97127,6 +97261,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944915",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944661",
     "smartmoney-0xa7376282c114cdaedebea2b66d4b11c93f0c1f58-123852",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945092",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944694",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5943926",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944879",
@@ -97241,6 +97376,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944520",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944810",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944715",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945092",
     "accum-67-liq_growth-123842",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944875",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-flow-5944527",
@@ -97291,6 +97427,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944511",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944911",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944430",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945095",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945070",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944769",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944238",
@@ -97410,6 +97547,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944467",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945078",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944047",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-volaccel-5945090",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944874",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5943998",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944716",
@@ -97533,6 +97671,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944233",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944965",
     "smartmoney-0x3cdf67e6910c7a06c850082ee7d0d7c4e8fb8836-123830",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945091",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945071",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5943806",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944626",
@@ -97645,6 +97784,7 @@
     "convergencia-0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c-82558",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944715",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944717",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945094",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944124",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5943853",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5943964",
@@ -97688,6 +97828,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944001",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944915",
     "accum-WIF-pump-123855",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-volaccel-5945089",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944757",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944980",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944210",
@@ -97711,6 +97852,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944541",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944189",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944550",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945092",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5944631",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5943973",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944348",
@@ -97741,9 +97883,11 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5943848",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944018",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944112",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-volaccel-5945092",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945067",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944939",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944390",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945093",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5943895",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944838",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-volaccel-5944867",
@@ -97823,6 +97967,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944044",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5944874",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5943919",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945092",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944252",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944760",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944397",
@@ -97870,10 +98015,12 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944882",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944706",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944074",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945090",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945021",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5943859",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5943873",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944109",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-volaccel-5945094",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944827",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944432",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944747",
@@ -98121,6 +98268,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944842",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944927",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944241",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-volaccel-5945093",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5945053",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944226",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944805",
@@ -98419,6 +98567,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944858",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5943887",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944479",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5945089",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944180",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944072",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944416",
@@ -98671,6 +98820,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944365",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5943989",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945075",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945090",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944741",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-volaccel-5944879",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5943904",
@@ -98727,6 +98877,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-volaccel-5944537",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945045",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944897",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945091",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944171",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5943874",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944470",
@@ -98827,6 +98978,7 @@
     "accum-NUB-exchange_out-123852",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944074",
     "smartmoney-0xb07f71ae0d49e34cf48fc327ffc997d1ce60b5f0-123831",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945095",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944044",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944123",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945076",
@@ -98871,8 +99023,10 @@
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944118",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944220",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944811",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945092",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944659",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944521",
+    "accum-67-score_cross-123856",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944666",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944486",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944381",
@@ -98884,6 +99038,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944630",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945020",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945016",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5945094",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944187",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944391",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944902",
@@ -99177,6 +99332,8 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944442",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944799",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944565",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945090",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945094",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944032",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944995",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944731",
@@ -99314,6 +99471,7 @@
     "smartmoney-0x0b60c1ee6d01c3d5704eeae6c12552c7a63beead-123829",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944621",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945024",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945094",
     "accum-TOSHI-exchange_out-123842",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944346",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944932",
@@ -99326,6 +99484,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945076",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944876",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944864",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945091",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944668",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944632",
     "accum-TOSHI-exchange_out-123846",
@@ -99397,6 +99556,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5943842",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944777",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944555",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945091",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944438",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944560",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5943824",
@@ -99495,6 +99655,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944664",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944738",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5943913",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-volaccel-5945090",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944664",
     "insidersell-0x28c6c06298d514db089934071355e5743bf21d60-0xdac17f958d2ee523a2206206994597c13d831ec7-165140",
     "smartmoney-0xb8001c3ec9aa1985f6c747e25c28324e4a361ec1-123836",
@@ -99628,6 +99789,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944823",
     "accum-ENA-score_cross-123843",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944390",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945095",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944309",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944531",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5944488",
@@ -99638,6 +99800,7 @@
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944160",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5944633",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944064",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945090",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944430",
     "insidersell-0x09ad820aac5779683b481c4674208a4e1b024afa-0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2-165140",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944987",
@@ -99670,6 +99833,7 @@
     "smartmoney-0xf13580feea6c88b463671e3331a5b8393c99d28d-123854",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944450",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944957",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945093",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-flow-5944273",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944515",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944836",
@@ -99713,7 +99877,9 @@
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944878",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944726",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944551",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945095",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5943837",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945095",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944484",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944916",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944462",
@@ -99732,6 +99898,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944821",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944998",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944754",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945090",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944891",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945026",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-pump-5944924",
@@ -99752,6 +99919,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944809",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5943839",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5943986",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945094",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-volaccel-5945062",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5944876",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5943971",
@@ -99836,6 +100004,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944502",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945002",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945000",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-volaccel-5945091",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944667",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944113",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944990",
@@ -99937,6 +100106,7 @@
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-pump-5944932",
     "smartmoney-0x3777c930e4dca196e070d39b60c644c8aae02f23-123835",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944364",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945095",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944439",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944390",
     "smartmoney-0xf824dca44691bc2af8829051f4c5e6a2566060f3-123836",
@@ -99967,6 +100137,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5943852",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5943895",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945022",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945093",
     "accum-NUB-exchange_out-123856",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5945087",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944528",
@@ -100163,6 +100334,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944312",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944000",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944873",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-volaccel-5945089",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944328",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944659",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944456",
@@ -100196,6 +100368,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5943836",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945041",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944612",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945094",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5943876",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944966",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944560",
@@ -100268,6 +100441,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945029",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944912",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944464",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945091",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944935",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944613",
     "smartmoney-0x81463b0f960f247f704377661ec81c1fd65b5128-123832",
@@ -100297,6 +100471,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5943916",
     "smartmoney-0x70007e34835cc4818fc486f377dd308f35694dbc-123854",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944619",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945092",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-pump-5944259",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944547",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5944686",
@@ -100305,6 +100480,7 @@
     "insidersell-0xbdb3ba9ffe392549e1f8658dd2630c141fdf47b6-0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48-165139",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945071",
     "accum-NUB-exchange_out-123845",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945094",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-pump-5943934",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944889",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944059",
@@ -100317,6 +100493,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944254",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5945077",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5944963",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5945093",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5943891",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944445",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944715",
@@ -100420,6 +100597,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944273",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944898",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944828",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5945092",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944570",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-flow-5945058",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944866",
@@ -100461,6 +100639,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5943942",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5944314",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5944125",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945091",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944097",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944948",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5945011",
@@ -100520,6 +100699,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5944883",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-flow-5944493",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5943853",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945093",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5944808",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5944742",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5944360",
