@@ -1,5 +1,5 @@
 {
-  "saved_at": 1783667863,
+  "saved_at": 1783667864,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -110830,28 +110830,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.7% 24h ⚪",
-        "entry_price": 0.3255139351,
-        "max_price": 0.3366360042,
-        "min_price": 0.311405169,
-        "last_price": 0.3228432527,
-        "status": "open",
-        "ts": "2026-07-07T07:17:34.298702+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 3.4,
-        "min_loss_pct": -4.3,
-        "closed_at": "2026-07-10T07:17:43.356119+00:00"
-      },
-      {
         "token": "SPX6900",
         "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
         "chain": "ETH",
@@ -110865,7 +110843,7 @@
         "entry_price": 0.3829648696,
         "max_price": 0.3937367978,
         "min_price": 0.3664612261,
-        "last_price": 0.3865179841,
+        "last_price": 0.3833877411,
         "status": "open",
         "ts": "2026-07-07T07:54:05.439436+00:00"
       },
@@ -110883,7 +110861,7 @@
         "entry_price": 0.002007061069,
         "max_price": 0.002007061069,
         "min_price": 0.001518848219,
-        "last_price": 0.001550569509,
+        "last_price": 0.001554330281,
         "status": "open",
         "ts": "2026-07-07T12:49:00.966887+00:00"
       }
@@ -111086,18 +111064,32 @@
         "max_gain_pct": 3.2,
         "min_loss_pct": -5.0,
         "closed_at": "2026-07-10T06:50:49.435374+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.7% 24h ⚪",
+        "entry_price": 0.3255139351,
+        "max_price": 0.3366360042,
+        "min_price": 0.311405169,
+        "last_price": 0.3228432527,
+        "status": "open",
+        "ts": "2026-07-07T07:17:34.298702+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 3.4,
+        "min_loss_pct": -4.3,
+        "closed_at": "2026-07-10T07:17:43.356119+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1783577076182-681f0e",
-      "kind": "convergence",
-      "text": "🎯 259 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.1% ⚪",
-      "hash": "681f0eb6cbda8db5",
-      "created_ts": 1783577076,
-      "retries": 5
-    },
     {
       "id": "1783577448100-07f2a5",
       "kind": "convergence",
