@@ -1,5 +1,5 @@
 {
-  "saved_at": 1784571714,
+  "saved_at": 1784571716,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -118831,82 +118831,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "PEPE",
-        "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +1.7% 24h 🟢",
-        "entry_price": 2.641747162e-06,
-        "max_price": 2.898089952e-06,
-        "min_price": 2.641747162e-06,
-        "last_price": 2.898089952e-06,
-        "status": "open",
-        "ts": "2026-07-10T08:05:11.353070+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 9.7,
-        "min_loss_pct": 0.0,
-        "closed_at": "2026-07-20T18:21:54.248029+00:00"
-      },
-      {
-        "token": "ENA",
-        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +2.7% 24h 🟢",
-        "entry_price": 0.07877258054,
-        "max_price": 0.07938501472,
-        "min_price": 0.07777590752,
-        "last_price": 0.07777590752,
-        "status": "open",
-        "ts": "2026-07-10T12:22:01.692005+00:00"
-      },
-      {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +2.8% 24h 🟢",
-        "entry_price": 0.3284603363,
-        "max_price": 0.3301346229,
-        "min_price": 0.3242726355,
-        "last_price": 0.3242726355,
-        "status": "open",
-        "ts": "2026-07-10T12:30:35.854528+00:00"
-      },
-      {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +2.5% 24h 🟢",
-        "entry_price": 0.3893174962,
-        "max_price": 0.3912873694,
-        "min_price": 0.3783535687,
-        "last_price": 0.3783846026,
-        "status": "open",
-        "ts": "2026-07-10T12:38:35.663318+00:00"
-      },
-      {
         "token": "SOIL",
         "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
         "chain": "ETH",
@@ -119189,6 +119113,94 @@
         "max_gain_pct": 0.0,
         "min_loss_pct": -24.3,
         "closed_at": "2026-07-10T12:50:56.467055+00:00"
+      },
+      {
+        "token": "PEPE",
+        "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +1.7% 24h 🟢",
+        "entry_price": 2.641747162e-06,
+        "max_price": 2.898089952e-06,
+        "min_price": 2.641747162e-06,
+        "last_price": 2.898089952e-06,
+        "status": "open",
+        "ts": "2026-07-10T08:05:11.353070+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 9.7,
+        "min_loss_pct": 0.0,
+        "closed_at": "2026-07-20T18:21:54.248029+00:00"
+      },
+      {
+        "token": "ENA",
+        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +2.7% 24h 🟢",
+        "entry_price": 0.07877258054,
+        "max_price": 0.0831990978,
+        "min_price": 0.07777590752,
+        "last_price": 0.0831990978,
+        "status": "open",
+        "ts": "2026-07-10T12:22:01.692005+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 5.6,
+        "min_loss_pct": -1.3,
+        "closed_at": "2026-07-20T18:21:54.248029+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +2.8% 24h 🟢",
+        "entry_price": 0.3284603363,
+        "max_price": 0.3598493933,
+        "min_price": 0.3242726355,
+        "last_price": 0.3598493933,
+        "status": "open",
+        "ts": "2026-07-10T12:30:35.854528+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 9.6,
+        "min_loss_pct": -1.3,
+        "closed_at": "2026-07-20T18:21:54.248029+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +2.5% 24h 🟢",
+        "entry_price": 0.3893174962,
+        "max_price": 0.3912873694,
+        "min_price": 0.3627147115,
+        "last_price": 0.3627147115,
+        "status": "open",
+        "ts": "2026-07-10T12:38:35.663318+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.5,
+        "min_loss_pct": -6.8,
+        "closed_at": "2026-07-20T18:21:54.248029+00:00"
       }
     ]
   },
@@ -124659,7 +124671,7 @@
       "ts": 1784571464.4109504
     }
   },
-  "last_daily_day": "2026-07-10",
+  "last_daily_day": "2026-07-20",
   "last_weekly_week": "2026-W27",
   "last_forensic_day": "2026-07-10",
   "announced_version": "v9.1"
