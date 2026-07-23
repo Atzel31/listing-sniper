@@ -1,5 +1,5 @@
 {
-  "saved_at": 1784831062,
+  "saved_at": 1784831078,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -161380,28 +161380,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SOIL",
-        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +2.0% 24h 🟢",
-        "entry_price": 0.1139424491,
-        "max_price": 0.1208724257,
-        "min_price": 0.1139424491,
-        "last_price": 0.1153196132,
-        "status": "open",
-        "ts": "2026-07-20T18:20:43.657320+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 6.1,
-        "min_loss_pct": 0.0,
-        "closed_at": "2026-07-23T18:24:22.107027+00:00"
-      },
-      {
         "token": "PEPE",
         "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
         "chain": "ETH",
@@ -161432,8 +161410,8 @@
         "btc_context": "Mercado: BTC +1.8% 24h 🟢",
         "entry_price": 0.3592965713,
         "max_price": 0.3640048696,
-        "min_price": 0.3495524726,
-        "last_price": 0.3499358564,
+        "min_price": 0.3432214956,
+        "last_price": 0.3432214956,
         "status": "open",
         "ts": "2026-07-20T18:29:45.764680+00:00"
       },
@@ -161451,7 +161429,7 @@
         "entry_price": 0.3592054909,
         "max_price": 0.4165537881,
         "min_price": 0.3592054909,
-        "last_price": 0.399334401,
+        "last_price": 0.3953204055,
         "status": "open",
         "ts": "2026-07-20T21:08:25.946245+00:00"
       },
@@ -161469,7 +161447,7 @@
         "entry_price": 0.08259515931,
         "max_price": 0.09261239805,
         "min_price": 0.08259515931,
-        "last_price": 0.08859466152,
+        "last_price": 0.08819846144,
         "status": "open",
         "ts": "2026-07-21T00:03:38.897109+00:00"
       },
@@ -161844,6 +161822,28 @@
         "max_gain_pct": 0.5,
         "min_loss_pct": -6.8,
         "closed_at": "2026-07-20T18:21:54.248029+00:00"
+      },
+      {
+        "token": "SOIL",
+        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +2.0% 24h 🟢",
+        "entry_price": 0.1139424491,
+        "max_price": 0.1208724257,
+        "min_price": 0.1139424491,
+        "last_price": 0.1153196132,
+        "status": "open",
+        "ts": "2026-07-20T18:20:43.657320+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 6.1,
+        "min_loss_pct": 0.0,
+        "closed_at": "2026-07-23T18:24:22.107027+00:00"
       }
     ]
   },
