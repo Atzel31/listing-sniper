@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785153646,
+  "saved_at": 1785153666,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -187592,6 +187592,14 @@
     }
   },
   "tracked_whale_set": {
+    "0x09ad820aac5779683b481c4674208a4e1b024afa": {
+      "chain": "ETH",
+      "label": "0x09ad...4afa",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x26b3663abc1e2e478ef60055713b1d5811be085e": {
       "chain": "ETH",
       "label": "0x26b3...085e",
@@ -187851,16 +187859,6 @@
       "label": "0x7f6e...9569",
       "last_check": 1785139418,
       "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xa43ca96c32fa3f2c93012b564c39b9e56533386d": {
-      "chain": "ETH",
-      "label": "0xa43c...386d",
-      "last_check": 1785139418,
-      "last_seen_tokens": [
-        "0xa3cdfc1178dcb45a80cdb869beafbc7445965242"
-      ],
       "insider_score": 77,
       "tag": "insider_activo"
     }
@@ -206886,6 +206884,6 @@
   },
   "last_daily_day": "2026-07-27",
   "last_weekly_week": "2026-W29",
-  "last_forensic_day": "2026-07-26",
+  "last_forensic_day": "2026-07-27",
   "announced_version": "v9.1"
 }
