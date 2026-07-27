@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785157211,
+  "saved_at": 1785157226,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -201723,8 +201723,8 @@
         "btc_context": "Mercado: BTC +1.5% 24h 🟢",
         "entry_price": 0.001233477679,
         "max_price": 0.001401806295,
-        "min_price": 0.001119866801,
-        "last_price": 0.001119866801,
+        "min_price": 0.0009489093747,
+        "last_price": 0.0009489093747,
         "status": "open",
         "ts": "2026-07-27T07:08:17.744992+00:00"
       },
@@ -201742,7 +201742,7 @@
         "entry_price": 0.4141424249,
         "max_price": 0.4146263117,
         "min_price": 0.4078734949,
-        "last_price": 0.4078734949,
+        "last_price": 0.4140418587,
         "status": "open",
         "ts": "2026-07-27T07:32:28.360691+00:00"
       },
@@ -201760,7 +201760,7 @@
         "entry_price": 0.3417516559,
         "max_price": 0.3417516559,
         "min_price": 0.3386828971,
-        "last_price": 0.3386828971,
+        "last_price": 0.3415716513,
         "status": "open",
         "ts": "2026-07-27T08:11:06.757162+00:00"
       }
@@ -202385,14 +202385,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1784959270495-4e1d24",
-      "kind": "convergence",
-      "text": "🎯 404 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -2.0% 🔴",
-      "hash": "4e1d24957516295b",
-      "created_ts": 1784959270,
-      "retries": 11
-    },
     {
       "id": "1784959920787-efb58c",
       "kind": "convergence",
@@ -208162,7 +208154,7 @@
     }
   },
   "last_daily_day": "2026-07-27",
-  "last_weekly_week": "2026-W29",
+  "last_weekly_week": "2026-W30",
   "last_forensic_day": "2026-07-27",
   "announced_version": "v9.1"
 }
