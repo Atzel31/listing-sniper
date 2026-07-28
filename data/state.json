@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785240294,
+  "saved_at": 1785240318,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -196948,6 +196948,14 @@
     }
   },
   "tracked_whale_set": {
+    "0x0889e9327b98d7d1be3c301a4585ff3330502c9a": {
+      "chain": "ETH",
+      "label": "0x0889...2c9a",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x26b3663abc1e2e478ef60055713b1d5811be085e": {
       "chain": "ETH",
       "label": "0x26b3...085e",
@@ -197022,6 +197030,16 @@
         "0x56072c95faa701256059aa122697b133aded9279",
         "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
         "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+      ],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0xdc2692379ef39a8a115ccdf56080645d35d1eb20": {
+      "chain": "ETH",
+      "label": "0xdc26...eb20",
+      "last_check": 1785226307,
+      "last_seen_tokens": [
+        "0xb1110919016846972056ab995054d65560d5f05e"
       ],
       "insider_score": 85,
       "tag": "insider_activo"
@@ -197209,26 +197227,6 @@
       "last_check": 1785226307,
       "last_seen_tokens": [
         "0x808507121b80c02388fad14726482e061b8da827"
-      ],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xcc3908a73ad205f75e84244adf846c82dc5c6b5d": {
-      "chain": "ETH",
-      "label": "0xcc39...6b5d",
-      "last_check": 1785226307,
-      "last_seen_tokens": [
-        "0x357787f67ff9f607097239820464c1c5a87cd2cc"
-      ],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xdc2692379ef39a8a115ccdf56080645d35d1eb20": {
-      "chain": "ETH",
-      "label": "0xdc26...eb20",
-      "last_check": 1785226307,
-      "last_seen_tokens": [
-        "0xb1110919016846972056ab995054d65560d5f05e"
       ],
       "insider_score": 77,
       "tag": "insider_activo"
@@ -208876,8 +208874,8 @@
         "btc_context": "Mercado: BTC +1.6% 24h 🟢",
         "entry_price": 0.4141424249,
         "max_price": 0.4146263117,
-        "min_price": 0.3961919029,
-        "last_price": 0.3961919029,
+        "min_price": 0.387754002,
+        "last_price": 0.387754002,
         "status": "open",
         "ts": "2026-07-27T07:32:28.360691+00:00"
       },
@@ -208895,7 +208893,7 @@
         "entry_price": 0.3417516559,
         "max_price": 0.3417516559,
         "min_price": 0.3198078662,
-        "last_price": 0.3198078662,
+        "last_price": 0.322473433,
         "status": "open",
         "ts": "2026-07-27T08:11:06.757162+00:00"
       }
@@ -209520,14 +209518,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1784981133723-12eeab",
-      "kind": "convergence",
-      "text": "🎯 342 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -1.5% 🔴",
-      "hash": "12eeabe72b127482",
-      "created_ts": 1784981133,
-      "retries": 43
-    },
     {
       "id": "1784981170477-e9ca50",
       "kind": "convergence",
@@ -215360,8 +215350,8 @@
       "ts": 1785240172.395513
     }
   },
-  "last_daily_day": "2026-07-27",
+  "last_daily_day": "2026-07-28",
   "last_weekly_week": "2026-W30",
-  "last_forensic_day": "2026-07-27",
+  "last_forensic_day": "2026-07-28",
   "announced_version": "v9.1"
 }
