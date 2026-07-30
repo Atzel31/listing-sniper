@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785427051,
+  "saved_at": 1785427544,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -2668,20 +2668,6 @@
       "tag": "smart",
       "forensic": false,
       "label": "0x9e3c...f55e"
-    },
-    "0xc03aef70c9d9565ebfc838100d4afed18e41db4f": {
-      "chain": "ETH",
-      "tokens": [
-        "ENA",
-        "ONDO"
-      ],
-      "total_usd": 384.50553454753174,
-      "buys": 14,
-      "insider_score": 35,
-      "last_seen": 1783337591,
-      "tag": "smart",
-      "forensic": false,
-      "label": "0xc03a...db4f"
     },
     "0x63de716ac7fb15b1a10f3d93bb6cfedca8c4a079": {
       "chain": "ETH",
@@ -63067,17 +63053,6 @@
       "total_usd": 74278.47276854805,
       "last_buy": 1783527911,
       "buys": 586,
-      "chain": "ETH"
-    },
-    "0xc03aef70c9d9565ebfc838100d4afed18e41db4f": {
-      "tokens": [
-        "ENA",
-        "ONDO"
-      ],
-      "count": 2,
-      "total_usd": 4577.305296769931,
-      "last_buy": 1783337651,
-      "buys": 36,
       "chain": "ETH"
     },
     "0xcf1899c22bd89b904fa3fd85097da225effd3cf1": {
@@ -224527,719 +224502,6 @@
   },
   "signal_outcomes": [
     {
-      "symbol": "REPv2",
-      "signals": [
-        "exchange_wallet"
-      ],
-      "result_pct": 1,
-      "max_mult": 1.0100158144438587,
-      "hour_utc": 3,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "DIA",
-      "signals": [
-        "exchange_wallet"
-      ],
-      "result_pct": 17,
-      "max_mult": 1.1690376569037657,
-      "hour_utc": 3,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "fluffy",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -82,
-      "max_mult": 1.0,
-      "hour_utc": 4,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "HIVE",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -49,
-      "max_mult": 1.0,
-      "hour_utc": 5,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "OS",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -79,
-      "max_mult": 1.0,
-      "hour_utc": 5,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "BullPad",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -73,
-      "max_mult": 1.0,
-      "hour_utc": 5,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "PEOPLE",
-      "signals": [
-        "exchange_wallet"
-      ],
-      "result_pct": -3,
-      "max_mult": 1.0,
-      "hour_utc": 6,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "Boss",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -61,
-      "max_mult": 1.0,
-      "hour_utc": 6,
-      "status": "expired",
-      "pumped": false,
-      "ts": 1785223799
-    },
-    {
-      "symbol": "eeepydog",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 8,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223809
-    },
-    {
-      "symbol": "Synergy ",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 9,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223820
-    },
-    {
-      "symbol": "Doge",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 10,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223831
-    },
-    {
-      "symbol": "BULLY",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 10,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223841
-    },
-    {
-      "symbol": "aura",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 11,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223852
-    },
-    {
-      "symbol": "Knotjira",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0520789584208314,
-      "hour_utc": 11,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223864
-    },
-    {
-      "symbol": "dream",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 12,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223875
-    },
-    {
-      "symbol": "Macca",
-      "signals": [
-        "high_pump_prob",
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 13,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223885
-    },
-    {
-      "symbol": "spidercat",
-      "signals": [
-        "boosted"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 15,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223897
-    },
-    {
-      "symbol": "cupfund",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 18,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223910
-    },
-    {
-      "symbol": "Pusheen",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223922
-    },
-    {
-      "symbol": "RACCOOS",
-      "signals": [
-        "high_pump_prob",
-        "boosted"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223933
-    },
-    {
-      "symbol": "BULLGOD",
-      "signals": [
-        "high_pump_prob",
-        "boosted"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223943
-    },
-    {
-      "symbol": "Seal",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223954
-    },
-    {
-      "symbol": "#memecoin",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223964
-    },
-    {
-      "symbol": "SalaryDog",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223975
-    },
-    {
-      "symbol": "HTCN",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 19,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223986
-    },
-    {
-      "symbol": "Kumala",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 20,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785223996
-    },
-    {
-      "symbol": "CALLOUT",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 20,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224007
-    },
-    {
-      "symbol": "boobcoin",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 21,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224020
-    },
-    {
-      "symbol": "SimonCat",
-      "signals": [
-        "high_pump_prob",
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 22,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224031
-    },
-    {
-      "symbol": "DANNY",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 22,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224041
-    },
-    {
-      "symbol": "SATO",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 22,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224053
-    },
-    {
-      "symbol": "SalaryCat",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 23,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224063
-    },
-    {
-      "symbol": "1cat",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 23,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224073
-    },
-    {
-      "symbol": "cat",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 23,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224084
-    },
-    {
-      "symbol": "PHOKS",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 23,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224095
-    },
-    {
-      "symbol": "neko",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 0,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224105
-    },
-    {
-      "symbol": "Brötchen",
-      "signals": [
-        "boosted"
-      ],
-      "result_pct": 205,
-      "max_mult": 3.0480504772690504,
-      "hour_utc": 0,
-      "status": "pumped",
-      "pumped": true,
-      "ts": 1785224107
-    },
-    {
-      "symbol": "FCAT",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 0,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224117
-    },
-    {
-      "symbol": "callcat",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 0,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224128
-    },
-    {
-      "symbol": "SOL",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 1,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224139
-    },
-    {
-      "symbol": "Tsujicoin",
-      "signals": [
-        "new_pair",
-        "high_pump_prob"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 2,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224150
-    },
-    {
-      "symbol": "BREAD",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 2,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224160
-    },
-    {
-      "symbol": "TTT",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 3,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224171
-    },
-    {
-      "symbol": "Kitcoin",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 3,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224182
-    },
-    {
-      "symbol": "SCHRÖDINGER",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 3,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224192
-    },
-    {
-      "symbol": "PUFFIN",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 4,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224204
-    },
-    {
-      "symbol": "DC",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 4,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224214
-    },
-    {
-      "symbol": "Puffin",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 4,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224224
-    },
-    {
-      "symbol": "Fred",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 4,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224235
-    },
-    {
-      "symbol": "BADZ",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 4,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224245
-    },
-    {
-      "symbol": "WAN",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 5,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224256
-    },
-    {
-      "symbol": "WAN",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": 232,
-      "max_mult": 3.32,
-      "hour_utc": 5,
-      "status": "pumped",
-      "pumped": true,
-      "ts": 1785224256
-    },
-    {
-      "symbol": "ALBINO",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 5,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224268
-    },
-    {
-      "symbol": "dawang",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 5,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224279
-    },
-    {
-      "symbol": "Nongwan",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": 95,
-      "max_mult": 1.9503750721292559,
-      "hour_utc": 6,
-      "status": "pumped",
-      "pumped": true,
-      "ts": 1785224279
-    },
-    {
-      "symbol": "WILLY",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 6,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224291
-    },
-    {
-      "symbol": "ROMEOW",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 7,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224302
-    },
-    {
-      "symbol": "CXMT",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 7,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224312
-    },
-    {
-      "symbol": "Onigiri",
-      "signals": [
-        "new_pair"
-      ],
-      "result_pct": -100,
-      "max_mult": 1.0,
-      "hour_utc": 7,
-      "status": "rugged",
-      "pumped": false,
-      "ts": 1785224323
-    },
-    {
       "symbol": "Abnormie",
       "signals": [
         "new_pair"
@@ -228166,6 +227428,723 @@
       "status": "pumped",
       "pumped": true,
       "ts": 1785336180
+    },
+    {
+      "symbol": "GTA6",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -77,
+      "max_mult": 1.0,
+      "hour_utc": 14,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "BUT",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -73,
+      "max_mult": 1.0,
+      "hour_utc": 16,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "KIMI3",
+      "signals": [
+        "high_pump_prob",
+        "boosted"
+      ],
+      "result_pct": -70,
+      "max_mult": 1.0,
+      "hour_utc": 17,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "SLABSY",
+      "signals": [
+        "boosted",
+        "high_pump_prob"
+      ],
+      "result_pct": 0,
+      "max_mult": 1.0186524153830032,
+      "hour_utc": 17,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "UCOE",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -1,
+      "max_mult": 1.0,
+      "hour_utc": 18,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "JACARE",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -77,
+      "max_mult": 1.0,
+      "hour_utc": 18,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "まんてん",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -89,
+      "max_mult": 1.0,
+      "hour_utc": 19,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "AAPL",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -76,
+      "max_mult": 1.0,
+      "hour_utc": 21,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Codex",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -75,
+      "max_mult": 1.1880239520958085,
+      "hour_utc": 21,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "SACF",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": 2,
+      "max_mult": 1.022794846382557,
+      "hour_utc": 21,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "looks",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -87,
+      "max_mult": 1.0,
+      "hour_utc": 23,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "AVAIL",
+      "signals": [
+        "exchange_wallet"
+      ],
+      "result_pct": -3,
+      "max_mult": 1.0,
+      "hour_utc": 1,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "SEAL",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -84,
+      "max_mult": 1.0,
+      "hour_utc": 1,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "MFUEL",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -25,
+      "max_mult": 1.0352588147036759,
+      "hour_utc": 1,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "CLARITY",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -84,
+      "max_mult": 1.0,
+      "hour_utc": 1,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "GUSIC",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -47,
+      "max_mult": 1.0,
+      "hour_utc": 2,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Chong",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -85,
+      "max_mult": 1.0,
+      "hour_utc": 3,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Dogshit",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -26,
+      "max_mult": 1.0,
+      "hour_utc": 4,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Franklin",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": 6,
+      "max_mult": 1.1485627836611196,
+      "hour_utc": 4,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "FRIED",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -18,
+      "max_mult": 1.0,
+      "hour_utc": 5,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Dinger",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -35,
+      "max_mult": 1.0,
+      "hour_utc": 5,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Tubtim",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -81,
+      "max_mult": 1.0,
+      "hour_utc": 6,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "ACH",
+      "signals": [
+        "exchange_wallet"
+      ],
+      "result_pct": -7,
+      "max_mult": 1.0,
+      "hour_utc": 6,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "EGGDOG",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -86,
+      "max_mult": 1.171418873048201,
+      "hour_utc": 7,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Miro",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -83,
+      "max_mult": 1.0,
+      "hour_utc": 8,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Doge1",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -29,
+      "max_mult": 1.0,
+      "hour_utc": 8,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "bruhby",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -91,
+      "max_mult": 1.0,
+      "hour_utc": 8,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "DOGE-1",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -70,
+      "max_mult": 1.0,
+      "hour_utc": 8,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "马建平",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -85,
+      "max_mult": 1.0,
+      "hour_utc": 9,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "HORD",
+      "signals": [
+        "exchange_wallet"
+      ],
+      "result_pct": -7,
+      "max_mult": 1.0,
+      "hour_utc": 9,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "ROCK",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -89,
+      "max_mult": 1.0,
+      "hour_utc": 9,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "XMONEY",
+      "signals": [
+        "high_pump_prob",
+        "boosted"
+      ],
+      "result_pct": -21,
+      "max_mult": 1.0335069051392347,
+      "hour_utc": 10,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Paloma",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -88,
+      "max_mult": 1.0,
+      "hour_utc": 11,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Fushin",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -88,
+      "max_mult": 1.0,
+      "hour_utc": 11,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "BST",
+      "signals": [
+        "exchange_wallet"
+      ],
+      "result_pct": -21,
+      "max_mult": 1.0,
+      "hour_utc": 11,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "DUSK",
+      "signals": [
+        "exchange_wallet"
+      ],
+      "result_pct": -2,
+      "max_mult": 1.0166586576966201,
+      "hour_utc": 11,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "MANYU",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -14,
+      "max_mult": 1.0137585991244529,
+      "hour_utc": 12,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Daon",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -88,
+      "max_mult": 1.0234375000000002,
+      "hour_utc": 12,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "ELON",
+      "signals": [
+        "exchange_wallet"
+      ],
+      "result_pct": 0,
+      "max_mult": 1.0289172831203768,
+      "hour_utc": 12,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "CATE",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -26,
+      "max_mult": 1.0,
+      "hour_utc": 13,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Max",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -82,
+      "max_mult": 1.0,
+      "hour_utc": 13,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Smug",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -87,
+      "max_mult": 1.0,
+      "hour_utc": 14,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Smug",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -79,
+      "max_mult": 1.0,
+      "hour_utc": 14,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "$CRABSOL",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -85,
+      "max_mult": 1.0,
+      "hour_utc": 14,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Collective",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -73,
+      "max_mult": 1.0,
+      "hour_utc": 14,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "Pikachu",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -88,
+      "max_mult": 1.0,
+      "hour_utc": 15,
+      "status": "expired",
+      "pumped": false,
+      "ts": 1785427401
+    },
+    {
+      "symbol": "GrowBot",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 18,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427415
+    },
+    {
+      "symbol": "dunkin",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 20,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427427
+    },
+    {
+      "symbol": "PAPI",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 21,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427441
+    },
+    {
+      "symbol": "COOTER",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 21,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427451
+    },
+    {
+      "symbol": "CigCat",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 22,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427462
+    },
+    {
+      "symbol": "BRAVE",
+      "signals": [
+        "new_pair",
+        "high_pump_prob"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 22,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427473
+    },
+    {
+      "symbol": "lib",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 23,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427484
+    },
+    {
+      "symbol": "CHEDDAR",
+      "signals": [
+        "high_pump_prob",
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0046870117696074,
+      "hour_utc": 0,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427496
+    },
+    {
+      "symbol": "Ollie",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 2,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427511
+    },
+    {
+      "symbol": "DOGCAT",
+      "signals": [
+        "boosted"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 3,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427522
+    },
+    {
+      "symbol": "VEL",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 4,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427532
+    },
+    {
+      "symbol": "pumpkets",
+      "signals": [
+        "boosted",
+        "high_pump_prob"
+      ],
+      "result_pct": 32,
+      "max_mult": 1.3150795791745344,
+      "hour_utc": 5,
+      "status": "pumped",
+      "pumped": true,
+      "ts": 1785427533
+    },
+    {
+      "symbol": "Oscar",
+      "signals": [
+        "new_pair"
+      ],
+      "result_pct": -100,
+      "max_mult": 1.0,
+      "hour_utc": 5,
+      "status": "rugged",
+      "pumped": false,
+      "ts": 1785427543
     }
   ],
   "discovered_whales": [
@@ -230269,13 +230248,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/BL7D4Wf8Ba9ptvjBNqxng68E44k2xCbSxJsKZqiRUP5Q",
       "buy_url": "https://jup.ag/swap/SOL-Fcw46QRvUVqPFvXdSz5grHz8s7SHr1s2vNCpfVhCpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -77,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 14,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "55dUuQ9ERwGCXHSWXtza6uzvXqv76vx5ercH5VVQpump": {
       "symbol": "Pestolav",
@@ -230529,13 +230508,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/5aXpGx9jhLX4rxcR3kmj8BUGdXwGnT1E8dwC1ZXprtn",
       "buy_url": "https://jup.ag/swap/SOL-BcysKd2XMefuZ9EAYjgisD9969bFrR8qg6iC4VkMPrU5",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -73,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 16,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "mGZypHvkdFFhN6vLDFBRXxXKZ6McEwaSHf3t6GfBULL": {
       "symbol": "TBBB",
@@ -230590,14 +230569,14 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/Fr8astXNXz2dJDfvwCQnmqGprADkH89GSbHT5eRwfwMy",
       "buy_url": "https://jup.ag/swap/SOL-59dCaphi38eZHiuZjJ2n26BuEcktu9ohdH8eAQd8pump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -70,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
       ],
       "hour_utc": 17,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "roVmtKKmesfWypAKLZEvFm5dgVuBtTEW7yfPfo7pump": {
       "symbol": "TekkaStudio",
@@ -230631,14 +230610,14 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/4oUfP97zcRTXV2TBVQdrv5Vg75aDAzJdcFQEpkCzvnFE",
       "buy_url": "https://jup.ag/swap/SOL-DP6tmrQK996peAtwZVQZax2dxR3FXVRVZoABrfMVpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": 0,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
       ],
       "hour_utc": 17,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "3KeUGy1hARt1rCCydFt11r6FuWAYUxnQZJ2JkwKbpump": {
       "symbol": "ECAT",
@@ -230692,13 +230671,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/KZKp1PtVSBTkZ7aZzHVCcTKgKt92oGy9yFwSxjEkixz",
       "buy_url": "https://jup.ag/swap/SOL-FFRBf1sNDMrjJJEysDeeXX6wMCmii5hfuXPEKfwE28og",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -1,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 18,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "HK3igJ6L4MiZZ2zM12Nohu1MGZRzKJvqbpFwz1yopump": {
       "symbol": "JACARE",
@@ -230712,13 +230691,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/2dSHBdTUcfimoPbicnmQuMYCzBSumzgad9f8mJcaKFci",
       "buy_url": "https://jup.ag/swap/SOL-HK3igJ6L4MiZZ2zM12Nohu1MGZRzKJvqbpFwz1yopump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -77,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 18,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "BcNhFkxKPTxmYzK4G98VafhaHWBSy9deTujuTok6pump": {
       "symbol": "RETCATE",
@@ -230915,13 +230894,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/FepJFaupgnj31ZgWuD4GmofdysgiDnr67m6XJLDgdU2u",
       "buy_url": "https://jup.ag/swap/SOL-JCBbyzcBDdscKCiLtbdFhmQuKYzkaurLxJXYTNZVpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -89,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 19,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "Am8iBffqgaedfdK5XhtorbcRrKzwH9nyL3ySikQfpump": {
       "symbol": "Kimchi",
@@ -231037,13 +231016,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/3NuVHBnPRSAzAXLiuyfbx9CG9cDgGmrpvP7CBCrvmoYo",
       "buy_url": "https://jup.ag/swap/SOL-3F4x5unCVMEhxsvs98v8VfzTT1u9oYmCXTfdDKxru7ms",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -76,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 21,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "CuPKnZJ6ut7WR5XGjdZtvLQQJpewHNPTuRyXvC8ThXEq": {
       "symbol": "Codex",
@@ -231057,13 +231036,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/B2qP6ugZbbfPmsxZCzS8KRekKTk9dvoHtytx3RxGLxyK",
       "buy_url": "https://jup.ag/swap/SOL-CuPKnZJ6ut7WR5XGjdZtvLQQJpewHNPTuRyXvC8ThXEq",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -75,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 21,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "SACFEuRRK1QxJV1PEXTaWo88DSfk2hxjnSton9Ehdad": {
       "symbol": "SACF",
@@ -231077,13 +231056,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/Bc2VKKGoUTzHijmC8CvCJCgB6xsd6PShNrEgCV9JSb6",
       "buy_url": "https://jup.ag/swap/SOL-SACFEuRRK1QxJV1PEXTaWo88DSfk2hxjnSton9Ehdad",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": 2,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 21,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "8PoLji879M3Lmoxvmm8z9HDB8qUkFhaWR2g4AMwTpump": {
       "symbol": "TIGER",
@@ -231378,13 +231357,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/ACZL8r4EqvAFCoimjgfHz4ZSocUiDj8Bs9WaY6svWNSD",
       "buy_url": "https://jup.ag/swap/SOL-Gr1a8hC61NAh33ADkzJ3TuzHqoMtCNMUpGtLAi7wpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -87,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 23,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "6aMCxYx2Ytabigt8sWBHeZRv1dwPajkf7AQsZhjUpump": {
       "symbol": "Beily",
@@ -231519,13 +231498,13 @@
       "source": "BITGET",
       "url": "https://dexscreener.com/ethereum/0xE71F731C2b76B145354A2BD9e8216F7B0e40D555",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xeeb4d8400aeefafc1b2953e0094134a887c76bd8",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -3,
       "signal_tags": [
         "exchange_wallet"
       ],
       "hour_utc": 1,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "EUx9N4UXDyAXJpziyLF36j6Ut3Gu9X3VKEGptbmfpump": {
       "symbol": "bulltom",
@@ -231599,13 +231578,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/FKNtN71ujwitBoNW13mDqhoEBwetvfuMRybkZdpaUM4R",
       "buy_url": "https://jup.ag/swap/SOL-FKEToU4h8UahavLJkmb2xwpBXyeMZocnXBhAZjkkpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -84,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 1,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "ELBWGw6MJq5Epww3WXVKdre2zQwKJe8VmBfjCrkzandy": {
       "symbol": "ANDY",
@@ -231639,13 +231618,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2KieVYxfSHv6jyzV3BKAw5R1bnEByR8sfktMAQ2a44iN",
       "buy_url": "https://jup.ag/swap/SOL-7YEPtrYqRgTgQuXtvtx18Qhd2HsA1VFBUJRHQ5dJpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -25,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 1,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "6h7Y2aw98t5XHSke6UfjTZs2MXx5AVqV8GmxsNYypump": {
       "symbol": "CLARITY",
@@ -231659,13 +231638,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/EdFPtHDLqRttZTh6EtKd9heTLW3v2rRiCCYQ8gTc3NAM",
       "buy_url": "https://jup.ag/swap/SOL-6h7Y2aw98t5XHSke6UfjTZs2MXx5AVqV8GmxsNYypump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -84,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 1,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "H2eHzfnyNSkLZNq2eemF878iu6pnnkZGbK8U28Rbpump": {
       "symbol": "Chupe",
@@ -231719,13 +231698,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/C75Zxgs9p2G4v33ihDwzEKJfFRfT5fwUPzq3WoDPfTkQ",
       "buy_url": "https://jup.ag/swap/SOL-2zCQMyw576VHhYU1fpFPaSJAMwH9Geiy9MVWowiKpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -47,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 2,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "CpqEW3QDVjibGkFwDLWt12z7pH6y9V6uwmfjo7Hmpump": {
       "symbol": "Chong",
@@ -231739,13 +231718,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/3zguv6ES1AtphoVdDBhjRShjsKrfvwaQQqqX3DrpLDoW",
       "buy_url": "https://jup.ag/swap/SOL-CpqEW3QDVjibGkFwDLWt12z7pH6y9V6uwmfjo7Hmpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -85,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 3,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "H3GtwGSrYRVqp7dtjkaDfjE2inydLkHwFkFJSPzrpump": {
       "symbol": "BNUT",
@@ -231799,13 +231778,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2zvfzup9ZAbNKRLm2XguC4LnyRzGdN7KVmcUmypYYzdB",
       "buy_url": "https://jup.ag/swap/SOL-37BQqh2pvVxXkHdzk7RW49J8dWx78JuZDJJgKtvspump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -26,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 4,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "4fANNe3dp8WALqMwCJuDpjQGDV58CHd6Zrq6oioJzFg9": {
       "symbol": "tupelothedog",
@@ -231939,13 +231918,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/8wXzwpLjk6QJMYYC1VHueNnxRVW2nFGvQjgEnV4Mv8sY",
       "buy_url": "https://jup.ag/swap/SOL-CSrwNk6B1DwWCHRMsaoDVUfD5bBMQCJPY72ZG3Nnpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": 6,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 4,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "DiXczdtgux589kkketw26REzrXwo26f2Y8B2JXdLpump": {
       "symbol": "WNUT",
@@ -231979,13 +231958,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/CCX4Qhkn565eYLbdcr6GjLdWABiTABmmV6npdqdpYagT",
       "buy_url": "https://jup.ag/swap/SOL-3LaXmnVQxMMArywUBJjGA5EKbUdJ17PFor3M5oeupump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -18,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 5,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "H3kHFq7zPFePtDh7jnSHQoytsQ6jSPRPionWbxnrpump": {
       "symbol": "Blissful",
@@ -232019,13 +231998,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/7QWoFQq9jdqyDPjim9vTw6YBwqpnUW4NjWpGaPBHuDqD",
       "buy_url": "https://jup.ag/swap/SOL-b9B33dGKpMF7Fd2dmqVVxLcNesjVMxz3JPSwZSJMSj3",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -35,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 5,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "2qm2SC2XBErFLPGsPRYqkiUrMeMAf6k4qLLehd83mpqQ": {
       "symbol": "Eggdog",
@@ -232079,13 +232058,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/3YTxeEu8r1XT2BDVEtzg9F7AHYaYNXWiR4vqevUWdnUL",
       "buy_url": "https://jup.ag/swap/SOL-F9pSyTtzvRCXBYgFTp9dQ9Ep37aR6ToHeZcvK3oKpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -81,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 6,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "0xed04915c23f00a313a544955524eb7dbd823143d": {
       "symbol": "ACH",
@@ -232099,13 +232078,13 @@
       "source": "BITGET",
       "url": "https://dexscreener.com/ethereum/0xeB4626c5149894022C2066120ea7F20f217995Fb",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xed04915c23f00a313a544955524eb7dbd823143d",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
       "hour_utc": 6,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "fw1Sc83K6JK36pkRmXmYVMgje2xUeERVxcE5u7Fpump": {
       "symbol": "EGGCAT",
@@ -232160,13 +232139,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/3dbjam8swYxvXDMaqTGZfnGNVdVwtsCmTx8X2MSTc6fR",
       "buy_url": "https://jup.ag/swap/SOL-5YfhmFxdQHtzbVma8vV3FKAn6z9ks7LDnoM3o5hApump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -86,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 7,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "2LjnmkXSYxKU5fh3GNLXA3KYQAxQntEYrxGhSB3Vpump": {
       "symbol": "moondoge",
@@ -232200,13 +232179,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/FeG4win6DxgTNWug7zDkQ9iPaneewu3upAd63EATsVZY",
       "buy_url": "https://jup.ag/swap/SOL-EphNM1T4mBYk1fFNprSWagT6NNH3ENyQffRuuukNpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -83,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 8,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "DWahMrX7AWQjkjTCosvzP7eFhcZG1tYhJuSW2wnnjhvo": {
       "symbol": "Doge1",
@@ -232220,13 +232199,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/7bH94KLCadgvJZdbGKnUUzCdiNZeSFKd6unGd85McsDZ",
       "buy_url": "https://jup.ag/swap/SOL-DWahMrX7AWQjkjTCosvzP7eFhcZG1tYhJuSW2wnnjhvo",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -29,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 8,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "4GJMoGC6SgShaGap1u7buXdPNeMS8YM5mNaus6fCpump": {
       "symbol": "bruhby",
@@ -232240,13 +232219,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/BqR3dDZM3K7nQRxbQH5CfXo6yryQSUtZFPAYCVC1AGag",
       "buy_url": "https://jup.ag/swap/SOL-4GJMoGC6SgShaGap1u7buXdPNeMS8YM5mNaus6fCpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -91,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 8,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "B6f27ETGcjgGNB1fqULJbXVmw9FnL8HgBp7R83hmpump": {
       "symbol": "drooling",
@@ -232280,13 +232259,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/ethereum/0xc0263BDEEEEF8eb88F34409A3d58E8b3e17F2FdA",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xc5b0251daCFaB74bc2deBaa52072a2A4c939c105",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -70,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 8,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "6sjctAg8j1HY1hWyJz9SQBsGAF9CBt29JHNBbGdfpump": {
       "symbol": "CATE-1",
@@ -232342,13 +232321,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/CtS6uyee5kKLmH4u22SS1k54SNcEoQLyBW6mKxb7o68B",
       "buy_url": "https://jup.ag/swap/SOL-J34asGaaCULYX5pN2H7sJjfMSBtYXCj2Cgr8iZ3Cpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -85,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 9,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "0x43a96962254855f16b925556f9e97be436a43448": {
       "symbol": "HORD",
@@ -232362,13 +232341,13 @@
       "source": "BITGET",
       "url": "https://dexscreener.com/ethereum/0xBAA48Ef52FE0cF3A2682c1247b18d4274a988132",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x43a96962254855f16b925556f9e97be436a43448",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -7,
       "signal_tags": [
         "exchange_wallet"
       ],
       "hour_utc": 9,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "EkgbQHYmZ4Az4Ek8dwnqA2NGeqfakktmoENwJh7FvY6h": {
       "symbol": "ROCK",
@@ -232382,13 +232361,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/E5SYynHBNuhxS2LN7q152gw3yPZvzRpj1saevjweKNSz",
       "buy_url": "https://jup.ag/swap/SOL-EkgbQHYmZ4Az4Ek8dwnqA2NGeqfakktmoENwJh7FvY6h",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -89,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 9,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "5eyqBU97zAPKM58AJGZZs8SdaU5bQW3k8YQ5jZAFpump": {
       "symbol": "Norma",
@@ -232423,14 +232402,14 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/69H1uWHi9PXV1rMizjRaqsAvTfLC28y8if9VGBRnEcDh",
       "buy_url": "https://jup.ag/swap/SOL-5csfa95Xf8ebiCwP9joQ7mtC8KwFvnnejnYx5FbYpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -21,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
       ],
       "hour_utc": 10,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "Crgxrddc8wLmDzD1nBVxGGbMFhtY4vxddJsQ9t8npump": {
       "symbol": "RACC",
@@ -232525,13 +232504,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2y4o3kVzZU9pRG7LtsYQTgRV2ivwpK9PkZ4z317dCZiL",
       "buy_url": "https://jup.ag/swap/SOL-6j5kJto61XubRJEZWHC7iRyVi8pUp8wqD2GvYBR9pump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "FNjhEHDYshbNAU7Bge9bRgTgrk1T9dmFQtcPyGAVpump": {
       "symbol": "Fushin",
@@ -232545,13 +232524,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/43t9NSiamf1mw2wqiBDgA1kY3HyKcDybcs6K5JECfjVd",
       "buy_url": "https://jup.ag/swap/SOL-FNjhEHDYshbNAU7Bge9bRgTgrk1T9dmFQtcPyGAVpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "0x509a38b7a1cc0dcd83aa9d06214663d9ec7c7f4a": {
       "symbol": "BST",
@@ -232565,13 +232544,13 @@
       "source": "BITGET",
       "url": "https://dexscreener.com/ethereum/0x0E85fB1be698E777F2185350b4A52E5eE8DF51A6",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x509a38b7a1cc0dcd83aa9d06214663d9ec7c7f4a",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -21,
       "signal_tags": [
         "exchange_wallet"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "0x940a2db1b7008b6c776d4faaca729d6d4a4aa551": {
       "symbol": "DUSK",
@@ -232585,13 +232564,13 @@
       "source": "BINANCE",
       "url": "https://dexscreener.com/ethereum/0xf4bce6d3c42479225205d901a3f67956df3f4f7f45ccd9f7ce6bc16c3a0ee09f",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x940a2db1b7008b6c776d4faaca729d6d4a4aa551",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -2,
       "signal_tags": [
         "exchange_wallet"
       ],
       "hour_utc": 11,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "0x95AF4aF910c28E8EcE4512BFE46F1F33687424ce": {
       "symbol": "MANYU",
@@ -232605,13 +232584,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/ethereum/0xc4704f13d5E08b27B039d53873E813dD2fAD99d9",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x95AF4aF910c28E8EcE4512BFE46F1F33687424ce",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -14,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 12,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "E5AukzyfeLdtE4A5y7f9fybYCuYJh9Boj1Qxf1NGpump": {
       "symbol": "Daon",
@@ -232625,13 +232604,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/4CEwxR59ExFh714iitFBrDijxarZtMeeJq8h99wfTJYT",
       "buy_url": "https://jup.ag/swap/SOL-E5AukzyfeLdtE4A5y7f9fybYCuYJh9Boj1Qxf1NGpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 12,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3": {
       "symbol": "ELON",
@@ -232645,13 +232624,13 @@
       "source": "BITGET",
       "url": "https://dexscreener.com/ethereum/0x7B73644935b8e68019aC6356c40661E1bc315860",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": 0,
       "signal_tags": [
         "exchange_wallet"
       ],
       "hour_utc": 12,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "CsW2BpV3bGTTC7rffN42pkc5x2SKhY5tggT63kZwpump": {
       "symbol": "mogdog",
@@ -232705,13 +232684,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/HMzvsEEmtzHhvZNw9uwbaG85HCTmFnkbhzUx16cy7ca3",
       "buy_url": "https://jup.ag/swap/SOL-Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -26,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 13,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "24b7eh4fNcxLFNNtSzt9nAxr9JEcGRmU3WHr6UKMpump": {
       "symbol": "HUNTER",
@@ -232785,14 +232764,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/EpyURqYsCWzhKZqWHvJRYgaG3W1vfuT49juWR48Sev4e",
       "buy_url": "https://jup.ag/swap/SOL-6yAHVGdxMRj5omsWrga7q9sa3tnEouVGn3EmagQUpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -82,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 13,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "85PbYtsF8i2jdvRfv523dYU5Xo43DKkX3oPXYgWmpump": {
       "symbol": "Kvro",
@@ -232846,13 +232825,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/9Qrs4TTYegDzKqT2MjTKWgpNcbxEYDarFacE7NJMLKx8",
       "buy_url": "https://jup.ag/swap/SOL-zRZ4M8LkC4BqFe5PrrCKy8ExfCAUXZ1zsAUYZp8pump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -87,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 14,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "8wDUQoJVjM8VpxrU8XN9zpUxt9iNJFQ4c37gEh2Ppump": {
       "symbol": "Smug",
@@ -232866,13 +232845,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/3si8d9vHsm9vnpX2ZGvyxXaiZm6UNd4S9khCTWstDVnZ",
       "buy_url": "https://jup.ag/swap/SOL-8wDUQoJVjM8VpxrU8XN9zpUxt9iNJFQ4c37gEh2Ppump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -79,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 14,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "7dYzXzHr5XTBg172M3WKvj827xAWVrk4jYQWEa8Mpump": {
       "symbol": "$CRABSOL",
@@ -232886,13 +232865,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/Gn4RVYqGmtgbwWdJUXhxohqzoXBVFGCmbErE64w974Dj",
       "buy_url": "https://jup.ag/swap/SOL-7dYzXzHr5XTBg172M3WKvj827xAWVrk4jYQWEa8Mpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -85,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 14,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "doKisYd4tAnVJug1Dw161cFnPgDMxy3brYiwc3ypump": {
       "symbol": "PNFT",
@@ -232966,14 +232945,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/ArzJaotdxT4zhuCqUrk8uxBRoEXAkY2CLXeF8HCEMuQG",
       "buy_url": "https://jup.ag/swap/SOL-BQaxKoDhGhsSJMLSiwBSPA8EkE8eykPb2q5FRWRBpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -73,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 14,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "E8nwnRa82KWgTPxq5211hLh4fSpoT923TT64Egjpump": {
       "symbol": "BIDEN",
@@ -233068,13 +233047,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/EsWBskAqKdL7iKH2XrJGkmsf8HHM98yEYsYhRnK4UANQ",
       "buy_url": "https://jup.ag/swap/SOL-GFQXUs6EqFDQ3X4JjGF4zv5y5YjAmdWUxWNq3nngpump",
-      "status": "tracking",
+      "status": "expired",
       "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 15,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "BDYcR3sjfesenCLyUUd1V6TdS9ge7TdafH4ZYf5opump": {
       "symbol": "SMOLCAT",
@@ -233130,7 +233109,7 @@
       "url": "https://dexscreener.com/solana/CmjqRAnxfYVJqaw9CVB7M267oD7U2wDBHskpHEij1dhw",
       "buy_url": "https://jup.ag/swap/SOL-2Cn914VFmRasAJyhEQrjuxXoLqTR6b66Cx6vcDWwpump",
       "status": "tracking",
-      "result_pct": -51,
+      "result_pct": -77,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -233151,7 +233130,7 @@
       "url": "https://dexscreener.com/solana/5oa2maFsxfNAEDBTftFYhoAwgW3RUMrfxwL4tB9ZF6Cb",
       "buy_url": "https://jup.ag/swap/SOL-4mw6avfnDkecXfERVAGxaqymFmKjX7oQEus2jqECHPU6",
       "status": "tracking",
-      "result_pct": -32,
+      "result_pct": -33,
       "signal_tags": [
         "new_pair"
       ],
@@ -233171,7 +233150,7 @@
       "url": "https://dexscreener.com/solana/4mSogRCi9RK8VXbGh5rNqTZas8A9DXRPwm2ftEgavEfX",
       "buy_url": "https://jup.ag/swap/SOL-Azh3fwrGn9FfMZwPMbkovu5xibeCyXSYJ7Sfgj72pump",
       "status": "tracking",
-      "result_pct": -73,
+      "result_pct": -81,
       "signal_tags": [
         "new_pair"
       ],
@@ -233212,7 +233191,7 @@
       "url": "https://dexscreener.com/solana/5Xq1qzHBb3Gu8Bas7SdmtNnnxJuYfFkoEYhX5ZHhBvbu",
       "buy_url": "https://jup.ag/swap/SOL-6hKk9ymYMejWURC1GhKj66Rwcn6VNnHHe1E3JgE4pump",
       "status": "tracking",
-      "result_pct": 7,
+      "result_pct": -1,
       "signal_tags": [
         "boosted"
       ],
@@ -233252,7 +233231,7 @@
       "url": "https://dexscreener.com/solana/HkvRmEQyXnWU5gELMsTJLmxkK7E4i6stpc1wHyKgvWvZ",
       "buy_url": "https://jup.ag/swap/SOL-42MPS9ULRcAVV79jQaf6sjcepT38MANKmKQ8wQPipump",
       "status": "tracking",
-      "result_pct": -80,
+      "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
@@ -233272,7 +233251,7 @@
       "url": "https://dexscreener.com/solana/9HX3MbttsJBDRSzvPCaMMjgeHeeXHeiNENeiM4qHobte",
       "buy_url": "https://jup.ag/swap/SOL-4W9nkDkmhVokuv84yeNkSMHQxh1Ta35GMkYMsACbpump",
       "status": "tracking",
-      "result_pct": -16,
+      "result_pct": -7,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -233293,7 +233272,7 @@
       "url": "https://dexscreener.com/solana/8AjNZ1R7hgwbfwtiLK9W4YmCMF8j6AcDMoe9bG3sPpjd",
       "buy_url": "https://jup.ag/swap/SOL-3DEroTy7f71QrVhpeCnY4UQGmGSAg5aaDktibTeypump",
       "status": "tracking",
-      "result_pct": -42,
+      "result_pct": -54,
       "signal_tags": [
         "new_pair"
       ],
@@ -233332,13 +233311,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/GJfKAcQpGDPC8o87wjtRQR7zmZ8qJJB1qLpSbL9moYbx",
       "buy_url": "https://jup.ag/swap/SOL-5zFQoZSeXj6V7dbAGPmoY2vHLdDbUjL6jNpjWf6Apump",
-      "status": "tracking",
-      "result_pct": -88,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 18,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "VqmABNboP7rM7NGNBDsgX3DvdQJqpa8K9toeTCDpump": {
       "symbol": "nostalgia",
@@ -233414,7 +233393,7 @@
       "url": "https://dexscreener.com/solana/5TgqCiKv8JS3BaWjkcECqi85r4V9DeLGermNCmCCKVcq",
       "buy_url": "https://jup.ag/swap/SOL-6soNfReFCsgGD6ANDiwaMFN8MxCbn7BUdEvq98cSpump",
       "status": "tracking",
-      "result_pct": -87,
+      "result_pct": -89,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
@@ -233555,7 +233534,7 @@
       "url": "https://dexscreener.com/solana/5uHZR1ry8n3JkxxHJ63xuKB9BHs3ETMtMCUWsfTbCDqh",
       "buy_url": "https://jup.ag/swap/SOL-GydeH85JRxmYifWFbHV8Fp4FQRnN5AFYXKCmXMN8rvRN",
       "status": "tracking",
-      "result_pct": -25,
+      "result_pct": -46,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
@@ -233576,7 +233555,7 @@
       "url": "https://dexscreener.com/solana/AxB2VWBpGCgT6krwEfQuowTzrr7rcHSWnMEt35ZRBjwJ",
       "buy_url": "https://jup.ag/swap/SOL-HBjaduVGUFukW2TT8DSwSdqLbBAW8uSJUxek2GfTpump",
       "status": "tracking",
-      "result_pct": 16,
+      "result_pct": -7,
       "signal_tags": [
         "boosted"
       ],
@@ -233595,13 +233574,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/7Zs9rnPmF59Ly9s9No4g1Z3j4dUPDBkmgPXpi8LNRhXB",
       "buy_url": "https://jup.ag/swap/SOL-E7kJJ23uNaSbFAmuAZu2Bg313VTTZ1bECVaPApLqpump",
-      "status": "tracking",
-      "result_pct": -87,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 20,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "HXuinymFnfjaiM4LkaFDLvvQ4a1WL5qoupdyUGtJpump": {
       "symbol": "Ferret",
@@ -233616,7 +233595,7 @@
       "url": "https://dexscreener.com/solana/FfeQkKBqmLYSHQRKDaAxse91y2PSoGN11htYKKd4z12N",
       "buy_url": "https://jup.ag/swap/SOL-HXuinymFnfjaiM4LkaFDLvvQ4a1WL5qoupdyUGtJpump",
       "status": "tracking",
-      "result_pct": -44,
+      "result_pct": -91,
       "signal_tags": [
         "boosted"
       ],
@@ -233636,7 +233615,7 @@
       "url": "https://dexscreener.com/solana/F4cNE9X5KNAeswSHQmKQ44hmPK2KRZ2umARvfNvFcusW",
       "buy_url": "https://jup.ag/swap/SOL-9t5L6Y7ztc6fFk4BF544onT8e9pjoZKsd7zVpvDjpump",
       "status": "tracking",
-      "result_pct": -68,
+      "result_pct": -61,
       "signal_tags": [
         "new_pair"
       ],
@@ -233656,7 +233635,7 @@
       "url": "https://dexscreener.com/solana/AfujNn484hm6w5Sv6h1jSr6LyagVzM8cxy3y2qPFEmhy",
       "buy_url": "https://jup.ag/swap/SOL-87kdzhXBsdQdc7S9WfvWYvXsesGeRwhEDF7XSLXBpump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -52,
       "signal_tags": [
         "boosted"
       ],
@@ -233716,7 +233695,7 @@
       "url": "https://dexscreener.com/solana/95XiWmBEsaDpaGfMMWQcnLvGBGZHyrvhQfznsRsUQNXr",
       "buy_url": "https://jup.ag/swap/SOL-E54BJ9dhnXVGJtFQWw1ccmR5Qox6DyBV32KMsndURvLq",
       "status": "tracking",
-      "result_pct": -50,
+      "result_pct": -64,
       "signal_tags": [
         "new_pair"
       ],
@@ -233736,7 +233715,7 @@
       "url": "https://dexscreener.com/solana/5p5sT8r4yLcdeSwwLKo5gGqcp1FdGZYprkNhgddB62BV",
       "buy_url": "https://jup.ag/swap/SOL-AYMEVkbSowkh72UVQTvBkdCvhDnm3eqdkGFArYdweSWA",
       "status": "tracking",
-      "result_pct": 12,
+      "result_pct": -68,
       "signal_tags": [
         "new_pair"
       ],
@@ -233756,7 +233735,7 @@
       "url": "https://dexscreener.com/solana/5CxkA8VAXshGzntYvtA47hZciKZLcndERKTyizg3wc4p",
       "buy_url": "https://jup.ag/swap/SOL-jZxm8SjfUwhhVEkUJhqXijTxMj2sUzaVZjxfnyjpump",
       "status": "tracking",
-      "result_pct": -57,
+      "result_pct": -44,
       "signal_tags": [
         "boosted"
       ],
@@ -233795,13 +233774,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/A9nyJ6x31RWKGLziCjvP7E4dihMUJrfb4EVn8AG7YSaH",
       "buy_url": "https://jup.ag/swap/SOL-4fRfBjAuoi29bkWjJtcLRHYeEMxKuGiSFhKaMw4Qpump",
-      "status": "tracking",
-      "result_pct": -84,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 21,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "24JfohUFKzUymwnGiAEQg2GSE8ykeMRH6VmFv5xzpump": {
       "symbol": "Crush",
@@ -233835,14 +233814,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/BmC9M6mukuu1TwxJEsNoCCRf4QosxCRLxYz38yurLepK",
       "buy_url": "https://jup.ag/swap/SOL-G8AWtG7QhaELFM5LCo8BKTD3yxvvvBp97LsU4fZQpump",
-      "status": "tracking",
-      "result_pct": -87,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 21,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "F5A6b9o37EtT2XGuyDw75dJcMdAgPpnMcK6FiYZDpump": {
       "symbol": "ZEEK",
@@ -233857,7 +233836,7 @@
       "url": "https://dexscreener.com/solana/51EojkuKmKMepfcDNitKhJin58Cna5cJyCnEwEC68dp7",
       "buy_url": "https://jup.ag/swap/SOL-F5A6b9o37EtT2XGuyDw75dJcMdAgPpnMcK6FiYZDpump",
       "status": "tracking",
-      "result_pct": -77,
+      "result_pct": -88,
       "signal_tags": [
         "new_pair"
       ],
@@ -233956,13 +233935,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/5zPM1kZonVV4WQviMWrCege5gVdTxQ4cTi5Vc89qwTa8",
       "buy_url": "https://jup.ag/swap/SOL-CNsaVjYMpAZgmYfasDgYdyLMjspXGqBT3aasQYmTpump",
-      "status": "tracking",
-      "result_pct": -85,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 22,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "9TPJShvKmyB9Jm1ozuYNh2qGQD6sdXm5c9uHFa8apump": {
       "symbol": "29CLUB",
@@ -234038,14 +234017,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/2JzNMKCn62QbjJdyu5VwmugeRmYNzjNoff4xx8TCgxXV",
       "buy_url": "https://jup.ag/swap/SOL-ApPLzZrigz3tTsXGbQLBK2fpahj1h4wyivqB2uTMpump",
-      "status": "tracking",
-      "result_pct": -84,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
       ],
       "hour_utc": 22,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "3Yd5snB86ZgEpz9DJ9DpeystEspCiMmvYvTWUSQdpump": {
       "symbol": "PipeDog",
@@ -234060,7 +234039,7 @@
       "url": "https://dexscreener.com/solana/2P7ptog4mVVmqfhEB77GxEhRPgVQoeQde3dcyU8h2faU",
       "buy_url": "https://jup.ag/swap/SOL-3Yd5snB86ZgEpz9DJ9DpeystEspCiMmvYvTWUSQdpump",
       "status": "tracking",
-      "result_pct": -24,
+      "result_pct": -81,
       "signal_tags": [
         "new_pair"
       ],
@@ -234100,7 +234079,7 @@
       "url": "https://dexscreener.com/solana/J5HvctRARcuf1eSgnVNUJg2hY3MrzoEEsU7gQQ58u57E",
       "buy_url": "https://jup.ag/swap/SOL-GuKrJJvtu8nL2evGELo25gqkKiD3FyZHSpyydLNepump",
       "status": "tracking",
-      "result_pct": -84,
+      "result_pct": -85,
       "signal_tags": [
         "new_pair"
       ],
@@ -234139,13 +234118,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/GvzzKeQLNQqjC691ha78P5mw9goJLMjRcRCtEEGCGvAV",
       "buy_url": "https://jup.ag/swap/SOL-DsHWNxzBaak5HSPN7SAGq8TtesYdTAEUrGVfshbvpump",
-      "status": "tracking",
-      "result_pct": -87,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 23,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "3rgwhfzL9f2fPqt7EXc7GT3Co3TtJqFBH7m1pbshuPH2": {
       "symbol": "Greg",
@@ -234180,7 +234159,7 @@
       "url": "https://dexscreener.com/solana/Cfih6WKWmdrptLGHXmQzvTmbA5Zf9WyTWd4DWWLUYDZ8",
       "buy_url": "https://jup.ag/swap/SOL-8xB2zHR4xTiSAkaJbkPAZ4qBZzB1sBrpbVUwMNjVL1oS",
       "status": "tracking",
-      "result_pct": -4,
+      "result_pct": -21,
       "signal_tags": [
         "new_pair"
       ],
@@ -234219,14 +234198,14 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/DTBumBiqd4cWuQqScN6cpVqXoCYseP8ivC1SEqW7CE8b",
       "buy_url": "https://jup.ag/swap/SOL-4bA5pMkTwkPAbVsxgDPxJguDqjKSTNPtk8T6BwDgpump",
-      "status": "tracking",
-      "result_pct": 0,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "high_pump_prob",
         "new_pair"
       ],
       "hour_utc": 0,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "7jX1oS5ZbNcThyXUB92KgFYSa1yiRitKafwoScaYpump": {
       "symbol": "んじ",
@@ -234241,7 +234220,7 @@
       "url": "https://dexscreener.com/solana/5j8yb8XswMWnJUH2K86ATV1yVrpwu7613E56GmXgfHMY",
       "buy_url": "https://jup.ag/swap/SOL-7jX1oS5ZbNcThyXUB92KgFYSa1yiRitKafwoScaYpump",
       "status": "tracking",
-      "result_pct": -55,
+      "result_pct": -80,
       "signal_tags": [
         "high_pump_prob",
         "boosted"
@@ -234282,7 +234261,7 @@
       "url": "https://dexscreener.com/solana/q953hS8PNtKA3boTztWjijJHyfjA7tzWCXKuk2hFW4y",
       "buy_url": "https://jup.ag/swap/SOL-J6Z7U2z3oJK7ySHN7TEgQANidtmowyBQMdZLCTatntR2",
       "status": "tracking",
-      "result_pct": -41,
+      "result_pct": -11,
       "signal_tags": [
         "boosted"
       ],
@@ -234302,7 +234281,7 @@
       "url": "https://dexscreener.com/solana/HfCGpYtudndaSfopbZeo9SQzdj68MMSaYK3jA7Bdx52p",
       "buy_url": "https://jup.ag/swap/SOL-AVZKVLTPZ97Ah6AbEZq1TpEPPrzfykq11hN8FrVvpump",
       "status": "tracking",
-      "result_pct": -20,
+      "result_pct": -84,
       "signal_tags": [
         "new_pair"
       ],
@@ -234322,7 +234301,7 @@
       "url": "https://dexscreener.com/solana/HzKRphzak3NBKMc2rGWTGvvRzXUAdZcaSJESaWZQtTRd",
       "buy_url": "https://jup.ag/swap/SOL-CrRzqcMBPyAudbPpnhxBxvKZ7NXcnSBuXw8P7pB4pump",
       "status": "tracking",
-      "result_pct": -71,
+      "result_pct": -81,
       "signal_tags": [
         "new_pair"
       ],
@@ -234342,7 +234321,7 @@
       "url": "https://dexscreener.com/solana/2YYqb5p6zMuJHkNcVZg2bjaTSN9mX6tpdeFuU9nYKq6h",
       "buy_url": "https://jup.ag/swap/SOL-4cwUr3PPHuPux19GqPaZn3RbjGY3h8wLxZUzvXUHpump",
       "status": "tracking",
-      "result_pct": -76,
+      "result_pct": -88,
       "signal_tags": [
         "new_pair",
         "high_pump_prob"
@@ -234363,7 +234342,7 @@
       "url": "https://dexscreener.com/solana/J3K5VGrjsgK1D2GfbjjjGAKgNJmKrFzHN41jRAY54i47",
       "buy_url": "https://jup.ag/swap/SOL-ATou8J4EN4us7ci2mrf8i3khZWjDfigbaFetC6rTpump",
       "status": "tracking",
-      "result_pct": -72,
+      "result_pct": -80,
       "signal_tags": [
         "new_pair"
       ],
@@ -234443,7 +234422,7 @@
       "url": "https://dexscreener.com/solana/7iHsJTfC8R1dqYh2NAwZySJwuMSYkvJxvkKiYUJ3bWXw",
       "buy_url": "https://jup.ag/swap/SOL-3G2At3nh674eLVjfRXnJw3HGsgQQAWMXCsPvt9tBpump",
       "status": "tracking",
-      "result_pct": -75,
+      "result_pct": -90,
       "signal_tags": [
         "new_pair"
       ],
@@ -234483,7 +234462,7 @@
       "url": "https://dexscreener.com/ethereum/0x7090Cc8DFA04b0BBAc6520063c9c1ea677C368a0",
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
       "status": "tracking",
-      "result_pct": -1,
+      "result_pct": -2,
       "signal_tags": [
         "insider_convergence",
         "insider_buy"
@@ -234497,14 +234476,14 @@
       "notified_at": 1785290595,
       "notified_price": 0.001473,
       "notified_liq": 202478.5,
-      "max_price": 0.001473,
-      "max_mult": 1.0,
+      "max_price": 0.001569,
+      "max_mult": 1.0651731160896132,
       "pump_prob": 72,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/5ByL7MZoLABYnwMPZKPKjf4MGkZ7FeBzrAnos19Pre2z",
       "buy_url": "https://jup.ag/swap/SOL-FeMbDoX7R1Psc4GEcvJdsbNbZA3bfztcyDCatJVJpump",
       "status": "tracking",
-      "result_pct": -7,
+      "result_pct": 7,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
@@ -234545,7 +234524,7 @@
       "url": "https://dexscreener.com/solana/DkDjeE6d8WMKpjWzaQGezwomZKNn2PxjHaeCb5zLGqJ1",
       "buy_url": "https://jup.ag/swap/SOL-VDKctD74QK3KHoiXCTk5QAxYK2EBkNYraZhHkaUGrok",
       "status": "tracking",
-      "result_pct": -75,
+      "result_pct": -81,
       "signal_tags": [
         "boosted"
       ],
@@ -234605,13 +234584,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/5Kpqtnz5gJzZHcbiTrDjLibRwYHHWVPLvKouA94RSyqJ",
       "buy_url": "https://jup.ag/swap/SOL-3e8ogSFLHzL7rXJ9L77xy9UtQJhjj9JYqbBBLY5Npump",
-      "status": "tracking",
-      "result_pct": -63,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 2,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "AtEtoptgDgXJcHsUWhE2x8ZUfQt3U6J8TLvnBDF9pump": {
       "symbol": "Booby",
@@ -234685,13 +234664,13 @@
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/7YU9JEqnmw25HFj7it1NWcAK8ySjnFoTfKzTQa48iuQc",
       "buy_url": "https://jup.ag/swap/SOL-Cbj8wDvAvbRw8McNPd7ZhUrcw8NSvsyfR4db6pL6pump",
-      "status": "tracking",
-      "result_pct": -39,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "boosted"
       ],
       "hour_utc": 3,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "EoFuZNkMBLWp36iW9xxybMMYtBa2ML8ojbUZ7onkpump": {
       "symbol": "Fred",
@@ -234745,13 +234724,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/3pEAqtbFuMKqH84tma5TiwbdH1KJfHYWckY3zTtS1PgE",
       "buy_url": "https://jup.ag/swap/SOL-DMHHf9xk3XrDr9Hy71fQ52RQVJA2QXsevdZjJcLCpump",
-      "status": "tracking",
-      "result_pct": -83,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 4,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "FVtcQMFtzH3xqhBYdVZ9CvSCqDpmdjsHjnS81nWGpump": {
       "symbol": "VOLE",
@@ -234826,7 +234805,7 @@
       "url": "https://dexscreener.com/solana/6Z7fXhS3TfoN6yhR1pswhJ6apKUedfipVG3RYptXzhgo",
       "buy_url": "https://jup.ag/swap/SOL-Hb3BX9Cqx57AKEzjLFuRbuvHGCFYC5NKdXnHAyoepump",
       "status": "tracking",
-      "result_pct": -79,
+      "result_pct": -81,
       "signal_tags": [
         "new_pair"
       ],
@@ -234839,20 +234818,20 @@
       "notified_at": 1785302128,
       "notified_price": 3.707e-05,
       "notified_liq": 15351.8,
-      "max_price": 3.707e-05,
-      "max_mult": 1.0,
+      "max_price": 4.875e-05,
+      "max_mult": 1.3150795791745344,
       "pump_prob": 64,
       "source": "DEXSCREENER",
       "url": "https://dexscreener.com/solana/CzYd3MY7GeeF5FxLfUF38qSnjUiEcePt7iTBHqEaitv9",
       "buy_url": "https://jup.ag/swap/SOL-HhqF5NowD4qThZBNDbgYAFvChEpAexSk1Qmu1nCzpump",
-      "status": "tracking",
-      "result_pct": -1,
+      "status": "pumped",
+      "result_pct": 32,
       "signal_tags": [
         "boosted",
         "high_pump_prob"
       ],
       "hour_utc": 5,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "74dRE9m75gKQzb9WVkNYBqNjUdkgfLzWyNxtvwUDpump": {
       "symbol": "Oscar",
@@ -234866,13 +234845,13 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/B7fk61kSSy3VDc7zu44NyaQUPV9JeXXYX3rZ2BrRqZEP",
       "buy_url": "https://jup.ag/swap/SOL-74dRE9m75gKQzb9WVkNYBqNjUdkgfLzWyNxtvwUDpump",
-      "status": "tracking",
-      "result_pct": -36,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
       "hour_utc": 5,
-      "outcome_recorded": false
+      "outcome_recorded": true
     },
     "x8cKLDbjEqjVwWx2tLFWACcfneqao65dUWnRAaypump": {
       "symbol": "carcat",
@@ -234886,8 +234865,8 @@
       "source": "NEW_PAIR",
       "url": "https://dexscreener.com/solana/9Fpneh157sV7S9RG4GHS6jAU7gCUY7exP5NN8azmwXBy",
       "buy_url": "https://jup.ag/swap/SOL-x8cKLDbjEqjVwWx2tLFWACcfneqao65dUWnRAaypump",
-      "status": "tracking",
-      "result_pct": -87,
+      "status": "rugged",
+      "result_pct": -100,
       "signal_tags": [
         "new_pair"
       ],
@@ -238528,136 +238507,6 @@
     }
   },
   "rugged_tokens": {
-    "6Hp3Lfd8yiPfvfJZYGzXg47HhXpArRBL58UeTR3rpump": {
-      "symbol": "MWA",
-      "chain": "SOL",
-      "rugged_at": 1785270229,
-      "liq_before": 10206.63,
-      "liq_after": 1970.53,
-      "liq_drop_pct": 81,
-      "was_tracked": true,
-      "hours_after_notif": 1.7
-    },
-    "8BUsLeXjvib5u67a21LLeDQYGMR9eD6Vn16S5Ubtpump": {
-      "symbol": "Nigersaurus",
-      "chain": "SOL",
-      "rugged_at": 1785270229,
-      "liq_before": 10187.72,
-      "liq_after": 1906.89,
-      "liq_drop_pct": 81,
-      "was_tracked": true,
-      "hours_after_notif": 1.3
-    },
-    "3gi5ByVHDbAz194TBtkM7ssFnbUJCf3eCnkhCzivpump": {
-      "symbol": "JOURNEY",
-      "chain": "SOL",
-      "rugged_at": 1785270229,
-      "liq_before": 10656.08,
-      "liq_after": 1556.9,
-      "liq_drop_pct": 85,
-      "was_tracked": true,
-      "hours_after_notif": 0.8
-    },
-    "0x9a66e1f1A12E2eD2c99036C34698432599f5591c": {
-      "symbol": "FROG",
-      "chain": "ETH",
-      "rugged_at": 1785326505,
-      "liq_before": 27186.87,
-      "liq_after": 6186.51,
-      "liq_drop_pct": 77,
-      "was_tracked": true,
-      "hours_after_notif": 45.7
-    },
-    "8PoLji879M3Lmoxvmm8z9HDB8qUkFhaWR2g4AMwTpump": {
-      "symbol": "TIGER",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 12334.13,
-      "liq_after": 2624.69,
-      "liq_drop_pct": 79,
-      "was_tracked": true,
-      "hours_after_notif": 38.6
-    },
-    "6sEE2U1KQpdoGBcSwaNJKWKRdNX8eSP6RuXVoPEBpump": {
-      "symbol": "JBnut",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 8045.15,
-      "liq_after": 1723.79,
-      "liq_drop_pct": 79,
-      "was_tracked": true,
-      "hours_after_notif": 36.7
-    },
-    "ELBWGw6MJq5Epww3WXVKdre2zQwKJe8VmBfjCrkzandy": {
-      "symbol": "ANDY",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 9479.33,
-      "liq_after": 1769.32,
-      "liq_drop_pct": 81,
-      "was_tracked": true,
-      "hours_after_notif": 34.5
-    },
-    "EeD6ACXXHbohb7DVFsyaPLywosv9GPPu4a1Fy4mbpump": {
-      "symbol": "dogcopter",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 10152.48,
-      "liq_after": 2095.2,
-      "liq_drop_pct": 79,
-      "was_tracked": true,
-      "hours_after_notif": 32.2
-    },
-    "9x5CP8RzoMGHn3yGuq7bad9i6sd124pRNgdqRvbGpump": {
-      "symbol": "cow",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 9923.43,
-      "liq_after": 2478.83,
-      "liq_drop_pct": 75,
-      "was_tracked": true,
-      "hours_after_notif": 31.3
-    },
-    "BKwxBvX7mAD9ei6KvKShBQV5DqkcjnpyMH61NYMmpump": {
-      "symbol": "BDOVE",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 11106.24,
-      "liq_after": 2431.53,
-      "liq_drop_pct": 78,
-      "was_tracked": true,
-      "hours_after_notif": 31.1
-    },
-    "H3kHFq7zPFePtDh7jnSHQoytsQ6jSPRPionWbxnrpump": {
-      "symbol": "Blissful",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 10814.43,
-      "liq_after": 2104.99,
-      "liq_drop_pct": 81,
-      "was_tracked": true,
-      "hours_after_notif": 30.0
-    },
-    "5eyqBU97zAPKM58AJGZZs8SdaU5bQW3k8YQ5jZAFpump": {
-      "symbol": "Norma",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 11423.95,
-      "liq_after": 1927.12,
-      "liq_drop_pct": 83,
-      "was_tracked": true,
-      "hours_after_notif": 25.7
-    },
-    "BRoophtuGumqNtcgEeqCxuwXYJx5WJEo1kuwHqfTpump": {
-      "symbol": "BRUH",
-      "chain": "SOL",
-      "rugged_at": 1785326505,
-      "liq_before": 23130.64,
-      "liq_after": 4687.8,
-      "liq_drop_pct": 80,
-      "was_tracked": true,
-      "hours_after_notif": 25.3
-    },
     "2ENza2td1vrHsA5KTBxKXS6KwQMxA6m8yVtpeEN6pump": {
       "symbol": "Bungalu",
       "chain": "SOL",
@@ -239027,6 +238876,136 @@
       "liq_drop_pct": 86,
       "was_tracked": true,
       "hours_after_notif": 1.2
+    },
+    "5zFQoZSeXj6V7dbAGPmoY2vHLdDbUjL6jNpjWf6Apump": {
+      "symbol": "GrowBot",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 10365.77,
+      "liq_after": 2117.03,
+      "liq_drop_pct": 80,
+      "was_tracked": true,
+      "hours_after_notif": 45.5
+    },
+    "E7kJJ23uNaSbFAmuAZu2Bg313VTTZ1bECVaPApLqpump": {
+      "symbol": "dunkin",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 17464.76,
+      "liq_after": 2251.21,
+      "liq_drop_pct": 87,
+      "was_tracked": true,
+      "hours_after_notif": 43.9
+    },
+    "4fRfBjAuoi29bkWjJtcLRHYeEMxKuGiSFhKaMw4Qpump": {
+      "symbol": "PAPI",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 8974.9,
+      "liq_after": 2226.41,
+      "liq_drop_pct": 75,
+      "was_tracked": true,
+      "hours_after_notif": 42.6
+    },
+    "G8AWtG7QhaELFM5LCo8BKTD3yxvvvBp97LsU4fZQpump": {
+      "symbol": "COOTER",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 11619.58,
+      "liq_after": 2435.68,
+      "liq_drop_pct": 79,
+      "was_tracked": true,
+      "hours_after_notif": 42.6
+    },
+    "CNsaVjYMpAZgmYfasDgYdyLMjspXGqBT3aasQYmTpump": {
+      "symbol": "CigCat",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 10222.43,
+      "liq_after": 2233.42,
+      "liq_drop_pct": 78,
+      "was_tracked": true,
+      "hours_after_notif": 42.1
+    },
+    "ApPLzZrigz3tTsXGbQLBK2fpahj1h4wyivqB2uTMpump": {
+      "symbol": "BRAVE",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 10061.92,
+      "liq_after": 2402.68,
+      "liq_drop_pct": 76,
+      "was_tracked": true,
+      "hours_after_notif": 41.6
+    },
+    "DsHWNxzBaak5HSPN7SAGq8TtesYdTAEUrGVfshbvpump": {
+      "symbol": "lib",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 8783.19,
+      "liq_after": 1740.11,
+      "liq_drop_pct": 80,
+      "was_tracked": true,
+      "hours_after_notif": 40.7
+    },
+    "4bA5pMkTwkPAbVsxgDPxJguDqjKSTNPtk8T6BwDgpump": {
+      "symbol": "CHEDDAR",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 21446.04,
+      "liq_after": 2057.64,
+      "liq_drop_pct": 90,
+      "was_tracked": true,
+      "hours_after_notif": 39.9
+    },
+    "3e8ogSFLHzL7rXJ9L77xy9UtQJhjj9JYqbBBLY5Npump": {
+      "symbol": "Ollie",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 11567.47,
+      "liq_after": 1672.39,
+      "liq_drop_pct": 86,
+      "was_tracked": true,
+      "hours_after_notif": 37.3
+    },
+    "Cbj8wDvAvbRw8McNPd7ZhUrcw8NSvsyfR4db6pL6pump": {
+      "symbol": "DOGCAT",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 94983.02,
+      "liq_after": 3087.82,
+      "liq_drop_pct": 97,
+      "was_tracked": true,
+      "hours_after_notif": 36.3
+    },
+    "DMHHf9xk3XrDr9Hy71fQ52RQVJA2QXsevdZjJcLCpump": {
+      "symbol": "VEL",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 12115.4,
+      "liq_after": 2107.79,
+      "liq_drop_pct": 83,
+      "was_tracked": true,
+      "hours_after_notif": 35.7
+    },
+    "74dRE9m75gKQzb9WVkNYBqNjUdkgfLzWyNxtvwUDpump": {
+      "symbol": "Oscar",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 30402.67,
+      "liq_after": 7489.69,
+      "liq_drop_pct": 75,
+      "was_tracked": true,
+      "hours_after_notif": 34.6
+    },
+    "x8cKLDbjEqjVwWx2tLFWACcfneqao65dUWnRAaypump": {
+      "symbol": "carcat",
+      "chain": "SOL",
+      "rugged_at": 1785427401,
+      "liq_before": 10001.82,
+      "liq_after": 2365.66,
+      "liq_drop_pct": 76,
+      "was_tracked": true,
+      "hours_after_notif": 34.4
     }
   },
   "signals_ledger": {
@@ -239099,7 +239078,7 @@
         "entry_price": 0.4249363091,
         "max_price": 0.4249363091,
         "min_price": 0.4168226249,
-        "last_price": 0.4198409417,
+        "last_price": 0.4196188334,
         "status": "open",
         "ts": "2026-07-30T12:48:17.669505+00:00"
       },
@@ -239116,8 +239095,8 @@
         "btc_context": "Mercado: BTC +0.8% 24h ⚪",
         "entry_price": 195.99,
         "max_price": 198.8552113927,
-        "min_price": 194.1129083018,
-        "last_price": 197.4132807573,
+        "min_price": 193.6866713658,
+        "last_price": 193.6866713658,
         "status": "open",
         "ts": "2026-07-30T12:50:55.877190+00:00"
       }
@@ -239853,14 +239832,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785153889947-239cac",
-      "kind": "convergence",
-      "text": "🎯 116 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.9% ⚪",
-      "hash": "239cac9751a97b5f",
-      "created_ts": 1785153889,
-      "retries": 3
-    },
-    {
       "id": "1785154181067-e162c2",
       "kind": "convergence",
       "text": "🎯 415 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.9% ⚪",
@@ -240373,20 +240344,6 @@
     }
   ],
   "seen_signals": [
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5949903",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5951049",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5950801",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951110",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5950553",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950909",
-    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5950701",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5951305",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951218",
-    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951315",
-    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5950666",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5951143",
-    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5951421",
-    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5951014",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5950594",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5951334",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5951297",
@@ -240645,6 +240602,7 @@
     "smartmoney-0x6745024462abf2c049f54b381c4ad4a8c8d999c4-123984",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951201",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5951101",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951424",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950705",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951278",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5950062",
@@ -241608,6 +241566,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951220",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5950898",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950478",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951424",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5950771",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951296",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5950726",
@@ -241885,6 +241844,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951338",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950663",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5950711",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951424",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5945122",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951320",
     "accum-URANUS-exchange_out-123977",
@@ -242004,6 +241964,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951086",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5950319",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951404",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-volaccel-5951423",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5950956",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5950848",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951400",
@@ -242133,6 +242094,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5950891",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5950573",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951024",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951424",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951224",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951327",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951109",
@@ -242940,6 +242902,7 @@
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950498",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5945484",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951140",
+    "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5951424",
     "smartmoney-0x5ef3acc3a1a6c26d0ae33a350b8f21b93b910e7b-123987",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5950247",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5950564",
@@ -242981,6 +242944,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951195",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951027",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951216",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-volaccel-5951424",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951303",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5950504",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5951401",
@@ -243033,6 +242997,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5950700",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951082",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5950332",
+    "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5951424",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5950913",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5951341",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951293",
@@ -243391,6 +243356,7 @@
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5949649",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951382",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-flow-5950982",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951423",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5950599",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5950008",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-flow-5949769",
@@ -243957,6 +243923,7 @@
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951092",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5950584",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951351",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951424",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951060",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5950824",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5951274",
@@ -244247,6 +244214,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5950285",
     "accum-NUB-exchange_out-123982",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950633",
+    "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5951424",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5950904",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5950276",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5951113",
@@ -244633,6 +244601,7 @@
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-accum-5951058",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5951243",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951387",
+    "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-volaccel-5951423",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5950987",
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5951081",
     "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk-accum-5951373",
@@ -244809,6 +244778,7 @@
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951033",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5950345",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951420",
+    "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951423",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951239",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-flow-5950915",
     "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951257",
@@ -245358,6 +245328,7 @@
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5949012",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-flow-5950664",
     "smartmoney-0xd738a5cf49a58c173850d6a01ac43cc1f2fa4286-123963",
+    "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump-accum-5951423",
     "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9-accum-5951349",
     "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB-accum-5951069",
     "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C-accum-5950987",
@@ -245777,7 +245748,7 @@
       "symbol": "SPX",
       "chain": "ETH",
       "count": 56,
-      "ts": 1785426957.1990232
+      "ts": 1785427211.050769
     }
   },
   "last_daily_day": "2026-07-30",
