@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785585820,
+  "saved_at": 1785585822,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -256757,8 +256757,8 @@
         "btc_context": "Mercado: BTC -1.4% 24h ⚪",
         "entry_price": 0.3223687409,
         "max_price": 0.3223687409,
-        "min_price": 0.3223687409,
-        "last_price": 0.3223687409,
+        "min_price": 0.3212116136,
+        "last_price": 0.3212116136,
         "status": "open",
         "ts": "2026-07-31T10:13:36.006129+00:00"
       }
@@ -257515,14 +257515,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785242985781-7555e4",
-      "kind": "convergence",
-      "text": "🎯 425 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -2.6% 🔴",
-      "hash": "7555e462f4694b91",
-      "created_ts": 1785242985,
-      "retries": 129
-    },
     {
       "id": "1785244148449-80942a",
       "kind": "convergence",
@@ -263500,7 +263492,7 @@
       "ts": 1785585718.4518194
     }
   },
-  "last_daily_day": "2026-07-31",
+  "last_daily_day": "2026-08-01",
   "last_weekly_week": "2026-W30",
   "last_forensic_day": "2026-07-31",
   "announced_version": "v9.1"
