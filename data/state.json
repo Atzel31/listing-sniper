@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785675022,
+  "saved_at": 1785675038,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -270184,28 +270184,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.8% 24h ⚪",
-        "entry_price": 0.4249363091,
-        "max_price": 0.4249363091,
-        "min_price": 0.3835840064,
-        "last_price": 0.3857990428,
-        "status": "open",
-        "ts": "2026-07-30T12:48:17.669505+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -9.7,
-        "closed_at": "2026-08-02T12:50:22.766419+00:00"
-      },
-      {
         "token": "NVDAon",
         "contract": "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee",
         "chain": "ETH",
@@ -270272,8 +270250,8 @@
         "btc_context": "Mercado: BTC +0.2% 24h ⚪",
         "entry_price": 0.000597,
         "max_price": 0.000597,
-        "min_price": 0.000597,
-        "last_price": 0.000597,
+        "min_price": 0.0005612223216,
+        "last_price": 0.0005612223216,
         "status": "open",
         "ts": "2026-08-02T09:17:31.771491+00:00"
       },
@@ -271088,6 +271066,28 @@
         "max_gain_pct": 12.0,
         "min_loss_pct": 0.0,
         "closed_at": "2026-08-02T12:36:15.326122+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.8% 24h ⚪",
+        "entry_price": 0.4249363091,
+        "max_price": 0.4249363091,
+        "min_price": 0.3835840064,
+        "last_price": 0.3857990428,
+        "status": "open",
+        "ts": "2026-07-30T12:48:17.669505+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -9.7,
+        "closed_at": "2026-08-02T12:50:22.766419+00:00"
       }
     ]
   },
