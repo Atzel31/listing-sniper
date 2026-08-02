@@ -305,6 +305,7 @@ export const T = {
   borderHi: "#2a2a2a",
   text:     "#f0f0f0",
   muted:    "#606060",
+  muted2:   "#9a9a9a",   // secundario legible (>=4.5:1 sobre bg) para texto pequeño
   dim:      "#2a2a2a",
   green:    "#22c55e",
   yellow:   "#eab308",

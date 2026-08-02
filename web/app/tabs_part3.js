@@ -6,6 +6,35 @@ import {
   getLiveAccumData, getWeeklyReport, getCatalyst, ACCUMULATION_LIST, copyText, RAILWAY_API,
 } from "./shared";
 
+// ─── HELPERS DE UX (leyenda de score, encabezado de seccion, guia) ────────────
+// Leyenda de color para un score. items: [{color, label}]. Da significado a un
+// numero suelto sin tener que adivinar que rango es "bueno".
+function ScoreLegend({items, note}) {
+  return (
+    <div style={{display:"flex",gap:12,flexWrap:"wrap",alignItems:"center",marginBottom:12,
+                 padding:"7px 10px",background:T.surface,border:"1px solid "+T.border,borderRadius:6}}>
+      {items.map((it,i)=>(
+        <span key={i} style={{display:"inline-flex",alignItems:"center",gap:5}}>
+          <span style={{width:8,height:8,borderRadius:2,background:it.color,display:"inline-block"}}/>
+          <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>{it.label}</span>
+        </span>
+      ))}
+      {note&&<span style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginLeft:"auto"}}>{note}</span>}
+    </div>
+  );
+}
+
+// Encabezado de seccion: separa bloques densos y da jerarquia clara.
+function SectionLabel({children, hint, color=T.muted2}) {
+  return (
+    <div style={{display:"flex",alignItems:"baseline",gap:8,margin:"18px 0 8px",flexWrap:"wrap"}}>
+      <span style={{fontSize:10,color,fontFamily:"monospace",fontWeight:700,letterSpacing:1}}>{children}</span>
+      {hint&&<span style={{fontSize:9,color:T.muted,fontFamily:"monospace"}}>{hint}</span>}
+      <span style={{flex:1,height:1,background:T.border,minWidth:20}}/>
+    </div>
+  );
+}
+
 // ─── ACCUMULATION CARD ────────────────────────────────────────────────────────
 function AccumCard({token, rank}) {
   const [open, setOpen] = useState(false);
@@ -403,51 +432,77 @@ function catScoreColor(s) {
   return T.dim;
 }
 
-function CatalystCard({op}) {
+function CatalystCard({op, top}) {
   const [open, setOpen] = useState(false);
   const col = catScoreColor(op.score);
   return (
-    <div style={{background:T.card,border:"1px solid "+(op.conflict?T.red+"33":T.border),borderRadius:8,overflow:"hidden"}}>
-      <div onClick={()=>setOpen(!open)} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",cursor:"pointer"}}>
-        <div style={{minWidth:38,textAlign:"center"}}>
-          <div style={{fontSize:18,fontWeight:900,color:col,fontFamily:"monospace"}}>{op.score}</div>
-          <div style={{fontSize:7,color:T.dim,fontFamily:"monospace"}}>SCORE</div>
+    <div style={{background:T.card,
+                 border:"1px solid "+(op.conflict?T.red+"44":(top?T.green+"55":T.border)),
+                 borderRadius:10,overflow:"hidden",
+                 boxShadow: top && !op.conflict ? "0 2px 12px "+T.green+"18" : "none"}}>
+      {top && !op.conflict && (
+        <div style={{background:T.green+"14",padding:"3px 12px",fontSize:9,fontWeight:700,
+                     color:T.green,fontFamily:"monospace",letterSpacing:1,borderBottom:"1px solid "+T.green+"22"}}>
+          ◆ MEJOR ASIMETRIA AHORA
+        </div>
+      )}
+      <div onClick={()=>setOpen(!open)} style={{display:"flex",alignItems:"center",gap:12,padding:"11px 12px",cursor:"pointer"}}>
+        <div style={{minWidth:40,textAlign:"center"}}>
+          <div style={{fontSize:top?22:19,fontWeight:900,color:col,fontFamily:"monospace",lineHeight:1}}>{op.score}</div>
+          <div style={{fontSize:9,color:T.muted2,fontFamily:"monospace",marginTop:2}}>score</div>
         </div>
         <div style={{flex:1,minWidth:0}}>
           <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
-            <span style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{op.ip_name}</span>
+            <span style={{fontSize:13,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{op.ip_name}</span>
             {op.conflict&&<Badge color={T.red} small>CONFLICTO</Badge>}
           </div>
-          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginTop:2}}>
-            {op.event_date} · en {op.days_until}d · {op.region||"?"} · aud {op.audience?.toLocaleString?.()||op.audience}
+          <div style={{fontSize:10,color:T.muted2,fontFamily:"monospace",marginTop:3}}>
+            {op.event_date} · en <b style={{color:T.text}}>{op.days_until}d</b> · {op.region||"?"} · aud {op.audience?.toLocaleString?.()||op.audience}
           </div>
         </div>
         <div style={{textAlign:"right"}}>
-          <div style={{fontSize:12,fontWeight:700,color:chainCol(op.token_chain),fontFamily:"monospace"}}>${op.token_symbol}</div>
-          <div style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>liq {fmtUSD(op.token_liq)} · vol {fmtUSD(op.token_vol24)}</div>
+          <div style={{fontSize:13,fontWeight:700,color:chainCol(op.token_chain),fontFamily:"monospace"}}>${op.token_symbol}</div>
+          <div style={{fontSize:9,color:T.muted2,fontFamily:"monospace",marginTop:2}}>liq {fmtUSD(op.token_liq)} · vol {fmtUSD(op.token_vol24)}</div>
         </div>
       </div>
       {open&&(
-        <div style={{borderTop:"1px solid "+T.border,padding:"10px 12px",background:T.bg}}>
-          <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:8}}>
+        <div style={{borderTop:"1px solid "+T.border,padding:"11px 12px",background:T.bg}}>
+          <div style={{fontSize:9,color:T.muted2,fontFamily:"monospace",marginBottom:6,letterSpacing:1}}>DE DONDE SALE EL SCORE</div>
+          <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:10}}>
             {Object.entries(op.breakdown||{}).map(([k,v])=>(
-              <span key={k} style={{fontSize:9,fontFamily:"monospace",color:v<0?T.red:T.muted,background:T.card,border:"1px solid "+T.border,borderRadius:4,padding:"3px 7px"}}>
+              <span key={k} style={{fontSize:10,fontFamily:"monospace",color:v<0?T.red:T.muted2,background:T.card,border:"1px solid "+(v<0?T.red+"33":T.border),borderRadius:4,padding:"3px 7px"}}>
                 {k}: <b style={{color:v<0?T.red:T.text}}>{v>0?"+":""}{v}</b>
               </span>
             ))}
           </div>
           {(op.flags||[]).map((f,i)=>(
-            <div key={i} style={{fontSize:9,color:T.orange,fontFamily:"monospace",marginTop:2}}>⚑ {f}</div>
+            <div key={i} style={{fontSize:10,color:T.orange,fontFamily:"monospace",marginTop:3,lineHeight:1.5}}>⚑ {f}</div>
           ))}
-          <div style={{display:"flex",gap:10,marginTop:8}}>
-            {op.token_url&&<a href={op.token_url} target="_blank" rel="noreferrer" style={{fontSize:9,color:T.cyan,fontFamily:"monospace"}}>Ver token ↗</a>}
-            {op.source_url&&<a href={op.source_url} target="_blank" rel="noreferrer" style={{fontSize:9,color:T.purple,fontFamily:"monospace"}}>Evento ↗</a>}
+          <div style={{display:"flex",gap:14,marginTop:10}}>
+            {op.token_url&&<a href={op.token_url} target="_blank" rel="noreferrer" style={{fontSize:10,color:T.cyan,fontFamily:"monospace"}}>Ver token ↗</a>}
+            {op.source_url&&<a href={op.source_url} target="_blank" rel="noreferrer" style={{fontSize:10,color:T.purple,fontFamily:"monospace"}}>Ver evento ↗</a>}
           </div>
         </div>
       )}
     </div>
   );
 }
+
+// Umbrales de color del score de Catalyst (coinciden con catScoreColor)
+const CAT_LEGEND = [
+  {color:T.green,  label:"≥75 fuerte"},
+  {color:T.cyan,   label:"55-74 medio"},
+  {color:T.orange, label:"35-54 débil"},
+  {color:T.dim,    label:"<35 flojo"},
+];
+
+// Umbrales del score de acumulacion (coinciden con accumColor/accumLabel)
+const ACCUM_LEGEND = [
+  {color:T.green,  label:"≥70 excelente"},
+  {color:T.cyan,   label:"50-69 bueno"},
+  {color:T.yellow, label:"30-49 neutral"},
+  {color:T.red,    label:"<30 evitar"},
+];
 
 export function CatalystTab() {
   const [data, setData] = useState(null);
@@ -482,15 +537,18 @@ export function CatalystTab() {
           <span style={{fontSize:11,color:T.orange,fontFamily:"monospace",fontWeight:700}}>🎬 Catalyst Radar — Asimetria de atencion</span>
           {data?.available&&<Pulse color={T.green}/>}
         </div>
-        <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
+        <div style={{fontSize:11,color:T.muted2,fontFamily:"monospace",lineHeight:1.65}}>
           Eventos culturales con fecha publica y fija (estrenos, premieres) grandes fuera de cripto y con
           poca cobertura en CT. Busca el ticker ya existente y dormido. Penaliza el conflicto (varios CAs
           por la misma narrativa). Afinidad cultural y cobertura CT: revisar a mano.
         </div>
+        <div style={{fontSize:10,color:T.orange,fontFamily:"monospace",marginTop:6,fontWeight:700}}>
+          Qué hago: mira el #1 sin CONFLICTO, confirma que el evento sea masivo y poco conocido en CT, y revisa el token.
+        </div>
         <div style={{display:"flex",gap:14,marginTop:8,flexWrap:"wrap",alignItems:"center"}}>
-          <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>eventos en tabla: <b style={{color:T.text}}>{data?.events??"—"}</b></span>
-          <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>ventana: <b style={{color:T.text}}>{data?.window?.[0]}-{data?.window?.[1]}d</b></span>
-          <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>ultima corrida: <b style={{color:T.text}}>{data?.last_run?timeAgo(data.last_run):"nunca"}</b></span>
+          <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>eventos en tabla: <b style={{color:T.text}}>{data?.events??"—"}</b></span>
+          <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>ventana: <b style={{color:T.text}}>{data?.window?.[0]}-{data?.window?.[1]}d</b></span>
+          <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>ultima corrida: <b style={{color:T.text}}>{data?.last_run?timeAgo(data.last_run):"nunca"}</b></span>
           <button onClick={runNow} disabled={running} style={{marginLeft:"auto",background:T.orange+"15",border:"1px solid "+T.orange+"44",color:T.orange,padding:"5px 12px",borderRadius:6,cursor:running?"default":"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700,opacity:running?0.5:1}}>
             {running?"corriendo...":"Correr ahora"}
           </button>
@@ -530,11 +588,10 @@ export function CatalystTab() {
               <div style={{fontSize:18,fontWeight:900,color:catScoreColor(ops[0].score),fontFamily:"monospace"}}>{ops[0].score}</div>
             </div>
           </div>
-          <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",marginBottom:8,letterSpacing:1}}>
-            RANKING — MAYOR ASIMETRIA DE ATENCION
-          </div>
-          <div style={{display:"flex",flexDirection:"column",gap:6}}>
-            {ops.map((o,i)=><CatalystCard key={o.ip_name+o.token_symbol+i} op={o}/>)}
+          <SectionLabel hint="toca una fila para ver de donde sale el score">RANKING — MAYOR ASIMETRIA DE ATENCION</SectionLabel>
+          <ScoreLegend items={CAT_LEGEND} note="score alto + sin conflicto = mejor"/>
+          <div style={{display:"flex",flexDirection:"column",gap:8}}>
+            {ops.map((o,i)=><CatalystCard key={o.ip_name+o.token_symbol+i} op={o} top={i===0}/>)}
           </div>
         </>
       )}
@@ -671,10 +728,13 @@ export function AccumulationTab({githubRepo}) {
         <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4,flexWrap:"wrap"}}>
           <span style={{fontSize:11,color:T.purple,fontFamily:"monospace",fontWeight:700}}>📈 Asesor de Acumulacion</span>
           {liveData&&<Pulse color={T.green}/>}
-          {lastUpdate&&<span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>actualizado {timeAgo(Math.floor(lastUpdate/1000))}</span>}
+          {lastUpdate&&<span style={{fontSize:9,color:T.muted2,fontFamily:"monospace"}}>actualizado {timeAgo(Math.floor(lastUpdate/1000))}</span>}
         </div>
-        <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
+        <div style={{fontSize:11,color:T.muted2,fontFamily:"monospace",lineHeight:1.65}}>
           Datos en vivo desde Railway · {ACCUMULATION_LIST.length} tokens en seguimiento · ETH, SOL, BNB, BASE + CEX (CoinGecko)
+        </div>
+        <div style={{fontSize:10,color:T.cyan,fontFamily:"monospace",marginTop:6,fontWeight:700}}>
+          Qué hago: busca en el ranking los de score alto (verde) para acumular; agrega tus propias monedas abajo.
         </div>
         {liveData?.market_context&&(
           <div style={{display:"flex",alignItems:"center",gap:6,marginTop:8,padding:"6px 10px",background:T.bg,border:"1px solid "+T.border,borderRadius:6}}>
@@ -690,9 +750,11 @@ export function AccumulationTab({githubRepo}) {
       <WeeklyBanner weekly={weekly}/>
 
       {/* Mis posiciones (alertas de salida) */}
+      <SectionLabel color={T.pink} hint="las monedas donde marcaste 'estoy dentro'">TU ACTIVIDAD</SectionLabel>
       <PositionsPanel positions={liveData?.positions} onRefresh={refresh}/>
 
       {/* Combos activos y win rate por tipo */}
+      <SectionLabel color={T.purple} hint="qué señales y horarios aciertan más (se llena con el tiempo)">SEÑALES Y ACIERTOS</SectionLabel>
       <CombosPanel combos={liveData?.combos}/>
       <WinRatePanel bySignal={liveData?.winrate_by_signal} byHour={liveData?.winrate_by_hour} byCombo={liveData?.winrate_by_combo}/>
 
@@ -711,17 +773,17 @@ export function AccumulationTab({githubRepo}) {
         <>
           {/* Stats summary */}
           <div style={{display:"flex",gap:8,marginBottom:14,flexWrap:"wrap"}}>
-            <div style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"8px 14px",flex:1,minWidth:90}}>
-              <div style={{fontSize:8,color:T.muted,fontFamily:"monospace",marginBottom:3}}>SCORE PROMEDIO</div>
-              <div style={{fontSize:18,fontWeight:900,color:accumColor(avgScore),fontFamily:"monospace"}}>{avgScore}%</div>
+            <div style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"9px 14px",flex:1,minWidth:90}}>
+              <div style={{fontSize:9,color:T.muted2,fontFamily:"monospace",marginBottom:3}}>SCORE PROMEDIO</div>
+              <div style={{fontSize:19,fontWeight:900,color:accumColor(avgScore),fontFamily:"monospace"}}>{avgScore}%</div>
             </div>
-            <div style={{background:T.green+"0a",border:"1px solid "+T.green+"22",borderRadius:6,padding:"8px 14px",flex:1,minWidth:90}}>
-              <div style={{fontSize:8,color:T.green,fontFamily:"monospace",marginBottom:3}}>EXCELENTES</div>
-              <div style={{fontSize:18,fontWeight:900,color:T.green,fontFamily:"monospace"}}>{excellent}</div>
+            <div style={{background:T.green+"0a",border:"1px solid "+T.green+"22",borderRadius:6,padding:"9px 14px",flex:1,minWidth:90}}>
+              <div style={{fontSize:9,color:T.green,fontFamily:"monospace",marginBottom:3}}>EXCELENTES ≥70</div>
+              <div style={{fontSize:19,fontWeight:900,color:T.green,fontFamily:"monospace"}}>{excellent}</div>
             </div>
-            <div style={{background:T.red+"0a",border:"1px solid "+T.red+"22",borderRadius:6,padding:"8px 14px",flex:1,minWidth:90}}>
-              <div style={{fontSize:8,color:T.red,fontFamily:"monospace",marginBottom:3}}>EVITAR</div>
-              <div style={{fontSize:18,fontWeight:900,color:T.red,fontFamily:"monospace"}}>{avoid}</div>
+            <div style={{background:T.red+"0a",border:"1px solid "+T.red+"22",borderRadius:6,padding:"9px 14px",flex:1,minWidth:90}}>
+              <div style={{fontSize:9,color:T.red,fontFamily:"monospace",marginBottom:3}}>EVITAR &lt;30</div>
+              <div style={{fontSize:19,fontWeight:900,color:T.red,fontFamily:"monospace"}}>{avoid}</div>
             </div>
           </div>
 
@@ -731,18 +793,17 @@ export function AccumulationTab({githubRepo}) {
           {/* Filters */}
           <div style={{display:"flex",gap:4,marginBottom:12,flexWrap:"wrap"}}>
             {[["ALL","Todos"],["GOOD","≥50%"],["DEX","Solo DEX"],["ETH","ETH"],["SOL","SOL"],["BNB","BNB"],["BASE","BASE"]].map(([k,l])=>(
-              <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.purple+"0d":"transparent",border:"1px solid "+(filter===k?T.purple+"33":T.border),color:filter===k?T.purple:T.muted,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
+              <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.purple+"0d":"transparent",border:"1px solid "+(filter===k?T.purple+"33":T.border),color:filter===k?T.purple:T.muted2,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
             ))}
-            <span style={{marginLeft:"auto",fontSize:10,color:T.dim,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} tokens</span>
+            <span style={{marginLeft:"auto",fontSize:10,color:T.muted2,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} tokens</span>
           </div>
 
           {/* Agregar moneda al ranking */}
           <AddAccumToken customContracts={liveData.custom_accum} tokens={ranking} onRefresh={refresh}/>
 
           {/* Ranking */}
-          <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",marginBottom:8,letterSpacing:1}}>
-            RANKING — MEJOR OPCION PARA ACUMULAR
-          </div>
+          <SectionLabel hint="ordenado por score; verde = mejor opcion para acumular">RANKING — MEJOR OPCION PARA ACUMULAR</SectionLabel>
+          <ScoreLegend items={ACCUM_LEGEND}/>
           <div style={{display:"flex",flexDirection:"column",gap:6}}>
             {vis.map((t,i)=><AccumCard key={t.symbol} token={t} rank={ranking.indexOf(t)+1}/>)}
           </div>
