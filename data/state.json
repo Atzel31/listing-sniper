@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785672129,
+  "saved_at": 1785672151,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -253217,6 +253217,14 @@
     }
   },
   "tracked_whale_set": {
+    "0x0889e9327b98d7d1be3c301a4585ff3330502c9a": {
+      "chain": "ETH",
+      "label": "0x0889...2c9a",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0xd07e6ab4b75b3da5a96b5e81064a65fc04f98814": {
       "chain": "ETH",
       "label": "0xd07e...8814",
@@ -253387,6 +253395,14 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
+    "0x25ed72c3f671b626810a6db597dcfd50f215a423": {
+      "chain": "ETH",
+      "label": "0x25ed...a423",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
     "0x0c7e8f71ccc08385977b7a51e037acc6293c1ad2": {
       "chain": "ETH",
       "label": "0x0c7e...1ad2",
@@ -253394,6 +253410,14 @@
       "last_seen_tokens": [
         "0xc80b4457fccd49e7c3a2f5566dd1b827d85f6c98"
       ],
+      "insider_score": 77,
+      "tag": "insider_activo"
+    },
+    "0x55e909162d7f19bb68b2bbfbe0ae22beb7601f19": {
+      "chain": "ETH",
+      "label": "0x55e9...1f19",
+      "last_check": 0,
+      "last_seen_tokens": [],
       "insider_score": 77,
       "tag": "insider_activo"
     },
@@ -253432,30 +253456,6 @@
     "0xb489743cc9213231b8edac1d955e9dc98e82080b": {
       "chain": "ETH",
       "label": "0xb489...080b",
-      "last_check": 1785498746,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x6892ba7febc703d19aebb35b79846f1fe33153c8": {
-      "chain": "ETH",
-      "label": "0x6892...53c8",
-      "last_check": 1785498746,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x640ffbe7c3e7556e0581e59c6010b51b5bb0887f": {
-      "chain": "ETH",
-      "label": "0x640f...887f",
-      "last_check": 1785498746,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x348d109fcf21e74ed160e9bb8a45a5bf53680d07": {
-      "chain": "ETH",
-      "label": "0x348d...0d07",
       "last_check": 1785498746,
       "last_seen_tokens": [],
       "insider_score": 77,
@@ -269617,8 +269617,8 @@
         "btc_context": "Mercado: BTC -1.4% 24h ⚪",
         "entry_price": 0.3223687409,
         "max_price": 0.3241523147,
-        "min_price": 0.3210180149,
-        "last_price": 0.3241523147,
+        "min_price": 0.319348213,
+        "last_price": 0.319348213,
         "status": "open",
         "ts": "2026-07-31T10:13:36.006129+00:00"
       },
@@ -269634,9 +269634,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC -0.1% 24h ⚪",
         "entry_price": 0.000864132284,
-        "max_price": 0.000864132284,
+        "max_price": 0.0008647204177,
         "min_price": 0.000864132284,
-        "last_price": 0.000864132284,
+        "last_price": 0.0008647204177,
         "status": "open",
         "ts": "2026-08-02T00:01:02.872067+00:00"
       },
@@ -270433,14 +270433,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785283547002-a2672d",
-      "kind": "convergence",
-      "text": "🎯 9 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.3% ⚪",
-      "hash": "a2672de64a7259ee",
-      "created_ts": 1785283547,
-      "retries": 50
-    },
     {
       "id": "1785285635720-bf8332",
       "kind": "convergence",
@@ -276539,8 +276531,8 @@
       "ts": 1785671984.240075
     }
   },
-  "last_daily_day": "2026-08-01",
+  "last_daily_day": "2026-08-02",
   "last_weekly_week": "2026-W30",
-  "last_forensic_day": "2026-08-01",
+  "last_forensic_day": "2026-08-02",
   "announced_version": "v9.1"
 }
