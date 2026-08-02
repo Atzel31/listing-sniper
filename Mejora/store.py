@@ -124,6 +124,71 @@ def upcoming(conn: sqlite3.Connection, lo: int = 5, hi: int = 70,
     return conn.execute(q, params).fetchall()
 
 
+def record_snapshot(conn: sqlite3.Connection, snap: dict) -> None:
+    """Guarda una foto de un candidato (idempotente por dia via UNIQUE)."""
+    ts = now_iso()
+    conn.execute(
+        """INSERT OR IGNORE INTO token_snapshots
+           (snapshot_date, ts, event_id, ip_name, event_date, days_until, score,
+            conflict, token_symbol, token_address, token_chain, liq, vol24, price)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        (ts[:10], ts, snap.get("event_id"), snap.get("ip_name"), snap.get("event_date"),
+         snap.get("days_until"), snap.get("score"), int(bool(snap.get("conflict"))),
+         snap.get("token_symbol"), snap.get("token_address"), snap.get("token_chain"),
+         snap.get("liq"), snap.get("vol24"), snap.get("price")),
+    )
+
+
+def snapshot_count(conn: sqlite3.Connection) -> int:
+    return conn.execute("SELECT COUNT(*) FROM token_snapshots").fetchone()[0]
+
+
+def backtest_summary(conn: sqlite3.Connection) -> dict:
+    """
+    Para cada (evento, token) con >=2 fotos, calcula la ganancia maxima desde la
+    PRIMERA foto (donde el scorer lo puntuo). Agrega por bucket de score para ver
+    si el score predice el movimiento. Vacio hasta que pasen dias con datos.
+    """
+    rows = conn.execute(
+        """SELECT event_id, token_address, token_symbol, ip_name, ts, score, price
+           FROM token_snapshots WHERE price > 0 ORDER BY ts"""
+    ).fetchall()
+    groups: dict = {}
+    for r in rows:
+        groups.setdefault((r["event_id"], r["token_address"]), []).append(r)
+
+    tracked = []
+    for snaps in groups.values():
+        if len(snaps) < 2:
+            continue
+        entry = snaps[0]
+        if not entry["price"]:
+            continue
+        max_price = max(s["price"] for s in snaps)
+        gain = (max_price - entry["price"]) / entry["price"] * 100
+        tracked.append({
+            "ip_name": entry["ip_name"], "token_symbol": entry["token_symbol"],
+            "entry_score": entry["score"] or 0, "entry_price": entry["price"],
+            "max_price": max_price, "max_gain_pct": round(gain, 1),
+            "n_snaps": len(snaps),
+        })
+    tracked.sort(key=lambda x: -x["max_gain_pct"])
+
+    def _avg(vals):
+        return round(sum(vals) / len(vals), 1) if vals else None
+    hi = [t["max_gain_pct"] for t in tracked if t["entry_score"] >= 70]
+    mid = [t["max_gain_pct"] for t in tracked if 50 <= t["entry_score"] < 70]
+    lo = [t["max_gain_pct"] for t in tracked if t["entry_score"] < 50]
+    return {
+        "tracked": len(tracked),
+        "avg_gain_70plus": _avg(hi), "n_70plus": len(hi),
+        "avg_gain_50_69": _avg(mid), "n_50_69": len(mid),
+        "avg_gain_lt50": _avg(lo), "n_lt50": len(lo),
+        "calibrated": (_avg(hi) is not None and _avg(lo) is not None and _avg(hi) > _avg(lo)),
+        "top": tracked[:10],
+    }
+
+
 def start_run(conn: sqlite3.Connection, source: str) -> int:
     cur = conn.execute(
         "INSERT INTO ingest_runs (source, started_at) VALUES (?, ?)", (source, now_iso())

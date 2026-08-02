@@ -432,6 +432,45 @@ function catScoreColor(s) {
   return T.dim;
 }
 
+// Tira de backtest: valida si el score predice el movimiento. Se llena solo con
+// el tiempo (cada corrida diaria guarda una foto de cada candidato).
+function BacktestStrip({bt, snapshots}) {
+  if (!bt || !bt.tracked) {
+    return (
+      <div style={{background:T.surface,border:"1px solid "+T.border,borderRadius:8,padding:"9px 12px",marginBottom:14}}>
+        <div style={{fontSize:10,color:T.muted2,fontFamily:"monospace",lineHeight:1.6}}>
+          🧪 <b style={{color:T.text}}>Backtest</b> acumulando datos — {snapshots||0} fotos guardadas.
+          Necesita varios dias para medir si el score predice el movimiento.
+        </div>
+      </div>
+    );
+  }
+  const cell = (label, avg, n) => (
+    <div style={{flex:1,minWidth:96}}>
+      <div style={{fontSize:9,color:T.muted2,fontFamily:"monospace",marginBottom:2}}>{label}</div>
+      <div style={{fontSize:14,fontWeight:800,fontFamily:"monospace",
+                   color: avg==null?T.dim:(avg>=0?T.green:T.red)}}>
+        {avg==null?"—":(avg>=0?"+":"")+avg+"%"}
+      </div>
+      <div style={{fontSize:8,color:T.muted,fontFamily:"monospace"}}>{n} tokens</div>
+    </div>
+  );
+  return (
+    <div style={{background:T.surface,border:"1px solid "+(bt.calibrated?T.green+"33":T.border),borderRadius:8,padding:"10px 12px",marginBottom:14}}>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8,flexWrap:"wrap"}}>
+        <span style={{fontSize:10,color:T.text,fontFamily:"monospace",fontWeight:700}}>🧪 Backtest — ganancia máx. por score de entrada</span>
+        <Badge color={bt.calibrated?T.green:T.muted} small>{bt.calibrated?"CALIBRADO":"sin señal aún"}</Badge>
+        <span style={{marginLeft:"auto",fontSize:9,color:T.muted,fontFamily:"monospace"}}>{bt.tracked} medibles · {snapshots||0} fotos</span>
+      </div>
+      <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+        {cell("score ≥70", bt.avg_gain_70plus, bt.n_70plus)}
+        {cell("score 50-69", bt.avg_gain_50_69, bt.n_50_69)}
+        {cell("score <50", bt.avg_gain_lt50, bt.n_lt50)}
+      </div>
+    </div>
+  );
+}
+
 function CatalystCard({op, top}) {
   const [open, setOpen] = useState(false);
   const col = catScoreColor(op.score);
@@ -549,12 +588,15 @@ export function CatalystTab() {
           <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>eventos en tabla: <b style={{color:T.text}}>{data?.events??"—"}</b></span>
           <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>ventana: <b style={{color:T.text}}>{data?.window?.[0]}-{data?.window?.[1]}d</b></span>
           <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>ultima corrida: <b style={{color:T.text}}>{data?.last_run?timeAgo(data.last_run):"nunca"}</b></span>
+          <span style={{fontSize:10,color:T.muted2,fontFamily:"monospace"}}>snapshots: <b style={{color:T.text}}>{data?.snapshots??0}</b></span>
           <button onClick={runNow} disabled={running} style={{marginLeft:"auto",background:T.orange+"15",border:"1px solid "+T.orange+"44",color:T.orange,padding:"5px 12px",borderRadius:6,cursor:running?"default":"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700,opacity:running?0.5:1}}>
             {running?"corriendo...":"Correr ahora"}
           </button>
         </div>
         {data?.last_error&&<div style={{fontSize:9,color:T.red,fontFamily:"monospace",marginTop:6}}>error: {data.last_error}</div>}
       </div>
+
+      <BacktestStrip bt={data?.backtest} snapshots={data?.snapshots}/>
 
       {loading&&!data&&(
         <div style={{padding:"30px 20px",textAlign:"center"}}>

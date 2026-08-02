@@ -48,6 +48,32 @@ CREATE TABLE IF NOT EXISTS event_changes (
 CREATE INDEX IF NOT EXISTS idx_changes_catalyst ON event_changes (is_catalyst, notified);
 CREATE INDEX IF NOT EXISTS idx_changes_event    ON event_changes (event_id, changed_at DESC);
 
+-- Snapshots de candidatos para BACKTEST hacia adelante.
+-- DexScreener solo da liquidez/precio ACTUAL; guardando una foto por corrida se
+-- construye la serie temporal que permite validar el scorer: los tickers que
+-- puntuaron alto, ¿de verdad se movieron despues de su evento?
+CREATE TABLE IF NOT EXISTS token_snapshots (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    snapshot_date TEXT NOT NULL,        -- YYYY-MM-DD (una foto por dia)
+    ts            TEXT NOT NULL,         -- ISO completo
+    event_id      TEXT,                  -- referencia al evento (events.id)
+    ip_name       TEXT,
+    event_date    TEXT,
+    days_until    INTEGER,
+    score         INTEGER,
+    conflict      INTEGER DEFAULT 0,
+    token_symbol  TEXT,
+    token_address TEXT NOT NULL,
+    token_chain   TEXT,
+    liq           REAL,
+    vol24         REAL,
+    price         REAL,
+    UNIQUE (snapshot_date, event_id, token_address)  -- idempotente por dia
+);
+
+CREATE INDEX IF NOT EXISTS idx_snap_token ON token_snapshots (token_address, ts);
+CREATE INDEX IF NOT EXISTS idx_snap_event ON token_snapshots (event_id, ts);
+
 -- Registro de corridas, para saber si un scheduler se cayo en silencio.
 CREATE TABLE IF NOT EXISTS ingest_runs (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,

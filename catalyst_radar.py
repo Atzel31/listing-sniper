@@ -50,6 +50,8 @@ _state = {
     "last_error": None,
     "events": 0,
     "alerted": [],         # keys ya notificadas por Ntfy (dedup)
+    "snapshots": 0,        # fotos acumuladas para backtest
+    "backtest": {},        # resumen de calibracion (se llena con el tiempo)
 }
 
 _log = print
@@ -132,10 +134,27 @@ def run_daily(window=None, min_audience=None) -> list[dict]:
 
         ops = _matcher.find_opportunities(conn, lo=lo, hi=hi, min_audience=min_aud)
         _state["opportunities"] = [_serialize_op(o) for o in ops[:30]]
+
+        # Backtest: guardar una foto de CADA candidato (no solo el top) para
+        # construir la serie temporal hacia adelante.
+        for o in ops:
+            ev, t = o["event"], o["match"]["token"]
+            _store.record_snapshot(conn, {
+                "event_id": ev.get("id"), "ip_name": ev.get("ip_name"),
+                "event_date": ev.get("event_date"), "days_until": ev.get("days_until"),
+                "score": o["score"], "conflict": o["match"]["conflict"],
+                "token_symbol": t.get("symbol"), "token_address": t.get("address"),
+                "token_chain": t.get("chain"), "liq": t.get("liq"),
+                "vol24": t.get("vol24"), "price": t.get("price"),
+            })
+        conn.commit()
+
         try:
             _state["events"] = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
-        except Exception:
-            pass
+            _state["snapshots"] = _store.snapshot_count(conn)
+            _state["backtest"] = _store.backtest_summary(conn)
+        except Exception as e:
+            _log(f"[catalyst] backtest resumen fallo: {e}")
         _state["last_run"] = int(time.time())
         _state["last_error"] = None
         conn.close()
@@ -170,6 +189,8 @@ def get_state() -> dict:
         "last_run": _state["last_run"],
         "last_error": _state["last_error"],
         "events": _state["events"],
+        "snapshots": _state["snapshots"],
+        "backtest": _state["backtest"],
         "available": _AVAILABLE,
         "window": [WINDOW_LO, WINDOW_HI],
     }
@@ -181,6 +202,8 @@ def export_state() -> dict:
         "catalyst_last_run": _state["last_run"],
         "catalyst_events": _state["events"],
         "catalyst_alerted": _state.get("alerted", [])[-500:],
+        "catalyst_snapshots": _state["snapshots"],
+        "catalyst_backtest": _state["backtest"],
     }
 
 
@@ -191,6 +214,8 @@ def load_state(state: dict) -> None:
     _state["last_run"] = state.get("catalyst_last_run", 0) or 0
     _state["events"] = state.get("catalyst_events", 0) or 0
     _state["alerted"] = state.get("catalyst_alerted", []) or []
+    _state["snapshots"] = state.get("catalyst_snapshots", 0) or 0
+    _state["backtest"] = state.get("catalyst_backtest", {}) or {}
 
 
 if __name__ == "__main__":

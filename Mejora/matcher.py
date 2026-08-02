@@ -100,6 +100,10 @@ def _collect_tokens(terms: list[str], max_terms: int = 4) -> list[dict]:
                 info = p.get("info") or {}
                 created = p.get("pairCreatedAt")
                 age_days = (time.time() - created / 1000) / 86400 if created else None
+                try:
+                    price = float(p.get("priceUsd") or 0)
+                except (TypeError, ValueError):
+                    price = 0.0
                 best[key] = {
                     "symbol": bt.get("symbol", "?"),
                     "name": bt.get("name", ""),
@@ -107,6 +111,7 @@ def _collect_tokens(terms: list[str], max_terms: int = 4) -> list[dict]:
                     "chain": p.get("chainId", "?"),
                     "liq": liq,
                     "vol24": (p.get("volume") or {}).get("h24", 0) or 0,
+                    "price": price,
                     "age_days": age_days,
                     "socials": len(info.get("socials") or []) + len(info.get("websites") or []),
                     "url": p.get("url", ""),
