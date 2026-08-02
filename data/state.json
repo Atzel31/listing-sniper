@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785649786,
+  "saved_at": 1785649821,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -264464,9 +264464,9 @@
         "combo_key": "high_pump_prob+prelisting_unconfirmed",
         "btc_context": "Mercado: BTC +0.8% 24h ⚪",
         "entry_price": 195.99,
-        "max_price": 200.9946944913,
+        "max_price": 202.0352839727,
         "min_price": 192.4348847256,
-        "last_price": 198.0252383085,
+        "last_price": 202.0352839727,
         "status": "open",
         "ts": "2026-07-30T12:50:55.877190+00:00"
       },
@@ -264483,8 +264483,8 @@
         "btc_context": "Mercado: BTC -1.4% 24h ⚪",
         "entry_price": 0.3223687409,
         "max_price": 0.3224041268,
-        "min_price": 0.3212116136,
-        "last_price": 0.3224041268,
+        "min_price": 0.3210180149,
+        "last_price": 0.3210180149,
         "status": "open",
         "ts": "2026-07-31T10:13:36.006129+00:00"
       },
@@ -265260,14 +265260,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785247018562-47d1fc",
-      "kind": "convergence",
-      "text": "🎯 109 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -3.7% 🔴",
-      "hash": "47d1fc14415dd18e",
-      "created_ts": 1785247018,
-      "retries": 8
-    },
-    {
       "id": "1785283454311-3cfdc5",
       "kind": "convergence",
       "text": "🎯 433 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.3% ⚪",
@@ -265884,7 +265876,7 @@
     }
   ],
   "catalyst_opportunities": [],
-  "catalyst_last_run": 1785649494,
+  "catalyst_last_run": 1785649821,
   "catalyst_events": 113,
   "catalyst_alerted": [],
   "seen_signals": [
