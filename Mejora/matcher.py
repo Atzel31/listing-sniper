@@ -40,12 +40,11 @@ import os
 SEARCH_URL = "https://api.dexscreener.com/latest/dex/search"
 USER_AGENT = "catalyst-radar/1.0 (listing-sniper)"
 
-# Redes donde buscar el ticker. Por defecto solo Solana y Ethereum; se puede
-# ampliar con la env CATALYST_CHAINS (ej: "solana,ethereum,base").
-# Nombres = chainId de DexScreener.
+# Redes donde buscar el ticker (chainId de DexScreener). Por defecto: Solana,
+# Ethereum, Base, BSC y Robinhood Chain. Ampliable/reducible con CATALYST_CHAINS.
 ALLOWED_CHAINS = {
     c.strip().lower()
-    for c in os.environ.get("CATALYST_CHAINS", "solana,ethereum").split(",")
+    for c in os.environ.get("CATALYST_CHAINS", "solana,ethereum,base,bsc,robinhood").split(",")
     if c.strip()
 }
 
