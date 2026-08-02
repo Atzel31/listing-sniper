@@ -7,7 +7,7 @@ import {
 } from "./shared";
 import { Setup, SniperTab, NewPairsTab, InsidersTab } from "./tabs_part1";
 import { WatchlistTab, WhalesTab } from "./tabs_part2";
-import { AccumulationTab } from "./tabs_part3";
+import { AccumulationTab, CatalystTab } from "./tabs_part3";
 
 // ─── HEADER ───────────────────────────────────────────────────────────────────
 function Header({running,scanning,countdown,keys,onSetup,onToggleRun,tab,setTab,alerts,newPairsCount}) {
@@ -18,6 +18,7 @@ function Header({running,scanning,countdown,keys,onSetup,onToggleRun,tab,setTab,
     {label:"Watchlist",  icon:"◉",  count:null,          color:T.purple},
     {label:"Whales",     icon:"🐋", count:null,          color:T.pink},
     {label:"Acumulacion",icon:"📈", count:null,          color:T.cyan},
+    {label:"Catalyst",   icon:"🎬", count:null,          color:T.orange},
   ];
   return (
     <div style={{background:T.bg,borderBottom:"1px solid "+T.border,position:"sticky",top:0,zIndex:50}}>
@@ -317,6 +318,7 @@ export default function App() {
         {tab===3&&<WatchlistTab running={running} keys={keys} ntfyTopic={keys.ntfyTopic} onNewAlert={pushAlert}/>}
         {tab===4&&<WhalesTab running={running} ntfyTopic={keys.ntfyTopic} onNewAlert={pushAlert} externalAddWhale={externalAddWhale} setExternalAddWhale={setExternalAddWhale}/>}
         {tab===5&&<AccumulationTab githubRepo={keys.githubRepo}/>}
+        {tab===6&&<CatalystTab/>}
 
         <div style={{marginTop:24,padding:"10px 12px",background:T.surface,border:"1px solid "+T.border,borderRadius:7,fontSize:9,color:T.dim,fontFamily:"monospace",lineHeight:1.8}}>
           No es consejo financiero. Score orientativo. Verifica siempre antes de operar.

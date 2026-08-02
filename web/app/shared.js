@@ -277,6 +277,15 @@ export async function getLiveAccumData() {
   } catch { return null; }
 }
 
+// Fetch del radar de catalizadores culturales
+export async function getCatalyst() {
+  try {
+    const r = await fetch(RAILWAY_API+"/api/catalyst",{headers:{Accept:"application/json"}});
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
 // Fetch del reporte semanal desde GitHub (raw)
 export async function getWeeklyReport(githubRepo) {
   if (!githubRepo) return null;

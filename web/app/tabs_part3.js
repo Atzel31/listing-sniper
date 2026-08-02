@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   T, Badge, Stat, Pulse, EmptyState, ChartEmbed,
   fmtUSD, pct, timeAgo, chainCol, accumColor, accumLabel,
-  getLiveAccumData, getWeeklyReport, ACCUMULATION_LIST, copyText, RAILWAY_API,
+  getLiveAccumData, getWeeklyReport, getCatalyst, ACCUMULATION_LIST, copyText, RAILWAY_API,
 } from "./shared";
 
 // ─── ACCUMULATION CARD ────────────────────────────────────────────────────────
@@ -395,6 +395,153 @@ function WinRatePanel({bySignal, byHour, byCombo}) {
 }
 
 // ─── TAB: ACUMULACIÓN ─────────────────────────────────────────────────────────
+// ─── CATALYST RADAR (asimetria de atencion) ───────────────────────────────────
+function catScoreColor(s) {
+  if (s >= 75) return T.green;
+  if (s >= 55) return T.cyan;
+  if (s >= 35) return T.orange;
+  return T.dim;
+}
+
+function CatalystCard({op}) {
+  const [open, setOpen] = useState(false);
+  const col = catScoreColor(op.score);
+  return (
+    <div style={{background:T.card,border:"1px solid "+(op.conflict?T.red+"33":T.border),borderRadius:8,overflow:"hidden"}}>
+      <div onClick={()=>setOpen(!open)} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",cursor:"pointer"}}>
+        <div style={{minWidth:38,textAlign:"center"}}>
+          <div style={{fontSize:18,fontWeight:900,color:col,fontFamily:"monospace"}}>{op.score}</div>
+          <div style={{fontSize:7,color:T.dim,fontFamily:"monospace"}}>SCORE</div>
+        </div>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
+            <span style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:"monospace"}}>{op.ip_name}</span>
+            {op.conflict&&<Badge color={T.red} small>CONFLICTO</Badge>}
+          </div>
+          <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginTop:2}}>
+            {op.event_date} · en {op.days_until}d · {op.region||"?"} · aud {op.audience?.toLocaleString?.()||op.audience}
+          </div>
+        </div>
+        <div style={{textAlign:"right"}}>
+          <div style={{fontSize:12,fontWeight:700,color:chainCol(op.token_chain),fontFamily:"monospace"}}>${op.token_symbol}</div>
+          <div style={{fontSize:8,color:T.dim,fontFamily:"monospace"}}>liq {fmtUSD(op.token_liq)} · vol {fmtUSD(op.token_vol24)}</div>
+        </div>
+      </div>
+      {open&&(
+        <div style={{borderTop:"1px solid "+T.border,padding:"10px 12px",background:T.bg}}>
+          <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:8}}>
+            {Object.entries(op.breakdown||{}).map(([k,v])=>(
+              <span key={k} style={{fontSize:9,fontFamily:"monospace",color:v<0?T.red:T.muted,background:T.card,border:"1px solid "+T.border,borderRadius:4,padding:"3px 7px"}}>
+                {k}: <b style={{color:v<0?T.red:T.text}}>{v>0?"+":""}{v}</b>
+              </span>
+            ))}
+          </div>
+          {(op.flags||[]).map((f,i)=>(
+            <div key={i} style={{fontSize:9,color:T.orange,fontFamily:"monospace",marginTop:2}}>⚑ {f}</div>
+          ))}
+          <div style={{display:"flex",gap:10,marginTop:8}}>
+            {op.token_url&&<a href={op.token_url} target="_blank" rel="noreferrer" style={{fontSize:9,color:T.cyan,fontFamily:"monospace"}}>Ver token ↗</a>}
+            {op.source_url&&<a href={op.source_url} target="_blank" rel="noreferrer" style={{fontSize:9,color:T.purple,fontFamily:"monospace"}}>Evento ↗</a>}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function CatalystTab() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [running, setRunning] = useState(false);
+  const intRef = useRef(null);
+
+  async function refresh() {
+    const d = await getCatalyst();
+    if (d) setData(d);
+    setLoading(false);
+  }
+  useEffect(()=>{
+    refresh();
+    intRef.current = setInterval(refresh, 120000);
+    return ()=>clearInterval(intRef.current);
+  },[]);
+
+  async function runNow() {
+    setRunning(true);
+    try { await fetch(RAILWAY_API+"/api/catalyst/run"); } catch(e) {}
+    setTimeout(()=>{ refresh(); setRunning(false); }, 8000);
+  }
+
+  const ops = data?.opportunities || [];
+  const clean = ops.filter(o=>!o.conflict);
+
+  return (
+    <div>
+      <div style={{background:T.orange+"08",border:"1px solid "+T.orange+"20",borderRadius:8,padding:"10px 14px",marginBottom:14}}>
+        <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4,flexWrap:"wrap"}}>
+          <span style={{fontSize:11,color:T.orange,fontFamily:"monospace",fontWeight:700}}>🎬 Catalyst Radar — Asimetria de atencion</span>
+          {data?.available&&<Pulse color={T.green}/>}
+        </div>
+        <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",lineHeight:1.6}}>
+          Eventos culturales con fecha publica y fija (estrenos, premieres) grandes fuera de cripto y con
+          poca cobertura en CT. Busca el ticker ya existente y dormido. Penaliza el conflicto (varios CAs
+          por la misma narrativa). Afinidad cultural y cobertura CT: revisar a mano.
+        </div>
+        <div style={{display:"flex",gap:14,marginTop:8,flexWrap:"wrap",alignItems:"center"}}>
+          <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>eventos en tabla: <b style={{color:T.text}}>{data?.events??"—"}</b></span>
+          <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>ventana: <b style={{color:T.text}}>{data?.window?.[0]}-{data?.window?.[1]}d</b></span>
+          <span style={{fontSize:9,color:T.dim,fontFamily:"monospace"}}>ultima corrida: <b style={{color:T.text}}>{data?.last_run?timeAgo(data.last_run):"nunca"}</b></span>
+          <button onClick={runNow} disabled={running} style={{marginLeft:"auto",background:T.orange+"15",border:"1px solid "+T.orange+"44",color:T.orange,padding:"5px 12px",borderRadius:6,cursor:running?"default":"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700,opacity:running?0.5:1}}>
+            {running?"corriendo...":"Correr ahora"}
+          </button>
+        </div>
+        {data?.last_error&&<div style={{fontSize:9,color:T.red,fontFamily:"monospace",marginTop:6}}>error: {data.last_error}</div>}
+      </div>
+
+      {loading&&!data&&(
+        <div style={{padding:"30px 20px",textAlign:"center"}}>
+          <div style={{width:24,height:24,border:"2px solid "+T.orange+"22",borderTop:"2px solid "+T.orange,borderRadius:"50%",margin:"0 auto 12px",animation:"spin 1s linear infinite"}}/>
+          <div style={{fontSize:11,color:T.muted,fontFamily:"monospace"}}>Conectando con Railway...</div>
+        </div>
+      )}
+
+      {data&&data.available===false&&(
+        <EmptyState icon="🎬" text="Radar no disponible" sub="La carpeta Mejora/ no se cargo en el bot"/>
+      )}
+
+      {data&&data.available!==false&&ops.length===0&&(
+        <EmptyState icon="🎬" text={data.last_run?"Sin oportunidades ahora":"Aun sin correr"}
+          sub={data.last_run?"Un Chiikawa es raro. El radar corre 1x/dia; usa 'Correr ahora' para forzar.":"Pulsa 'Correr ahora' para la primera ingesta (tarda ~1 min)."}/>
+      )}
+
+      {ops.length>0&&(
+        <>
+          <div style={{display:"flex",gap:8,marginBottom:12,flexWrap:"wrap"}}>
+            <div style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"8px 14px",flex:1,minWidth:90}}>
+              <div style={{fontSize:8,color:T.muted,fontFamily:"monospace",marginBottom:3}}>OPORTUNIDADES</div>
+              <div style={{fontSize:18,fontWeight:900,color:T.text,fontFamily:"monospace"}}>{ops.length}</div>
+            </div>
+            <div style={{background:T.green+"0a",border:"1px solid "+T.green+"22",borderRadius:6,padding:"8px 14px",flex:1,minWidth:90}}>
+              <div style={{fontSize:8,color:T.green,fontFamily:"monospace",marginBottom:3}}>SIN CONFLICTO</div>
+              <div style={{fontSize:18,fontWeight:900,color:T.green,fontFamily:"monospace"}}>{clean.length}</div>
+            </div>
+            <div style={{background:T.bg,border:"1px solid "+T.border,borderRadius:6,padding:"8px 14px",flex:1,minWidth:90}}>
+              <div style={{fontSize:8,color:T.muted,fontFamily:"monospace",marginBottom:3}}>MEJOR SCORE</div>
+              <div style={{fontSize:18,fontWeight:900,color:catScoreColor(ops[0].score),fontFamily:"monospace"}}>{ops[0].score}</div>
+            </div>
+          </div>
+          <div style={{fontSize:10,color:T.muted,fontFamily:"monospace",marginBottom:8,letterSpacing:1}}>
+            RANKING — MAYOR ASIMETRIA DE ATENCION
+          </div>
+          <div style={{display:"flex",flexDirection:"column",gap:6}}>
+            {ops.map((o,i)=><CatalystCard key={o.ip_name+o.token_symbol+i} op={o}/>)}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 // ─── AGREGAR MONEDA A ACUMULACION ─────────────────────────────────────────────
 function AddAccumToken({customContracts=[], tokens=[], onRefresh}) {
   const [addr, setAddr] = useState("");

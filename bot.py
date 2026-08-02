@@ -10,6 +10,7 @@ import hit_rate  # Modulo 1: hit rate historico via GeckoTerminal
 import insider_quality  # Modulo 2: filtro de calidad de wallets insider
 import outcome_tracker  # Modulo 3: tracker de outcomes hacia adelante
 import publisher        # Publicacion en X con cola persistente
+import catalyst_radar    # Radar de catalizadores culturales (asimetria de atencion)
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 NTFY_TOPIC      = os.environ.get("NTFY_TOPIC",      "listingsniper-atzel")
@@ -2740,6 +2741,7 @@ BOT_VERSION = "v9.1"
 last_state_save = 0
 last_github_backup = 0
 last_outcome_check = 0  # Modulo 3: ultimo chequeo del ledger de outcomes (cada 6h)
+last_catalyst_run = 0   # Catalyst Radar: ultima corrida de ingesta+match (cada 24h)
 
 def _ensure_data_dir():
     """Asegura que el directorio de datos exista. Si /data no es escribible
@@ -2821,6 +2823,7 @@ def serialize_state():
         "rugged_tokens": dict(list(rugged_tokens.items())[-50:]),
         "signals_ledger": outcome_tracker.export_ledger(),  # Modulo 3
         **publisher.export_state(),  # tweet_queue + published_tweets
+        **catalyst_radar.export_state(),  # catalyst_opportunities + last_run + alerted
         # Anti-duplicados: recordar que ya se notifico (las keys expiran solas
         # porque dedup_key embebe la ventana temporal)
         "seen_signals": list(seen_signals)[-5000:],
@@ -2925,6 +2928,7 @@ def load_state():
         rugged_tokens.update(state.get("rugged_tokens", {}))
         outcome_tracker.load_ledger(state.get("signals_ledger", {}))  # Modulo 3
         publisher.load_state(state.get("tweet_queue"), state.get("published_tweets"))
+        catalyst_radar.load_state(state)
         # Anti-duplicados: no re-notificar lo mismo tras un reinicio
         seen_signals.update(state.get("seen_signals", []))
         seen_contracts.update(state.get("seen_contracts", []))
@@ -3369,6 +3373,23 @@ def start_api_server():
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 
+        @app.route("/api/catalyst")
+        def api_catalyst():
+            # Radar de catalizadores culturales: oportunidades rankeadas
+            try:
+                return jsonify(catalyst_radar.get_state())
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/catalyst/run")
+        def api_catalyst_run():
+            # Dispara una corrida manual del radar (para no esperar al cron diario)
+            try:
+                threading.Thread(target=_run_catalyst, daemon=True).start()
+                return jsonify({"status": "started"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
         @app.route("/api/health")
         def api_health():
             return jsonify({"status": "ok", "cycle": cycle_count})
@@ -3386,6 +3407,27 @@ def _bootstrap_accumulation():
         save_state(force=True)
     except Exception as e:
         log(f"[accum bootstrap error] {e}")
+
+def _run_catalyst():
+    """Catalyst Radar: ingesta de eventos + match, alerta oportunidades limpias
+    de score alto por Ntfy, y persiste. Corre 1x/dia en background."""
+    try:
+        catalyst_radar.run_daily()
+        for op in catalyst_radar.pop_new_alerts():
+            notify(
+                f"CATALYST: ${op['token_symbol']} — {op['ip_name'][:40]} (score {op['score']})",
+                f"Evento: {op['ip_name']}\n"
+                f"Fecha: {op['event_date']} (en {op['days_until']} dias) · {op.get('region','?')}\n"
+                f"Ticker dormido: ${op['token_symbol']} ({op['token_chain']}) "
+                f"liq {fmt_usd(op['token_liq'])} · vol24 {fmt_usd(op['token_vol24'])}\n"
+                f"Asimetria de atencion: evento masivo, poca cobertura CT.\n"
+                f"Revisa afinidad cultural y cobertura a mano antes de entrar.",
+                priority="high", tags="clapper,dart",
+                click_url=VERCEL_URL,
+            )
+        save_state(force=True)
+    except Exception as e:
+        log(f"[catalyst error] {e}")
 
 def _run_outcome_check():
     """Modulo 3: corre check_pending() del ledger y persiste si cerro algo."""
@@ -3457,6 +3499,13 @@ def scan():
     # Publisher: intentar publicar 1 tweet de la cola (throttle interno de 20min).
     # En background para no bloquear el ciclo con la llamada a la API de X.
     threading.Thread(target=publisher.tick, daemon=True).start()
+    # Catalyst Radar: ingesta+match 1x/dia (o al arrancar si nunca corrio).
+    global last_catalyst_run
+    _cat_last = catalyst_radar.get_state().get("last_run", 0)
+    if time.time() - last_catalyst_run >= 24 * 3600 and (
+            _cat_last == 0 or time.time() - _cat_last >= 24 * 3600):
+        last_catalyst_run = time.time()
+        threading.Thread(target=_run_catalyst, daemon=True).start()
     # Guardar estado cada ciclo (el Volume es local y barato; throttle interno de 60s)
     save_state()
     check_daily_report()
@@ -3484,6 +3533,10 @@ if __name__ == "__main__":
     _x_creds = all([publisher.X_API_KEY, publisher.X_API_SECRET, publisher.X_ACCESS_TOKEN, publisher.X_ACCESS_SECRET])
     log(f"  Publisher X    : DRY_RUN={publisher.DRY_RUN} | creds={'OK' if _x_creds else 'faltan'} | "
         f"max {publisher.MAX_PER_DAY}/dia, {publisher.MIN_INTERVAL_MIN}min entre tweets")
+    catalyst_radar.set_logger(log)
+    log(f"  Catalyst Radar : {'OK' if catalyst_radar.available() else 'no disponible'} | "
+        f"ventana {catalyst_radar.WINDOW_LO}-{catalyst_radar.WINDOW_HI}d | "
+        f"TMDB={'si' if os.environ.get('TMDB_API_KEY') else 'no (solo AniList)'}")
     log("")
 
     # Preparar directorio de datos (Railway Volume en /data)
