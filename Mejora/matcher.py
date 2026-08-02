@@ -35,8 +35,19 @@ import urllib.request
 
 from store import connect, upcoming
 
+import os
+
 SEARCH_URL = "https://api.dexscreener.com/latest/dex/search"
 USER_AGENT = "catalyst-radar/1.0 (listing-sniper)"
+
+# Redes donde buscar el ticker. Por defecto solo Solana y Ethereum; se puede
+# ampliar con la env CATALYST_CHAINS (ej: "solana,ethereum,base").
+# Nombres = chainId de DexScreener.
+ALLOWED_CHAINS = {
+    c.strip().lower()
+    for c in os.environ.get("CATALYST_CHAINS", "solana,ethereum").split(",")
+    if c.strip()
+}
 
 # Ventana de timing "2 a 8 semanas" en dias.
 WINDOW_LO, WINDOW_HI = 14, 56
@@ -77,6 +88,9 @@ def _collect_tokens(terms: list[str], max_terms: int = 4) -> list[dict]:
         if not term or len(term) < 3:
             continue
         for p in _dex_search(term):
+            # Solo redes permitidas (por defecto Solana + Ethereum)
+            if (p.get("chainId") or "").lower() not in ALLOWED_CHAINS:
+                continue
             liq = (p.get("liquidity") or {}).get("usd", 0) or 0
             key = _token_key(p)
             if not key[1]:
