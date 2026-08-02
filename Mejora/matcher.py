@@ -194,9 +194,13 @@ def match_event(event: dict) -> dict | None:
             conflict = True
         break
 
+    # Proxy de atencion: cuanta actividad total tiene la narrativa (todos los
+    # tokens que matchean el termino). Poco volumen agregado = aun invisible.
+    narrative_volume = sum(t.get("vol24", 0) or 0 for t in tokens)
+
     return {"token": best_token, "match_quality": best_q,
             "conflict": conflict, "runner_up": runner_up,
-            "n_candidates": len(tokens)}
+            "n_candidates": len(tokens), "narrative_volume": narrative_volume}
 
 
 def score_opportunity(event: dict, match: dict) -> dict:
@@ -235,8 +239,18 @@ def score_opportunity(event: dict, match: dict) -> dict:
             dorm += 4   # viejo, no recien lanzado
     breakdown["dormido"] = dorm
 
-    # Proxy de baja cobertura (sin redes en el par). Debil, es solo un empujon.
-    breakdown["baja_cobertura_proxy"] = 5 if token["socials"] == 0 else 0
+    # ── Proxy de ATENCION BAJA (la asimetria = el edge). Data-driven, sin costo:
+    #    narrativa poco poblada (pocos tickers compitiendo) + volumen agregado
+    #    bajo (nadie la esta operando) + par sin redes = sigue invisible.
+    n_distinct = match.get("n_candidates", 1)
+    narrative_vol = match.get("narrative_volume", 0)
+    att = 0
+    if n_distinct <= 2:       att += 8    # narrativa nicho, no contestada
+    elif n_distinct <= 5:     att += 4
+    if narrative_vol < 50_000:    att += 5   # aun no descubierta
+    elif narrative_vol < 250_000: att += 2
+    if token["socials"] == 0: att += 2       # ni redes tiene el par
+    breakdown["atencion_baja"] = att
 
     # Penalizacion por conflicto / atencion fragmentada
     breakdown["conflicto"] = -25 if match["conflict"] else 0
@@ -246,11 +260,15 @@ def score_opportunity(event: dict, match: dict) -> dict:
     flags = []
     if match["conflict"]:
         flags.append("CONFLICTO: atencion fragmentada entre varios tickers")
+    if n_distinct > 5:
+        flags.append(f"narrativa poblada ({n_distinct} tickers): posible sobre-cobertura")
+    if narrative_vol >= 250_000:
+        flags.append(f"volumen de narrativa alto ({narrative_vol:,.0f}): puede estar descubierta")
     if token["socials"] > 0:
         flags.append("revisar cobertura CT (el par tiene redes)")
     flags.append("verificar afinidad cultural a mano")
     if turnover >= DORMANT_MAX_TURNOVER and liq >= DORMANT_MIN_LIQ:
-        flags.append("ya tiene volumen: puede estar siendo descubierto")
+        flags.append("el token ya tiene volumen propio: puede estar siendo descubierto")
 
     return {"score": total, "breakdown": breakdown, "flags": flags}
 
@@ -292,7 +310,7 @@ def validate() -> None:
                                 "chain": "solana", "liq": 60000, "vol24": 800,
                                 "age_days": 100, "socials": 0},
                       "match_quality": 1.0, "conflict": False, "runner_up": None,
-                      "n_candidates": 2}
+                      "n_candidates": 2, "narrative_volume": 1500}
     s = score_opportunity(chiikawa_event, chiikawa_match)
     print(f"CHIIKAWA -> score {s['score']}")
     print(f"  desglose: {s['breakdown']}")
@@ -305,7 +323,8 @@ def validate() -> None:
                            "chain": "solana", "liq": 15000000, "vol24": 5000000,
                            "age_days": 200, "socials": 3},
                  "match_quality": 1.0, "conflict": True,
-                 "runner_up": {"symbol": "GTAVI", "liq": 8000000}, "n_candidates": 12}
+                 "runner_up": {"symbol": "GTAVI", "liq": 8000000}, "n_candidates": 12,
+                 "narrative_volume": 9000000}
     s2 = score_opportunity(gta_event, gta_match)
     print(f"GTA VI -> score {s2['score']}")
     print(f"  desglose: {s2['breakdown']}")
