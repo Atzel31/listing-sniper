@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785795795,
+  "saved_at": 1785795806,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -275482,7 +275482,7 @@
         "entry_price": 2.892126499e-06,
         "max_price": 2.940786777e-06,
         "min_price": 2.84711859e-06,
-        "last_price": 2.926269529e-06,
+        "last_price": 2.910817911e-06,
         "status": "open",
         "ts": "2026-08-02T12:35:30.734750+00:00"
       },
@@ -275500,7 +275500,7 @@
         "entry_price": 0.3834927011,
         "max_price": 0.3882627232,
         "min_price": 0.3709950707,
-        "last_price": 0.3742390153,
+        "last_price": 0.3734592368,
         "status": "open",
         "ts": "2026-08-02T13:26:37.882855+00:00"
       },
@@ -275518,7 +275518,7 @@
         "entry_price": 0.08854906946,
         "max_price": 0.09225383768,
         "min_price": 0.08854906946,
-        "last_price": 0.09194196843,
+        "last_price": 0.09186545496,
         "status": "open",
         "ts": "2026-08-02T13:54:29.269732+00:00"
       },
@@ -276404,14 +276404,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785370227567-5a57e5",
-      "kind": "convergence",
-      "text": "🎯 131 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.1% ⚪",
-      "hash": "5a57e51894e126c5",
-      "created_ts": 1785370227,
-      "retries": 26
-    },
-    {
       "id": "1785372279119-624c25",
       "kind": "convergence",
       "text": "🎯 471 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.4% ⚪",
@@ -277061,48 +277053,18 @@
   ],
   "catalyst_opportunities": [
     {
-      "score": 97,
-      "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
-      "event_date": "2026-09-25",
-      "days_until": 53,
-      "region": "JP",
-      "audience": 19898,
-      "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/210482",
-      "token_symbol": "JOJO",
-      "token_chain": "bsc",
-      "token_liq": 214531,
-      "token_vol24": 0,
-      "token_url": "https://dexscreener.com/bsc/0x5226a2c7be3d239636fb144722fd45b99ab80a24",
-      "conflict": false,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 20,
-        "atencion_baja": 2,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (69 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (4,094,368): puede estar descubierta",
-        "verificar afinidad cultural a mano"
-      ]
-    },
-    {
       "score": 91,
       "ip_name": "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
       "event_date": "2026-08-28",
-      "days_until": 25,
+      "days_until": 24,
       "region": "JP",
-      "audience": 47312,
+      "audience": 47384,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/133007",
       "token_symbol": "MAGIC",
       "token_chain": "base",
-      "token_liq": 209638,
-      "token_vol24": 4274,
+      "token_liq": 209204,
+      "token_vol24": 3027,
       "token_url": "https://dexscreener.com/base/0x3c0ae164970ab9ec216cf1b7ae3118766ab65e43",
       "conflict": false,
       "match_quality": 0.8,
@@ -277115,30 +277077,40 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (41 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (6,463,811): puede estar descubierta",
+        "narrativa poblada (46 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (14,576,034): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1785709339,
-  "catalyst_events": 113,
+  "catalyst_last_run": 1785795806,
+  "catalyst_events": 114,
   "catalyst_alerted": [
     "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
     "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28"
   ],
-  "catalyst_snapshots": 2,
+  "catalyst_snapshots": 3,
   "catalyst_backtest": {
-    "tracked": 0,
-    "avg_gain_70plus": null,
-    "n_70plus": 0,
+    "tracked": 1,
+    "avg_gain_70plus": 0.9,
+    "n_70plus": 1,
     "avg_gain_50_69": null,
     "n_50_69": 0,
     "avg_gain_lt50": null,
     "n_lt50": 0,
     "calibrated": false,
-    "top": []
+    "top": [
+      {
+        "ip_name": "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
+        "token_symbol": "MAGIC",
+        "entry_score": 91,
+        "entry_price": 0.04165,
+        "max_price": 0.04201,
+        "max_gain_pct": 0.9,
+        "n_snaps": 2
+      }
+    ]
   },
   "seen_signals": [
     "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups-flow-5952360",
