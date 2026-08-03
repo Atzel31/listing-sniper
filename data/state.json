@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785758472,
+  "saved_at": 1785758475,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -274623,7 +274623,7 @@
         "entry_price": 0.3834927011,
         "max_price": 0.3882627232,
         "min_price": 0.3709950707,
-        "last_price": 0.3709950707,
+        "last_price": 0.3719043676,
         "status": "open",
         "ts": "2026-08-02T13:26:37.882855+00:00"
       },
@@ -274639,9 +274639,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.1% 24h ⚪",
         "entry_price": 0.08854906946,
-        "max_price": 0.09011618263,
+        "max_price": 0.09033273367,
         "min_price": 0.08854906946,
-        "last_price": 0.09011618263,
+        "last_price": 0.09033273367,
         "status": "open",
         "ts": "2026-08-02T13:54:29.269732+00:00"
       },
@@ -275526,14 +275526,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785326938127-7c8fdc",
-      "kind": "recap",
-      "text": "📊 Resumen on-chain del dia\nSeñales detectadas: 52\nEn el radar: $67, $TOSHI, $RAY\nBTC +1.5% 🟢\nNo es consejo financiero.",
-      "hash": "7c8fdca425cac25a",
-      "created_ts": 1785326938,
-      "retries": 21
-    },
     {
       "id": "1785327189792-385281",
       "kind": "convergence",
@@ -281717,7 +281709,7 @@
       "ts": 1785758383.308167
     }
   },
-  "last_daily_day": "2026-08-02",
+  "last_daily_day": "2026-08-03",
   "last_weekly_week": "2026-W30",
   "last_forensic_day": "2026-08-02",
   "announced_version": "v9.1"
