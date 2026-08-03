@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785752344,
+  "saved_at": 1785752350,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -273223,28 +273223,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -1.4% 24h ⚪",
-        "entry_price": 0.3223687409,
-        "max_price": 0.3338799166,
-        "min_price": 0.319348213,
-        "last_price": 0.3238863377,
-        "status": "open",
-        "ts": "2026-07-31T10:13:36.006129+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 3.6,
-        "min_loss_pct": -0.9,
-        "closed_at": "2026-08-03T10:19:04.109970+00:00"
-      },
-      {
         "token": "DEAI",
         "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
         "chain": "ETH",
@@ -273276,7 +273254,7 @@
         "entry_price": 0.000597,
         "max_price": 0.0007212066899,
         "min_price": 0.0004663836892,
-        "last_price": 0.0007212066899,
+        "last_price": 0.0005447623824,
         "status": "open",
         "ts": "2026-08-02T09:17:31.771491+00:00"
       },
@@ -273293,8 +273271,8 @@
         "btc_context": "Mercado: BTC +0.2% 24h ⚪",
         "entry_price": 2.892126499e-06,
         "max_price": 2.927399493e-06,
-        "min_price": 2.892126499e-06,
-        "last_price": 2.924346546e-06,
+        "min_price": 2.855474545e-06,
+        "last_price": 2.855474545e-06,
         "status": "open",
         "ts": "2026-08-02T12:35:30.734750+00:00"
       },
@@ -273311,8 +273289,8 @@
         "btc_context": "Mercado: BTC +0.0% 24h ⚪",
         "entry_price": 0.3834927011,
         "max_price": 0.3882627232,
-        "min_price": 0.3834927011,
-        "last_price": 0.3882627232,
+        "min_price": 0.3709950707,
+        "last_price": 0.3709950707,
         "status": "open",
         "ts": "2026-08-02T13:26:37.882855+00:00"
       },
@@ -273328,9 +273306,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.1% 24h ⚪",
         "entry_price": 0.08854906946,
-        "max_price": 0.08854906946,
+        "max_price": 0.09011618263,
         "min_price": 0.08854906946,
-        "last_price": 0.08854906946,
+        "last_price": 0.09011618263,
         "status": "open",
         "ts": "2026-08-02T13:54:29.269732+00:00"
       },
@@ -273347,8 +273325,8 @@
         "btc_context": "Mercado: BTC +1.1% 24h ⚪",
         "entry_price": 0.09388046081,
         "max_price": 0.09388046081,
-        "min_price": 0.09388046081,
-        "last_price": 0.09388046081,
+        "min_price": 0.092831887,
+        "last_price": 0.092831887,
         "status": "open",
         "ts": "2026-08-03T00:04:48.992562+00:00"
       }
@@ -274189,18 +274167,32 @@
         "max_gain_pct": 3.1,
         "min_loss_pct": -1.8,
         "closed_at": "2026-08-02T12:55:23.621602+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -1.4% 24h ⚪",
+        "entry_price": 0.3223687409,
+        "max_price": 0.3338799166,
+        "min_price": 0.319348213,
+        "last_price": 0.3238863377,
+        "status": "open",
+        "ts": "2026-07-31T10:13:36.006129+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 3.6,
+        "min_loss_pct": -0.9,
+        "closed_at": "2026-08-03T10:19:04.109970+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785315822194-6ebf16",
-      "kind": "convergence",
-      "text": "🎯 545 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +1.5% 🟢",
-      "hash": "6ebf16e0d478e582",
-      "created_ts": 1785315822,
-      "retries": 181
-    },
     {
       "id": "1785326938127-7c8fdc",
       "kind": "recap",
