@@ -1,5 +1,5 @@
 {
-  "saved_at": 1785844803,
+  "saved_at": 1785844824,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -272864,6 +272864,14 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
+    "0xa3752af0d28549a04b2bb90c9fb5533d380c8ffa": {
+      "chain": "ETH",
+      "label": "0xa375...8ffa",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 84,
+      "tag": "insider_activo"
+    },
     "0x0c7e8f71ccc08385977b7a51e037acc6293c1ad2": {
       "chain": "ETH",
       "label": "0x0c7e...1ad2",
@@ -272885,14 +272893,6 @@
     "0x708e7bad92dcd97e0ff875864c90e7b63fc1f457": {
       "chain": "ETH",
       "label": "0x708e...f457",
-      "last_check": 1785498746,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xea6e3fbdc91c377d09432af9997378d6b4551a64": {
-      "chain": "ETH",
-      "label": "0xea6e...1a64",
       "last_check": 1785498746,
       "last_seen_tokens": [],
       "insider_score": 77,
@@ -285362,8 +285362,8 @@
         "btc_context": "Mercado: BTC +1.1% 24h ⚪",
         "entry_price": 0.09388046081,
         "max_price": 0.09388046081,
-        "min_price": 0.092831887,
-        "last_price": 0.092831887,
+        "min_price": 0.0918018535,
+        "last_price": 0.0918018535,
         "status": "open",
         "ts": "2026-08-03T00:04:48.992562+00:00"
       },
@@ -292463,6 +292463,6 @@
   },
   "last_daily_day": "2026-08-04",
   "last_weekly_week": "2026-W31",
-  "last_forensic_day": "2026-08-03",
+  "last_forensic_day": "2026-08-04",
   "announced_version": "v9.1"
 }
