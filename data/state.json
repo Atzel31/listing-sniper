@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786017691,
+  "saved_at": 1786017724,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -291342,6 +291342,14 @@
       "insider_score": 92,
       "tag": "insider_activo"
     },
+    "0xae0562f6349e1b574a75248bd53848a3039751aa": {
+      "chain": "ETH",
+      "label": "0xae05...51aa",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0xd07e6ab4b75b3da5a96b5e81064a65fc04f98814": {
       "chain": "ETH",
       "label": "0xd07e...8814",
@@ -291516,6 +291524,14 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
+    "0xf9ac12151f5d48a23502cd4b998b061b9be46ebd": {
+      "chain": "ETH",
+      "label": "0xf9ac...6ebd",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
     "0x7005b45de07e1b70dcd38ee3a708cfd88a6c7f8e": {
       "chain": "ETH",
       "label": "0x7005...7f8e",
@@ -291526,6 +291542,14 @@
         "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
         "0xdac17f958d2ee523a2206206994597c13d831ec7"
       ],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0x57483d84305357f22e293a55bb7ddc2798352d40": {
+      "chain": "ETH",
+      "label": "0x5748...2d40",
+      "last_check": 0,
+      "last_seen_tokens": [],
       "insider_score": 85,
       "tag": "insider_activo"
     },
@@ -291547,41 +291571,12 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
-    "0x1a9d699aee3a56ca49d0cc3b542ae3a37885a3e1": {
+    "0x2f52660090e967ef56a466fdfdb812d3b55420a3": {
       "chain": "ETH",
-      "label": "0x1a9d...a3e1",
+      "label": "0x2f52...20a3",
       "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 85,
-      "tag": "insider_activo"
-    },
-    "0xa3752af0d28549a04b2bb90c9fb5533d380c8ffa": {
-      "chain": "ETH",
-      "label": "0xa375...8ffa",
-      "last_check": 1785894804,
-      "last_seen_tokens": [
-        "0x57e114b691db790c35207b2e685d4a43181e6061",
-        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
-      ],
-      "insider_score": 84,
-      "tag": "insider_activo"
-    },
-    "0x0c7e8f71ccc08385977b7a51e037acc6293c1ad2": {
-      "chain": "ETH",
-      "label": "0x0c7e...1ad2",
-      "last_check": 1785894804,
-      "last_seen_tokens": [
-        "0xc80b4457fccd49e7c3a2f5566dd1b827d85f6c98"
-      ],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x55e909162d7f19bb68b2bbfbe0ae22beb7601f19": {
-      "chain": "ETH",
-      "label": "0x55e9...1f19",
-      "last_check": 1785894804,
-      "last_seen_tokens": [],
-      "insider_score": 77,
       "tag": "insider_activo"
     }
   },
@@ -309414,14 +309409,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785503783698-9183aa",
-      "kind": "convergence",
-      "text": "🎯 122 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -1.7% 🔴",
-      "hash": "9183aacc9b66f567",
-      "created_ts": 1785503783,
-      "retries": 102
-    },
-    {
       "id": "1785542689922-3f23bb",
       "kind": "convergence",
       "text": "🎯 512 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -3.0% 🔴",
@@ -315735,8 +315722,8 @@
       "ts": 1786017585.935963
     }
   },
-  "last_daily_day": "2026-08-05",
+  "last_daily_day": "2026-08-06",
   "last_weekly_week": "2026-W31",
-  "last_forensic_day": "2026-08-05",
+  "last_forensic_day": "2026-08-06",
   "announced_version": "v9.1"
 }
