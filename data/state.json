@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786077552,
+  "saved_at": 1786077566,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -317432,9 +317432,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.9% 24h ⚪",
         "entry_price": 0.09245115484,
-        "max_price": 0.09259088107,
+        "max_price": 0.09271311126,
         "min_price": 0.09245115484,
-        "last_price": 0.09249850971,
+        "last_price": 0.09271311126,
         "status": "open",
         "ts": "2026-08-06T00:39:23.667856+00:00"
       },
@@ -317452,7 +317452,7 @@
         "entry_price": 2.890958976e-06,
         "max_price": 2.890958976e-06,
         "min_price": 2.795737181e-06,
-        "last_price": 2.795737181e-06,
+        "last_price": 2.805827743e-06,
         "status": "open",
         "ts": "2026-08-06T00:59:24.264022+00:00"
       }
@@ -318474,14 +318474,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785542725925-acdd5b",
-      "kind": "convergence",
-      "text": "🎯 698 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -3.0% 🔴",
-      "hash": "acdd5becbd6e413e",
-      "created_ts": 1785542725,
-      "retries": 70
-    },
-    {
       "id": "1785542773305-7567ea",
       "kind": "convergence",
       "text": "🎯 3 smart wallets compraron $SOIL [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -3.0% 🔴",
@@ -319315,47 +319307,18 @@
   ],
   "catalyst_opportunities": [
     {
-      "score": 99,
-      "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
-      "event_date": "2026-09-25",
-      "days_until": 49,
-      "region": "JP",
-      "audience": 20192,
-      "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/210482",
-      "token_symbol": "JOJO",
-      "token_chain": "solana",
-      "token_liq": 537426663,
-      "token_vol24": 4,
-      "token_url": "https://dexscreener.com/solana/4ixo8ccvhxhwaqbqnrufytejxlmwc74s1lsqs1arn7uo",
-      "conflict": false,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 20,
-        "atencion_baja": 4,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (72 tickers): posible sobre-cobertura",
-        "verificar afinidad cultural a mano"
-      ]
-    },
-    {
       "score": 91,
       "ip_name": "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
       "event_date": "2026-08-28",
-      "days_until": 21,
+      "days_until": 20,
       "region": "JP",
-      "audience": 47459,
+      "audience": 47486,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/133007",
       "token_symbol": "MAGIC",
       "token_chain": "base",
-      "token_liq": 207622,
-      "token_vol24": 2368,
+      "token_liq": 210432,
+      "token_vol24": 6869,
       "token_url": "https://dexscreener.com/base/0x3c0ae164970ab9ec216cf1b7ae3118766ab65e43",
       "conflict": false,
       "match_quality": 0.8,
@@ -319369,19 +319332,19 @@
       },
       "flags": [
         "narrativa poblada (42 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (6,458,625): puede estar descubierta",
+        "volumen de narrativa alto (8,927,282): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1785991137,
+  "catalyst_last_run": 1786077566,
   "catalyst_events": 116,
   "catalyst_alerted": [
     "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
     "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28"
   ],
-  "catalyst_snapshots": 7,
+  "catalyst_snapshots": 8,
   "catalyst_backtest": {
     "tracked": 1,
     "avg_gain_70plus": 0.9,
@@ -319399,7 +319362,7 @@
         "entry_price": 0.04165,
         "max_price": 0.04201,
         "max_gain_pct": 0.9,
-        "n_snaps": 5
+        "n_snaps": 6
       }
     ]
   },
