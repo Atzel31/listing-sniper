@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786104245,
+  "saved_at": 1786104268,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -301470,6 +301470,14 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
+    "0x111116053f09d34a7eae8102887004445176ca11": {
+      "chain": "ETH",
+      "label": "0x1111...ca11",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 84,
+      "tag": "insider_activo"
+    },
     "0x10a87e799c8d671fecba458bb49b39ab91b6e7c2": {
       "chain": "ETH",
       "label": "0x10a8...e7c2",
@@ -301521,14 +301529,6 @@
     "0x818570b628809140c3d1fdde811ef3b91dfd4482": {
       "chain": "ETH",
       "label": "0x8185...4482",
-      "last_check": 0,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xffa8db7b38579e6a2d14f9b347a9ace4d044cd54": {
-      "chain": "ETH",
-      "label": "0xffa8...cd54",
       "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 77,
@@ -313364,9 +313364,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.9% 24h ⚪",
         "entry_price": 0.09245115484,
-        "max_price": 0.09271311126,
+        "max_price": 0.09625517568,
         "min_price": 0.09192982286,
-        "last_price": 0.09192982286,
+        "last_price": 0.09625517568,
         "status": "open",
         "ts": "2026-08-06T00:39:23.667856+00:00"
       },
@@ -313384,7 +313384,7 @@
         "entry_price": 2.890958976e-06,
         "max_price": 2.890958976e-06,
         "min_price": 2.787892274e-06,
-        "last_price": 2.787892274e-06,
+        "last_price": 2.832503122e-06,
         "status": "open",
         "ts": "2026-08-06T00:59:24.264022+00:00"
       },
@@ -314441,14 +314441,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785545129391-b00cdd",
-      "kind": "convergence",
-      "text": "🎯 127 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -2.8% 🔴",
-      "hash": "b00cdd7f450fa640",
-      "created_ts": 1785545129,
-      "retries": 94
-    },
     {
       "id": "1785546077165-41ec62",
       "kind": "convergence",
@@ -320829,8 +320821,8 @@
       "ts": 1786104121.5389538
     }
   },
-  "last_daily_day": "2026-08-06",
+  "last_daily_day": "2026-08-07",
   "last_weekly_week": "2026-W31",
-  "last_forensic_day": "2026-08-06",
+  "last_forensic_day": "2026-08-07",
   "announced_version": "v9.1"
 }
