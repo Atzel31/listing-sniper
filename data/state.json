@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786235596,
+  "saved_at": 1786235612,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -327888,28 +327888,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.9% 24h ⚪",
-        "entry_price": 0.3754689378,
-        "max_price": 0.3755585043,
-        "min_price": 0.3448092932,
-        "last_price": 0.3484994715,
-        "status": "open",
-        "ts": "2026-08-06T00:32:50.873090+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -8.2,
-        "closed_at": "2026-08-09T00:33:16.435324+00:00"
-      },
-      {
         "token": "ENA",
         "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
         "chain": "ETH",
@@ -327977,7 +327955,7 @@
         "entry_price": 0.3328921049,
         "max_price": 0.338408001,
         "min_price": 0.3238520543,
-        "last_price": 0.3238520543,
+        "last_price": 0.3248538653,
         "status": "open",
         "ts": "2026-08-07T09:19:06.455867+00:00"
       },
@@ -329056,18 +329034,32 @@
         "max_gain_pct": 12.6,
         "min_loss_pct": 0.0,
         "closed_at": "2026-08-08T03:10:28.339485+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.9% 24h ⚪",
+        "entry_price": 0.3754689378,
+        "max_price": 0.3755585043,
+        "min_price": 0.3448092932,
+        "last_price": 0.3484994715,
+        "status": "open",
+        "ts": "2026-08-06T00:32:50.873090+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -8.2,
+        "closed_at": "2026-08-09T00:33:16.435324+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785588951691-ee7d76",
-      "kind": "convergence",
-      "text": "🎯 733 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -1.0% ⚪",
-      "hash": "ee7d76a1c8e3f087",
-      "created_ts": 1785588951,
-      "retries": 190
-    },
     {
       "id": "1785589827742-0af207",
       "kind": "convergence",
