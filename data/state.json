@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786276885,
+  "saved_at": 1786276906,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -318656,6 +318656,14 @@
     }
   },
   "tracked_whale_set": {
+    "0x111116053f09d34a7eae8102887004445176ca11": {
+      "chain": "ETH",
+      "label": "0x1111...ca11",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x18dc29ca1b75c9a07d4d8f82b5676a0b2b4725b4": {
       "chain": "ETH",
       "label": "0x18dc...25b4",
@@ -318888,6 +318896,22 @@
       "insider_score": 85,
       "tag": "insider_activo"
     },
+    "0x7005b45de07e1b70dcd38ee3a708cfd88a6c7f8e": {
+      "chain": "ETH",
+      "label": "0x7005...7f8e",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0x46340b20830761efd32832a74d7169b29feb9758": {
+      "chain": "ETH",
+      "label": "0x4634...9758",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
     "0x10a87e799c8d671fecba458bb49b39ab91b6e7c2": {
       "chain": "ETH",
       "label": "0x10a8...e7c2",
@@ -318899,30 +318923,6 @@
     "0x0c7e8f71ccc08385977b7a51e037acc6293c1ad2": {
       "chain": "ETH",
       "label": "0x0c7e...1ad2",
-      "last_check": 1786108096,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0xee312a56188c00235e88b540abc36cfc64d06b90": {
-      "chain": "ETH",
-      "label": "0xee31...6b90",
-      "last_check": 1786108096,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x55e909162d7f19bb68b2bbfbe0ae22beb7601f19": {
-      "chain": "ETH",
-      "label": "0x55e9...1f19",
-      "last_check": 1786108096,
-      "last_seen_tokens": [],
-      "insider_score": 77,
-      "tag": "insider_activo"
-    },
-    "0x708e7bad92dcd97e0ff875864c90e7b63fc1f457": {
-      "chain": "ETH",
-      "label": "0x708e...f457",
       "last_check": 1786108096,
       "last_seen_tokens": [],
       "insider_score": 77,
@@ -342749,6 +342749,6 @@
   },
   "last_daily_day": "2026-08-09",
   "last_weekly_week": "2026-W31",
-  "last_forensic_day": "2026-08-08",
+  "last_forensic_day": "2026-08-09",
   "announced_version": "v9.1"
 }
