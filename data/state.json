@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786276882,
+  "saved_at": 1786276885,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -334997,8 +334997,8 @@
         "btc_context": "Mercado: BTC +0.0% 24h ⚪",
         "entry_price": 0.001130589592,
         "max_price": 0.001130589592,
-        "min_price": 0.001061505318,
-        "last_price": 0.001061505318,
+        "min_price": 0.001016309099,
+        "last_price": 0.001016309099,
         "status": "open",
         "ts": "2026-08-08T11:23:37.934792+00:00"
       },
@@ -335014,9 +335014,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.1% 24h ⚪",
         "entry_price": 2.866129074e-06,
-        "max_price": 2.866129074e-06,
+        "max_price": 2.875473421e-06,
         "min_price": 2.859851143e-06,
-        "last_price": 2.859851143e-06,
+        "last_price": 2.875473421e-06,
         "status": "open",
         "ts": "2026-08-09T01:22:54.201524+00:00"
       },
@@ -335033,8 +335033,8 @@
         "btc_context": "Mercado: BTC -0.2% 24h ⚪",
         "entry_price": 0.08817147592,
         "max_price": 0.08817147592,
-        "min_price": 0.08817147592,
-        "last_price": 0.08817147592,
+        "min_price": 0.08770834518,
+        "last_price": 0.08770834518,
         "status": "open",
         "ts": "2026-08-09T06:27:07.660144+00:00"
       },
@@ -336183,14 +336183,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785628825798-ff131c",
-      "kind": "convergence",
-      "text": "🎯 546 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.1% ⚪",
-      "hash": "ff131cbb1a753459",
-      "created_ts": 1785628825,
-      "retries": 127
-    },
     {
       "id": "1785628873207-5a82c6",
       "kind": "convergence",
@@ -342755,7 +342747,7 @@
       "ts": 1786276792.1905994
     }
   },
-  "last_daily_day": "2026-08-08",
+  "last_daily_day": "2026-08-09",
   "last_weekly_week": "2026-W31",
   "last_forensic_day": "2026-08-08",
   "announced_version": "v9.1"
