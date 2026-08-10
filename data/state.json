@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786337067,
+  "saved_at": 1786337087,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -341821,7 +341821,7 @@
         "entry_price": 2.866129074e-06,
         "max_price": 2.949831789e-06,
         "min_price": 2.859851143e-06,
-        "last_price": 2.949831789e-06,
+        "last_price": 2.895709689e-06,
         "status": "open",
         "ts": "2026-08-09T01:22:54.201524+00:00"
       },
@@ -341838,8 +341838,8 @@
         "btc_context": "Mercado: BTC -0.2% 24h ⚪",
         "entry_price": 0.08817147592,
         "max_price": 0.08817147592,
-        "min_price": 0.08745649967,
-        "last_price": 0.08745649967,
+        "min_price": 0.08703873912,
+        "last_price": 0.08703873912,
         "status": "open",
         "ts": "2026-08-09T06:27:07.660144+00:00"
       },
@@ -342989,14 +342989,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785631358393-4fe661",
-      "kind": "convergence",
-      "text": "🎯 743 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.2% ⚪",
-      "hash": "4fe661d610dff446",
-      "created_ts": 1785631358,
-      "retries": 113
-    },
-    {
       "id": "1785632873857-2f6ce0",
       "kind": "convergence",
       "text": "🎯 619 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.2% ⚪",
@@ -344057,16 +344049,16 @@
       "score": 97,
       "ip_name": "Blue Box Season 2",
       "event_date": "2026-10-04",
-      "days_until": 55,
+      "days_until": 54,
       "region": "JP",
-      "audience": 29651,
+      "audience": 29735,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/189123",
       "token_symbol": "BLUE",
       "token_chain": "ethereum",
-      "token_liq": 27817313,
+      "token_liq": 75176691,
       "token_vol24": 0,
-      "token_url": "https://dexscreener.com/ethereum/0x2249ba37d67b992f30464d83dce576de53ae8c15",
+      "token_url": "https://dexscreener.com/ethereum/0x2d0761d1cde493262fe14e32a8ad9f53f8147770",
       "conflict": false,
       "match_quality": 1.0,
       "breakdown": {
@@ -344078,24 +344070,24 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (76 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (805,033): puede estar descubierta",
+        "narrativa poblada (69 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (855,507): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
     {
-      "score": 83,
+      "score": 91,
       "ip_name": "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
       "event_date": "2026-08-28",
-      "days_until": 18,
+      "days_until": 17,
       "region": "JP",
-      "audience": 47548,
+      "audience": 47578,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/133007",
       "token_symbol": "MAGIC",
       "token_chain": "base",
-      "token_liq": 213662,
-      "token_vol24": 37691,
+      "token_liq": 212586,
+      "token_vol24": 4323,
       "token_url": "https://dexscreener.com/base/0x3c0ae164970ab9ec216cf1b7ae3118766ab65e43",
       "conflict": false,
       "match_quality": 0.8,
@@ -344103,27 +344095,26 @@
         "audiencia": 35,
         "ventana": 20,
         "match": 16,
-        "dormido": 12,
+        "dormido": 20,
         "atencion_baja": 0,
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (43 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (13,343,723): puede estar descubierta",
+        "narrativa poblada (45 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (10,970,848): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
-        "verificar afinidad cultural a mano",
-        "el token ya tiene volumen propio: puede estar siendo descubierto"
+        "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1786250551,
-  "catalyst_events": 117,
+  "catalyst_last_run": 1786337087,
+  "catalyst_events": 118,
   "catalyst_alerted": [
-    "Blue Box Season 2|BLUE|2026-10-04",
     "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28"
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
+    "Blue Box Season 2|BLUE|2026-10-04"
   ],
-  "catalyst_snapshots": 13,
+  "catalyst_snapshots": 15,
   "catalyst_backtest": {
     "tracked": 2,
     "avg_gain_70plus": 1.2,
@@ -344141,7 +344132,7 @@
         "entry_price": 0.04165,
         "max_price": 0.04266,
         "max_gain_pct": 2.4,
-        "n_snaps": 8
+        "n_snaps": 9
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
