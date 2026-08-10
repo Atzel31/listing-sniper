@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786387091,
+  "saved_at": 1786387111,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -335819,6 +335819,66 @@
         }
       ],
       "updated_at": 1786387084
+    },
+    "NOGAY": {
+      "name": "NOGAY",
+      "liq": 67089.37,
+      "vol": 39062.31,
+      "vol5m": 217.79,
+      "ch5m": -1.43,
+      "ch1h": 0.38,
+      "ch6h": 3.1,
+      "ch24h": 17.5,
+      "txns": 692,
+      "buys": 431,
+      "sells": 261,
+      "bp": 62,
+      "price": "0.0007788",
+      "fdv": 774425,
+      "mcap": 774425,
+      "pair": "3z1zRHhzBH2rRKcQ8PJZUutKpg5ziB34D8an1GUp3VcD",
+      "real_chain": "solana",
+      "age_hours": 165.55827419446575,
+      "multi_dex": false,
+      "dex_list": [
+        "pumpswap"
+      ],
+      "has_socials": true,
+      "socials_count": 2,
+      "url": "https://dexscreener.com/solana/3z1zRHhzBH2rRKcQ8PJZUutKpg5ziB34D8an1GUp3VcD",
+      "buy_url": "https://jup.ag/swap/SOL-C3RfugybjxYDsJDYtooFf5WU5p5Mrhc6Q1xR2QGJpump",
+      "symbol": "NOGAY",
+      "chain": "SOL",
+      "contract": "C3RfugybjxYDsJDYtooFf5WU5p5Mrhc6Q1xR2QGJpump",
+      "flow": "OUT",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "source": "dexscreener",
+      "custom": true,
+      "score": 70,
+      "reasons": [
+        {
+          "effect": 4,
+          "reason": "Liquidez media"
+        },
+        {
+          "effect": 5,
+          "reason": "Turnover saludable"
+        },
+        {
+          "effect": 5,
+          "reason": "Presion compradora positiva (62%)"
+        },
+        {
+          "effect": 12,
+          "reason": "Retiro neto de exchanges (alcista)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        }
+      ],
+      "updated_at": 1786387111
     }
   },
   "accum_prev": {
@@ -335928,6 +335988,11 @@
       "contract": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
       "chain": "SOL",
       "name": "ANSEM"
+    },
+    {
+      "contract": "C3RfugybjxYDsJDYtooFf5WU5p5Mrhc6Q1xR2QGJpump",
+      "chain": "SOL",
+      "name": "NOGAY"
     }
   ],
   "tracked_tokens": {
@@ -349433,8 +349498,8 @@
         "btc_context": "Mercado: BTC -0.2% 24h ⚪",
         "entry_price": 0.3494466885,
         "max_price": 0.3538338447,
-        "min_price": 0.3434654684,
-        "last_price": 0.3434654684,
+        "min_price": 0.3431971696,
+        "last_price": 0.3431971696,
         "status": "open",
         "ts": "2026-08-09T07:15:49.273014+00:00"
       }
