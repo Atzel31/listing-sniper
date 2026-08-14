@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786738326,
+  "saved_at": 1786738345,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -379377,7 +379377,7 @@
         "entry_price": 0.3123901424,
         "max_price": 0.3170571378,
         "min_price": 0.3122842193,
-        "last_price": 0.3151976526,
+        "last_price": 0.316652528,
         "status": "open",
         "ts": "2026-08-14T10:36:42.403518+00:00"
       }
@@ -380663,14 +380663,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1785976774055-cb06a5",
-      "kind": "convergence",
-      "text": "🎯 695 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.9% ⚪",
-      "hash": "cb06a5730b33351c",
-      "created_ts": 1785976774,
-      "retries": 23
-    },
-    {
       "id": "1785977974595-1f14c0",
       "kind": "convergence",
       "text": "🎯 755 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +1.0% ⚪",
@@ -381771,9 +381763,9 @@
       "score": 97,
       "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
       "event_date": "2026-09-25",
-      "days_until": 42,
+      "days_until": 41,
       "region": "JP",
-      "audience": 20650,
+      "audience": 20708,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/210482",
       "token_symbol": "JOJO",
@@ -381792,57 +381784,26 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (67 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (528,670): puede estar descubierta",
+        "narrativa poblada (70 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (498,204): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
     {
-      "score": 91,
-      "ip_name": "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
-      "event_date": "2026-08-28",
-      "days_until": 14,
-      "region": "JP",
-      "audience": 47685,
-      "event_type": "film_release",
-      "source_url": "https://anilist.co/anime/133007",
-      "token_symbol": "MAGIC",
-      "token_chain": "base",
-      "token_liq": 204438,
-      "token_vol24": 1914,
-      "token_url": "https://dexscreener.com/base/0x3c0ae164970ab9ec216cf1b7ae3118766ab65e43",
-      "conflict": false,
-      "match_quality": 0.8,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 16,
-        "dormido": 20,
-        "atencion_baja": 0,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (46 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (15,024,319): puede estar descubierta",
-        "revisar cobertura CT (el par tiene redes)",
-        "verificar afinidad cultural a mano"
-      ]
-    },
-    {
-      "score": 75,
+      "score": 50,
       "ip_name": "Blue Box Season 2",
       "event_date": "2026-10-04",
-      "days_until": 51,
+      "days_until": 50,
       "region": "JP",
-      "audience": 29988,
+      "audience": 30036,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/189123",
       "token_symbol": "BLUE",
       "token_chain": "bsc",
-      "token_liq": 17140,
-      "token_vol24": 8,
+      "token_liq": 16455,
+      "token_vol24": 295,
       "token_url": "https://dexscreener.com/bsc/0xeb7fe075b7677c98c75e105d4f5ace0e19505567",
-      "conflict": false,
+      "conflict": true,
       "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
@@ -381850,25 +381811,26 @@
         "match": 20,
         "dormido": 0,
         "atencion_baja": 0,
-        "conflicto": 0
+        "conflicto": -25
       },
       "flags": [
-        "narrativa poblada (72 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (1,832,421): puede estar descubierta",
+        "CONFLICTO: atencion fragmentada entre varios tickers",
+        "narrativa poblada (71 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (905,248): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1786651768,
+  "catalyst_last_run": 1786738345,
   "catalyst_events": 121,
   "catalyst_alerted": [
-    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
     "Blue Box Season 2|BLUE|2026-10-04",
     "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28"
+    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03"
   ],
-  "catalyst_snapshots": 24,
+  "catalyst_snapshots": 26,
   "catalyst_backtest": {
     "tracked": 5,
     "avg_gain_70plus": 2.1,
@@ -381904,7 +381866,7 @@
         "entry_price": 0.03549,
         "max_price": 0.03553,
         "max_gain_pct": 0.1,
-        "n_snaps": 2
+        "n_snaps": 3
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
@@ -381913,7 +381875,7 @@
         "entry_price": 0.00673,
         "max_price": 0.00673,
         "max_gain_pct": 0.0,
-        "n_snaps": 3
+        "n_snaps": 4
       },
       {
         "ip_name": "Blue Box Season 2",
