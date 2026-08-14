@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786708806,
+  "saved_at": 1786708810,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -376676,8 +376676,8 @@
         "btc_context": "Mercado: BTC -0.3% 24h ⚪",
         "entry_price": 0.3375431382,
         "max_price": 0.3378935569,
-        "min_price": 0.3311646737,
-        "last_price": 0.3329008188,
+        "min_price": 0.3287880468,
+        "last_price": 0.3287880468,
         "status": "open",
         "ts": "2026-08-12T13:03:18.827238+00:00"
       },
@@ -376694,8 +376694,8 @@
         "btc_context": "Mercado: BTC -1.1% 24h ⚪",
         "entry_price": 0.3123901424,
         "max_price": 0.3123901424,
-        "min_price": 0.3123901424,
-        "last_price": 0.3123901424,
+        "min_price": 0.3122842193,
+        "last_price": 0.3122842193,
         "status": "open",
         "ts": "2026-08-14T10:36:42.403518+00:00"
       }
@@ -377980,14 +377980,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1785932845687-35d3f0",
-      "kind": "convergence",
-      "text": "🎯 904 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +1.1% ⚪",
-      "hash": "35d3f0c049ff142e",
-      "created_ts": 1785932845,
-      "retries": 121
-    },
     {
       "id": "1785935442139-409eef",
       "kind": "convergence",
@@ -384725,7 +384717,7 @@
       "ts": 1786708732.907361
     }
   },
-  "last_daily_day": "2026-08-13",
+  "last_daily_day": "2026-08-14",
   "last_weekly_week": "2026-W32",
   "last_forensic_day": "2026-08-13",
   "announced_version": "v9.1"
