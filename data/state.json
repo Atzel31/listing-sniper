@@ -1,5 +1,5 @@
 {
-  "saved_at": 1786911295,
+  "saved_at": 1786911322,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -398801,7 +398801,7 @@
         "entry_price": 0.0008558881014,
         "max_price": 0.0008558881014,
         "min_price": 0.0008483245702,
-        "last_price": 0.0008483245702,
+        "last_price": 0.000853431776,
         "status": "open",
         "ts": "2026-08-16T00:03:34.302852+00:00"
       },
@@ -398817,9 +398817,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.1% 24h ⚪",
         "entry_price": 0.09622964812,
-        "max_price": 0.09622964812,
+        "max_price": 0.09623819408,
         "min_price": 0.09622964812,
-        "last_price": 0.09622964812,
+        "last_price": 0.09623819408,
         "status": "open",
         "ts": "2026-08-16T00:04:07.155581+00:00"
       },
@@ -398835,9 +398835,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.0% 24h ⚪",
         "entry_price": 0.3239702048,
-        "max_price": 0.3239702048,
+        "max_price": 0.3321572096,
         "min_price": 0.3239702048,
-        "last_price": 0.3239702048,
+        "last_price": 0.3321572096,
         "status": "open",
         "ts": "2026-08-16T01:38:16.587118+00:00"
       }
@@ -400211,14 +400211,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1786017997279-78a219",
-      "kind": "convergence",
-      "text": "🎯 944 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.7% ⚪",
-      "hash": "78a219155d23c7eb",
-      "created_ts": 1786017997,
-      "retries": 124
-    },
-    {
       "id": "1786018030837-8b8b5d",
       "kind": "convergence",
       "text": "🎯 194 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.7% ⚪",
@@ -401444,20 +401436,50 @@
   ],
   "catalyst_opportunities": [
     {
-      "score": 50,
+      "score": 97,
+      "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
+      "event_date": "2026-09-25",
+      "days_until": 39,
+      "region": "JP",
+      "audience": 20811,
+      "event_type": "season_premiere",
+      "source_url": "https://anilist.co/anime/210482",
+      "token_symbol": "JOJO",
+      "token_chain": "solana",
+      "token_liq": 537426663,
+      "token_vol24": 4,
+      "token_url": "https://dexscreener.com/solana/4ixo8ccvhxhwaqbqnrufytejxlmwc74s1lsqs1arn7uo",
+      "conflict": false,
+      "match_quality": 1.0,
+      "breakdown": {
+        "audiencia": 35,
+        "ventana": 20,
+        "match": 20,
+        "dormido": 20,
+        "atencion_baja": 2,
+        "conflicto": 0
+      },
+      "flags": [
+        "narrativa poblada (69 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (507,140): puede estar descubierta",
+        "verificar afinidad cultural a mano"
+      ]
+    },
+    {
+      "score": 75,
       "ip_name": "Blue Box Season 2",
       "event_date": "2026-10-04",
-      "days_until": 49,
+      "days_until": 48,
       "region": "JP",
-      "audience": 30036,
+      "audience": 30180,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/189123",
       "token_symbol": "BLUE",
-      "token_chain": "bsc",
-      "token_liq": 16450,
-      "token_vol24": 86,
-      "token_url": "https://dexscreener.com/bsc/0xeb7fe075b7677c98c75e105d4f5ace0e19505567",
-      "conflict": true,
+      "token_chain": "solana",
+      "token_liq": 10646,
+      "token_vol24": 797,
+      "token_url": "https://dexscreener.com/solana/5akr4yt7jxpyz9klfh5f7gcpgrhfcngcpuzkrszseops",
+      "conflict": false,
       "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
@@ -401465,26 +401487,25 @@
         "match": 20,
         "dormido": 0,
         "atencion_baja": 0,
-        "conflicto": -25
+        "conflicto": 0
       },
       "flags": [
-        "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (70 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (804,297): puede estar descubierta",
+        "narrativa poblada (69 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (779,505): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1786824825,
-  "catalyst_events": 121,
+  "catalyst_last_run": 1786911322,
+  "catalyst_events": 122,
   "catalyst_alerted": [
     "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
     "Blue Box Season 2|BLUE|2026-10-04",
-    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25"
+    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28"
   ],
-  "catalyst_snapshots": 27,
+  "catalyst_snapshots": 29,
   "catalyst_backtest": {
     "tracked": 5,
     "avg_gain_70plus": 2.1,
@@ -401529,7 +401550,7 @@
         "entry_price": 0.00673,
         "max_price": 0.00673,
         "max_gain_pct": 0.0,
-        "n_snaps": 4
+        "n_snaps": 5
       },
       {
         "ip_name": "Blue Box Season 2",
