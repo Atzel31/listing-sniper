@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787084448,
+  "saved_at": 1787084481,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -410936,7 +410936,7 @@
         "entry_price": 0.09622964812,
         "max_price": 0.09623819408,
         "min_price": 0.09382746668,
-        "last_price": 0.09382746668,
+        "last_price": 0.09390510452,
         "status": "open",
         "ts": "2026-08-16T00:04:07.155581+00:00"
       },
@@ -410954,7 +410954,7 @@
         "entry_price": 0.3239702048,
         "max_price": 0.3391486543,
         "min_price": 0.3239702048,
-        "last_price": 0.3302618687,
+        "last_price": 0.3297431544,
         "status": "open",
         "ts": "2026-08-16T01:38:16.587118+00:00"
       },
@@ -412448,14 +412448,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1786178970127-026e32",
-      "kind": "convergence",
-      "text": "🎯 780 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.7% ⚪",
-      "hash": "026e32a70d5a23e5",
-      "created_ts": 1786178970,
-      "retries": 71
-    },
-    {
       "id": "1786188228263-bd8c0b",
       "kind": "convergence",
       "text": "🎯 12 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.0% ⚪",
@@ -413716,14 +413708,14 @@
       "score": 77,
       "ip_name": "Tokyo Revengers: Santen Sensou-hen",
       "event_date": "2026-10-03",
-      "days_until": 46,
+      "days_until": 45,
       "region": "JP",
-      "audience": 21135,
+      "audience": 21171,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/178083",
       "token_symbol": "TOKYO",
       "token_chain": "robinhood",
-      "token_liq": 10087,
+      "token_liq": 10111,
       "token_vol24": 0,
       "token_url": "https://dexscreener.com/robinhood/0x0cd5448c678067b429788e233c827fb174ea3501",
       "conflict": false,
@@ -413737,53 +413729,53 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (22 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (2,847,030): puede estar descubierta",
+        "narrativa poblada (20 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (850,265): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
     {
-      "score": 50,
+      "score": 60,
       "ip_name": "Blue Box Season 2",
       "event_date": "2026-10-04",
-      "days_until": 47,
+      "days_until": 46,
       "region": "JP",
-      "audience": 30260,
+      "audience": 30325,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/189123",
       "token_symbol": "BLUE",
-      "token_chain": "bsc",
-      "token_liq": 16247,
-      "token_vol24": 3,
-      "token_url": "https://dexscreener.com/bsc/0xeb7fe075b7677c98c75e105d4f5ace0e19505567",
+      "token_chain": "base",
+      "token_liq": 20757,
+      "token_vol24": 23396,
+      "token_url": "https://dexscreener.com/base/0x838e1c9adc087e8c8bd11848cc963d198bd91f8763fced8feca34f3c0b87f3e9",
       "conflict": true,
       "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
         "ventana": 20,
         "match": 20,
-        "dormido": 0,
-        "atencion_baja": 0,
+        "dormido": 8,
+        "atencion_baja": 2,
         "conflicto": -25
       },
       "flags": [
         "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (75 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (1,270,699): puede estar descubierta",
-        "revisar cobertura CT (el par tiene redes)",
-        "verificar afinidad cultural a mano"
+        "narrativa poblada (77 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (4,185,363): puede estar descubierta",
+        "verificar afinidad cultural a mano",
+        "el token ya tiene volumen propio: puede estar siendo descubierto"
       ]
     }
   ],
-  "catalyst_last_run": 1786997831,
-  "catalyst_events": 122,
+  "catalyst_last_run": 1787084481,
+  "catalyst_events": 123,
   "catalyst_alerted": [
-    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
     "Blue Box Season 2|BLUE|2026-10-04",
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
-    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03"
+    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
+    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28"
   ],
-  "catalyst_snapshots": 31,
+  "catalyst_snapshots": 33,
   "catalyst_backtest": {
     "tracked": 6,
     "avg_gain_70plus": 1.6,
@@ -413837,7 +413829,7 @@
         "entry_price": 1.025e-05,
         "max_price": 1.025e-05,
         "max_gain_pct": 0.0,
-        "n_snaps": 2
+        "n_snaps": 3
       },
       {
         "ip_name": "Blue Box Season 2",
