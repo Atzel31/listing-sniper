@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787103718,
+  "saved_at": 1787103769,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -409476,68 +409476,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "DEAI",
-        "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.1% 24h ⚪",
-        "entry_price": 0.0008558881014,
-        "max_price": 0.0008558881014,
-        "min_price": 0.0006417069488,
-        "last_price": 0.0007360018149,
-        "status": "open",
-        "ts": "2026-08-16T00:03:34.302852+00:00",
-        "outcome": "LOSS",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -25.0,
-        "closed_at": "2026-08-19T01:41:58.120435+00:00"
-      },
-      {
-        "token": "SOIL",
-        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.1% 24h ⚪",
-        "entry_price": 0.09622964812,
-        "max_price": 0.09623819408,
-        "min_price": 0.09382746668,
-        "last_price": 0.09390510452,
-        "status": "open",
-        "ts": "2026-08-16T00:04:07.155581+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -2.5,
-        "closed_at": "2026-08-19T01:41:58.120435+00:00"
-      },
-      {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.0% 24h ⚪",
-        "entry_price": 0.3239702048,
-        "max_price": 0.3391486543,
-        "min_price": 0.3239702048,
-        "last_price": 0.3269109495,
-        "status": "open",
-        "ts": "2026-08-16T01:38:16.587118+00:00"
-      },
-      {
         "token": "SPX6900",
         "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
         "chain": "ETH",
@@ -409569,7 +409507,7 @@
         "entry_price": 0.08334037599,
         "max_price": 0.08429939888,
         "min_price": 0.08270637385,
-        "last_price": 0.08270637385,
+        "last_price": 0.08377233784,
         "status": "open",
         "ts": "2026-08-18T13:59:06.357610+00:00"
       },
@@ -409587,7 +409525,7 @@
         "entry_price": 2.571069377e-06,
         "max_price": 2.602071591e-06,
         "min_price": 2.571069377e-06,
-        "last_price": 2.57720502e-06,
+        "last_price": 2.598430006e-06,
         "status": "open",
         "ts": "2026-08-18T14:12:36.873496+00:00"
       }
@@ -411022,6 +410960,72 @@
         "max_gain_pct": 0.1,
         "min_loss_pct": -3.6,
         "closed_at": "2026-08-18T11:25:09.655347+00:00"
+      },
+      {
+        "token": "DEAI",
+        "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.1% 24h ⚪",
+        "entry_price": 0.0008558881014,
+        "max_price": 0.0008558881014,
+        "min_price": 0.0006417069488,
+        "last_price": 0.0007360018149,
+        "status": "open",
+        "ts": "2026-08-16T00:03:34.302852+00:00",
+        "outcome": "LOSS",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -25.0,
+        "closed_at": "2026-08-19T01:41:58.120435+00:00"
+      },
+      {
+        "token": "SOIL",
+        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.1% 24h ⚪",
+        "entry_price": 0.09622964812,
+        "max_price": 0.09623819408,
+        "min_price": 0.09382746668,
+        "last_price": 0.09390510452,
+        "status": "open",
+        "ts": "2026-08-16T00:04:07.155581+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -2.5,
+        "closed_at": "2026-08-19T01:41:58.120435+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.0% 24h ⚪",
+        "entry_price": 0.3239702048,
+        "max_price": 0.3391486543,
+        "min_price": 0.3239702048,
+        "last_price": 0.3241892855,
+        "status": "open",
+        "ts": "2026-08-16T01:38:16.587118+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 4.7,
+        "min_loss_pct": 0.0,
+        "closed_at": "2026-08-19T01:41:58.120435+00:00"
       }
     ]
   },
