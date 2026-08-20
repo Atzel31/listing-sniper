@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787228860,
+  "saved_at": 1787228876,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -436085,28 +436085,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +1.0% 24h ⚪",
-        "entry_price": 0.3179657849,
-        "max_price": 0.3887848197,
-        "min_price": 0.3153039965,
-        "last_price": 0.3833002121,
-        "status": "open",
-        "ts": "2026-08-17T12:26:41.820860+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 22.3,
-        "min_loss_pct": -0.8,
-        "closed_at": "2026-08-20T12:27:40.306447+00:00"
-      },
-      {
         "token": "ENA",
         "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
         "chain": "ETH",
@@ -436154,9 +436132,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.3% 24h ⚪",
         "entry_price": 0.3261668109,
-        "max_price": 0.3409714929,
+        "max_price": 0.3514569892,
         "min_price": 0.3261668109,
-        "last_price": 0.3409714929,
+        "last_price": 0.3514569892,
         "status": "open",
         "ts": "2026-08-19T03:48:02.516164+00:00"
       },
@@ -437675,18 +437653,32 @@
         "max_gain_pct": 4.7,
         "min_loss_pct": 0.0,
         "closed_at": "2026-08-19T01:41:58.120435+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +1.0% 24h ⚪",
+        "entry_price": 0.3179657849,
+        "max_price": 0.3887848197,
+        "min_price": 0.3153039965,
+        "last_price": 0.3833002121,
+        "status": "open",
+        "ts": "2026-08-17T12:26:41.820860+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 22.3,
+        "min_loss_pct": -0.8,
+        "closed_at": "2026-08-20T12:27:40.306447+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1786283361454-d03cd7",
-      "kind": "convergence",
-      "text": "🎯 750 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.3% ⚪",
-      "hash": "d03cd76f696ef08d",
-      "created_ts": 1786283361,
-      "retries": 6
-    },
     {
       "id": "1786322752531-148181",
       "kind": "convergence",
