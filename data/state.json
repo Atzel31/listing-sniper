@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787320912,
+  "saved_at": 1787320949,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -466925,28 +466925,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ENA",
-        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.8% 24h ⚪",
-        "entry_price": 0.08334037599,
-        "max_price": 0.1454186156,
-        "min_price": 0.08270637385,
-        "last_price": 0.1454186156,
-        "status": "open",
-        "ts": "2026-08-18T13:59:06.357610+00:00",
-        "outcome": "WIN",
-        "max_gain_pct": 74.5,
-        "min_loss_pct": -0.8,
-        "closed_at": "2026-08-21T14:01:52.687167+00:00"
-      },
-      {
         "token": "PEPE",
         "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
         "chain": "ETH",
@@ -466976,9 +466954,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.3% 24h ⚪",
         "entry_price": 0.3261668109,
-        "max_price": 0.3704925725,
+        "max_price": 0.3803482112,
         "min_price": 0.3261668109,
-        "last_price": 0.3704925725,
+        "last_price": 0.3803482112,
         "status": "open",
         "ts": "2026-08-19T03:48:02.516164+00:00"
       },
@@ -466996,7 +466974,7 @@
         "entry_price": 0.0006054994557,
         "max_price": 0.0006054994557,
         "min_price": 0.0002572032683,
-        "last_price": 0.0002572032683,
+        "last_price": 0.0004619053114,
         "status": "open",
         "ts": "2026-08-19T11:20:45.551801+00:00"
       },
@@ -467012,9 +466990,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +7.5% 24h 🟢",
         "entry_price": 0.4024251226,
-        "max_price": 0.4024251226,
+        "max_price": 0.4422042226,
         "min_price": 0.4024251226,
-        "last_price": 0.4024251226,
+        "last_price": 0.4422042226,
         "status": "open",
         "ts": "2026-08-21T02:07:55.051676+00:00"
       },
@@ -468555,18 +468533,32 @@
         "max_gain_pct": 22.3,
         "min_loss_pct": -0.8,
         "closed_at": "2026-08-20T12:27:40.306447+00:00"
+      },
+      {
+        "token": "ENA",
+        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.8% 24h ⚪",
+        "entry_price": 0.08334037599,
+        "max_price": 0.1454186156,
+        "min_price": 0.08270637385,
+        "last_price": 0.1454186156,
+        "status": "open",
+        "ts": "2026-08-18T13:59:06.357610+00:00",
+        "outcome": "WIN",
+        "max_gain_pct": 74.5,
+        "min_loss_pct": -0.8,
+        "closed_at": "2026-08-21T14:01:52.687167+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1786367134059-354114",
-      "kind": "convergence",
-      "text": "🎯 1021 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.2% ⚪",
-      "hash": "354114a9a32a12f5",
-      "created_ts": 1786367134,
-      "retries": 31
-    },
     {
       "id": "1786368845563-d04bb8",
       "kind": "convergence",
