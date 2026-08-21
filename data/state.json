@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787313776,
+  "saved_at": 1787313798,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -444570,10 +444570,26 @@
       "insider_score": 92,
       "tag": "insider_activo"
     },
+    "0x22ec88b9ff78c6f2458ab1a7aa8bb99d84bd4b86": {
+      "chain": "ETH",
+      "label": "0x22ec...4b86",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x11111605b53ecef22726df86881e4d6d40b5ca11": {
       "chain": "ETH",
       "label": "0x1111...ca11",
       "last_check": 1787105169,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
+    "0x9642b23ed1e01df1092b92641051881a322f5d4e": {
+      "chain": "ETH",
+      "label": "0x9642...5d4e",
+      "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 92,
       "tag": "insider_activo"
@@ -444607,6 +444623,14 @@
         "0xda5e1988097297dcdc1f90d4dfe7909e847cbef6",
         "0xf17e65822b568b3903685a7c9f496cf7656cc6c2"
       ],
+      "insider_score": 85,
+      "tag": "insider_activo"
+    },
+    "0xa1c9d41719c4ffd99463f1cfa579d9b6a96b50c6": {
+      "chain": "ETH",
+      "label": "0xa1c9...50c6",
+      "last_check": 0,
+      "last_seen_tokens": [],
       "insider_score": 85,
       "tag": "insider_activo"
     },
@@ -444712,64 +444736,6 @@
       "label": "0x192a...333e",
       "last_check": 1787104499,
       "last_seen_tokens": [],
-      "insider_score": 85,
-      "tag": "insider_activo"
-    },
-    "0x13112547d7ef5dbd4f812e89cf92be70a2c6fe76": {
-      "chain": "ETH",
-      "label": "0x1311...fe76",
-      "last_check": 0,
-      "last_seen_tokens": [],
-      "insider_score": 85,
-      "tag": "insider_activo"
-    },
-    "0xe129188380d48fa09a6a89ac91adc761afdc1612": {
-      "chain": "ETH",
-      "label": "0xe129...1612",
-      "last_check": 1787105169,
-      "last_seen_tokens": [
-        "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
-        "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
-        "0x5283d291dbcf85356a21ba090e6db59121208b44",
-        "0x58b6a8a3302369daec383334672404ee733ab239",
-        "0x626e8036deb333b408be468f951bdb42433cbf18",
-        "0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d",
-        "0x808507121b80c02388fad14726482e061b8da827",
-        "0x8408d45b61f5823298f19a09b53b7339c0280489",
-        "0xa27ec0006e59f245217ff08cd52a7e8b169e62d2",
-        "0xc43c6bfeda065fe2c4c11765bf838789bd0bb5de"
-      ],
-      "insider_score": 85,
-      "tag": "insider_activo"
-    },
-    "0x8e101ce0cd87c816dcfd4d02f7e21983901def94": {
-      "chain": "ETH",
-      "label": "0x8e10...ef94",
-      "last_check": 1787105169,
-      "last_seen_tokens": [
-        "0x000006c2a22ff4a44ff1f5d0f2ed65f781f55555",
-        "0x00c83aecc790e8a4453e5dd3b0b4b3680501a7a7",
-        "0x111111111117dc0aa78b770fa6a738034120c302",
-        "0x1bbe973bef3a977fc51cbed703e8ffdefe001fed",
-        "0x45804880de22913dafe09f4980848ece6ecbaf78",
-        "0x4d224452801aced8b2f0aebe155379bb5d594381",
-        "0x4dc26fc5854e7648a064a4abd590bbe71724c277",
-        "0x514910771af9ca656af840dff83e8264ecf986ca",
-        "0x526526528f35ac738177003b8773b402b8df8143",
-        "0x56072c95faa701256059aa122697b133aded9279",
-        "0x56a3ba04e95d34268a19b2a4474dc979babdaf76",
-        "0x58d97b57bb95320f9a05dc918aef65434969c2b2",
-        "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
-        "0x68749665ff8d2d112fa859aa293f07a622782f38",
-        "0x6bef15d938d4e72056ac92ea4bdd0d76b1c4ad29",
-        "0x6e2a43be0b1d33b726f0ca3b8de60b3482b8b050",
-        "0x808507121b80c02388fad14726482e061b8da827",
-        "0x8408d45b61f5823298f19a09b53b7339c0280489",
-        "0x904567252d8f48555b7447c67dca23f0372e16be",
-        "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
-        "0xda5e1988097297dcdc1f90d4dfe7909e847cbef6",
-        "0xec53bf9167f50cdeb3ae105f56099aaab9061f83"
-      ],
       "insider_score": 85,
       "tag": "insider_activo"
     }
@@ -459411,9 +459377,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.3% 24h ⚪",
         "entry_price": 0.3261668109,
-        "max_price": 0.359650188,
+        "max_price": 0.3704925725,
         "min_price": 0.3261668109,
-        "last_price": 0.3496791193,
+        "last_price": 0.3704925725,
         "status": "open",
         "ts": "2026-08-19T03:48:02.516164+00:00"
       },
@@ -468018,6 +467984,6 @@
   },
   "last_daily_day": "2026-08-21",
   "last_weekly_week": "2026-W33",
-  "last_forensic_day": "2026-08-20",
+  "last_forensic_day": "2026-08-21",
   "announced_version": "v9.1"
 }
