@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787344742,
+  "saved_at": 1787344788,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -467919,9 +467919,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +7.5% 24h 🟢",
         "entry_price": 0.4024251226,
-        "max_price": 0.4422042226,
+        "max_price": 0.4427134423,
         "min_price": 0.4024251226,
-        "last_price": 0.4404892312,
+        "last_price": 0.4427134423,
         "status": "open",
         "ts": "2026-08-21T02:07:55.051676+00:00"
       },
@@ -469511,14 +469511,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1786368845563-d04bb8",
-      "kind": "convergence",
-      "text": "🎯 858 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.4% ⚪",
-      "hash": "d04bb864cf1c5c29",
-      "created_ts": 1786368845,
-      "retries": 127
-    },
-    {
       "id": "1786406671757-cf7637",
       "kind": "convergence",
       "text": "🎯 16 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -1.4% ⚪",
@@ -470888,47 +470880,17 @@
   ],
   "catalyst_opportunities": [
     {
-      "score": 97,
-      "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
-      "event_date": "2026-09-25",
-      "days_until": 35,
-      "region": "JP",
-      "audience": 21088,
-      "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/210482",
-      "token_symbol": "JOJO",
-      "token_chain": "solana",
-      "token_liq": 537426663,
-      "token_vol24": 4,
-      "token_url": "https://dexscreener.com/solana/4ixo8ccvhxhwaqbqnrufytejxlmwc74s1lsqs1arn7uo",
-      "conflict": false,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 20,
-        "atencion_baja": 2,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (71 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (9,516,254): puede estar descubierta",
-        "verificar afinidad cultural a mano"
-      ]
-    },
-    {
       "score": 77,
       "ip_name": "Tokyo Revengers: Santen Sensou-hen",
       "event_date": "2026-10-03",
-      "days_until": 43,
+      "days_until": 42,
       "region": "JP",
-      "audience": 21254,
+      "audience": 21281,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/178083",
       "token_symbol": "TOKYO",
       "token_chain": "robinhood",
-      "token_liq": 12040,
+      "token_liq": 12735,
       "token_vol24": 0,
       "token_url": "https://dexscreener.com/robinhood/0x0cd5448c678067b429788e233c827fb174ea3501",
       "conflict": false,
@@ -470942,8 +470904,8 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (23 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (488,117): puede estar descubierta",
+        "narrativa poblada (27 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (819,019): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
@@ -470951,15 +470913,15 @@
       "score": 50,
       "ip_name": "Blue Box Season 2",
       "event_date": "2026-10-04",
-      "days_until": 44,
+      "days_until": 43,
       "region": "JP",
-      "audience": 30461,
+      "audience": 30532,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/189123",
       "token_symbol": "BLUE",
       "token_chain": "bsc",
-      "token_liq": 16570,
-      "token_vol24": 15,
+      "token_liq": 17326,
+      "token_vol24": 209,
       "token_url": "https://dexscreener.com/bsc/0xeb7fe075b7677c98c75e105d4f5ace0e19505567",
       "conflict": true,
       "match_quality": 1.0,
@@ -470973,25 +470935,25 @@
       },
       "flags": [
         "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (78 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (2,653,888): puede estar descubierta",
+        "narrativa poblada (70 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (1,553,513): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1787258178,
-  "catalyst_events": 123,
+  "catalyst_last_run": 1787344788,
+  "catalyst_events": 126,
   "catalyst_alerted": [
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
-    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
     "Blue Box Season 2|BLUE|2026-10-04",
-    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03"
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
+    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
+    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25"
   ],
-  "catalyst_snapshots": 39,
+  "catalyst_snapshots": 41,
   "catalyst_backtest": {
     "tracked": 6,
-    "avg_gain_70plus": 5.9,
+    "avg_gain_70plus": 7.6,
     "n_70plus": 4,
     "avg_gain_50_69": 0.1,
     "n_50_69": 2,
@@ -471004,9 +470966,9 @@
         "token_symbol": "TOKYO",
         "entry_score": 77,
         "entry_price": 1.025e-05,
-        "max_price": 1.203e-05,
-        "max_gain_pct": 17.4,
-        "n_snaps": 5
+        "max_price": 1.273e-05,
+        "max_gain_pct": 24.2,
+        "n_snaps": 6
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
@@ -471033,7 +470995,7 @@
         "entry_price": 0.03549,
         "max_price": 0.03553,
         "max_gain_pct": 0.1,
-        "n_snaps": 7
+        "n_snaps": 8
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
