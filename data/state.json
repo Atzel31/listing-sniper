@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787780417,
+  "saved_at": 1787780446,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -545291,6 +545291,65 @@
         }
       ],
       "updated_at": 1787780410
+    },
+    "aura": {
+      "name": "aura",
+      "liq": 2325942.72,
+      "vol": 1757459.44,
+      "vol5m": 25109.15,
+      "ch5m": -2.71,
+      "ch1h": -1.87,
+      "ch6h": 60.32,
+      "ch24h": 60.06,
+      "txns": 5361,
+      "buys": 2691,
+      "sells": 2670,
+      "bp": 50,
+      "price": "0.02625",
+      "fdv": 25291713,
+      "mcap": 25346541,
+      "pair": "9ViX1VductEoC2wERTSp2TuDxXPwAf69aeET8ENPJpsN",
+      "real_chain": "solana",
+      "age_hours": 19633.660807302593,
+      "multi_dex": true,
+      "dex_list": [
+        "orca",
+        "meteora",
+        "pumpswap",
+        "raydium"
+      ],
+      "has_socials": true,
+      "socials_count": 2,
+      "url": "https://dexscreener.com/solana/9ViX1VductEoC2wERTSp2TuDxXPwAf69aeET8ENPJpsN",
+      "buy_url": "https://jup.ag/swap/SOL-DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
+      "symbol": "aura",
+      "chain": "SOL",
+      "contract": "DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "source": "dexscreener",
+      "custom": true,
+      "score": 68,
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 5,
+          "reason": "Turnover saludable"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "updated_at": 1787780445
     }
   },
   "accum_prev": {
@@ -545410,6 +545469,11 @@
       "contract": "C3RfugybjxYDsJDYtooFf5WU5p5Mrhc6Q1xR2QGJpump",
       "chain": "SOL",
       "name": "NOGAY"
+    },
+    {
+      "contract": "DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
+      "chain": "SOL",
+      "name": "aura"
     }
   ],
   "tracked_tokens": {
@@ -557200,7 +557264,7 @@
         "entry_price": 0.3770713488,
         "max_price": 0.3770713488,
         "min_price": 0.3609515227,
-        "last_price": 0.3609515227,
+        "last_price": 0.3686155858,
         "status": "open",
         "ts": "2026-08-25T12:37:36.778479+00:00"
       },
@@ -558965,14 +559029,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1786753541141-90d769",
-      "kind": "convergence",
-      "text": "🎯 898 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.8% ⚪",
-      "hash": "90d769e0ad66e7a0",
-      "created_ts": 1786753541,
-      "retries": 13
-    },
     {
       "id": "1786755398595-954e9c",
       "kind": "convergence",
