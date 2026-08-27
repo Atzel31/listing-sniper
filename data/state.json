@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787820875,
+  "saved_at": 1787820891,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -567753,28 +567753,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.8% 24h ⚪",
-        "entry_price": 0.4477965473,
-        "max_price": 0.6424161633,
-        "min_price": 0.4477965473,
-        "last_price": 0.6096273875,
-        "status": "open",
-        "ts": "2026-08-24T08:53:36.867927+00:00",
-        "outcome": "WIN",
-        "max_gain_pct": 43.5,
-        "min_loss_pct": 0.0,
-        "closed_at": "2026-08-27T08:54:35.447908+00:00"
-      },
-      {
         "token": "ENA",
         "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
         "chain": "ETH",
@@ -569603,18 +569581,32 @@
         "max_gain_pct": 0.0,
         "min_loss_pct": -61.0,
         "closed_at": "2026-08-26T00:05:44.005749+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.8% 24h ⚪",
+        "entry_price": 0.4477965473,
+        "max_price": 0.6424161633,
+        "min_price": 0.4477965473,
+        "last_price": 0.6096273875,
+        "status": "open",
+        "ts": "2026-08-24T08:53:36.867927+00:00",
+        "outcome": "WIN",
+        "max_gain_pct": 43.5,
+        "min_loss_pct": 0.0,
+        "closed_at": "2026-08-27T08:54:35.447908+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1786796109023-8c242b",
-      "kind": "convergence",
-      "text": "🎯 1182 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.3% ⚪",
-      "hash": "8c242ba1d7d2dbf9",
-      "created_ts": 1786796109,
-      "retries": 7
-    },
     {
       "id": "1786797535031-235b0a",
       "kind": "convergence",
