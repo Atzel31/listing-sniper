@@ -1,5 +1,5 @@
 {
-  "saved_at": 1787897894,
+  "saved_at": 1787897911,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -583683,28 +583683,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "PEPE",
-        "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +4.3% 24h 🟢",
-        "entry_price": 4.210507523e-06,
-        "max_price": 4.210507523e-06,
-        "min_price": 3.721147705e-06,
-        "last_price": 3.845541731e-06,
-        "status": "open",
-        "ts": "2026-08-25T06:16:30.839404+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -11.6,
-        "closed_at": "2026-08-28T06:18:14.721965+00:00"
-      },
-      {
         "token": "SOIL",
         "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
         "chain": "ETH",
@@ -583772,7 +583750,7 @@
         "entry_price": 0.6206726039,
         "max_price": 0.6206726039,
         "min_price": 0.5889140572,
-        "last_price": 0.5889140572,
+        "last_price": 0.5956142379,
         "status": "open",
         "ts": "2026-08-27T09:39:53.603099+00:00"
       },
@@ -585577,18 +585555,32 @@
         "max_gain_pct": 21.3,
         "min_loss_pct": -12.9,
         "closed_at": "2026-08-28T06:03:21.100999+00:00"
+      },
+      {
+        "token": "PEPE",
+        "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +4.3% 24h 🟢",
+        "entry_price": 4.210507523e-06,
+        "max_price": 4.210507523e-06,
+        "min_price": 3.721147705e-06,
+        "last_price": 3.845541731e-06,
+        "status": "open",
+        "ts": "2026-08-25T06:16:30.839404+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -11.6,
+        "closed_at": "2026-08-28T06:18:14.721965+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1786886763118-61fe25",
-      "kind": "convergence",
-      "text": "🎯 997 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.1% ⚪",
-      "hash": "61fe255855c75980",
-      "created_ts": 1786886763,
-      "retries": 7
-    },
     {
       "id": "1786924856226-c62d73",
       "kind": "convergence",
