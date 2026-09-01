@@ -1,5 +1,5 @@
 {
-  "saved_at": 1788228524,
+  "saved_at": 1788228540,
   "bot_version": "v9.1",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -608519,28 +608519,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -3.2% 24h 🔴",
-        "entry_price": 0.3531901908,
-        "max_price": 0.3540279416,
-        "min_price": 0.341800344,
-        "last_price": 0.3470852941,
-        "status": "open",
-        "ts": "2026-08-29T02:04:40.481169+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.2,
-        "min_loss_pct": -3.2,
-        "closed_at": "2026-09-01T02:08:44.361642+00:00"
-      },
-      {
         "token": "SOIL",
         "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
         "chain": "ETH",
@@ -608590,7 +608568,7 @@
         "entry_price": 0.1493883441,
         "max_price": 0.1516299454,
         "min_price": 0.1488630528,
-        "last_price": 0.1504117778,
+        "last_price": 0.1493761084,
         "status": "open",
         "ts": "2026-08-31T12:18:56.580763+00:00"
       },
@@ -608607,8 +608585,8 @@
         "btc_context": "Mercado: BTC -0.5% 24h ⚪",
         "entry_price": 3.599514547e-06,
         "max_price": 3.612743444e-06,
-        "min_price": 3.558339895e-06,
-        "last_price": 3.561752759e-06,
+        "min_price": 3.558002723e-06,
+        "last_price": 3.558002723e-06,
         "status": "open",
         "ts": "2026-08-31T12:27:53.427186+00:00"
       },
@@ -610567,18 +610545,32 @@
         "max_gain_pct": 0.6,
         "min_loss_pct": -9.9,
         "closed_at": "2026-08-31T07:24:35.190403+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -3.2% 24h 🔴",
+        "entry_price": 0.3531901908,
+        "max_price": 0.3540279416,
+        "min_price": 0.341800344,
+        "last_price": 0.3470852941,
+        "status": "open",
+        "ts": "2026-08-29T02:04:40.481169+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.2,
+        "min_loss_pct": -3.2,
+        "closed_at": "2026-09-01T02:08:44.361642+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1787270631373-fc7f8d",
-      "kind": "convergence",
-      "text": "🎯 34 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +5.3% 🟢",
-      "hash": "fc7f8d56064d072b",
-      "created_ts": 1787270631,
-      "retries": 74
-    },
     {
       "id": "1787270934465-8eb6a4",
       "kind": "convergence",
