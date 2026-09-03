@@ -1,5 +1,5 @@
 {
-  "saved_at": 1788474313,
+  "saved_at": 1788474346,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -655176,16 +655176,16 @@
       "score": 97,
       "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
       "event_date": "2026-09-25",
-      "days_until": 22,
+      "days_until": 21,
       "region": "JP",
-      "audience": 21916,
+      "audience": 22094,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/210482",
       "token_symbol": "JOJO",
-      "token_chain": "bsc",
-      "token_liq": 252363,
-      "token_vol24": 0,
-      "token_url": "https://dexscreener.com/bsc/0x5226a2c7be3d239636fb144722fd45b99ab80a24",
+      "token_chain": "solana",
+      "token_liq": 537426663,
+      "token_vol24": 4,
+      "token_url": "https://dexscreener.com/solana/4ixo8ccvhxhwaqbqnrufytejxlmwc74s1lsqs1arn7uo",
       "conflict": false,
       "match_quality": 1.0,
       "breakdown": {
@@ -655197,57 +655197,55 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (68 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (1,180,054): puede estar descubierta",
+        "narrativa poblada (63 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (1,280,127): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
     {
-      "score": 83,
+      "score": 93,
       "ip_name": "Made in Abyss: Mezameru Shinpi",
       "event_date": "2026-10-23",
-      "days_until": 50,
+      "days_until": 49,
       "region": "JP",
-      "audience": 36818,
+      "audience": 37007,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/160275",
       "token_symbol": "MADE",
       "token_chain": "solana",
-      "token_liq": 156990,
-      "token_vol24": 630231,
-      "token_url": "https://dexscreener.com/solana/cwqkkpwkctxar4xyw8fkykbyy6x6iajkrjjdnshiqp8a",
+      "token_liq": 60428418,
+      "token_vol24": 2100,
+      "token_url": "https://dexscreener.com/solana/bxzqde1tse8hvdanga4tr4nz84rawk813eectnxzpe4w",
       "conflict": false,
       "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
         "ventana": 20,
         "match": 20,
-        "dormido": 8,
-        "atencion_baja": 0,
+        "dormido": 16,
+        "atencion_baja": 2,
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (35 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (743,630): puede estar descubierta",
-        "revisar cobertura CT (el par tiene redes)",
-        "verificar afinidad cultural a mano",
-        "el token ya tiene volumen propio: puede estar siendo descubierto"
+        "narrativa poblada (37 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (1,056,290): puede estar descubierta",
+        "verificar afinidad cultural a mano"
       ]
     },
     {
       "score": 79,
       "ip_name": "Firefly Wedding",
       "event_date": "2026-10-09",
-      "days_until": 36,
+      "days_until": 35,
       "region": "JP",
-      "audience": 14926,
+      "audience": 15156,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/205909",
       "token_symbol": "FLY",
       "token_chain": "robinhood",
-      "token_liq": 35457,
-      "token_vol24": 170479,
-      "token_url": "https://dexscreener.com/robinhood/0xdd822d2a705da7a45408dbf01255258567315c43eebd9c6d32164be6944c3e29",
+      "token_liq": 27965,
+      "token_vol24": 21184,
+      "token_url": "https://dexscreener.com/robinhood/0x91bb35454a194876c2cbe2afb515a7fa2b5905c42904fd851afab0a54ffc763e",
       "conflict": false,
       "match_quality": 0.7,
       "breakdown": {
@@ -655259,63 +655257,94 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (37 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (47,056,784): puede estar descubierta",
+        "narrativa poblada (39 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (39,600,806): puede estar descubierta",
         "verificar afinidad cultural a mano",
         "el token ya tiene volumen propio: puede estar siendo descubierto"
       ]
     },
     {
-      "score": 68,
+      "score": 75,
       "ip_name": "Blue Box Season 2",
       "event_date": "2026-10-04",
-      "days_until": 31,
+      "days_until": 30,
       "region": "JP",
-      "audience": 31386,
+      "audience": 31584,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/189123",
       "token_symbol": "BLUE",
-      "token_chain": "robinhood",
-      "token_liq": 21117,
-      "token_vol24": 0,
-      "token_url": "https://dexscreener.com/robinhood/0xa82ea4824b6afe38669a94dc6022a5bff071eb3a009506e45dca092043c282ba",
+      "token_chain": "bsc",
+      "token_liq": 18190,
+      "token_vol24": 339,
+      "token_url": "https://dexscreener.com/bsc/0xeb7fe075b7677c98c75e105d4f5ace0e19505567",
+      "conflict": false,
+      "match_quality": 1.0,
+      "breakdown": {
+        "audiencia": 35,
+        "ventana": 20,
+        "match": 20,
+        "dormido": 0,
+        "atencion_baja": 0,
+        "conflicto": 0
+      },
+      "flags": [
+        "narrativa poblada (74 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (3,772,397): puede estar descubierta",
+        "revisar cobertura CT (el par tiene redes)",
+        "verificar afinidad cultural a mano"
+      ]
+    },
+    {
+      "score": 72,
+      "ip_name": "Dragon Ball Super: Beerus",
+      "event_date": "2026-10-11",
+      "days_until": 37,
+      "region": "JP",
+      "audience": 8938,
+      "event_type": "season_premiere",
+      "source_url": "https://anilist.co/anime/206814",
+      "token_symbol": "DRAGON",
+      "token_chain": "solana",
+      "token_liq": 21463,
+      "token_vol24": 1,
+      "token_url": "https://dexscreener.com/solana/7rdyq7t59enpnvzifdcp4bvfg3etuvyjqzbrjwubaukm",
       "conflict": true,
       "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
         "ventana": 20,
         "match": 20,
-        "dormido": 16,
+        "dormido": 20,
         "atencion_baja": 2,
         "conflicto": -25
       },
       "flags": [
         "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (67 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (3,210,392): puede estar descubierta",
+        "narrativa poblada (40 tickers): posible sobre-cobertura",
+        "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1788387832,
-  "catalyst_events": 135,
+  "catalyst_last_run": 1788474345,
+  "catalyst_events": 139,
   "catalyst_alerted": [
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
-    "To You in the Beyond|you|2026-10-09",
-    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
-    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
-    "Blue Box Season 2|BLUE|2026-10-04",
-    "To You in the Beyond|YOU|2026-10-09",
-    "Firefly Wedding|ほたる|2026-10-09",
-    "Firefly Wedding|FLY|2026-10-09",
     "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
-    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20"
+    "To You in the Beyond|you|2026-10-09",
+    "Firefly Wedding|ほたる|2026-10-09",
+    "To You in the Beyond|YOU|2026-10-09",
+    "Firefly Wedding|FLY|2026-10-09",
+    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
+    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
+    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
+    "Blue Box Season 2|BLUE|2026-10-04"
   ],
-  "catalyst_snapshots": 82,
+  "catalyst_snapshots": 87,
   "catalyst_backtest": {
-    "tracked": 10,
-    "avg_gain_70plus": 26.2,
-    "n_70plus": 8,
+    "tracked": 11,
+    "avg_gain_70plus": 23.3,
+    "n_70plus": 9,
     "avg_gain_50_69": 0.1,
     "n_50_69": 2,
     "avg_gain_lt50": null,
@@ -655374,7 +655403,7 @@
         "entry_price": 0.03549,
         "max_price": 0.03553,
         "max_gain_pct": 0.1,
-        "n_snaps": 14
+        "n_snaps": 15
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
@@ -655383,7 +655412,7 @@
         "entry_price": 0.00673,
         "max_price": 0.00673,
         "max_gain_pct": 0.0,
-        "n_snaps": 13
+        "n_snaps": 14
       },
       {
         "ip_name": "Blue Box Season 2",
