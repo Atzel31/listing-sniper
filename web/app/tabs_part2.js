@@ -97,6 +97,7 @@ export function WatchlistTab({running,keys,ntfyTopic,onNewAlert}) {
             <option value="ETH">ETH</option>
             <option value="BNB">BNB</option>
             <option value="BASE">BASE</option>
+            <option value="RHOOD">RHOOD</option>
           </select>
           <button onClick={addToken} disabled={adding||!contract.trim()} style={{background:T.purple+"15",border:"1px solid "+T.purple+"33",color:T.purple,padding:"7px 14px",borderRadius:6,cursor:"pointer",fontSize:10,fontWeight:700,fontFamily:"monospace",opacity:adding?0.5:1}}>
             {adding?"...":"+ Add"}

@@ -263,7 +263,7 @@ function PositionsPanel({positions, onRefresh}) {
       {showAdd&&(
         <div style={{background:T.card,border:"1px solid "+T.border,borderRadius:8,padding:10,marginBottom:10}}>
           <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>
-            {["ETH","BNB","BASE","SOL"].map(c=>(
+            {["ETH","BNB","BASE","SOL","RHOOD"].map(c=>(
               <button key={c} onClick={()=>setChain(c)} style={{background:chain===c?T.green+"15":"transparent",border:"1px solid "+(chain===c?T.green+"44":T.border),color:chain===c?T.green:T.muted,padding:"3px 10px",borderRadius:5,cursor:"pointer",fontSize:9,fontFamily:"monospace",fontWeight:700}}>{c}</button>
             ))}
           </div>
@@ -318,7 +318,7 @@ function CombosPanel({combos}) {
   function doCopy(contract, idx) {
     if (copyText(contract)) { setCopiedIdx(idx); setTimeout(()=>setCopiedIdx(-1), 1500); }
   }
-  const dexChain = ch => ch==="ETH"?"ethereum":ch==="BNB"?"bsc":ch==="BASE"?"base":"solana";
+  const dexChain = ch => ch==="ETH"?"ethereum":ch==="BNB"?"bsc":ch==="BASE"?"base":ch==="RHOOD"?"robinhood":"solana";
   return (
     <div style={{background:T.orange+"08",border:"1px solid "+T.orange+"25",borderRadius:10,padding:14,marginBottom:16}}>
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
@@ -690,7 +690,7 @@ function AddAccumToken({customContracts=[], tokens=[], onRefresh}) {
         />
         <select value={chain} onChange={e=>setChain(e.target.value)}
           style={{background:T.bg,border:"1px solid "+T.border,color:T.text,padding:"8px 8px",borderRadius:6,fontSize:10,fontFamily:"monospace",cursor:"pointer"}}>
-          {["ETH","SOL","BNB","BASE"].map(c=><option key={c} value={c}>{c}</option>)}
+          {["ETH","SOL","BNB","BASE","RHOOD"].map(c=><option key={c} value={c}>{c}</option>)}
         </select>
         <button onClick={add} disabled={loading||!addr.trim()}
           style={{background:T.cyan+"15",border:"1px solid "+T.cyan+"44",color:T.cyan,padding:"8px 14px",borderRadius:6,cursor:loading?"default":"pointer",fontSize:10,fontFamily:"monospace",fontWeight:700,opacity:loading||!addr.trim()?0.5:1}}>
@@ -756,6 +756,7 @@ export function AccumulationTab({githubRepo}) {
     if (filter==="SOL") return t.chain==="SOL";
     if (filter==="BNB") return t.chain==="BNB";
     if (filter==="BASE") return t.chain==="BASE";
+    if (filter==="RHOOD") return t.chain==="RHOOD";
     return true;
   });
 
@@ -834,7 +835,7 @@ export function AccumulationTab({githubRepo}) {
 
           {/* Filters */}
           <div style={{display:"flex",gap:4,marginBottom:12,flexWrap:"wrap"}}>
-            {[["ALL","Todos"],["GOOD","≥50%"],["DEX","Solo DEX"],["ETH","ETH"],["SOL","SOL"],["BNB","BNB"],["BASE","BASE"]].map(([k,l])=>(
+            {[["ALL","Todos"],["GOOD","≥50%"],["DEX","Solo DEX"],["ETH","ETH"],["SOL","SOL"],["BNB","BNB"],["BASE","BASE"],["RHOOD","Robinhood"]].map(([k,l])=>(
               <button key={k} onClick={()=>setFilter(k)} style={{background:filter===k?T.purple+"0d":"transparent",border:"1px solid "+(filter===k?T.purple+"33":T.border),color:filter===k?T.purple:T.muted2,padding:"4px 10px",borderRadius:5,cursor:"pointer",fontSize:10,fontFamily:"monospace",fontWeight:filter===k?700:400}}>{l}</button>
             ))}
             <span style={{marginLeft:"auto",fontSize:10,color:T.muted2,fontFamily:"monospace",alignSelf:"center"}}>{vis.length} tokens</span>

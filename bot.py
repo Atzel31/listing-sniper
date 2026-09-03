@@ -45,17 +45,93 @@ LISTING_CACHE_MIN = int(os.environ.get("LISTING_CACHE_MIN", "60")) # min entre r
 
 # ─── CHAINS ───────────────────────────────────────────────────────────────────
 CHAINS = {
-    "ETH":  {"dex": "ethereum", "escan": 1},
-    "SOL":  {"dex": "solana",   "escan": None},
-    "BNB":  {"dex": "bsc",      "escan": 56},
-    "BASE": {"dex": "base",     "escan": 8453},
+    "ETH":   {"dex": "ethereum",  "escan": 1,    "explorer": "https://etherscan.io"},
+    "SOL":   {"dex": "solana",    "escan": None, "explorer": "https://solscan.io"},
+    "BNB":   {"dex": "bsc",       "escan": 56,   "explorer": "https://bscscan.com"},
+    "BASE":  {"dex": "base",      "escan": 8453, "explorer": "https://basescan.org"},
+    # Robinhood Chain: L2 de Robinhood sobre Arbitrum Orbit, chainid 4663.
+    # Etherscan V2 NO la indexa, asi que se lee con Blockscout (API compatible
+    # con Etherscan) + JSON-RPC publico para getCode/nonce.
+    "RHOOD": {"dex": "robinhood", "escan": None, "chainid": 4663,
+              "blockscout": "https://robinhoodchain.blockscout.com",
+              "rpc":        "https://rpc.mainnet.chain.robinhood.com",
+              "explorer":   "https://robinhoodchain.blockscout.com"},
 }
 BUY_URLS = {
-    "solana":   "https://jup.ag/swap/SOL-{c}",
-    "ethereum": "https://app.uniswap.org/#/swap?outputCurrency={c}",
-    "bsc":      "https://pancakeswap.finance/swap?outputCurrency={c}",
-    "base":     "https://app.uniswap.org/#/swap?chain=base&outputCurrency={c}",
+    "solana":    "https://jup.ag/swap/SOL-{c}",
+    "ethereum":  "https://app.uniswap.org/#/swap?outputCurrency={c}",
+    "bsc":       "https://pancakeswap.finance/swap?outputCurrency={c}",
+    "base":      "https://app.uniswap.org/#/swap?chain=base&outputCurrency={c}",
+    # En Robinhood Chain el router publico aun no tiene deep-link estable:
+    # mandamos a la ficha de DexScreener, que si resuelve el par correcto.
+    "robinhood": "https://dexscreener.com/robinhood/{c}",
 }
+
+# El WAF de Blockscout rechaza el User-Agent por defecto de requests (403).
+BLOCKSCOUT_UA = "Mozilla/5.0 (compatible; alpha-terminal/1.0)"
+RHOOD_MIN_LIQ    = int(os.environ.get("RHOOD_MIN_LIQ",    "3000"))  # liq minima para tomar en cuenta un token de Robinhood
+RHOOD_ACCUM_MAX  = int(os.environ.get("RHOOD_ACCUM_MAX",  "8"))     # cuantos tokens de Robinhood entran a acumulacion
+RHOOD_ENABLED    = os.environ.get("RHOOD_ENABLED", "true").lower() != "false"
+
+def evm_backend(chain):
+    """Que API sirve para leer transferencias de esta cadena: escan, blockscout o ninguna."""
+    c = CHAINS.get(chain, {})
+    if c.get("escan"):
+        return "escan"
+    if c.get("blockscout"):
+        return "blockscout"
+    return None
+
+def is_evm_verifiable(chain):
+    """True si la cadena tiene explorador con API de transferencias (ETH/BNB/BASE/RHOOD)."""
+    return evm_backend(chain) is not None
+
+def explorer_addr_url(chain, addr):
+    base = CHAINS.get(chain, {}).get("explorer", "https://etherscan.io")
+    path = "account" if chain == "SOL" else "address"
+    return f"{base}/{path}/{addr}"
+
+def blockscout_get(chain, params):
+    """GET a la API estilo-Etherscan de Blockscout. None si falla (nunca lanza)."""
+    base = CHAINS.get(chain, {}).get("blockscout")
+    if not base:
+        return None
+    try:
+        r = requests.get(f"{base}/api", params=params,
+                         headers={"User-Agent": BLOCKSCOUT_UA}, timeout=15)
+        if not r.ok:
+            return None
+        return r.json()
+    except Exception:
+        return None
+
+def blockscout_get_v2(chain, path, params=None):
+    """GET a la API v2 nativa de Blockscout (listados de tokens, etc.)."""
+    base = CHAINS.get(chain, {}).get("blockscout")
+    if not base:
+        return None
+    try:
+        r = requests.get(f"{base}/api/v2/{path}", params=params or {},
+                         headers={"User-Agent": BLOCKSCOUT_UA}, timeout=20)
+        if not r.ok:
+            return None
+        return r.json()
+    except Exception:
+        return None
+
+def rpc_call(chain, method, params):
+    """JSON-RPC directo a la cadena (Blockscout no expone module=proxy). None si falla."""
+    url = CHAINS.get(chain, {}).get("rpc")
+    if not url:
+        return None
+    try:
+        r = requests.post(url, json={"jsonrpc": "2.0", "id": 1,
+                                     "method": method, "params": params}, timeout=12)
+        if not r.ok:
+            return None
+        return r.json().get("result")
+    except Exception:
+        return None
 
 # ─── LISTA DE ACUMULACIÓN ─────────────────────────────────────────────────────
 ACCUMULATION_LIST = [
@@ -147,6 +223,8 @@ vol5m_prev         = {}
 accum_state        = {}    # symbol -> datos completos
 accum_prev         = {}    # symbol -> snapshot anterior (para detectar cambios)
 custom_accum_tokens = []   # tokens agregados por el usuario desde el dashboard [{contract, chain, name}]
+rhood_accum_tokens = []    # tokens de Robinhood Chain descubiertos automaticamente [{contract, chain, name}]
+rhood_last_discovery = 0   # ts del ultimo descubrimiento en Robinhood
 accum_big_buyers   = {}    # wallet -> {"tokens": set, "count": int, "total_usd": float, "last_buy": ts, "buys": int}
 week_events        = []    # eventos importantes de la semana
 last_weekly_week   = None  # ISO week del ultimo reporte enviado
@@ -239,6 +317,10 @@ def check_honeypot_eth(contract):
         return False, "check failed"
 
 def check_contract_verified_evm(contract, chain="ETH"):
+    if evm_backend(chain) == "blockscout":
+        data = blockscout_get(chain, {"module": "contract", "action": "getabi",
+                                      "address": contract})
+        return bool(data) and data.get("status") == "1"
     try:
         chainid = CHAINS.get(chain, {}).get("escan")
         if not chainid:
@@ -522,7 +604,7 @@ def add_custom_accum_token(contract, chain):
     chain = str(chain).upper().strip()
     contract = str(contract).strip()
     if chain not in CHAINS:
-        return {"status": "error", "msg": f"cadena invalida: {chain} (usa ETH/SOL/BNB/BASE)"}
+        return {"status": "error", "msg": f"cadena invalida: {chain} (usa ETH/SOL/BNB/BASE/RHOOD)"}
     # Validacion de formato de direccion segun cadena
     if chain == "SOL":
         if contract.startswith("0x") or not (32 <= len(contract) <= 44):
@@ -881,12 +963,27 @@ def btc_tweet_ctx():
     return f"BTC {pct(m['ch24h'])} {m.get('emoji', '')}".strip()
 
 
+def get_blockscout_token_txs(address, chain, by_contract=False, sort="desc", offset=25):
+    """Transferencias ERC-20 via Blockscout (misma forma de respuesta que Etherscan)."""
+    param = "contractaddress" if by_contract else "address"
+    data = blockscout_get(chain, {
+        "module": "account", "action": "tokentx",
+        param: address, "sort": sort, "page": 1, "offset": offset,
+    })
+    if not data:
+        return []
+    result = data.get("result")
+    return result if isinstance(result, list) else []
+
 def get_evm_token_txs_v2(address, chain="ETH", by_contract=False, sort="desc", offset=25):
-    """Transacciones de token via Etherscan V2 multichain (ETH/BNB/BASE)."""
+    """Transferencias de token. Etherscan V2 (ETH/BNB/BASE) o Blockscout (RHOOD)."""
+    backend = evm_backend(chain)
+    if backend == "blockscout":
+        return get_blockscout_token_txs(address, chain, by_contract, sort, offset)
+    if backend != "escan":
+        return []
     try:
-        chainid = CHAINS.get(chain, {}).get("escan")
-        if not chainid:
-            return []
+        chainid = CHAINS[chain]["escan"]
         k = ETHERSCAN_KEY or "YourApiKeyToken"
         param = "contractaddress" if by_contract else "address"
         r = requests.get(
@@ -1192,7 +1289,7 @@ def get_wallet_portfolio(address, chain="ETH", max_tokens=15):
     y que probablemente aun tiene. Usa el historial de transferencias (gratis).
     No es valoracion exacta, es un vistazo de en que esta metida la wallet.
     """
-    if CHAINS.get(chain, {}).get("escan") is None:
+    if not is_evm_verifiable(chain):
         return []  # SOL no soportado con APIs gratis de forma confiable
     txs = get_evm_token_txs_v2(address, chain, sort="desc", offset=100)
     if not txs:
@@ -1879,8 +1976,13 @@ def check_holder_growth(contract, symbol, chain):
 
 def scan_new_tokens():
     log("-- Scan nuevos tokens --")
-    for chain_id, chain_label in [("ethereum", "ETH"), ("solana", "SOL")]:
-        min_liq = MIN_LIQUIDITY if chain_label == "ETH" else max(2000, MIN_LIQUIDITY // 2)
+    chains_to_scan = [("ethereum", "ETH"), ("solana", "SOL")]
+    if RHOOD_ENABLED:
+        chains_to_scan.append(("robinhood", "RHOOD"))
+    for chain_id, chain_label in chains_to_scan:
+        min_liq = (MIN_LIQUIDITY if chain_label == "ETH"
+                   else RHOOD_MIN_LIQ if chain_label == "RHOOD"
+                   else max(2000, MIN_LIQUIDITY // 2))
         for source_fn, src_label in [(get_new_token_profiles, "NEW_PAIR"), (get_boosted, "DEXSCREENER")]:
             items = source_fn(chain_id)
             for item in items:
@@ -1895,8 +1997,9 @@ def scan_new_tokens():
                 seen_new_pairs.add(addr)
                 if not passed:
                     continue
-                verified = check_contract_verified_evm(addr, "ETH") if chain_label == "ETH" else False
-                if chain_label == "ETH":
+                verified = (check_contract_verified_evm(addr, chain_label)
+                            if chain_label in ("ETH", "RHOOD") else False)
+                if chain_label in ("ETH", "RHOOD"):
                     time.sleep(0.3)
                 vol_accel, _ = detect_volume_acceleration(addr, dex.get("vol5m", 0))
                 dex["vol_accel"] = vol_accel
@@ -1921,8 +2024,8 @@ def scan_new_tokens():
                     notify_new_token(dex["name"], chain_label, score, dex, src_label, extra_str)
                     # Iniciar tracking post-notificacion
                     start_tracking(addr, dex["name"], chain_label, dex, pprob, src_label)
-                if float(dex.get("ch1h", 0) or 0) >= PUMP_THRESHOLD and chain_label == "ETH":
-                    analyze_insiders(addr, "ETH", dex)
+                if float(dex.get("ch1h", 0) or 0) >= PUMP_THRESHOLD and chain_label in ("ETH", "RHOOD"):
+                    analyze_insiders(addr, chain_label, dex)
                 time.sleep(0.3)
 
 def analyze_insiders(contract, chain, dex):
@@ -1999,7 +2102,7 @@ def check_insider_convergence(contract, symbol, chain):
 def detect_big_buyers(contract, chain, symbol, price_usd=0):
     """Registra compradores grandes recientes en tokens EVM de la lista.
     Captura monto en USD y frecuencia para alimentar el score de insider."""
-    if CHAINS.get(chain, {}).get("escan") is None:
+    if not is_evm_verifiable(chain):
         return 0
     txs = get_evm_token_txs_v2(contract, chain, by_contract=True, offset=40)
     now = time.time()
@@ -2050,7 +2153,7 @@ def detect_big_buyers(contract, chain, symbol, price_usd=0):
                             f"SMART MONEY: wallet en {len(entry['tokens'])} tokens de tu lista",
                             f"Wallet: {short(to_addr)}\n"
                             f"Comprando: {tokens_str}{usd_str}\n"
-                            f"Ver: https://etherscan.io/address/{to_addr}",
+                            f"Ver: {explorer_addr_url(chain, to_addr)}",
                             priority="high", tags="eyes,moneybag",
                         )
                         register_week_event(symbol, "smart_money",
@@ -2063,7 +2166,7 @@ def assess_wallet_quality(addr, chain):
     Retorna (es_calidad: bool, razon: str, n_txs: int, n_tokens_distintos: int).
     Un insider real es SELECTIVO: pocas monedas, no miles de transacciones.
     """
-    if CHAINS.get(chain, {}).get("escan") is None:
+    if not is_evm_verifiable(chain):
         return True, "SOL (no verificable)", 0, 0  # en SOL no podemos verificar, aceptar
     txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=100)
     time.sleep(0.3)
@@ -2088,14 +2191,14 @@ def examine_wallet(addr, chain):
     if not addr.startswith("0x") or len(addr) != 42:
         if chain != "SOL":
             return {"error": "Direccion EVM invalida (debe empezar con 0x y tener 42 caracteres)"}
-    if CHAINS.get(chain, {}).get("escan") is None:
-        return {"error": f"La cadena {chain} no es verificable con APIs gratuitas (solo ETH/BNB/BASE)"}
+    if not is_evm_verifiable(chain):
+        return {"error": f"La cadena {chain} no es verificable con APIs gratuitas (solo ETH/BNB/BASE/RHOOD)"}
 
     # 1. Comportamiento (filtro de calidad)
     is_quality, reason, n_txs, distinct_tokens = assess_wallet_quality(addr, chain)
 
     # 2. Coincidencias con la lista de acumulacion
-    accum_symbols = {t["name"].upper() for t in ACCUMULATION_LIST}
+    accum_symbols = {t["name"].upper() for t in accum_universe()}
     txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=100)
     time.sleep(0.3)
     touched_symbols = {}
@@ -2161,7 +2264,7 @@ def examine_wallet(addr, chain):
 def add_manual_wallet(addr, chain):
     """Agrega una wallet examinada a las smart wallets (tras el visto bueno del usuario)."""
     addr = addr.lower().strip()
-    accum_symbols = {t["name"].upper() for t in ACCUMULATION_LIST}
+    accum_symbols = {t["name"].upper() for t in accum_universe()}
     txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=100)
     time.sleep(0.3)
     touched = {}
@@ -2285,7 +2388,13 @@ def scan_accumulation():
     """Scan completo de la lista de acumulacion. Detecta eventos urgentes mid-week."""
     log("== Scan ACUMULACION ==")
 
-    for token in ACCUMULATION_LIST + custom_accum_tokens:
+    # Refrescar los tokens de Robinhood Chain (throttle interno de RHOOD_DISCOVERY_H)
+    try:
+        discover_rhood_tokens()
+    except Exception as e:
+        log(f"  [rhood error] {e}")
+
+    for token in accum_universe():
         symbol, chain, contract = token["name"], token["chain"], token["contract"]
         dex = get_dex(contract, chain)
         time.sleep(0.5)
@@ -2404,6 +2513,82 @@ def scan_accumulation():
 
     log("== Scan ACUMULACION completo ==")
 
+# ─── DESCUBRIMIENTO EN ROBINHOOD CHAIN ───────────────────────────────
+# Robinhood Chain es nueva y sus tokens rotan: en vez de una lista fija, se
+# descubren los de mas trafico real y se meten al mismo motor de acumulacion
+# e insiders que el resto de cadenas.
+
+# Stables y envueltos: no son "acumulacion", son unidad de cuenta del chain.
+RHOOD_SKIP_SYMBOLS = {
+    "USDG", "USDC", "USDT", "USDE", "DAI", "SUSDE", "SYRUPUSDG", "USDS",
+    "WETH", "ETH", "WBTC", "CBBTC", "TBTC", "STETH", "WSTETH", "RETH",
+}
+RHOOD_DISCOVERY_H = int(os.environ.get("RHOOD_DISCOVERY_H", "12"))  # horas entre descubrimientos
+
+def discover_rhood_tokens(force=False):
+    """
+    Top tokens de Robinhood Chain con trafico DEX real.
+    Blockscout da el ranking del chain (volumen on-chain); DexScreener
+    confirma que hay par y liquidez de verdad. Devuelve la lista vigente.
+    """
+    global rhood_last_discovery
+    if not RHOOD_ENABLED:
+        return []
+    if not force and time.time() - rhood_last_discovery < RHOOD_DISCOVERY_H * 3600:
+        return rhood_accum_tokens
+    data = blockscout_get_v2("RHOOD", "tokens", {"type": "ERC-20"})
+    if not data or not isinstance(data.get("items"), list):
+        log("  [rhood] Blockscout sin respuesta, conservo la lista anterior")
+        return rhood_accum_tokens
+
+    candidates = []
+    for t in data["items"]:
+        sym  = (t.get("symbol") or "").upper().strip()
+        addr = t.get("address_hash") or t.get("address") or ""
+        if not sym or not addr or sym in RHOOD_SKIP_SYMBOLS or is_spam_name(sym):
+            continue
+        try:
+            vol = float(t.get("volume_24h") or 0)
+        except (TypeError, ValueError):
+            vol = 0.0
+        if vol <= 0:
+            continue
+        candidates.append({"contract": addr, "name": sym, "vol": vol})
+
+    candidates.sort(key=lambda c: c["vol"], reverse=True)
+    found = []
+    for c in candidates[: RHOOD_ACCUM_MAX * 3]:   # margen: varios no tendran par en DexScreener
+        if len(found) >= RHOOD_ACCUM_MAX:
+            break
+        dex = get_dex(c["contract"], "RHOOD")
+        time.sleep(0.4)
+        if not dex or dex.get("real_chain") != "robinhood":
+            continue
+        if dex.get("liq", 0) < RHOOD_MIN_LIQ:
+            continue
+        found.append({"contract": c["contract"], "chain": "RHOOD", "name": c["name"]})
+
+    if found:
+        rhood_accum_tokens[:] = found
+        rhood_last_discovery = time.time()
+        log(f"  [rhood] {len(found)} tokens en seguimiento: " +
+            ", ".join(t["name"] for t in found))
+    else:
+        log("  [rhood] ningun token paso el filtro de liquidez, conservo la lista anterior")
+    return rhood_accum_tokens
+
+def accum_universe():
+    """Todos los tokens que vigila acumulacion: fijos + Robinhood + del usuario."""
+    seen = set()
+    out = []
+    for t in ACCUMULATION_LIST + rhood_accum_tokens + custom_accum_tokens:
+        k = (t["contract"].lower(), t["chain"])
+        if k in seen:
+            continue
+        seen.add(k)
+        out.append(t)
+    return out
+
 # ─── MÓDULO 7B: FORENSE HISTÓRICO DE INSIDERS ────────────────────────────────
 def get_price_peak_evm(contract, chain):
     """
@@ -2430,10 +2615,10 @@ def forensic_analysis_token(token):
     """
     Analisis forense de un token de la lista de acumulacion.
     Busca wallets que compraron ANTES del mayor pump historico (posibles insiders).
-    Solo EVM (ETH/BNB/BASE). En SOL es muy limitado con APIs gratis.
+    Solo EVM (ETH/BNB/BASE/RHOOD). En SOL es muy limitado con APIs gratis.
     """
     symbol, chain, contract = token["name"], token["chain"], token["contract"]
-    if CHAINS.get(chain, {}).get("escan") is None:
+    if not is_evm_verifiable(chain):
         return 0  # SOL/CEX: forense no disponible con APIs gratis
 
     peak_ts = get_price_peak_evm(contract, chain)
@@ -2498,7 +2683,7 @@ def run_forensic_analysis():
     global last_forensic_day
     log("=== ANALISIS FORENSE DE INSIDERS ===")
     total = 0
-    evm_tokens = [t for t in ACCUMULATION_LIST if CHAINS.get(t["chain"], {}).get("escan")]
+    evm_tokens = [t for t in accum_universe() if is_evm_verifiable(t["chain"])]
     for token in evm_tokens:
         try:
             total += forensic_analysis_token(token)
@@ -2573,7 +2758,7 @@ def scan_tracked_whales():
     now = time.time()
     for addr, w in list(tracked_whale_set.items()):
         chain = w["chain"]
-        if CHAINS.get(chain, {}).get("escan") is None:
+        if not is_evm_verifiable(chain):
             continue  # SOL: seguimiento limitado
         txs = get_evm_token_txs_v2(addr, chain, sort="desc", offset=15)
         time.sleep(0.4)
@@ -2737,7 +2922,7 @@ def github_read_json(path):
 DATA_DIR = os.environ.get("DATA_DIR", "/data").strip() or "/data"
 STATE_PATH = "data/state.json"                     # ruta en GitHub (respaldo opcional)
 STATE_FILE = os.path.join(DATA_DIR, "state.json")  # ruta en el Volume (principal)
-BOT_VERSION = "v9.1"
+BOT_VERSION = "v9.2"
 last_state_save = 0
 last_github_backup = 0
 last_outcome_check = 0  # Modulo 3: ultimo chequeo del ledger de outcomes (cada 6h)
@@ -2816,6 +3001,8 @@ def serialize_state():
         "accum_state": accum_state,
         "accum_prev": accum_prev,
         "custom_accum_tokens": custom_accum_tokens,
+        "rhood_accum_tokens": rhood_accum_tokens,
+        "rhood_last_discovery": rhood_last_discovery,
         # Tracking post-notificacion: se persiste para que el ciclo de 48h
         # sobreviva redeploys y los outcomes lleguen a registrarse (win rate por
         # tipo / mejores horas dependian de esto y quedaban vacios al reiniciar).
@@ -2862,7 +3049,7 @@ def save_state(force=False):
 
 def load_state():
     """Carga el estado al arrancar: Volume primero, GitHub como respaldo."""
-    global last_daily_day, last_weekly_week, last_forensic_day
+    global last_daily_day, last_weekly_week, last_forensic_day, rhood_last_discovery
     state = None
     source = ""
     # 1. Volume
@@ -2920,6 +3107,8 @@ def load_state():
         # Acumulacion: restaurar para que el dashboard muestre datos al instante
         accum_state.update(state.get("accum_state", {}))
         accum_prev.update(state.get("accum_prev", {}))
+        rhood_accum_tokens[:] = state.get("rhood_accum_tokens", []) or []
+        rhood_last_discovery = state.get("rhood_last_discovery", 0) or 0
         for t in state.get("custom_accum_tokens", []):
             if not any(x["contract"].lower() == t["contract"].lower() for x in custom_accum_tokens):
                 custom_accum_tokens.append(t)
@@ -3390,6 +3579,40 @@ def start_api_server():
             except Exception as e:
                 return jsonify({"status": "error", "msg": str(e)})
 
+        @app.route("/api/rhood")
+        def api_rhood():
+            # Estado del modulo Robinhood Chain: que tokens sigue y desde cuando
+            try:
+                wallets = [
+                    {"address": a, "tokens": sorted(w.get("tokens", set())),
+                     "insider_score": w.get("insider_score", 0), "tag": w.get("tag", "smart")}
+                    for a, w in smart_wallets.items() if w.get("chain") == "RHOOD"
+                ]
+                wallets.sort(key=lambda w: w["insider_score"], reverse=True)
+                return jsonify({
+                    "enabled": RHOOD_ENABLED,
+                    "chainid": CHAINS["RHOOD"]["chainid"],
+                    "explorer": CHAINS["RHOOD"]["explorer"],
+                    "min_liq": RHOOD_MIN_LIQ,
+                    "max_tokens": RHOOD_ACCUM_MAX,
+                    "last_discovery": rhood_last_discovery,
+                    "tokens": rhood_accum_tokens,
+                    "insiders": wallets[:20],
+                    "accum": [t for t in accum_state.values() if t.get("chain") == "RHOOD"],
+                })
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
+        @app.route("/api/rhood/run")
+        def api_rhood_run():
+            # Fuerza un redescubrimiento de tokens en Robinhood Chain
+            try:
+                threading.Thread(
+                    target=lambda: discover_rhood_tokens(force=True), daemon=True).start()
+                return jsonify({"status": "started"})
+            except Exception as e:
+                return jsonify({"status": "error", "msg": str(e)})
+
         @app.route("/api/health")
         def api_health():
             return jsonify({"status": "ok", "cycle": cycle_count})
@@ -3517,6 +3740,8 @@ if __name__ == "__main__":
     log(f"Alpha Terminal Bot {BOT_VERSION} iniciado")
     log(f"  Ntfy           : {NTFY_TOPIC}")
     log(f"  Etherscan V2   : {'OK (ETH+BNB+BASE)' if ETHERSCAN_KEY else 'sin key'}")
+    log(f"  Robinhood Chain: {'ON' if RHOOD_ENABLED else 'OFF'} | Blockscout+RPC | "
+        f"liq min {fmt_usd(RHOOD_MIN_LIQ)} | max {RHOOD_ACCUM_MAX} tokens en acumulacion")
     log(f"  GitHub         : {'OK (respaldo)' if GITHUB_TOKEN and GITHUB_REPO else 'sin configurar (opcional)'}")
     # Diagnostico: longitudes (no valores) para detectar variables vacias o con espacios invisibles
     log(f"  [diag] len(GITHUB_TOKEN)={len(GITHUB_TOKEN)} len(GITHUB_REPO)={len(GITHUB_REPO)} repo='{GITHUB_REPO}'")

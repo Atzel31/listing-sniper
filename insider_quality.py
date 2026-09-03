@@ -11,8 +11,10 @@ Una wallet se DESCARTA si:
   - TX totales > MAX_TX_COUNT (nonce)                -> bot / infraestructura
   - Tokens distintos en 30 dias > MAX_UNIQUE_TOKENS  -> market maker / spray bot
 
-Usa Etherscan V2 multichain (misma ETHERSCAN_KEY del bot). SOL no es
-verificable con estas APIs: se acepta sin filtrar (igual que el bot ya hace).
+Usa Etherscan V2 multichain (misma ETHERSCAN_KEY del bot). Robinhood Chain
+(RHOOD) no esta en Etherscan V2: se resuelve con su JSON-RPC publico
+(getCode/nonce) y su Blockscout (tokentx). SOL no es verificable con estas
+APIs: se acepta sin filtrar (igual que el bot ya hace).
 
 Regla de oro: cualquier fallo de API deja la wallet como "pending" y NO la
 descarta (no perdemos insiders buenos por un 429). Solo se actua ante un
@@ -30,6 +32,12 @@ API = "https://api.etherscan.io/v2/api"
 
 # Mapa de cadena -> chainid de Etherscan V2. SOL no aplica.
 CHAIN_IDS = {"ETH": 1, "ETHEREUM": 1, "BNB": 56, "BSC": 56, "BASE": 8453}
+
+# Robinhood Chain: fuera de Etherscan V2, se lee con RPC + Blockscout.
+RHOOD_RPC = "https://rpc.mainnet.chain.robinhood.com"
+RHOOD_BLOCKSCOUT = "https://robinhoodchain.blockscout.com/api"
+RHOOD_UA = "Mozilla/5.0 (compatible; alpha-terminal/1.0)"  # el WAF rechaza el UA de requests
+RHOOD_ALIASES = {"RHOOD", "ROBINHOOD"}
 
 ETHERSCAN_KEY = os.environ.get("ETHERSCAN_KEY", "").strip()
 
@@ -51,6 +59,62 @@ def _escan_get(params):
         return r.json()
     except Exception:
         return None
+
+
+def _rhood_rpc(method, params):
+    """JSON-RPC de Robinhood Chain. Devuelve result o None (-> pending)."""
+    try:
+        r = requests.post(RHOOD_RPC, timeout=20,
+                          json={"jsonrpc": "2.0", "id": 1,
+                                "method": method, "params": params})
+        if r.status_code != 200:
+            return None
+        return r.json().get("result")
+    except Exception:
+        return None
+
+
+def _rhood_tokentx(address):
+    """Transferencias ERC-20 de una wallet via Blockscout. Lista o None."""
+    try:
+        r = requests.get(RHOOD_BLOCKSCOUT, timeout=20,
+                         headers={"User-Agent": RHOOD_UA},
+                         params={"module": "account", "action": "tokentx",
+                                 "address": address, "sort": "desc",
+                                 "page": 1, "offset": 1000})
+        if r.status_code != 200:
+            return None
+        result = r.json().get("result")
+        return result if isinstance(result, list) else None
+    except Exception:
+        return None
+
+
+def _rhood_quality(address):
+    """
+    Mismos tres criterios que en Etherscan, pero con las APIs de Robinhood.
+    Devuelve (is_contract, tx_total, tokens_30d); None en lo que no se pudo leer.
+    """
+    code = _rhood_rpc("eth_getCode", [address, "latest"])
+    is_contract = (len(code) > 2) if isinstance(code, str) and code.startswith("0x") else None
+
+    nonce = _rhood_rpc("eth_getTransactionCount", [address, "latest"])
+    try:
+        tx_total = int(nonce, 16) if isinstance(nonce, str) else None
+    except (ValueError, TypeError):
+        tx_total = None
+
+    txs = _rhood_tokentx(address)
+    if txs is None:
+        tokens_30d = None
+    else:
+        cutoff = int(time.time()) - 30 * 86400
+        tokens_30d = len({
+            tx.get("contractAddress", "").lower()
+            for tx in txs
+            if tx.get("contractAddress") and int(tx.get("timeStamp", 0) or 0) >= cutoff
+        })
+    return is_contract, tx_total, tokens_30d
 
 
 def _is_contract(chain_id, address):
@@ -116,6 +180,32 @@ def wallet_quality(address, chain="ETH"):
     (se mantiene la wallet; se reintentara luego).
     """
     chain = str(chain).upper()
+
+    if chain in RHOOD_ALIASES:
+        is_contract, tx_total, tokens_30d = _rhood_quality(address)
+        if is_contract is None:
+            return {"status": "pending", "valid": True, "reason": "api_error (getCode RHOOD)",
+                    "is_contract": None, "tx_total": None, "tokens_30d": None}
+        if is_contract:
+            return {"status": "ok", "valid": False, "reason": "es un contrato (no insider humano)",
+                    "is_contract": True, "tx_total": None, "tokens_30d": None}
+        if tx_total is None:
+            return {"status": "pending", "valid": True, "reason": "api_error (txCount RHOOD)",
+                    "is_contract": False, "tx_total": None, "tokens_30d": None}
+        if tx_total > MAX_TX_COUNT:
+            return {"status": "ok", "valid": False,
+                    "reason": f"demasiadas tx ({tx_total} > {MAX_TX_COUNT}) = bot/infra",
+                    "is_contract": False, "tx_total": tx_total, "tokens_30d": None}
+        if tokens_30d is None:
+            return {"status": "pending", "valid": True, "reason": "api_error (tokentx RHOOD)",
+                    "is_contract": False, "tx_total": tx_total, "tokens_30d": None}
+        if tokens_30d > MAX_UNIQUE_TOKENS:
+            return {"status": "ok", "valid": False,
+                    "reason": f"toca demasiados tokens en 30d ({tokens_30d} > {MAX_UNIQUE_TOKENS}) = MM/spray",
+                    "is_contract": False, "tx_total": tx_total, "tokens_30d": tokens_30d}
+        return {"status": "ok", "valid": True, "reason": "insider selectivo (Robinhood Chain)",
+                "is_contract": False, "tx_total": tx_total, "tokens_30d": tokens_30d}
+
     chain_id = CHAIN_IDS.get(chain)
     if chain_id is None:
         # SOL u otra cadena no verificable con Etherscan: aceptar sin filtrar.

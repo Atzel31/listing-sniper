@@ -40,7 +40,13 @@ export const accumLabel = s => s>=70?"Excelente":s>=50?"Bueno":s>=30?"Neutral":"
 export const pumpColor = p => p>=70?"#22c55e":p>=45?"#eab308":"#ef4444";
 export const pumpLabel = p => p>=70?"Alta":p>=45?"Media":"Baja";
 export const multStr = m => m>=2?("x"+m.toFixed(2)):("+"+((m-1)*100).toFixed(0)+"%");
-export const chainCol = c => ({SOL:"#9945ff",ETH:"#6366f1",BNB:"#f0b90b",BASE:"#0052ff",CEX:"#888"})[c]||"#666";
+export const chainCol = c => ({SOL:"#9945ff",ETH:"#6366f1",BNB:"#f0b90b",BASE:"#0052ff",RHOOD:"#00c805",CEX:"#888"})[c]||"#666";
+// Etiqueta corta por cadena (RHOOD = Robinhood Chain)
+export const chainLabel = c => c==="RHOOD" ? "RHOOD" : c;
+// Slug de la cadena en DexScreener
+export const dexChainId = c => c==="SOL"?"solana":c==="BNB"?"bsc":c==="BASE"?"base":c==="RHOOD"?"robinhood":"ethereum";
+// Explorador de bloques por cadena
+export const explorerAddr = (c,a) => (c==="SOL"?"https://solscan.io/account/":c==="BNB"?"https://bscscan.com/address/":c==="BASE"?"https://basescan.org/address/":c==="RHOOD"?"https://robinhoodchain.blockscout.com/address/":"https://etherscan.io/address/")+a;
 
 // ─── EXCHANGE WALLETS (para referencia visual) ────────────────────────────────
 export const EX_ETH = [
@@ -156,7 +162,7 @@ export function calcPumpProb(d) {
 
 // ─── DEXSCREENER (cliente, para Sniper/Watchlist/Whales) ─────────────────────
 export async function getDex(address, chain) {
-  const chainId = chain==="SOL"?"solana":chain==="BNB"?"bsc":chain==="BASE"?"base":"ethereum";
+  const chainId = chain==="SOL"?"solana":chain==="BNB"?"bsc":chain==="BASE"?"base":chain==="RHOOD"?"robinhood":"ethereum";
   const base = "https://api.dexscreener.com/latest/dex/tokens/"+address;
   const urls = [base,"https://corsproxy.io/?"+base,"https://api.allorigins.win/raw?url="+encodeURIComponent(base)];
   for (const url of urls) {

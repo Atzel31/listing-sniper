@@ -427,7 +427,7 @@ function WalletCard({w, rank, tagInfo}) {
   const [port, setPort] = useState(null);
   const [loadingPort, setLoadingPort] = useState(false);
   const ti = tagInfo[w.tag] || tagInfo.smart;
-  const explorer = w.chain==="ETH"?"https://etherscan.io/address/":w.chain==="BNB"?"https://bscscan.com/address/":w.chain==="BASE"?"https://basescan.org/address/":"https://solscan.io/account/";
+  const explorer = w.chain==="ETH"?"https://etherscan.io/address/":w.chain==="BNB"?"https://bscscan.com/address/":w.chain==="BASE"?"https://basescan.org/address/":w.chain==="RHOOD"?"https://robinhoodchain.blockscout.com/address/":"https://solscan.io/account/";
 
   function doCopy(e) {
     e.stopPropagation();
@@ -489,7 +489,7 @@ function WalletCard({w, rank, tagInfo}) {
           {!loadingPort&&port&&port.length>0&&(
             <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
               {port.map((h,i)=>(
-                <a key={i} href={"https://dexscreener.com/"+(w.chain==="ETH"?"ethereum":w.chain==="BNB"?"bsc":"base")+"/"+h.contract} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
+                <a key={i} href={"https://dexscreener.com/"+(w.chain==="ETH"?"ethereum":w.chain==="BNB"?"bsc":w.chain==="RHOOD"?"robinhood":"base")+"/"+h.contract} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
                   <Badge color={T.cyan} small>{h.symbol} ↗</Badge>
                 </a>
               ))}
@@ -543,10 +543,10 @@ function WalletExaminer() {
       {open&&(
         <div style={{padding:"0 14px 14px"}}>
           <div style={{fontSize:9,color:T.muted,fontFamily:"monospace",marginBottom:10,lineHeight:1.5}}>
-            Pega una direccion y el bot la analiza: comportamiento, coincidencias con tu lista, portfolio y un veredicto. Solo ETH/BNB/BASE.
+            Pega una direccion y el bot la analiza: comportamiento, coincidencias con tu lista, portfolio y un veredicto. Solo ETH/BNB/BASE/RHOOD.
           </div>
           <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>
-            {["ETH","BNB","BASE"].map(c=>(
+            {["ETH","BNB","BASE","RHOOD"].map(c=>(
               <button key={c} onClick={()=>setChain(c)} style={{background:chain===c?T.purple+"15":"transparent",border:"1px solid "+(chain===c?T.purple+"44":T.border),color:chain===c?T.purple:T.muted,padding:"3px 10px",borderRadius:5,cursor:"pointer",fontSize:9,fontFamily:"monospace",fontWeight:700}}>{c}</button>
             ))}
           </div>
@@ -585,7 +585,7 @@ function WalletExaminer() {
                   <div style={{fontSize:8,color:T.cyan,fontFamily:"monospace",marginBottom:4}}>PORTFOLIO ACTUAL:</div>
                   <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
                     {result.portfolio.map((h,i)=>(
-                      <a key={i} href={"https://dexscreener.com/"+(chain==="ETH"?"ethereum":chain==="BNB"?"bsc":"base")+"/"+h.contract} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
+                      <a key={i} href={"https://dexscreener.com/"+(chain==="ETH"?"ethereum":chain==="BNB"?"bsc":chain==="RHOOD"?"robinhood":"base")+"/"+h.contract} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
                         <Badge color={T.cyan} small>{h.symbol} ↗</Badge>
                       </a>
                     ))}
@@ -723,7 +723,7 @@ export function InsidersTab({pumpThreshold}) {
           {alerts.slice(0,6).map((a,i)=>(
             <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",borderBottom:"1px solid "+T.bg}}>
               <Badge color={chainCol(a.chain)} small>{a.chain}</Badge>
-              <a href={(a.chain==="ETH"?"https://etherscan.io/address/":a.chain==="BNB"?"https://bscscan.com/address/":"https://basescan.org/address/")+a.wallet} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:tagInfo[a.tag]?.color||T.muted,fontFamily:"monospace",textDecoration:"none"}}>{shortAddr(a.wallet)}</a>
+              <a href={(a.chain==="ETH"?"https://etherscan.io/address/":a.chain==="BNB"?"https://bscscan.com/address/":a.chain==="RHOOD"?"https://robinhoodchain.blockscout.com/address/":"https://basescan.org/address/")+a.wallet} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:tagInfo[a.tag]?.color||T.muted,fontFamily:"monospace",textDecoration:"none"}}>{shortAddr(a.wallet)}</a>
               <span style={{fontSize:10,color:T.dim}}>compro</span>
               <span style={{fontSize:11,fontWeight:700,color:T.text,fontFamily:"monospace",flex:1}}>{a.token}</span>
               {a.tag==="insider_activo"&&<Badge color={T.red} small>ACTIVO</Badge>}
