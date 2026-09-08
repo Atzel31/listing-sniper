@@ -1,5 +1,5 @@
 {
-  "saved_at": 1788874921,
+  "saved_at": 1788874972,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -739925,28 +739925,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.6% 24h ⚪",
-        "entry_price": 0.59077431,
-        "max_price": 0.5992022587,
-        "min_price": 0.5256347438,
-        "last_price": 0.5256347438,
-        "status": "open",
-        "ts": "2026-09-05T13:39:48.450711+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 1.4,
-        "min_loss_pct": -11.0,
-        "closed_at": "2026-09-08T13:42:01.268192+00:00"
-      },
-      {
         "token": "AMC",
         "contract": "0x385f4f8ae47651ce5f58f5265395a669f8281e18",
         "chain": "RHOOD",
@@ -740032,7 +740010,7 @@
         "entry_price": 3.672573832e-06,
         "max_price": 3.70643244e-06,
         "min_price": 3.556308911e-06,
-        "last_price": 3.606159081e-06,
+        "last_price": 3.564234575e-06,
         "status": "open",
         "ts": "2026-09-07T00:35:03.728886+00:00"
       },
@@ -740050,7 +740028,7 @@
         "entry_price": 0.1734545289,
         "max_price": 0.1747441681,
         "min_price": 0.1587550885,
-        "last_price": 0.1587550885,
+        "last_price": 0.1587600098,
         "status": "open",
         "ts": "2026-09-07T01:47:09.127918+00:00"
       },
@@ -740085,8 +740063,8 @@
         "btc_context": "Mercado: BTC -0.4% 24h ⚪",
         "entry_price": 0.3920974335,
         "max_price": 0.3920974335,
-        "min_price": 0.3776630561,
-        "last_price": 0.3776630561,
+        "min_price": 0.3700952617,
+        "last_price": 0.3700952617,
         "status": "open",
         "ts": "2026-09-07T13:03:03.128726+00:00"
       },
@@ -742369,18 +742347,32 @@
         "ts": "2026-09-05T03:03:48.073153+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-08T03:08:12.076772+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.6% 24h ⚪",
+        "entry_price": 0.59077431,
+        "max_price": 0.5992022587,
+        "min_price": 0.5256347438,
+        "last_price": 0.5256347438,
+        "status": "open",
+        "ts": "2026-09-05T13:39:48.450711+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 1.4,
+        "min_loss_pct": -11.0,
+        "closed_at": "2026-09-08T13:42:01.268192+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1787745281588-40b699",
-      "kind": "convergence",
-      "text": "🎯 1437 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.8% ⚪",
-      "hash": "40b699394fec70e2",
-      "created_ts": 1787745281,
-      "retries": 4
-    },
     {
       "id": "1787746121612-7517a7",
       "kind": "convergence",
