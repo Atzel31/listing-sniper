@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789156852,
+  "saved_at": 1789156919,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -758543,26 +758543,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "PENDLE",
-        "contract": "0x5e49e1f85813f2b65858860a3fa231b4186f2e0e",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -1.3% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-08T20:00:38.457963+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-11T20:00:52.405574+00:00"
-      },
-      {
         "token": "SPX6900",
         "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
         "chain": "ETH",
@@ -758594,7 +758574,7 @@
         "entry_price": 3.451198617e-06,
         "max_price": 3.482665363e-06,
         "min_price": 3.238016624e-06,
-        "last_price": 3.297014993e-06,
+        "last_price": 3.297110431e-06,
         "status": "open",
         "ts": "2026-09-10T00:48:30.089650+00:00"
       },
@@ -758666,7 +758646,7 @@
         "entry_price": 0.1519237265,
         "max_price": 0.1519237265,
         "min_price": 0.1413571035,
-        "last_price": 0.1413571035,
+        "last_price": 0.1425603806,
         "status": "open",
         "ts": "2026-09-10T06:56:09.102200+00:00"
       },
@@ -761315,14 +761295,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788134632967-3dab77",
-      "kind": "convergence",
-      "text": "🎯 1694 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.8% ⚪",
-      "hash": "3dab77764ec836e6",
-      "created_ts": 1788134632,
-      "retries": 15
-    },
     {
       "id": "1788135516619-de7d98",
       "kind": "convergence",
