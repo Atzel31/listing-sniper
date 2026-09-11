@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789128137,
+  "saved_at": 1789128175,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -732839,10 +732839,26 @@
       "insider_score": 92,
       "tag": "insider_activo"
     },
+    "0x1b6257cae4192e62b629efca21771be3d759183d": {
+      "chain": "ETH",
+      "label": "0x1b62...183d",
+      "last_check": 0,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
     "0x8feab81d36e7576107d5de0758c1b839be31b4f6": {
       "chain": "ETH",
       "label": "0x8fea...b4f6",
       "last_check": 1789108639,
+      "last_seen_tokens": [],
+      "insider_score": 92,
+      "tag": "insider_activo"
+    },
+    "0x18dc29ca1b75c9a07d4d8f82b5676a0b2b4725b4": {
+      "chain": "ETH",
+      "label": "0x18dc...25b4",
+      "last_check": 0,
       "last_seen_tokens": [],
       "insider_score": 92,
       "tag": "insider_activo"
@@ -733076,22 +733092,6 @@
       "last_seen_tokens": [
         "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
       ],
-      "insider_score": 85,
-      "tag": "insider_activo"
-    },
-    "0x192a4ea92281f83eebeba2451300a19da602333e": {
-      "chain": "ETH",
-      "label": "0x192a...333e",
-      "last_check": 1789108639,
-      "last_seen_tokens": [],
-      "insider_score": 85,
-      "tag": "insider_activo"
-    },
-    "0x13112547d7ef5dbd4f812e89cf92be70a2c6fe76": {
-      "chain": "ETH",
-      "label": "0x1311...fe76",
-      "last_check": 0,
-      "last_seen_tokens": [],
       "insider_score": 85,
       "tag": "insider_activo"
     }
@@ -764329,6 +764329,6 @@
   },
   "last_daily_day": "2026-09-11",
   "last_weekly_week": "2026-W36",
-  "last_forensic_day": "2026-09-10",
+  "last_forensic_day": "2026-09-11",
   "announced_version": "v9.2"
 }
