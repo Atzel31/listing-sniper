@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789171678,
+  "saved_at": 1789171714,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -759707,28 +759707,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -0.8% 24h ⚪",
-        "entry_price": 0.5276545834,
-        "max_price": 0.5276545834,
-        "min_price": 0.4660968266,
-        "last_price": 0.4976029807,
-        "status": "open",
-        "ts": "2026-09-09T00:02:15.738815+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -11.7,
-        "closed_at": "2026-09-12T00:07:58.315584+00:00"
-      },
-      {
         "token": "PEPE",
         "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
         "chain": "ETH",
@@ -759814,7 +759792,7 @@
         "entry_price": 0.1519237265,
         "max_price": 0.1519237265,
         "min_price": 0.1385493999,
-        "last_price": 0.1385493999,
+        "last_price": 0.1404605611,
         "status": "open",
         "ts": "2026-09-10T06:56:09.102200+00:00"
       },
@@ -759850,7 +759828,7 @@
         "entry_price": 0.3450556169,
         "max_price": 0.3567072792,
         "min_price": 0.3450556169,
-        "last_price": 0.3501281399,
+        "last_price": 0.3508269403,
         "status": "open",
         "ts": "2026-09-11T00:07:42.485088+00:00"
       },
@@ -762459,18 +762437,32 @@
         "ts": "2026-09-08T20:00:38.457963+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-11T20:00:52.405574+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -0.8% 24h ⚪",
+        "entry_price": 0.5276545834,
+        "max_price": 0.5276545834,
+        "min_price": 0.4660968266,
+        "last_price": 0.4976029807,
+        "status": "open",
+        "ts": "2026-09-09T00:02:15.738815+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -11.7,
+        "closed_at": "2026-09-12T00:07:58.315584+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788156206168-1bd4ec",
-      "kind": "convergence",
-      "text": "🎯 1396 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.1% ⚪",
-      "hash": "1bd4ecb755676e4f",
-      "created_ts": 1788156206,
-      "retries": 15
-    },
     {
       "id": "1788157656369-cd83c4",
       "kind": "convergence",
