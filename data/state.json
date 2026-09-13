@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789282984,
+  "saved_at": 1789283030,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -778910,28 +778910,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ENA",
-        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -0.9% 24h ⚪",
-        "entry_price": 0.1519237265,
-        "max_price": 0.1519237265,
-        "min_price": 0.1385493999,
-        "last_price": 0.1399062445,
-        "status": "open",
-        "ts": "2026-09-10T06:56:09.102200+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 0.0,
-        "min_loss_pct": -8.8,
-        "closed_at": "2026-09-13T07:03:04.180958+00:00"
-      },
-      {
         "token": "DEAI",
         "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
         "chain": "ETH",
@@ -778963,7 +778941,7 @@
         "entry_price": 0.3450556169,
         "max_price": 0.3567072792,
         "min_price": 0.3450556169,
-        "last_price": 0.3477681157,
+        "last_price": 0.3460815566,
         "status": "open",
         "ts": "2026-09-11T00:07:42.485088+00:00"
       },
@@ -779071,7 +779049,7 @@
         "entry_price": 3.433809149e-06,
         "max_price": 3.448174828e-06,
         "min_price": 3.433809149e-06,
-        "last_price": 3.448174828e-06,
+        "last_price": 3.446629746e-06,
         "status": "open",
         "ts": "2026-09-13T01:11:51.088140+00:00"
       },
@@ -781750,18 +781728,32 @@
         "ts": "2026-09-10T02:01:03.779394+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-13T02:02:33.727641+00:00"
+      },
+      {
+        "token": "ENA",
+        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -0.9% 24h ⚪",
+        "entry_price": 0.1519237265,
+        "max_price": 0.1519237265,
+        "min_price": 0.1385493999,
+        "last_price": 0.1399062445,
+        "status": "open",
+        "ts": "2026-09-10T06:56:09.102200+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 0.0,
+        "min_loss_pct": -8.8,
+        "closed_at": "2026-09-13T07:03:04.180958+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788308336261-0d527f",
-      "kind": "convergence",
-      "text": "🎯 1500 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -1.8% 🔴",
-      "hash": "0d527f68bad61124",
-      "created_ts": 1788308336,
-      "retries": 58
-    },
     {
       "id": "1788311098852-6a66c8",
       "kind": "convergence",
