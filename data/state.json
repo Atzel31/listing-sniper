@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789261379,
+  "saved_at": 1789261420,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -774732,26 +774732,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "VIRTUAL",
-        "contract": "0xc6911796042b15d7fa4f6cde69e245ddcd3d9c31",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -0.8% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-10T01:00:53.464512+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-13T01:02:59.009944+00:00"
-      },
-      {
         "token": "SOIL",
         "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
         "chain": "ETH",
@@ -774801,7 +774781,7 @@
         "entry_price": 0.1519237265,
         "max_price": 0.1519237265,
         "min_price": 0.1385493999,
-        "last_price": 0.141642604,
+        "last_price": 0.1415011259,
         "status": "open",
         "ts": "2026-09-10T06:56:09.102200+00:00"
       },
@@ -774909,7 +774889,7 @@
         "entry_price": 0.489727794,
         "max_price": 0.4947486546,
         "min_price": 0.4884819321,
-        "last_price": 0.4884819321,
+        "last_price": 0.4915096853,
         "status": "open",
         "ts": "2026-09-12T04:08:37.386794+00:00"
       },
