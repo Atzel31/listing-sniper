@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789347795,
+  "saved_at": 1789347801,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -778732,26 +778732,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "TAO",
-        "contract": "0xf3081494b87e8d5fb7960f066e931d1d0e6e3d67",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -1.6% 24h 🔴",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-11T01:00:38.886243+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-14T01:03:15.058978+00:00"
-      },
-      {
         "token": "PENGU",
         "contract": "0x74be72affafbc8de30f0c11247814036314d625f",
         "chain": "RHOOD",
@@ -778873,7 +778853,7 @@
         "entry_price": 0.1394550991,
         "max_price": 0.1394550991,
         "min_price": 0.1368659104,
-        "last_price": 0.1368659104,
+        "last_price": 0.1373153485,
         "status": "open",
         "ts": "2026-09-13T09:48:20.123789+00:00"
       },
@@ -781660,14 +781640,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788393738096-b7bc29",
-      "kind": "convergence",
-      "text": "🎯 409 smart wallets compraron $SPX6900 [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.2% ⚪",
-      "hash": "b7bc2931b0093754",
-      "created_ts": 1788393738,
-      "retries": 20
-    },
     {
       "id": "1788393741673-9b1c9e",
       "kind": "convergence",
