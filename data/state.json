@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789344236,
+  "saved_at": 1789344257,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -778193,28 +778193,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "DEAI",
-        "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -2.2% 24h 🔴",
-        "entry_price": 0.0005382051987,
-        "max_price": 0.0006212315218,
-        "min_price": 0.0002666048441,
-        "last_price": 0.0005037630144,
-        "status": "open",
-        "ts": "2026-09-11T00:01:46.052499+00:00",
-        "outcome": "LOSS",
-        "max_gain_pct": 15.4,
-        "min_loss_pct": -50.5,
-        "closed_at": "2026-09-14T00:03:56.525614+00:00"
-      },
-      {
         "token": "ONDO",
         "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
         "chain": "ETH",
@@ -778335,8 +778313,8 @@
         "btc_context": "Mercado: BTC -0.1% 24h ⚪",
         "entry_price": 3.433809149e-06,
         "max_price": 3.448174828e-06,
-        "min_price": 3.400394656e-06,
-        "last_price": 3.405796253e-06,
+        "min_price": 3.365204757e-06,
+        "last_price": 3.365204757e-06,
         "status": "open",
         "ts": "2026-09-13T01:11:51.088140+00:00"
       },
@@ -781091,18 +781069,32 @@
         "max_gain_pct": 0.0,
         "min_loss_pct": -8.8,
         "closed_at": "2026-09-13T07:03:04.180958+00:00"
+      },
+      {
+        "token": "DEAI",
+        "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -2.2% 24h 🔴",
+        "entry_price": 0.0005382051987,
+        "max_price": 0.0006212315218,
+        "min_price": 0.0002666048441,
+        "last_price": 0.0005037630144,
+        "status": "open",
+        "ts": "2026-09-11T00:01:46.052499+00:00",
+        "outcome": "LOSS",
+        "max_gain_pct": 15.4,
+        "min_loss_pct": -50.5,
+        "closed_at": "2026-09-14T00:03:56.525614+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788393732587-bc132d",
-      "kind": "convergence",
-      "text": "🎯 1547 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.2% ⚪",
-      "hash": "bc132dc68974a699",
-      "created_ts": 1788393732,
-      "retries": 23
-    },
     {
       "id": "1788393738096-b7bc29",
       "kind": "convergence",
