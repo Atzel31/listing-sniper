@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789509659,
+  "saved_at": 1789509700,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -803842,26 +803842,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "NVDA",
-        "contract": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.1% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-12T22:00:56.459605+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-15T22:00:59.253777+00:00"
-      },
-      {
         "token": "PEPE",
         "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
         "chain": "ETH",
@@ -803911,7 +803891,7 @@
         "entry_price": 0.1394550991,
         "max_price": 0.1455749501,
         "min_price": 0.1368659104,
-        "last_price": 0.1377046862,
+        "last_price": 0.1375722795,
         "status": "open",
         "ts": "2026-09-13T09:48:20.123789+00:00"
       },
@@ -804000,8 +803980,8 @@
         "btc_context": "Mercado: BTC +0.3% 24h ⚪",
         "entry_price": 0.3526963961,
         "max_price": 0.3592404446,
-        "min_price": 0.3318528327,
-        "last_price": 0.3324943244,
+        "min_price": 0.3296754434,
+        "last_price": 0.3296754434,
         "status": "open",
         "ts": "2026-09-14T05:47:23.264596+00:00"
       },
@@ -804072,8 +804052,8 @@
         "btc_context": "Mercado: BTC +0.0% 24h ⚪",
         "entry_price": 0.4874544197,
         "max_price": 0.4942321367,
-        "min_price": 0.4625422365,
-        "last_price": 0.4644347673,
+        "min_price": 0.4601973209,
+        "last_price": 0.4601973209,
         "status": "open",
         "ts": "2026-09-15T06:00:55.662249+00:00"
       },
@@ -806924,14 +806904,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788674533137-2a8940",
-      "kind": "convergence",
-      "text": "🎯 1682 smart wallets compraron $PEPE [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.5% ⚪",
-      "hash": "2a8940a9396c617f",
-      "created_ts": 1788674533,
-      "retries": 33
-    },
     {
       "id": "1788675069732-0ad150",
       "kind": "convergence",
