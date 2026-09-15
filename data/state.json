@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789513585,
+  "saved_at": 1789513635,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -807174,14 +807174,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1788675069732-0ad150",
-      "kind": "convergence",
-      "text": "🎯 34 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.4% ⚪",
-      "hash": "0ad1505572263652",
-      "created_ts": 1788675069,
-      "retries": 14
-    },
-    {
       "id": "1788675245097-e0e6e4",
       "kind": "convergence",
       "text": "🎯 2028 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.4% ⚪",
@@ -808727,49 +808719,18 @@
   ],
   "catalyst_opportunities": [
     {
-      "score": 95,
-      "ip_name": "Dragon Ball Super: Beerus",
-      "event_date": "2026-10-11",
-      "days_until": 26,
-      "region": "JP",
-      "audience": 9841,
-      "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/206814",
-      "token_symbol": "DRAGON",
-      "token_chain": "bsc",
-      "token_liq": 93217,
-      "token_vol24": 26,
-      "token_url": "https://dexscreener.com/bsc/0xd504bcaebad45a1c92b14b14a9ab29a566ed2d42",
-      "conflict": false,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 20,
-        "atencion_baja": 0,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (38 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (324,478): puede estar descubierta",
-        "revisar cobertura CT (el par tiene redes)",
-        "verificar afinidad cultural a mano"
-      ]
-    },
-    {
       "score": 87,
       "ip_name": "Black Clover Season 2",
       "event_date": "2026-10-03",
-      "days_until": 18,
+      "days_until": 17,
       "region": "JP",
-      "audience": 60889,
+      "audience": 61143,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/195604",
       "token_symbol": "black",
       "token_chain": "solana",
-      "token_liq": 93893,
-      "token_vol24": 25733,
+      "token_liq": 86378,
+      "token_vol24": 8425,
       "token_url": "https://dexscreener.com/solana/j3pekvevfwbwx2clasfkjpkjbjueaocgutzeas5amaae",
       "conflict": false,
       "match_quality": 1.0,
@@ -808782,8 +808743,8 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (31 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (6,131,836): puede estar descubierta",
+        "narrativa poblada (26 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (5,186,126): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano",
         "el token ya tiene volumen propio: puede estar siendo descubierto"
@@ -808793,15 +808754,15 @@
       "score": 83,
       "ip_name": "Made in Abyss: Mezameru Shinpi",
       "event_date": "2026-10-23",
-      "days_until": 38,
+      "days_until": 37,
       "region": "JP",
-      "audience": 38185,
+      "audience": 38288,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/160275",
       "token_symbol": "MADE",
       "token_chain": "solana",
-      "token_liq": 143869,
-      "token_vol24": 240064,
+      "token_liq": 125714,
+      "token_vol24": 154251,
       "token_url": "https://dexscreener.com/solana/cwqkkpwkctxar4xyw8fkykbyy6x6iajkrjjdnshiqp8a",
       "conflict": false,
       "match_quality": 1.0,
@@ -808814,57 +808775,27 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (29 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (377,970): puede estar descubierta",
+        "narrativa poblada (38 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (367,893): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano",
         "el token ya tiene volumen propio: puede estar siendo descubierto"
       ]
     },
     {
-      "score": 77,
-      "ip_name": "To You in the Beyond",
-      "event_date": "2026-10-09",
-      "days_until": 24,
-      "region": "JP",
-      "audience": 9163,
-      "event_type": "film_release",
-      "source_url": "https://anilist.co/anime/207327",
-      "token_symbol": "you",
-      "token_chain": "base",
-      "token_liq": 11084,
-      "token_vol24": 81,
-      "token_url": "https://dexscreener.com/base/0xb6aaae7139738dbf9e0d16fbef2153a7b88bd10ef8172b18c2df5b93eccf5f7e",
-      "conflict": false,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 0,
-        "atencion_baja": 2,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (71 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (26,480,817): puede estar descubierta",
-        "verificar afinidad cultural a mano"
-      ]
-    },
-    {
       "score": 72,
-      "ip_name": "Blue Box Season 2",
-      "event_date": "2026-10-04",
-      "days_until": 19,
+      "ip_name": "Dragon Ball Super: Beerus",
+      "event_date": "2026-10-11",
+      "days_until": 25,
       "region": "JP",
-      "audience": 32835,
+      "audience": 9929,
       "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/189123",
-      "token_symbol": "BLUE",
-      "token_chain": "base",
-      "token_liq": 25578,
-      "token_vol24": 1,
-      "token_url": "https://dexscreener.com/base/0xbb453c1260763c2c61bc131afb6e5e66b5b31a9aef597ddad67e3e5e18600346",
+      "source_url": "https://anilist.co/anime/206814",
+      "token_symbol": "DRAGON",
+      "token_chain": "robinhood",
+      "token_liq": 29485,
+      "token_vol24": 888,
+      "token_url": "https://dexscreener.com/robinhood/0x2d26bca1ceb21b95070fbf2e2bb6ac5984eacbd7b5c5e61774b43cd940bd3682",
       "conflict": true,
       "match_quality": 1.0,
       "breakdown": {
@@ -808877,64 +808808,98 @@
       },
       "flags": [
         "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (74 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (5,202,147): puede estar descubierta",
+        "narrativa poblada (41 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (678,632): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
     {
-      "score": 71,
+      "score": 60,
       "ip_name": "Firefly Wedding",
       "event_date": "2026-10-09",
-      "days_until": 24,
+      "days_until": 23,
       "region": "JP",
-      "audience": 16649,
+      "audience": 16820,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/205909",
-      "token_symbol": "FLY",
+      "token_symbol": "FireFly",
       "token_chain": "robinhood",
-      "token_liq": 18592,
-      "token_vol24": 20456,
-      "token_url": "https://dexscreener.com/robinhood/0x6edaf089b86a262e86caa0d40c693502e59de8781402de5f89d2de8e5a230070",
-      "conflict": false,
-      "match_quality": 0.7,
+      "token_liq": 34016,
+      "token_vol24": 28997,
+      "token_url": "https://dexscreener.com/robinhood/0x798629b538f235b8fb2576a2d2dea6000611f3054eaf4fc49703b544dfa0287a",
+      "conflict": true,
+      "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
         "ventana": 20,
-        "match": 14,
-        "dormido": 0,
+        "match": 20,
+        "dormido": 8,
         "atencion_baja": 2,
-        "conflicto": 0
+        "conflicto": -25
       },
       "flags": [
-        "narrativa poblada (36 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (30,530,102): puede estar descubierta",
+        "CONFLICTO: atencion fragmentada entre varios tickers",
+        "narrativa poblada (41 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (18,903,303): puede estar descubierta",
+        "verificar afinidad cultural a mano",
+        "el token ya tiene volumen propio: puede estar siendo descubierto"
+      ]
+    },
+    {
+      "score": 50,
+      "ip_name": "Blue Box Season 2",
+      "event_date": "2026-10-04",
+      "days_until": 18,
+      "region": "JP",
+      "audience": 32989,
+      "event_type": "season_premiere",
+      "source_url": "https://anilist.co/anime/189123",
+      "token_symbol": "BLUE",
+      "token_chain": "bsc",
+      "token_liq": 19865,
+      "token_vol24": 194,
+      "token_url": "https://dexscreener.com/bsc/0xeb7fe075b7677c98c75e105d4f5ace0e19505567",
+      "conflict": true,
+      "match_quality": 1.0,
+      "breakdown": {
+        "audiencia": 35,
+        "ventana": 20,
+        "match": 20,
+        "dormido": 0,
+        "atencion_baja": 0,
+        "conflicto": -25
+      },
+      "flags": [
+        "CONFLICTO: atencion fragmentada entre varios tickers",
+        "narrativa poblada (81 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (6,294,836): puede estar descubierta",
+        "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
     }
   ],
-  "catalyst_last_run": 1789426969,
-  "catalyst_events": 152,
+  "catalyst_last_run": 1789513634,
+  "catalyst_events": 153,
   "catalyst_alerted": [
+    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
+    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
     "Firefly Wedding|ほたる|2026-10-09",
     "Dragon Ball Super: Beerus|DRAGON|2026-10-11",
-    "Firefly Wedding|FLY|2026-10-09",
-    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
-    "Black Clover Season 2|black|2026-10-03",
-    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
-    "Blue Box Season 2|BLUE|2026-10-04",
-    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
-    "To You in the Beyond|you|2026-10-09",
     "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
-    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
-    "To You in the Beyond|YOU|2026-10-09"
+    "To You in the Beyond|YOU|2026-10-09",
+    "Blue Box Season 2|BLUE|2026-10-04",
+    "Black Clover Season 2|black|2026-10-03",
+    "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
+    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
+    "To You in the Beyond|you|2026-10-09",
+    "Firefly Wedding|FLY|2026-10-09"
   ],
-  "catalyst_snapshots": 143,
+  "catalyst_snapshots": 148,
   "catalyst_backtest": {
     "tracked": 14,
     "avg_gain_70plus": 23.4,
     "n_70plus": 11,
-    "avg_gain_50_69": 0.0,
+    "avg_gain_50_69": 4.5,
     "n_50_69": 3,
     "avg_gain_lt50": null,
     "n_lt50": 0,
@@ -808947,7 +808912,7 @@
         "entry_price": 0.0006853,
         "max_price": 0.001728,
         "max_gain_pct": 152.2,
-        "n_snaps": 17
+        "n_snaps": 18
       },
       {
         "ip_name": "To You in the Beyond",
@@ -808977,6 +808942,15 @@
         "n_snaps": 3
       },
       {
+        "ip_name": "Blue Box Season 2",
+        "token_symbol": "BLUE",
+        "entry_score": 50,
+        "entry_price": 0.03549,
+        "max_price": 0.04024,
+        "max_gain_pct": 13.4,
+        "n_snaps": 16
+      },
+      {
         "ip_name": "Dragon Ball Super: Beerus",
         "token_symbol": "DRAGON",
         "entry_score": 95,
@@ -808992,7 +808966,7 @@
         "entry_price": 0.0008082,
         "max_price": 0.0008733,
         "max_gain_pct": 8.1,
-        "n_snaps": 3
+        "n_snaps": 4
       },
       {
         "ip_name": "Firefly Wedding",
@@ -809011,15 +808985,6 @@
         "max_price": 0.04266,
         "max_gain_pct": 2.4,
         "n_snaps": 12
-      },
-      {
-        "ip_name": "Blue Box Season 2",
-        "token_symbol": "BLUE",
-        "entry_score": 50,
-        "entry_price": 0.03549,
-        "max_price": 0.03553,
-        "max_gain_pct": 0.1,
-        "n_snaps": 15
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
