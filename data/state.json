@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789445891,
+  "saved_at": 1789445937,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -789392,28 +789392,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.5% 24h ⚪",
-        "entry_price": 0.489727794,
-        "max_price": 0.5230340575,
-        "min_price": 0.475322317,
-        "last_price": 0.4890218242,
-        "status": "open",
-        "ts": "2026-09-12T04:08:37.386794+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 6.8,
-        "min_loss_pct": -2.9,
-        "closed_at": "2026-09-15T04:18:11.416896+00:00"
-      },
-      {
         "token": "NVDA",
         "contract": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
         "chain": "RHOOD",
@@ -789445,7 +789423,7 @@
         "entry_price": 3.433809149e-06,
         "max_price": 3.590521712e-06,
         "min_price": 3.351817108e-06,
-        "last_price": 3.44874177e-06,
+        "last_price": 3.462097314e-06,
         "status": "open",
         "ts": "2026-09-13T01:11:51.088140+00:00"
       },
@@ -792412,6 +792390,28 @@
         "ts": "2026-09-11T17:00:20.863968+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-14T17:02:48.330781+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.5% 24h ⚪",
+        "entry_price": 0.489727794,
+        "max_price": 0.5230340575,
+        "min_price": 0.475322317,
+        "last_price": 0.4890218242,
+        "status": "open",
+        "ts": "2026-09-12T04:08:37.386794+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 6.8,
+        "min_loss_pct": -2.9,
+        "closed_at": "2026-09-15T04:18:11.416896+00:00"
       }
     ]
   },
