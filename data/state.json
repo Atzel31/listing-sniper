@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789535096,
+  "saved_at": 1789535137,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -809509,26 +809509,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "FLOCK",
-        "contract": "0x5ab3d4c385b400f3abb49e80de2faf6a88a7b691",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.0% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-13T05:00:28.288626+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-16T05:04:55.928924+00:00"
-      },
-      {
         "token": "ENA",
         "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
         "chain": "ETH",
@@ -809632,7 +809612,7 @@
         "entry_price": 0.3526963961,
         "max_price": 0.3592404446,
         "min_price": 0.3232489441,
-        "last_price": 0.3286103451,
+        "last_price": 0.3281873582,
         "status": "open",
         "ts": "2026-09-14T05:47:23.264596+00:00"
       },
@@ -809704,7 +809684,7 @@
         "entry_price": 0.4874544197,
         "max_price": 0.4942321367,
         "min_price": 0.4597603227,
-        "last_price": 0.4633392277,
+        "last_price": 0.4658673626,
         "status": "open",
         "ts": "2026-09-15T06:00:55.662249+00:00"
       },
@@ -809738,9 +809718,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC -3.1% 24h 🔴",
         "entry_price": 3.352983038e-06,
-        "max_price": 3.355228729e-06,
+        "max_price": 3.379341664e-06,
         "min_price": 3.352983038e-06,
-        "last_price": 3.355228729e-06,
+        "last_price": 3.379341664e-06,
         "status": "open",
         "ts": "2026-09-16T01:42:47.036219+00:00"
       }
@@ -812615,14 +812595,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788696494558-40e372",
-      "kind": "convergence",
-      "text": "🎯 2057 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +0.3% ⚪",
-      "hash": "40e372282c43f597",
-      "created_ts": 1788696494,
-      "retries": 29
-    },
     {
       "id": "1788696499410-544944",
       "kind": "convergence",
