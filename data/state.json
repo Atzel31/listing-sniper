@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789585326,
+  "saved_at": 1789585372,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -816758,26 +816758,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "VIRTUAL",
-        "contract": "0xc6911796042b15d7fa4f6cde69e245ddcd3d9c31",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.2% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-13T19:00:43.961155+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-16T19:02:06.130439+00:00"
-      },
-      {
         "token": "LIT",
         "contract": "0xeeca2e7dc194a320d349122d88259bb9595a4cb0",
         "chain": "RHOOD",
@@ -819908,14 +819888,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1788775236905-19dee7",
-      "kind": "convergence",
-      "text": "🎯 3 smart wallets compraron $AMC [RHOOD] casi a la vez. Convergencia de dinero inteligente. · BTC -0.7% ⚪",
-      "hash": "19dee70c4dd76e2a",
-      "created_ts": 1788775236,
-      "retries": 5
-    },
     {
       "id": "1788782406089-b41b09",
       "kind": "convergence",
