@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789624309,
+  "saved_at": 1789624385,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -822657,24 +822657,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "ONDO",
-        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.3% 24h ⚪",
-        "entry_price": 0.3526963961,
-        "max_price": 0.3592404446,
-        "min_price": 0.3232489441,
-        "last_price": 0.3481898887,
-        "status": "open",
-        "ts": "2026-09-14T05:47:23.264596+00:00"
-      },
-      {
         "token": "PENGU",
         "contract": "0x74be72affafbc8de30f0c11247814036314d625f",
         "chain": "RHOOD",
@@ -822742,7 +822724,7 @@
         "entry_price": 0.4874544197,
         "max_price": 0.4942321367,
         "min_price": 0.4396900172,
-        "last_price": 0.4717255292,
+        "last_price": 0.4683278874,
         "status": "open",
         "ts": "2026-09-15T06:00:55.662249+00:00"
       },
@@ -825787,6 +825769,28 @@
         "ts": "2026-09-14T02:00:26.262999+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-17T02:01:22.826898+00:00"
+      },
+      {
+        "token": "ONDO",
+        "contract": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.3% 24h ⚪",
+        "entry_price": 0.3526963961,
+        "max_price": 0.3592404446,
+        "min_price": 0.3232489441,
+        "last_price": 0.3481898887,
+        "status": "open",
+        "ts": "2026-09-14T05:47:23.264596+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 1.9,
+        "min_loss_pct": -8.3,
+        "closed_at": "2026-09-17T05:51:49.126712+00:00"
       }
     ]
   },
