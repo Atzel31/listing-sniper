@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789711271,
+  "saved_at": 1789711328,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -843199,28 +843199,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.0% 24h ⚪",
-        "entry_price": 0.4874544197,
-        "max_price": 0.4942321367,
-        "min_price": 0.4396900172,
-        "last_price": 0.4769996218,
-        "status": "open",
-        "ts": "2026-09-15T06:00:55.662249+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 1.4,
-        "min_loss_pct": -9.8,
-        "closed_at": "2026-09-18T06:01:11.688170+00:00"
-      },
-      {
         "token": "SOIL",
         "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
         "chain": "ETH",
@@ -843252,7 +843230,7 @@
         "entry_price": 3.352983038e-06,
         "max_price": 3.673719615e-06,
         "min_price": 3.313389724e-06,
-        "last_price": 3.673719615e-06,
+        "last_price": 3.644398079e-06,
         "status": "open",
         "ts": "2026-09-16T01:42:47.036219+00:00"
       },
@@ -843270,7 +843248,7 @@
         "entry_price": 0.000426187679,
         "max_price": 0.0005224864943,
         "min_price": 0.0002758171215,
-        "last_price": 0.0005188827855,
+        "last_price": 0.0005108608461,
         "status": "open",
         "ts": "2026-09-16T10:49:58.256429+00:00"
       },
@@ -843286,9 +843264,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC -0.9% 24h ⚪",
         "entry_price": 0.143822668,
-        "max_price": 0.1606164474,
+        "max_price": 0.163015466,
         "min_price": 0.141929271,
-        "last_price": 0.1606164474,
+        "last_price": 0.163015466,
         "status": "open",
         "ts": "2026-09-16T12:00:24.357359+00:00"
       },
@@ -843306,7 +843284,7 @@
         "entry_price": 0.3514844625,
         "max_price": 0.3859942982,
         "min_price": 0.3479500321,
-        "last_price": 0.3859942982,
+        "last_price": 0.3850563361,
         "status": "open",
         "ts": "2026-09-17T06:22:04.364763+00:00"
       },
@@ -846455,18 +846433,32 @@
         "ts": "2026-09-15T03:00:45.655221+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-18T03:02:30.907281+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.0% 24h ⚪",
+        "entry_price": 0.4874544197,
+        "max_price": 0.4942321367,
+        "min_price": 0.4396900172,
+        "last_price": 0.4769996218,
+        "status": "open",
+        "ts": "2026-09-15T06:00:55.662249+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 1.4,
+        "min_loss_pct": -9.8,
+        "closed_at": "2026-09-18T06:01:11.688170+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789084906604-1275cf",
-      "kind": "convergence",
-      "text": "🎯 40 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -2.2% 🔴",
-      "hash": "1275cfec8454c366",
-      "created_ts": 1789084906,
-      "retries": 22
-    },
     {
       "id": "1789085263028-840480",
       "kind": "convergence",
