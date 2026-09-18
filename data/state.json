@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789717227,
+  "saved_at": 1789717264,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -845152,28 +845152,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SOIL",
-        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -0.8% 24h ⚪",
-        "entry_price": 0.09372666495,
-        "max_price": 0.09788222844,
-        "min_price": 0.09316370727,
-        "last_price": 0.09667569585,
-        "status": "open",
-        "ts": "2026-09-15T07:40:13.389280+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 4.4,
-        "min_loss_pct": -0.6,
-        "closed_at": "2026-09-18T07:40:27.515416+00:00"
-      },
-      {
         "token": "PEPE",
         "contract": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
         "chain": "ETH",
@@ -845221,9 +845199,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC -0.9% 24h ⚪",
         "entry_price": 0.143822668,
-        "max_price": 0.163015466,
+        "max_price": 0.1698350558,
         "min_price": 0.141929271,
-        "last_price": 0.163015466,
+        "last_price": 0.1698350558,
         "status": "open",
         "ts": "2026-09-16T12:00:24.357359+00:00"
       },
@@ -845311,9 +845289,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +1.5% 24h 🟢",
         "entry_price": 0.4866112491,
-        "max_price": 0.4866112491,
+        "max_price": 0.4893930272,
         "min_price": 0.4866112491,
-        "last_price": 0.4866112491,
+        "last_price": 0.4893930272,
         "status": "open",
         "ts": "2026-09-18T07:23:26.357278+00:00"
       }
@@ -848430,18 +848408,32 @@
         "max_gain_pct": 1.4,
         "min_loss_pct": -9.8,
         "closed_at": "2026-09-18T06:01:11.688170+00:00"
+      },
+      {
+        "token": "SOIL",
+        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -0.8% 24h ⚪",
+        "entry_price": 0.09372666495,
+        "max_price": 0.09788222844,
+        "min_price": 0.09316370727,
+        "last_price": 0.09667569585,
+        "status": "open",
+        "ts": "2026-09-15T07:40:13.389280+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 4.4,
+        "min_loss_pct": -0.6,
+        "closed_at": "2026-09-18T07:40:27.515416+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789085263028-840480",
-      "kind": "convergence",
-      "text": "🎯 2222 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -2.2% 🔴",
-      "hash": "840480b135931bb7",
-      "created_ts": 1789085263,
-      "retries": 35
-    },
     {
       "id": "1789088418438-3a7887",
       "kind": "convergence",
