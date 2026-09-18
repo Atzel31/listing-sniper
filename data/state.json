@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789700551,
+  "saved_at": 1789700617,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -839406,26 +839406,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "PONS",
-        "contract": "0x39dbed3a2bd333467115de45665cc57f813c4571",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.4% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-15T03:00:45.655221+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-18T03:02:30.907281+00:00"
-      },
-      {
         "token": "SPX6900",
         "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
         "chain": "ETH",
@@ -839457,7 +839437,7 @@
         "entry_price": 0.09372666495,
         "max_price": 0.09788222844,
         "min_price": 0.09316370727,
-        "last_price": 0.09670034502,
+        "last_price": 0.09667569585,
         "status": "open",
         "ts": "2026-09-15T07:40:13.389280+00:00"
       },
@@ -839475,7 +839455,7 @@
         "entry_price": 3.352983038e-06,
         "max_price": 3.660951746e-06,
         "min_price": 3.313389724e-06,
-        "last_price": 3.660951746e-06,
+        "last_price": 3.648281947e-06,
         "status": "open",
         "ts": "2026-09-16T01:42:47.036219+00:00"
       },
@@ -839527,9 +839507,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.0% 24h ⚪",
         "entry_price": 0.3514844625,
-        "max_price": 0.3853410836,
+        "max_price": 0.3859942982,
         "min_price": 0.3479500321,
-        "last_price": 0.3853410836,
+        "last_price": 0.3859942982,
         "status": "open",
         "ts": "2026-09-17T06:22:04.364763+00:00"
       },
@@ -842664,14 +842644,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789045592562-1f077e",
-      "kind": "convergence",
-      "text": "🎯 1870 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -3.2% 🔴",
-      "hash": "1f077e62fc1a5d0f",
-      "created_ts": 1789045592,
-      "retries": 20
-    },
     {
       "id": "1789046287946-2aa305",
       "kind": "convergence",
