@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789815498,
+  "saved_at": 1789815544,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -872337,28 +872337,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "DEAI",
-        "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC -1.5% 24h ⚪",
-        "entry_price": 0.000426187679,
-        "max_price": 0.0005559415634,
-        "min_price": 0.0002758171215,
-        "last_price": 0.0004575251708,
-        "status": "open",
-        "ts": "2026-09-16T10:49:58.256429+00:00",
-        "outcome": "WIN",
-        "max_gain_pct": 30.4,
-        "min_loss_pct": -35.3,
-        "closed_at": "2026-09-19T10:58:17.753576+00:00"
-      },
-      {
         "token": "ENA",
         "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
         "chain": "ETH",
@@ -872462,7 +872440,7 @@
         "entry_price": 0.4866112491,
         "max_price": 0.513439481,
         "min_price": 0.4825765768,
-        "last_price": 0.4870608676,
+        "last_price": 0.4899757366,
         "status": "open",
         "ts": "2026-09-18T07:23:26.357278+00:00"
       },
@@ -872550,9 +872528,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +5.6% 24h 🟢",
         "entry_price": 3.758308154e-06,
-        "max_price": 3.781921629e-06,
+        "max_price": 3.804012152e-06,
         "min_price": 3.758308154e-06,
-        "last_price": 3.780186797e-06,
+        "last_price": 3.804012152e-06,
         "status": "open",
         "ts": "2026-09-19T03:10:38.053047+00:00"
       }
@@ -875713,18 +875691,32 @@
         "max_gain_pct": 15.9,
         "min_loss_pct": -1.2,
         "closed_at": "2026-09-19T01:45:47.277995+00:00"
+      },
+      {
+        "token": "DEAI",
+        "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -1.5% 24h ⚪",
+        "entry_price": 0.000426187679,
+        "max_price": 0.0005559415634,
+        "min_price": 0.0002758171215,
+        "last_price": 0.0004575251708,
+        "status": "open",
+        "ts": "2026-09-16T10:49:58.256429+00:00",
+        "outcome": "WIN",
+        "max_gain_pct": 30.4,
+        "min_loss_pct": -35.3,
+        "closed_at": "2026-09-19T10:58:17.753576+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789322411742-7d0276",
-      "kind": "convergence",
-      "text": "🎯 2 smart wallets compraron $U [RHOOD] casi a la vez. Convergencia de dinero inteligente. · BTC +0.2% ⚪",
-      "hash": "7d027644462d32cc",
-      "created_ts": 1789322411,
-      "retries": 32
-    },
     {
       "id": "1789326044549-f90631",
       "kind": "convergence",
