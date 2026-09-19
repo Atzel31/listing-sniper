@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789819322,
+  "saved_at": 1789819328,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -877369,18 +877369,32 @@
         "max_gain_pct": 30.4,
         "min_loss_pct": -35.3,
         "closed_at": "2026-09-19T10:58:17.753576+00:00"
+      },
+      {
+        "token": "ENA",
+        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC -0.9% 24h ⚪",
+        "entry_price": 0.143822668,
+        "max_price": 0.1942896534,
+        "min_price": 0.141929271,
+        "last_price": 0.1917554253,
+        "status": "open",
+        "ts": "2026-09-16T12:00:24.357359+00:00",
+        "outcome": "WIN",
+        "max_gain_pct": 35.1,
+        "min_loss_pct": -1.3,
+        "closed_at": "2026-09-19T12:02:02.602135+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789344201318-35eaee",
-      "kind": "convergence",
-      "text": "🎯 47 smart wallets compraron $DEAI [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.6% ⚪",
-      "hash": "35eaee676c953979",
-      "created_ts": 1789344201,
-      "retries": 9
-    },
     {
       "id": "1789344579375-17dfd9",
       "kind": "convergence",
@@ -884387,7 +884401,7 @@
       "ts": 1789819231.2151132
     }
   },
-  "last_daily_day": "2026-09-18",
+  "last_daily_day": "2026-09-19",
   "last_weekly_week": "2026-W37",
   "last_forensic_day": "2026-09-18",
   "announced_version": "v9.2"
