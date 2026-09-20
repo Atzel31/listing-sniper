@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789946222,
+  "saved_at": 1789946256,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -892313,7 +892313,7 @@
         "entry_price": 3.758308154e-06,
         "max_price": 4.269450773e-06,
         "min_price": 3.758308154e-06,
-        "last_price": 3.950389088e-06,
+        "last_price": 4.016020695e-06,
         "status": "open",
         "ts": "2026-09-19T03:10:38.053047+00:00"
       },
@@ -895695,14 +895695,6 @@
   },
   "tweet_queue": [
     {
-      "id": "1789524051779-99ddbc",
-      "kind": "convergence",
-      "text": "🎯 17 smart wallets compraron $PONS [RHOOD] casi a la vez. Convergencia de dinero inteligente. · BTC -3.2% 🔴",
-      "hash": "99ddbcd431ff8c70",
-      "created_ts": 1789524051,
-      "retries": 10
-    },
-    {
       "id": "1789535069671-090c7d",
       "kind": "convergence",
       "text": "🎯 14 smart wallets compraron $PENGU [RHOOD] casi a la vez. Convergencia de dinero inteligente. · BTC -2.2% 🔴",
@@ -896619,15 +896611,15 @@
       "score": 93,
       "ip_name": "My Happy Marriage Special Episodes",
       "event_date": "2026-10-25",
-      "days_until": 35,
+      "days_until": 34,
       "region": "JP",
-      "audience": 8185,
+      "audience": 8273,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/190054",
       "token_symbol": "HAPPY",
       "token_chain": "bsc",
-      "token_liq": 2302646,
-      "token_vol24": 0,
+      "token_liq": 2320538,
+      "token_vol24": 6,
       "token_url": "https://dexscreener.com/bsc/0xedf4cc0a7a7133fd0caf3568a197b0f04b938c0f",
       "conflict": false,
       "match_quality": 1.0,
@@ -896640,24 +896632,24 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (69 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (68,640,772): puede estar descubierta",
+        "narrativa poblada (73 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (10,475,715): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
     {
-      "score": 87,
+      "score": 89,
       "ip_name": "Made in Abyss: Mezameru Shinpi",
       "event_date": "2026-10-23",
-      "days_until": 33,
+      "days_until": 32,
       "region": "JP",
-      "audience": 38738,
+      "audience": 38887,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/160275",
       "token_symbol": "MADE",
       "token_chain": "solana",
-      "token_liq": 133853,
-      "token_vol24": 107476,
+      "token_liq": 130064,
+      "token_vol24": 59252,
       "token_url": "https://dexscreener.com/solana/cwqkkpwkctxar4xyw8fkykbyy6x6iajkrjjdnshiqp8a",
       "conflict": false,
       "match_quality": 1.0,
@@ -896666,12 +896658,11 @@
         "ventana": 20,
         "match": 20,
         "dormido": 12,
-        "atencion_baja": 0,
+        "atencion_baja": 2,
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (37 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (1,529,215): puede estar descubierta",
+        "narrativa poblada (34 tickers): posible sobre-cobertura",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano",
         "el token ya tiene volumen propio: puede estar siendo descubierto"
@@ -896681,15 +896672,15 @@
       "score": 77,
       "ip_name": "To You in the Beyond",
       "event_date": "2026-10-09",
-      "days_until": 19,
+      "days_until": 18,
       "region": "JP",
-      "audience": 9594,
+      "audience": 9697,
       "event_type": "film_release",
       "source_url": "https://anilist.co/anime/207327",
       "token_symbol": "YOU",
       "token_chain": "bsc",
-      "token_liq": 10048,
-      "token_vol24": 4,
+      "token_liq": 10050,
+      "token_vol24": 28,
       "token_url": "https://dexscreener.com/bsc/0x090deba6fef9422d5f9aa944034eb37234ffba45",
       "conflict": false,
       "match_quality": 1.0,
@@ -896702,8 +896693,38 @@
         "conflicto": 0
       },
       "flags": [
-        "narrativa poblada (69 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (3,139,917): puede estar descubierta",
+        "narrativa poblada (71 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (17,922,884): puede estar descubierta",
+        "verificar afinidad cultural a mano"
+      ]
+    },
+    {
+      "score": 71,
+      "ip_name": "Firefly Wedding",
+      "event_date": "2026-10-09",
+      "days_until": 18,
+      "region": "JP",
+      "audience": 17851,
+      "event_type": "season_premiere",
+      "source_url": "https://anilist.co/anime/205909",
+      "token_symbol": "FLY",
+      "token_chain": "robinhood",
+      "token_liq": 12908,
+      "token_vol24": 277,
+      "token_url": "https://dexscreener.com/robinhood/0x6edaf089b86a262e86caa0d40c693502e59de8781402de5f89d2de8e5a230070",
+      "conflict": false,
+      "match_quality": 0.7,
+      "breakdown": {
+        "audiencia": 35,
+        "ventana": 20,
+        "match": 14,
+        "dormido": 0,
+        "atencion_baja": 2,
+        "conflicto": 0
+      },
+      "flags": [
+        "narrativa poblada (40 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (35,387,840): puede estar descubierta",
         "verificar afinidad cultural a mano"
       ]
     },
@@ -896711,15 +896732,15 @@
       "score": 70,
       "ip_name": "The Detective Is Already Dead Season 2",
       "event_date": "2026-10-07",
-      "days_until": 17,
+      "days_until": 16,
       "region": "JP",
-      "audience": 19921,
+      "audience": 20027,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/152677",
       "token_symbol": "DETECTIVE",
       "token_chain": "solana",
-      "token_liq": 21434,
-      "token_vol24": 20,
+      "token_liq": 21488,
+      "token_vol24": 44,
       "token_url": "https://dexscreener.com/solana/9javupvlt6rvyzsgk78w1wpjq1i8rbu8us1s7brfbrxn",
       "conflict": true,
       "match_quality": 1.0,
@@ -896733,8 +896754,8 @@
       },
       "flags": [
         "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (50 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (3,715,546): puede estar descubierta",
+        "narrativa poblada (56 tickers): posible sobre-cobertura",
+        "volumen de narrativa alto (5,245,136): puede estar descubierta",
         "revisar cobertura CT (el par tiene redes)",
         "verificar afinidad cultural a mano"
       ]
@@ -896743,92 +896764,57 @@
       "score": 70,
       "ip_name": "Dragon Ball Super: Beerus",
       "event_date": "2026-10-11",
-      "days_until": 21,
+      "days_until": 20,
       "region": "JP",
-      "audience": 10281,
+      "audience": 10375,
       "event_type": "season_premiere",
       "source_url": "https://anilist.co/anime/206814",
       "token_symbol": "DRAGON",
-      "token_chain": "bsc",
-      "token_liq": 97936,
-      "token_vol24": 3,
-      "token_url": "https://dexscreener.com/bsc/0xd504bcaebad45a1c92b14b14a9ab29a566ed2d42",
+      "token_chain": "solana",
+      "token_liq": 746630,
+      "token_vol24": 4850,
+      "token_url": "https://dexscreener.com/solana/6zgrv3knp9tmzqwwebygd9eh3tmcugcmnbe96wmfmzbl",
       "conflict": true,
       "match_quality": 1.0,
       "breakdown": {
         "audiencia": 35,
         "ventana": 20,
         "match": 20,
-        "dormido": 20,
-        "atencion_baja": 0,
+        "dormido": 16,
+        "atencion_baja": 4,
         "conflicto": -25
       },
       "flags": [
         "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (42 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (11,415,351): puede estar descubierta",
-        "revisar cobertura CT (el par tiene redes)",
+        "narrativa poblada (44 tickers): posible sobre-cobertura",
         "verificar afinidad cultural a mano"
-      ]
-    },
-    {
-      "score": 58,
-      "ip_name": "Blue Box Season 2",
-      "event_date": "2026-10-04",
-      "days_until": 14,
-      "region": "JP",
-      "audience": 33478,
-      "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/189123",
-      "token_symbol": "BLUE",
-      "token_chain": "base",
-      "token_liq": 20053,
-      "token_vol24": 9203,
-      "token_url": "https://dexscreener.com/base/0xcb0309312718e7c1a54d4b35be3726ee38755b82",
-      "conflict": true,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 8,
-        "atencion_baja": 0,
-        "conflicto": -25
-      },
-      "flags": [
-        "CONFLICTO: atencion fragmentada entre varios tickers",
-        "narrativa poblada (84 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (5,658,691): puede estar descubierta",
-        "revisar cobertura CT (el par tiene redes)",
-        "verificar afinidad cultural a mano",
-        "el token ya tiene volumen propio: puede estar siendo descubierto"
       ]
     }
   ],
-  "catalyst_last_run": 1789859678,
-  "catalyst_events": 156,
+  "catalyst_last_run": 1789946256,
+  "catalyst_events": 158,
   "catalyst_alerted": [
-    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
-    "The Detective Is Already Dead Season 2|DETECTIVE|2026-10-07",
-    "Dragon Ball Super: Beerus|DRAGON|2026-10-11",
-    "To You in the Beyond|YOU|2026-10-09",
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
     "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
-    "My Happy Marriage Special Episodes|HAPPY|2026-10-25",
     "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
-    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
     "Cyberpunk: Edgerunners 2|CBRPNK|2026-10-20",
     "Blue Box Season 2|BLUE|2026-10-04",
-    "To You in the Beyond|you|2026-10-09",
-    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
-    "Black Clover Season 2|black|2026-10-03",
+    "My Happy Marriage Special Episodes|HAPPY|2026-10-25",
     "Firefly Wedding|ほたる|2026-10-09",
-    "Firefly Wedding|FLY|2026-10-09"
+    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
+    "To You in the Beyond|YOU|2026-10-09",
+    "To You in the Beyond|you|2026-10-09",
+    "Firefly Wedding|FLY|2026-10-09",
+    "Dragon Ball Super: Beerus|DRAGON|2026-10-11",
+    "The Detective Is Already Dead Season 2|DETECTIVE|2026-10-07",
+    "Black Clover Season 2|black|2026-10-03",
+    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23"
   ],
-  "catalyst_snapshots": 178,
+  "catalyst_snapshots": 184,
   "catalyst_backtest": {
-    "tracked": 18,
-    "avg_gain_70plus": 24.6,
-    "n_70plus": 13,
+    "tracked": 19,
+    "avg_gain_70plus": 22.9,
+    "n_70plus": 14,
     "avg_gain_50_69": 6.9,
     "n_50_69": 5,
     "avg_gain_lt50": null,
@@ -896842,7 +896828,7 @@
         "entry_price": 0.0006853,
         "max_price": 0.001728,
         "max_gain_pct": 152.2,
-        "n_snaps": 22
+        "n_snaps": 23
       },
       {
         "ip_name": "Black Clover Season 2",
@@ -896878,7 +896864,7 @@
         "entry_price": 1.747e-05,
         "max_price": 2.119e-05,
         "max_gain_pct": 21.3,
-        "n_snaps": 4
+        "n_snaps": 5
       },
       {
         "ip_name": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
@@ -896899,6 +896885,15 @@
         "n_snaps": 17
       },
       {
+        "ip_name": "My Happy Marriage Special Episodes",
+        "token_symbol": "HAPPY",
+        "entry_score": 93,
+        "entry_price": 2.696e-09,
+        "max_price": 2.919e-09,
+        "max_gain_pct": 8.3,
+        "n_snaps": 4
+      },
+      {
         "ip_name": "Dragon Ball Super: Beerus",
         "token_symbol": "DRAGON",
         "entry_score": 95,
@@ -896908,22 +896903,13 @@
         "n_snaps": 11
       },
       {
-        "ip_name": "My Happy Marriage Special Episodes",
-        "token_symbol": "HAPPY",
-        "entry_score": 93,
-        "entry_price": 2.696e-09,
-        "max_price": 2.896e-09,
-        "max_gain_pct": 7.4,
-        "n_snaps": 3
-      },
-      {
         "ip_name": "Firefly Wedding",
         "token_symbol": "FLY",
         "entry_score": 79,
         "entry_price": 21.55,
         "max_price": 22.52,
         "max_gain_pct": 4.5,
-        "n_snaps": 15
+        "n_snaps": 16
       }
     ]
   },
