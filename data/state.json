@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789887670,
+  "saved_at": 1789887721,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -894205,26 +894205,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "LIT",
-        "contract": "0xeeca2e7dc194a320d349122d88259bb9595a4cb0",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.7% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-17T07:00:41.232540+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-20T07:01:10.068997+00:00"
-      },
-      {
         "token": "PENDLE",
         "contract": "0x5e49e1f85813f2b65858860a3fa231b4186f2e0e",
         "chain": "RHOOD",
@@ -894364,7 +894344,7 @@
         "entry_price": 3.758308154e-06,
         "max_price": 4.269450773e-06,
         "min_price": 3.758308154e-06,
-        "last_price": 3.996050438e-06,
+        "last_price": 4.006642457e-06,
         "status": "open",
         "ts": "2026-09-19T03:10:38.053047+00:00"
       },
@@ -894382,7 +894362,7 @@
         "entry_price": 0.1907460561,
         "max_price": 0.2061048924,
         "min_price": 0.1907460561,
-        "last_price": 0.2051112705,
+        "last_price": 0.1942978181,
         "status": "open",
         "ts": "2026-09-19T12:04:56.017367+00:00"
       },
@@ -894398,9 +894378,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +0.5% 24h ⚪",
         "entry_price": 0.0003475732222,
-        "max_price": 0.0004220636944,
+        "max_price": 0.0004280463687,
         "min_price": 0.0003475732222,
-        "last_price": 0.0004220636944,
+        "last_price": 0.0004280463687,
         "status": "open",
         "ts": "2026-09-20T00:01:41.004141+00:00"
       },
@@ -897687,14 +897667,6 @@
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789453673967-82bf1a",
-      "kind": "convergence",
-      "text": "🎯 2362 smart wallets compraron $ONDO [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC -0.2% ⚪",
-      "hash": "82bf1ae84436448b",
-      "created_ts": 1789453673,
-      "retries": 4
-    },
     {
       "id": "1789454914653-1ee276",
       "kind": "convergence",
