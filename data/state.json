@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789976083,
+  "saved_at": 1789976105,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -901498,28 +901498,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SPX6900",
-        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +1.5% 24h 🟢",
-        "entry_price": 0.4866112491,
-        "max_price": 0.513439481,
-        "min_price": 0.4466906588,
-        "last_price": 0.4847569771,
-        "status": "open",
-        "ts": "2026-09-18T07:23:26.357278+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 5.5,
-        "min_loss_pct": -8.2,
-        "closed_at": "2026-09-21T07:34:43.637037+00:00"
-      },
-      {
         "token": "SOIL",
         "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
         "chain": "ETH",
@@ -901659,7 +901637,7 @@
         "entry_price": 0.4087485663,
         "max_price": 0.4318920724,
         "min_price": 0.4087485663,
-        "last_price": 0.4253552981,
+        "last_price": 0.4283311964,
         "status": "open",
         "ts": "2026-09-20T06:57:43.956547+00:00"
       },
@@ -905040,18 +905018,32 @@
         "ts": "2026-09-18T04:01:55.452491+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-09-21T04:05:10.928466+00:00"
+      },
+      {
+        "token": "SPX6900",
+        "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +1.5% 24h 🟢",
+        "entry_price": 0.4866112491,
+        "max_price": 0.513439481,
+        "min_price": 0.4466906588,
+        "last_price": 0.4847569771,
+        "status": "open",
+        "ts": "2026-09-18T07:23:26.357278+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 5.5,
+        "min_loss_pct": -8.2,
+        "closed_at": "2026-09-21T07:34:43.637037+00:00"
       }
     ]
   },
   "tweet_queue": [
-    {
-      "id": "1789610466345-4ed326",
-      "kind": "convergence",
-      "text": "🎯 16 smart wallets compraron $PENGU [RHOOD] casi a la vez. Convergencia de dinero inteligente. · BTC +1.2% ⚪",
-      "hash": "4ed32602ae098022",
-      "created_ts": 1789610466,
-      "retries": 10
-    },
     {
       "id": "1789617636606-b248ec",
       "kind": "convergence",
