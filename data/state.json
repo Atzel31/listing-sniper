@@ -1,5 +1,5 @@
 {
-  "saved_at": 1789963511,
+  "saved_at": 1789963562,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -897823,26 +897823,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "TAO",
-        "contract": "0xf3081494b87e8d5fb7960f066e931d1d0e6e3d67",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +1.2% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-09-18T04:01:55.452491+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-09-21T04:05:10.928466+00:00"
-      },
-      {
         "token": "SPX6900",
         "contract": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
         "chain": "ETH",
@@ -897962,9 +897942,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC +4.3% 24h 🟢",
         "entry_price": 0.1907460561,
-        "max_price": 0.2065685113,
+        "max_price": 0.2143176545,
         "min_price": 0.1907460561,
-        "last_price": 0.204575052,
+        "last_price": 0.2143176545,
         "status": "open",
         "ts": "2026-09-19T12:04:56.017367+00:00"
       },
@@ -897982,7 +897962,7 @@
         "entry_price": 0.0003475732222,
         "max_price": 0.0004280463687,
         "min_price": 0.0003475732222,
-        "last_price": 0.0003913956758,
+        "last_price": 0.0004089024385,
         "status": "open",
         "ts": "2026-09-20T00:01:41.004141+00:00"
       },
@@ -897998,9 +897978,9 @@
         "combo_key": "insider_buy+insider_convergence",
         "btc_context": "Mercado: BTC -0.9% 24h ⚪",
         "entry_price": 0.4087485663,
-        "max_price": 0.4102588845,
+        "max_price": 0.4318920724,
         "min_price": 0.4087485663,
-        "last_price": 0.4102588845,
+        "last_price": 0.4318920724,
         "status": "open",
         "ts": "2026-09-20T06:57:43.956547+00:00"
       },
