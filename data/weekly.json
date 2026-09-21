@@ -1,115 +1,23 @@
 {
-  "generated_at": "2026-09-14 13:00 UTC",
-  "week": "2026-W37",
+  "generated_at": "2026-09-21 13:02 UTC",
+  "week": "2026-W38",
   "market_context": "bajista",
   "ranking": [
     {
       "rank": 1,
-      "symbol": "PONS",
-      "chain": "RHOOD",
-      "score": 95,
-      "price": "0.5436",
-      "liq": 5987513.64,
-      "vol": 2919886.89,
-      "mcap": 375584261,
-      "ch24h": -2.11,
+      "symbol": "CATE",
+      "chain": "SOL",
+      "score": 88,
+      "price": "0.1069",
+      "liq": 3777571.44,
+      "vol": 4695553.49,
+      "mcap": 103127758,
+      "ch24h": -0.98,
       "ch7d": null,
       "flow": "OUT",
       "whale_count": 0,
-      "big_buyers": 4,
-      "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista). 4 comprador(es) grande(s) nuevo(s).",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": 5,
-          "reason": "Turnover saludable"
-        },
-        {
-          "effect": 5,
-          "reason": "Presion compradora positiva (58%)"
-        },
-        {
-          "effect": 12,
-          "reason": "Retiro neto de exchanges (alcista)"
-        },
-        {
-          "effect": 10,
-          "reason": "4 compradores grandes nuevos"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/robinhood/0x10CC6BD38112cAc182db90B6a71d8Bb5939526bA",
-      "buy_url": "https://dexscreener.com/robinhood/0x39dBED3a2bd333467115dE45665cC57F813C4571"
-    },
-    {
-      "rank": 2,
-      "symbol": "USELESS",
-      "chain": "SOL",
-      "score": 85,
-      "price": "0.1943",
-      "liq": 4347141.34,
-      "vol": 2804555.4,
-      "mcap": 194362834,
-      "ch24h": -9.81,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
       "big_buyers": 0,
-      "diagnosis": "Excelente candidato para acumular.",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": 5,
-          "reason": "Turnover saludable"
-        },
-        {
-          "effect": 5,
-          "reason": "Presion compradora positiva (56%)"
-        },
-        {
-          "effect": 12,
-          "reason": "Dip estabilizandose (ideal para DCA)"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/solana/Q2sPHPdUWFMg7M7wwrQKLrn619cAucfRsmhVJffodSp",
-      "buy_url": "https://jup.ag/swap/SOL-Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk"
-    },
-    {
-      "rank": 3,
-      "symbol": "CASHCAT",
-      "chain": "RHOOD",
-      "score": 83,
-      "price": "0.2176",
-      "liq": 4918439.05,
-      "vol": 7283753.24,
-      "mcap": 215108265,
-      "ch24h": -17.93,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Excelente candidato para acumular. cayo 18% en 24h.",
+      "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista).",
       "reasons": [
         {
           "effect": 15,
@@ -120,8 +28,12 @@
           "reason": "Volumen mayor a liquidez (interes alto)"
         },
         {
+          "effect": 5,
+          "reason": "Presion compradora positiva (58%)"
+        },
+        {
           "effect": 12,
-          "reason": "Dip estabilizandose (ideal para DCA)"
+          "reason": "Retiro neto de exchanges (alcista)"
         },
         {
           "effect": 4,
@@ -132,19 +44,19 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/robinhood/0xA70fc67C9F69da90B63a0e4C05D229954574E313",
-      "buy_url": "https://dexscreener.com/robinhood/0x020bfC650A365f8BB26819deAAbF3E21291018b4"
+      "url": "https://dexscreener.com/solana/HMzvsEEmtzHhvZNw9uwbaG85HCTmFnkbhzUx16cy7ca3",
+      "buy_url": "https://jup.ag/swap/SOL-Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump"
     },
     {
-      "rank": 4,
-      "symbol": "TAO",
-      "chain": "RHOOD",
-      "score": 80,
-      "price": "235.71",
-      "liq": 616945.46,
-      "vol": 61517.04,
-      "mcap": 2262280140,
-      "ch24h": 1.01,
+      "rank": 2,
+      "symbol": "ENA",
+      "chain": "ETH",
+      "score": 86,
+      "price": "0.2176",
+      "liq": 4364392.57,
+      "vol": 285911.68,
+      "mcap": 268823248,
+      "ch24h": 6.12,
       "ch7d": null,
       "flow": "OUT",
       "whale_count": 0,
@@ -152,12 +64,12 @@
       "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista). 1 comprador(es) grande(s) nuevo(s).",
       "reasons": [
         {
-          "effect": 10,
-          "reason": "Liquidez solida (>$200K)"
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
         },
         {
-          "effect": 5,
-          "reason": "Presion compradora positiva (57%)"
+          "effect": 10,
+          "reason": "Presion compradora fuerte (81% buys)"
         },
         {
           "effect": 12,
@@ -169,6 +81,50 @@
         },
         {
           "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/ethereum/0x0598690aD1dAffC3AC47fD6adCAEAC547C067e26",
+      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x57e114B691Db790C35207b2e685D4A43181e6061"
+    },
+    {
+      "rank": 3,
+      "symbol": "URANUS",
+      "chain": "SOL",
+      "score": 86,
+      "price": "0.005145",
+      "liq": 96318.25,
+      "vol": 44198.6,
+      "mcap": 514501,
+      "ch24h": -7.46,
+      "ch7d": null,
+      "flow": "OUT",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista).",
+      "reasons": [
+        {
+          "effect": 4,
+          "reason": "Liquidez media"
+        },
+        {
+          "effect": 5,
+          "reason": "Turnover saludable"
+        },
+        {
+          "effect": 5,
+          "reason": "Presion compradora positiva (63%)"
+        },
+        {
+          "effect": 12,
+          "reason": "Dip estabilizandose (ideal para DCA)"
+        },
+        {
+          "effect": 12,
+          "reason": "Retiro neto de exchanges (alcista)"
+        },
+        {
+          "effect": 4,
           "reason": "Presencia social activa"
         },
         {
@@ -176,59 +132,95 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/robinhood/0x3f048149F291f459A38FE1d937a361B153CbA43E",
-      "buy_url": "https://dexscreener.com/robinhood/0xf3081494B87e8D5fb7960f066E931D1D0e6E3d67"
+      "url": "https://dexscreener.com/solana/7ccKzmrXBpFHwyZGPqPuKL6bEyWAETSnHwnWe3jEneVc",
+      "buy_url": "https://jup.ag/swap/SOL-BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups"
     },
     {
-      "rank": 5,
-      "symbol": "ONDO",
-      "chain": "ETH",
-      "score": 76,
-      "price": "0.3518",
-      "liq": 722757.02,
-      "vol": 74797.02,
-      "mcap": 3518442535,
-      "ch24h": 2.5,
+      "rank": 4,
+      "symbol": "ZFORGE",
+      "chain": "RHOOD",
+      "score": 84,
+      "price": "0.01112",
+      "liq": 349456.43,
+      "vol": 35031170.38,
+      "mcap": 11115772,
+      "ch24h": -59.31,
       "ch7d": null,
       "flow": "OUT",
       "whale_count": 0,
-      "big_buyers": 2,
-      "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista). 2 comprador(es) grande(s) nuevo(s).",
+      "big_buyers": 0,
+      "diagnosis": "Excelente candidato para acumular. cayo 59% en 24h. retiro neto de exchanges (alcista).",
       "reasons": [
         {
           "effect": 10,
           "reason": "Liquidez solida (>$200K)"
         },
         {
-          "effect": 5,
-          "reason": "Presion compradora positiva (57%)"
+          "effect": 8,
+          "reason": "Volumen mayor a liquidez (interes alto)"
+        },
+        {
+          "effect": 10,
+          "reason": "Presion compradora fuerte (90% buys)"
         },
         {
           "effect": 12,
           "reason": "Retiro neto de exchanges (alcista)"
         },
         {
-          "effect": 5,
-          "reason": "2 comprador(es) grande(s) nuevo(s)"
+          "effect": 4,
+          "reason": "Presencia social activa"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0x6ac6b3A1e78C32aB48152eC079C12014d2a72E8C",
+      "buy_url": "https://dexscreener.com/robinhood/0xB6a906D2D95E862Cf4FD43b9e30162AEe19EeD8d"
+    },
+    {
+      "rank": 5,
+      "symbol": "NVDA",
+      "chain": "RHOOD",
+      "score": 81,
+      "price": "225.0066",
+      "liq": 6284727.77,
+      "vol": 994705.58,
+      "mcap": 20557247,
+      "ch24h": 2.45,
+      "ch7d": null,
+      "flow": "OUT",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista).",
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 10,
+          "reason": "Presion compradora fuerte (65% buys)"
+        },
+        {
+          "effect": 12,
+          "reason": "Retiro neto de exchanges (alcista)"
         },
         {
           "effect": 4,
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/ethereum/0x7b1E5D984A43eE732de195628d20d05CFaBc3cC7",
-      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xfAbA6f8e4a5E8Ab82F62fe7C39859FA577269BE3"
+      "url": "https://dexscreener.com/robinhood/0xcbdfea90430a30ee4469c9902e120a77e7c7e4711d5643671c1d1957f2f1ce27",
+      "buy_url": "https://dexscreener.com/robinhood/0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
     },
     {
       "rank": 6,
-      "symbol": "SPY",
-      "chain": "RHOOD",
-      "score": 76,
-      "price": "764.033",
-      "liq": 8540708.53,
-      "vol": 887912.39,
-      "mcap": 25030013,
-      "ch24h": 0.02,
+      "symbol": "RAY",
+      "chain": "SOL",
+      "score": 80,
+      "price": "1.77",
+      "liq": 6333518.47,
+      "vol": 1566413.2,
+      "mcap": 984631163,
+      "ch24h": 7.53,
       "ch7d": null,
       "flow": "OUT",
       "whale_count": 0,
@@ -241,43 +233,11 @@
         },
         {
           "effect": 5,
-          "reason": "Presion compradora positiva (57%)"
+          "reason": "Presion compradora positiva (63%)"
         },
         {
           "effect": 12,
           "reason": "Retiro neto de exchanges (alcista)"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/robinhood/0xfe2a80bb5618fd14984b92ca6d45bf5ba67443ddb1435e28b2e48df2fc1526cd",
-      "buy_url": "https://dexscreener.com/robinhood/0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
-    },
-    {
-      "rank": 7,
-      "symbol": "RAY",
-      "chain": "SOL",
-      "score": 75,
-      "price": "1.37",
-      "liq": 5540336.02,
-      "vol": 1442471.98,
-      "mcap": 369633600,
-      "ch24h": -7.78,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Excelente candidato para acumular.",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": 12,
-          "reason": "Dip estabilizandose (ideal para DCA)"
         },
         {
           "effect": 4,
@@ -292,15 +252,55 @@
       "buy_url": "https://jup.ag/swap/SOL-4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R"
     },
     {
+      "rank": 7,
+      "symbol": "ASTRO",
+      "chain": "RHOOD",
+      "score": 78,
+      "price": "0.002855",
+      "liq": 119159.42,
+      "vol": 4929453.72,
+      "mcap": 2738375,
+      "ch24h": 251165,
+      "ch7d": null,
+      "flow": "OUT",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Excelente candidato para acumular. retiro neto de exchanges (alcista).",
+      "reasons": [
+        {
+          "effect": 4,
+          "reason": "Liquidez media"
+        },
+        {
+          "effect": 8,
+          "reason": "Volumen mayor a liquidez (interes alto)"
+        },
+        {
+          "effect": 10,
+          "reason": "Presion compradora fuerte (81% buys)"
+        },
+        {
+          "effect": 12,
+          "reason": "Retiro neto de exchanges (alcista)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0x3416B8D8aA6ae642fFDC2F65165ff479D4bD3007",
+      "buy_url": "https://dexscreener.com/robinhood/0x5b81efE5E0ba2b31c0Ed843B908a2c45Fe6E14c5"
+    },
+    {
       "rank": 8,
       "symbol": "TOSHI",
       "chain": "BASE",
       "score": 74,
-      "price": "0.0001122",
-      "liq": 1094079.22,
-      "vol": 37403.97,
-      "mcap": 47239563,
-      "ch24h": -1.58,
+      "price": "0.0001226",
+      "liq": 1194452.52,
+      "vol": 17116,
+      "mcap": 51601998,
+      "ch24h": 6.63,
       "ch7d": null,
       "flow": "OUT",
       "whale_count": 0,
@@ -317,7 +317,7 @@
         },
         {
           "effect": 5,
-          "reason": "Presion compradora positiva (61%)"
+          "reason": "Presion compradora positiva (64%)"
         },
         {
           "effect": 12,
@@ -337,162 +337,86 @@
     },
     {
       "rank": 9,
-      "symbol": "FLOCK",
-      "chain": "RHOOD",
-      "score": 74,
-      "price": "0.06917",
-      "liq": 245481.8,
-      "vol": 350251.53,
-      "mcap": 31903993,
-      "ch24h": -16.8,
+      "symbol": "PEPE",
+      "chain": "ETH",
+      "score": 73,
+      "price": "0.000004267",
+      "liq": 31624078.34,
+      "vol": 1815562.87,
+      "mcap": 1765667165,
+      "ch24h": 7.21,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada. cayo 17% en 24h.",
+      "big_buyers": 5,
+      "diagnosis": "Buen candidato, entrada gradual recomendada. 5 comprador(es) grande(s) nuevo(s).",
       "reasons": [
         {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
           "effect": 10,
-          "reason": "Liquidez solida (>$200K)"
-        },
-        {
-          "effect": 8,
-          "reason": "Volumen mayor a liquidez (interes alto)"
-        },
-        {
-          "effect": 12,
-          "reason": "Dip estabilizandose (ideal para DCA)"
+          "reason": "5 compradores grandes nuevos"
         },
         {
           "effect": 4,
           "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/robinhood/0x77f0e97f94b742b7c2046efb6675eb9583a31b36316c8b7b070d0d04f11aa7b2",
-      "buy_url": "https://dexscreener.com/robinhood/0x5aB3D4c385B400F3aBB49e80DE2fAF6a88A7B691"
+      "url": "https://dexscreener.com/ethereum/0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
+      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x6982508145454Ce325dDbE47a25d4ec3d2311933"
     },
     {
       "rank": 10,
-      "symbol": "TROLL",
-      "chain": "SOL",
-      "score": 73,
-      "price": "0.04585",
-      "liq": 3100068.57,
-      "vol": 1140468.45,
-      "mcap": 45800253,
-      "ch24h": -0.41,
+      "symbol": "ONDO",
+      "chain": "ETH",
+      "score": 72,
+      "price": "0.4552",
+      "liq": 884119.12,
+      "vol": 1157713.15,
+      "mcap": 4552165550,
+      "ch24h": 10.71,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada.",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": 5,
-          "reason": "Turnover saludable"
-        },
-        {
-          "effect": 5,
-          "reason": "Presion compradora positiva (55%)"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/solana/4w2cysotX6czaUGmmWg13hDpY4QEMG2CzeKYEQyK9Ama",
-      "buy_url": "https://jup.ag/swap/SOL-5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2"
-    },
-    {
-      "rank": 11,
-      "symbol": "LIT",
-      "chain": "RHOOD",
-      "score": 72,
-      "price": "4.50",
-      "liq": 584711.4,
-      "vol": 283349.83,
-      "mcap": 1125492450,
-      "ch24h": 9.07,
-      "ch7d": null,
-      "flow": "OUT",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada. retiro neto de exchanges (alcista).",
+      "big_buyers": 5,
+      "diagnosis": "Buen candidato, entrada gradual recomendada. 5 comprador(es) grande(s) nuevo(s).",
       "reasons": [
         {
           "effect": 10,
           "reason": "Liquidez solida (>$200K)"
         },
         {
-          "effect": 5,
-          "reason": "Turnover saludable"
-        },
-        {
-          "effect": 5,
-          "reason": "Presion compradora positiva (62%)"
-        },
-        {
-          "effect": 12,
-          "reason": "Retiro neto de exchanges (alcista)"
-        }
-      ],
-      "url": "https://dexscreener.com/robinhood/0xecc90c8bd08ff7138856f4205e30ae38adfd529578ee925f010b0134f2c91f6a",
-      "buy_url": "https://dexscreener.com/robinhood/0xeeca2E7Dc194a320d349122d88259bB9595a4cB0"
-    },
-    {
-      "rank": 12,
-      "symbol": "ANSEM",
-      "chain": "SOL",
-      "score": 71,
-      "price": "0.1469",
-      "liq": 2223065.89,
-      "vol": 3681343.04,
-      "mcap": 146534364,
-      "ch24h": -11.49,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada. cayo 11% en 24h.",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
           "effect": 8,
           "reason": "Volumen mayor a liquidez (interes alto)"
         },
         {
-          "effect": 4,
-          "reason": "Presencia social activa"
+          "effect": 10,
+          "reason": "5 compradores grandes nuevos"
         },
         {
           "effect": 4,
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/solana/FnzKY6x7entQ1eR3D225dQyT7ybfka4PskBMQhb8L3CC",
-      "buy_url": "https://jup.ag/swap/SOL-9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump"
+      "url": "https://dexscreener.com/ethereum/0x7b1E5D984A43eE732de195628d20d05CFaBc3cC7",
+      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xfAbA6f8e4a5E8Ab82F62fe7C39859FA577269BE3"
     },
     {
-      "rank": 13,
-      "symbol": "CATE",
-      "chain": "SOL",
+      "rank": 11,
+      "symbol": "PONS",
+      "chain": "RHOOD",
       "score": 71,
-      "price": "0.07333",
-      "liq": 2818199.03,
-      "vol": 19449539.54,
-      "mcap": 70711753,
-      "ch24h": 40.15,
+      "price": "0.6456",
+      "liq": 6539493.77,
+      "vol": 8346846.71,
+      "mcap": 442627785,
+      "ch24h": 12.49,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -516,11 +440,11 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/solana/HMzvsEEmtzHhvZNw9uwbaG85HCTmFnkbhzUx16cy7ca3",
-      "buy_url": "https://jup.ag/swap/SOL-Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump"
+      "url": "https://dexscreener.com/robinhood/0xEd50bDeeA8aDC232f159486192a4157281D722ff",
+      "buy_url": "https://dexscreener.com/robinhood/0x39dBED3a2bd333467115dE45665cC57F813C4571"
     },
     {
-      "rank": 14,
+      "rank": 12,
       "symbol": "AMC",
       "chain": "RHOOD",
       "score": 71,
@@ -556,64 +480,28 @@
       "buy_url": "https://dexscreener.com/robinhood/0x385F4f8ae47651ce5F58F5265395a669f8281e18"
     },
     {
-      "rank": 15,
-      "symbol": "AR",
-      "chain": "CEX",
-      "score": 70,
-      "price": 2.81,
-      "liq": 0,
-      "vol": 25258682,
-      "mcap": 184689941,
-      "ch24h": 10.23035,
-      "ch7d": -5.61981,
+      "rank": 13,
+      "symbol": "TROLL",
+      "chain": "SOL",
+      "score": 68,
+      "price": "0.05281",
+      "liq": 3585382.14,
+      "vol": 1113017.39,
+      "mcap": 52744044,
+      "ch24h": 5.13,
+      "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
       "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada. 97% bajo su ath.",
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
       "reasons": [
         {
-          "effect": 10,
-          "reason": "Lejos del ATH (-97%)"
-        },
-        {
-          "effect": 4,
-          "reason": "Market cap medio"
-        },
-        {
-          "effect": 6,
-          "reason": "Volumen CEX saludable"
-        }
-      ],
-      "url": "https://www.coingecko.com/en/coins/arweave",
-      "buy_url": "https://www.coingecko.com/en/coins/arweave"
-    },
-    {
-      "rank": 16,
-      "symbol": "URANUS",
-      "chain": "SOL",
-      "score": 69,
-      "price": "0.005360",
-      "liq": 98303.32,
-      "vol": 10561.06,
-      "mcap": 535971,
-      "ch24h": -3.3,
-      "ch7d": null,
-      "flow": "OUT",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada. retiro neto de exchanges (alcista).",
-      "reasons": [
-        {
-          "effect": 4,
-          "reason": "Liquidez media"
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
         },
         {
           "effect": 5,
-          "reason": "Presion compradora positiva (63%)"
-        },
-        {
-          "effect": 12,
-          "reason": "Retiro neto de exchanges (alcista)"
+          "reason": "Turnover saludable"
         },
         {
           "effect": 4,
@@ -624,19 +512,55 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/solana/7ccKzmrXBpFHwyZGPqPuKL6bEyWAETSnHwnWe3jEneVc",
-      "buy_url": "https://jup.ag/swap/SOL-BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups"
+      "url": "https://dexscreener.com/solana/4w2cysotX6czaUGmmWg13hDpY4QEMG2CzeKYEQyK9Ama",
+      "buy_url": "https://jup.ag/swap/SOL-5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2"
     },
     {
-      "rank": 17,
+      "rank": 14,
+      "symbol": "USELESS",
+      "chain": "SOL",
+      "score": 68,
+      "price": "0.2795",
+      "liq": 5646216,
+      "vol": 2893341.65,
+      "mcap": 279540323,
+      "ch24h": 5.44,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 5,
+          "reason": "Turnover saludable"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/solana/Q2sPHPdUWFMg7M7wwrQKLrn619cAucfRsmhVJffodSp",
+      "buy_url": "https://jup.ag/swap/SOL-Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk"
+    },
+    {
+      "rank": 15,
       "symbol": "4",
       "chain": "BNB",
       "score": 68,
-      "price": "0.02094",
-      "liq": 1531732.5,
-      "vol": 1002112.7,
-      "mcap": 20942740,
-      "ch24h": 4.46,
+      "price": "0.02370",
+      "liq": 1728259.5,
+      "vol": 765935.58,
+      "mcap": 23697362,
+      "ch24h": 6.79,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -664,7 +588,43 @@
       "buy_url": "https://pancakeswap.finance/swap?outputCurrency=0x0A43fC31a73013089DF59194872Ecae4cAe14444"
     },
     {
-      "rank": 18,
+      "rank": 16,
+      "symbol": "aura",
+      "chain": "SOL",
+      "score": 68,
+      "price": "0.01144",
+      "liq": 1708198.55,
+      "vol": 583628.54,
+      "mcap": 11022499,
+      "ch24h": -4.33,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 5,
+          "reason": "Turnover saludable"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/solana/9ViX1VductEoC2wERTSp2TuDxXPwAf69aeET8ENPJpsN",
+      "buy_url": "https://jup.ag/swap/SOL-DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2"
+    },
+    {
+      "rank": 17,
       "symbol": "ROBIN",
       "chain": "RHOOD",
       "score": 68,
@@ -700,39 +660,7 @@
       "buy_url": "https://dexscreener.com/robinhood/0x11B70d0243baf75E85CE03201A92b5B7C33BEB59"
     },
     {
-      "rank": 19,
-      "symbol": "NVDA",
-      "chain": "RHOOD",
-      "score": 67,
-      "price": "215.68",
-      "liq": 7280724.96,
-      "vol": 11683219.08,
-      "mcap": 20667747,
-      "ch24h": -1.67,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada.",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": 8,
-          "reason": "Volumen mayor a liquidez (interes alto)"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/robinhood/0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
-      "buy_url": "https://dexscreener.com/robinhood/0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
-    },
-    {
-      "rank": 20,
+      "rank": 18,
       "symbol": "SPCX",
       "chain": "RHOOD",
       "score": 67,
@@ -764,7 +692,7 @@
       "buy_url": "https://dexscreener.com/robinhood/0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa"
     },
     {
-      "rank": 21,
+      "rank": 19,
       "symbol": "MEME",
       "chain": "RHOOD",
       "score": 67,
@@ -800,15 +728,83 @@
       "buy_url": "https://dexscreener.com/robinhood/0x385F4f8ae47651ce5F58F5265395a669f8281e18"
     },
     {
-      "rank": 22,
-      "symbol": "VIRTUAL",
+      "rank": 20,
+      "symbol": "AR",
+      "chain": "CEX",
+      "score": 66,
+      "price": 4.74,
+      "liq": 0,
+      "vol": 73390680,
+      "mcap": 311426072,
+      "ch24h": 9.58963,
+      "ch7d": 68.63589,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada. 95% bajo su ath.",
+      "reasons": [
+        {
+          "effect": -4,
+          "reason": "Subida semanal fuerte"
+        },
+        {
+          "effect": 10,
+          "reason": "Lejos del ATH (-95%)"
+        },
+        {
+          "effect": 4,
+          "reason": "Market cap medio"
+        },
+        {
+          "effect": 6,
+          "reason": "Volumen CEX saludable"
+        }
+      ],
+      "url": "https://www.coingecko.com/en/coins/arweave",
+      "buy_url": "https://www.coingecko.com/en/coins/arweave"
+    },
+    {
+      "rank": 21,
+      "symbol": "SPY",
       "chain": "RHOOD",
       "score": 64,
-      "price": "0.6145",
-      "liq": 2548023.44,
-      "vol": 930795.3,
-      "mcap": 404641474,
-      "ch24h": 0.02,
+      "price": "762.47",
+      "liq": 8624746.32,
+      "vol": 1234103.34,
+      "mcap": 23240015,
+      "ch24h": 0.07,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 5,
+          "reason": "Presion compradora positiva (55%)"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0xfe2a80bb5618fd14984b92ca6d45bf5ba67443ddb1435e28b2e48df2fc1526cd",
+      "buy_url": "https://dexscreener.com/robinhood/0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "rank": 22,
+      "symbol": "U",
+      "chain": "RHOOD",
+      "score": 64,
+      "price": "0.9997",
+      "liq": 5954920.68,
+      "vol": 2553024.06,
+      "mcap": 1392770473,
+      "ch24h": 0,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -828,19 +824,51 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/robinhood/0xd95e8e2Cd04c207625C6F23c974d365a5F3A91D3",
-      "buy_url": "https://dexscreener.com/robinhood/0xc6911796042b15d7Fa4F6CDe69e245DdCd3d9c31"
+      "url": "https://dexscreener.com/robinhood/0x090f2f033c16fE92e28f0204435590548AEDc3F0",
+      "buy_url": "https://dexscreener.com/robinhood/0xcE24439F2D9C6a2289F741120FE202248B666666"
     },
     {
       "rank": 23,
+      "symbol": "SPX6900",
+      "chain": "ETH",
+      "score": 63,
+      "price": "0.5068",
+      "liq": 13566502.44,
+      "vol": 1642658.32,
+      "mcap": 471915413,
+      "ch24h": 11.47,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/ethereum/0x52c77b0CB827aFbAD022E6d6CAF2C44452eDbc39",
+      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C"
+    },
+    {
+      "rank": 24,
       "symbol": "GIGA",
       "chain": "SOL",
       "score": 63,
-      "price": "0.002129",
-      "liq": 1594821.14,
-      "vol": 159780.77,
-      "mcap": 20447987,
-      "ch24h": 0.55,
+      "price": "0.002260",
+      "liq": 1771779.6,
+      "vol": 201580.56,
+      "mcap": 21711157,
+      "ch24h": 9.97,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -864,51 +892,15 @@
       "buy_url": "https://jup.ag/swap/SOL-63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9"
     },
     {
-      "rank": 24,
-      "symbol": "67",
-      "chain": "SOL",
-      "score": 63,
-      "price": "0.001808",
-      "liq": 325417.28,
-      "vol": 73417.19,
-      "mcap": 1808204,
-      "ch24h": 4.43,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "Buen candidato, entrada gradual recomendada.",
-      "reasons": [
-        {
-          "effect": 10,
-          "reason": "Liquidez solida (>$200K)"
-        },
-        {
-          "effect": 5,
-          "reason": "Presion compradora positiva (55%)"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/solana/DMAFL613XTipuA3jFNYczavWT7XsiYf9cR3qmRMZQhB6",
-      "buy_url": "https://jup.ag/swap/SOL-9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump"
-    },
-    {
       "rank": 25,
       "symbol": "WIF",
       "chain": "SOL",
       "score": 63,
-      "price": "0.1871",
-      "liq": 5413499.86,
-      "vol": 446782.25,
-      "mcap": 186929352,
-      "ch24h": -0.32,
+      "price": "0.2241",
+      "liq": 6380733.84,
+      "vol": 1091655.04,
+      "mcap": 223884522,
+      "ch24h": 13.65,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -933,14 +925,14 @@
     },
     {
       "rank": 26,
-      "symbol": "aura",
-      "chain": "SOL",
+      "symbol": "CASHCAT",
+      "chain": "RHOOD",
       "score": 63,
-      "price": "0.01712",
-      "liq": 1932760.65,
-      "vol": 276028.95,
-      "mcap": 16493555,
-      "ch24h": 9.97,
+      "price": "0.1884",
+      "liq": 5862286.36,
+      "vol": 1676421.56,
+      "mcap": 186154704,
+      "ch24h": 16.71,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -960,19 +952,51 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/solana/9ViX1VductEoC2wERTSp2TuDxXPwAf69aeET8ENPJpsN",
-      "buy_url": "https://jup.ag/swap/SOL-DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2"
+      "url": "https://dexscreener.com/robinhood/0xA70fc67C9F69da90B63a0e4C05D229954574E313",
+      "buy_url": "https://dexscreener.com/robinhood/0x020bfC650A365f8BB26819deAAbF3E21291018b4"
     },
     {
       "rank": 27,
+      "symbol": "FLOCK",
+      "chain": "RHOOD",
+      "score": 62,
+      "price": "0.07121",
+      "liq": 248799.52,
+      "vol": 334586.76,
+      "mcap": 32866476,
+      "ch24h": 4.09,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
+      "reasons": [
+        {
+          "effect": 10,
+          "reason": "Liquidez solida (>$200K)"
+        },
+        {
+          "effect": 8,
+          "reason": "Volumen mayor a liquidez (interes alto)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0x77f0e97f94b742b7c2046efb6675eb9583a31b36316c8b7b070d0d04f11aa7b2",
+      "buy_url": "https://dexscreener.com/robinhood/0x5aB3D4c385B400F3aBB49e80DE2fAF6a88A7B691"
+    },
+    {
+      "rank": 28,
       "symbol": "SOIL",
       "chain": "ETH",
       "score": 60,
-      "price": "0.09692",
-      "liq": 76880.84,
-      "vol": 9.64,
-      "mcap": 141222,
-      "ch24h": 0,
+      "price": "0.1027",
+      "liq": 81774.66,
+      "vol": 362.46,
+      "mcap": 150509,
+      "ch24h": 2.36,
       "ch7d": null,
       "flow": "OUT",
       "whale_count": 0,
@@ -989,7 +1013,7 @@
         },
         {
           "effect": 10,
-          "reason": "Presion compradora fuerte (100% buys)"
+          "reason": "Presion compradora fuerte (67% buys)"
         },
         {
           "effect": 12,
@@ -1000,16 +1024,16 @@
       "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16"
     },
     {
-      "rank": 28,
+      "rank": 29,
       "symbol": "RON",
       "chain": "CEX",
       "score": 60,
-      "price": 0.057798,
+      "price": 0.062067,
       "liq": 0,
-      "vol": 2285893,
-      "mcap": 44530547,
-      "ch24h": 8.39769,
-      "ch7d": 4.82798,
+      "vol": 1104600,
+      "mcap": 47940934,
+      "ch24h": 7.48323,
+      "ch7d": 7.35949,
       "flow": "NEUTRAL",
       "whale_count": 0,
       "big_buyers": 0,
@@ -1024,91 +1048,47 @@
       "buy_url": "https://www.coingecko.com/en/coins/ronin"
     },
     {
-      "rank": 29,
-      "symbol": "PEPE",
-      "chain": "ETH",
-      "score": 58,
-      "price": "0.000003435",
-      "liq": 27123365.5,
-      "vol": 685879.08,
-      "mcap": 1421359896,
-      "ch24h": 0.68,
+      "rank": 30,
+      "symbol": "LIT",
+      "chain": "RHOOD",
+      "score": 60,
+      "price": "5.063",
+      "liq": 701040.18,
+      "vol": 378732.61,
+      "mcap": 1265769963,
+      "ch24h": 7.11,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
-      "big_buyers": 2,
-      "diagnosis": "Neutral, esperar mejor punto de entrada. 2 comprador(es) grande(s) nuevo(s).",
+      "big_buyers": 0,
+      "diagnosis": "Buen candidato, entrada gradual recomendada.",
       "reasons": [
         {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": -6,
-          "reason": "Volumen muerto"
+          "effect": 10,
+          "reason": "Liquidez solida (>$200K)"
         },
         {
           "effect": 5,
-          "reason": "2 comprador(es) grande(s) nuevo(s)"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
-        }
-      ],
-      "url": "https://dexscreener.com/ethereum/0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
-      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x6982508145454Ce325dDbE47a25d4ec3d2311933"
-    },
-    {
-      "rank": 30,
-      "symbol": "SPX6900",
-      "chain": "ETH",
-      "score": 58,
-      "price": "0.4989",
-      "liq": 12820193.66,
-      "vol": 898471.77,
-      "mcap": 464512909,
-      "ch24h": 3.74,
-      "ch7d": null,
-      "flow": "IN",
-      "whale_count": 0,
-      "big_buyers": 1,
-      "diagnosis": "Neutral, esperar mejor punto de entrada. deposito a exchanges (precaucion). 1 comprador(es) grande(s) nuevo(s).",
-      "reasons": [
-        {
-          "effect": 15,
-          "reason": "Liquidez muy solida (>$1M)"
-        },
-        {
-          "effect": -10,
-          "reason": "Deposito neto a exchanges (bajista)"
+          "reason": "Turnover saludable"
         },
         {
           "effect": 5,
-          "reason": "1 comprador(es) grande(s) nuevo(s)"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
-        },
-        {
-          "effect": 4,
-          "reason": "Cotiza en multiples DEX"
+          "reason": "Presion compradora positiva (56%)"
         }
       ],
-      "url": "https://dexscreener.com/ethereum/0x52c77b0CB827aFbAD022E6d6CAF2C44452eDbc39",
-      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C"
+      "url": "https://dexscreener.com/robinhood/0xecc90c8bd08ff7138856f4205e30ae38adfd529578ee925f010b0134f2c91f6a",
+      "buy_url": "https://dexscreener.com/robinhood/0xeeca2E7Dc194a320d349122d88259bB9595a4cB0"
     },
     {
       "rank": 31,
-      "symbol": "BRETT",
-      "chain": "BASE",
-      "score": 57,
-      "price": "0.004913",
-      "liq": 1185681.4,
-      "vol": 4235.24,
-      "mcap": 48689295,
-      "ch24h": 1.31,
+      "symbol": "VIRTUAL",
+      "chain": "RHOOD",
+      "score": 59,
+      "price": "0.7115",
+      "liq": 2540318.14,
+      "vol": 304853.06,
+      "mcap": 468464802,
+      "ch24h": 10.33,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
@@ -1120,8 +1100,32 @@
           "reason": "Liquidez muy solida (>$1M)"
         },
         {
-          "effect": -6,
-          "reason": "Volumen muerto"
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0xd95e8e2Cd04c207625C6F23c974d365a5F3A91D3",
+      "buy_url": "https://dexscreener.com/robinhood/0xc6911796042b15d7Fa4F6CDe69e245DdCd3d9c31"
+    },
+    {
+      "rank": 32,
+      "symbol": "NUB",
+      "chain": "SOL",
+      "score": 58,
+      "price": "0.0002119",
+      "liq": 237472.64,
+      "vol": 29741.7,
+      "mcap": 211945,
+      "ch24h": 5.21,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "Neutral, esperar mejor punto de entrada.",
+      "reasons": [
+        {
+          "effect": 10,
+          "reason": "Liquidez solida (>$200K)"
         },
         {
           "effect": 4,
@@ -1132,47 +1136,19 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/base/0xBA3F945812a83471d709BCe9C3CA699A19FB46f7",
-      "buy_url": "https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x532f27101965dd16442E59d40670FaF5eBB142E4"
-    },
-    {
-      "rank": 32,
-      "symbol": "PENDLE",
-      "chain": "RHOOD",
-      "score": 54,
-      "price": "2.29",
-      "liq": 110078.08,
-      "vol": 12560.83,
-      "mcap": 396134485,
-      "ch24h": 8.17,
-      "ch7d": null,
-      "flow": "NEUTRAL",
-      "whale_count": 0,
-      "big_buyers": 3,
-      "diagnosis": "Neutral, esperar mejor punto de entrada. 3 comprador(es) grande(s) nuevo(s).",
-      "reasons": [
-        {
-          "effect": 4,
-          "reason": "Liquidez media"
-        },
-        {
-          "effect": 10,
-          "reason": "3 compradores grandes nuevos"
-        }
-      ],
-      "url": "https://dexscreener.com/robinhood/0x2d4670ee0fcdccdff4705a163a4e3d0b426c782317db61f3ea06c5a98d5eb423",
-      "buy_url": "https://dexscreener.com/robinhood/0x5E49E1f85813F2B65858860A3FA231b4186f2e0E"
+      "url": "https://dexscreener.com/solana/83G6VzJzLRCnHBsLATj94VCpRimyyqwuN6ZfL11McADL",
+      "buy_url": "https://jup.ag/swap/SOL-GtDZKAqvMZMnti46ZewMiXCa4oXF4bZxwQPoKzXPFxZn"
     },
     {
       "rank": 33,
-      "symbol": "U",
-      "chain": "RHOOD",
-      "score": 54,
-      "price": "1.0000038",
-      "liq": 5954044.36,
-      "vol": 3135809.44,
-      "mcap": 1282504885,
-      "ch24h": 0.08,
+      "symbol": "ANSEM",
+      "chain": "SOL",
+      "score": 58,
+      "price": "0.1704",
+      "liq": 2612772.94,
+      "vol": 2120908.36,
+      "mcap": 170007044,
+      "ch24h": 16.69,
       "ch7d": null,
       "flow": "IN",
       "whale_count": 0,
@@ -1193,42 +1169,6 @@
         },
         {
           "effect": 4,
-          "reason": "Cotiza en multiples DEX"
-        }
-      ],
-      "url": "https://dexscreener.com/robinhood/0x090f2f033c16fE92e28f0204435590548AEDc3F0",
-      "buy_url": "https://dexscreener.com/robinhood/0xcE24439F2D9C6a2289F741120FE202248B666666"
-    },
-    {
-      "rank": 34,
-      "symbol": "ENA",
-      "chain": "ETH",
-      "score": 53,
-      "price": "0.1403",
-      "liq": 674559.25,
-      "vol": 151174.33,
-      "mcap": 2105912333,
-      "ch24h": 0.63,
-      "ch7d": null,
-      "flow": "IN",
-      "whale_count": 0,
-      "big_buyers": 1,
-      "diagnosis": "Neutral, esperar mejor punto de entrada. deposito a exchanges (precaucion). 1 comprador(es) grande(s) nuevo(s).",
-      "reasons": [
-        {
-          "effect": 10,
-          "reason": "Liquidez solida (>$200K)"
-        },
-        {
-          "effect": -10,
-          "reason": "Deposito neto a exchanges (bajista)"
-        },
-        {
-          "effect": 5,
-          "reason": "1 comprador(es) grande(s) nuevo(s)"
-        },
-        {
-          "effect": 4,
           "reason": "Presencia social activa"
         },
         {
@@ -1236,11 +1176,11 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/ethereum/0xc3Db44ADC1fCdFd5671f555236eae49f4A8EEa18",
-      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x57e114B691Db790C35207b2e685D4A43181e6061"
+      "url": "https://dexscreener.com/solana/FnzKY6x7entQ1eR3D225dQyT7ybfka4PskBMQhb8L3CC",
+      "buy_url": "https://jup.ag/swap/SOL-9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump"
     },
     {
-      "rank": 35,
+      "rank": 34,
       "symbol": "AI",
       "chain": "RHOOD",
       "score": 50,
@@ -1284,28 +1224,24 @@
       "buy_url": "https://dexscreener.com/robinhood/0x2E8c31162b855A2ffa90F6F8634643Ad6F111e18"
     },
     {
-      "rank": 36,
-      "symbol": "NUB",
+      "rank": 35,
+      "symbol": "67",
       "chain": "SOL",
-      "score": 42,
-      "price": "0.004120",
-      "liq": 951065.92,
-      "vol": 33434.7,
-      "mcap": 4120567,
-      "ch24h": 3.72,
+      "score": 48,
+      "price": "0.001943",
+      "liq": 362162.75,
+      "vol": 54376.38,
+      "mcap": 1845778,
+      "ch24h": 24.02,
       "ch7d": null,
       "flow": "IN",
       "whale_count": 0,
       "big_buyers": 0,
-      "diagnosis": "No recomendado por ahora. deposito a exchanges (precaucion).",
+      "diagnosis": "Neutral, esperar mejor punto de entrada. deposito a exchanges (precaucion).",
       "reasons": [
         {
           "effect": 10,
           "reason": "Liquidez solida (>$200K)"
-        },
-        {
-          "effect": -6,
-          "reason": "Volumen muerto"
         },
         {
           "effect": -10,
@@ -1320,40 +1256,28 @@
           "reason": "Cotiza en multiples DEX"
         }
       ],
-      "url": "https://dexscreener.com/solana/83G6VzJzLRCnHBsLATj94VCpRimyyqwuN6ZfL11McADL",
-      "buy_url": "https://jup.ag/swap/SOL-GtDZKAqvMZMnti46ZewMiXCa4oXF4bZxwQPoKzXPFxZn"
+      "url": "https://dexscreener.com/solana/DMAFL613XTipuA3jFNYczavWT7XsiYf9cR3qmRMZQhB6",
+      "buy_url": "https://jup.ag/swap/SOL-9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump"
     },
     {
-      "rank": 37,
+      "rank": 36,
       "symbol": "PENGU",
       "chain": "RHOOD",
-      "score": 37,
-      "price": "0.007115",
-      "liq": 162010.88,
-      "vol": 7411.6,
-      "mcap": 447258175,
-      "ch24h": 0.32,
+      "score": 48,
+      "price": "0.008318",
+      "liq": 185776.04,
+      "vol": 29815.14,
+      "mcap": 522924311,
+      "ch24h": 8.87,
       "ch7d": null,
-      "flow": "IN",
+      "flow": "NEUTRAL",
       "whale_count": 0,
-      "big_buyers": 1,
-      "diagnosis": "No recomendado por ahora. deposito a exchanges (precaucion). 1 comprador(es) grande(s) nuevo(s).",
+      "big_buyers": 0,
+      "diagnosis": "Neutral, esperar mejor punto de entrada.",
       "reasons": [
         {
           "effect": 4,
           "reason": "Liquidez media"
-        },
-        {
-          "effect": -6,
-          "reason": "Volumen muerto"
-        },
-        {
-          "effect": -10,
-          "reason": "Deposito neto a exchanges (bajista)"
-        },
-        {
-          "effect": 5,
-          "reason": "1 comprador(es) grande(s) nuevo(s)"
         },
         {
           "effect": 4,
@@ -1364,15 +1288,131 @@
       "buy_url": "https://dexscreener.com/robinhood/0x74BE72AFFAFbC8de30F0C11247814036314D625f"
     },
     {
+      "rank": 37,
+      "symbol": "LKI",
+      "chain": "ETH",
+      "score": 40,
+      "price": "0.00001840",
+      "liq": 416.42,
+      "vol": 459.26,
+      "mcap": 16943,
+      "ch24h": 7.42,
+      "ch7d": null,
+      "flow": "NEUTRAL",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "No recomendado por ahora.",
+      "reasons": [
+        {
+          "effect": -12,
+          "reason": "Liquidez fragil (<$50K)"
+        },
+        {
+          "effect": 8,
+          "reason": "Volumen mayor a liquidez (interes alto)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        }
+      ],
+      "url": "https://dexscreener.com/bsc/0x712903c3cA65aEeb2E5452d04Da090796fCAE0dF",
+      "buy_url": "https://pancakeswap.finance/swap?outputCurrency=0x1865dc79a9e4b5751531099057d7ee801033d268"
+    },
+    {
       "rank": 38,
+      "symbol": "TAO",
+      "chain": "RHOOD",
+      "score": 40,
+      "price": "257.45",
+      "liq": 591094.36,
+      "vol": 125251.18,
+      "mcap": 807848,
+      "ch24h": -2.16,
+      "ch7d": null,
+      "flow": "IN",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "No recomendado por ahora. deposito a exchanges (precaucion).",
+      "reasons": [
+        {
+          "effect": 10,
+          "reason": "Liquidez solida (>$200K)"
+        },
+        {
+          "effect": -8,
+          "reason": "Presion vendedora (40% buys)"
+        },
+        {
+          "effect": -10,
+          "reason": "Deposito neto a exchanges (bajista)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0x3f048149F291f459A38FE1d937a361B153CbA43E",
+      "buy_url": "https://dexscreener.com/robinhood/0xf3081494B87e8D5fb7960f066E931D1D0e6E3d67"
+    },
+    {
+      "rank": 39,
+      "symbol": "BRETT",
+      "chain": "BASE",
+      "score": 39,
+      "price": "0.005651",
+      "liq": 1303334.67,
+      "vol": 22932.6,
+      "mcap": 56000249,
+      "ch24h": 9.01,
+      "ch7d": null,
+      "flow": "IN",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "No recomendado por ahora. deposito a exchanges (precaucion).",
+      "reasons": [
+        {
+          "effect": 15,
+          "reason": "Liquidez muy solida (>$1M)"
+        },
+        {
+          "effect": -6,
+          "reason": "Volumen muerto"
+        },
+        {
+          "effect": -8,
+          "reason": "Presion vendedora (27% buys)"
+        },
+        {
+          "effect": -10,
+          "reason": "Deposito neto a exchanges (bajista)"
+        },
+        {
+          "effect": 4,
+          "reason": "Presencia social activa"
+        },
+        {
+          "effect": 4,
+          "reason": "Cotiza en multiples DEX"
+        }
+      ],
+      "url": "https://dexscreener.com/base/0xBA3F945812a83471d709BCe9C3CA699A19FB46f7",
+      "buy_url": "https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x532f27101965dd16442E59d40670FaF5eBB142E4"
+    },
+    {
+      "rank": 40,
       "symbol": "THE",
       "chain": "BNB",
       "score": 34,
-      "price": "0.06627",
-      "liq": 86445.66,
-      "vol": 12772.31,
-      "mcap": 9143511,
-      "ch24h": -2.56,
+      "price": "0.07849",
+      "liq": 95479.22,
+      "vol": 4909.03,
+      "mcap": 10853620,
+      "ch24h": 4.05,
       "ch7d": null,
       "flow": "IN",
       "whale_count": 0,
@@ -1385,7 +1425,7 @@
         },
         {
           "effect": -8,
-          "reason": "Presion vendedora (3% buys)"
+          "reason": "Presion vendedora (23% buys)"
         },
         {
           "effect": -10,
@@ -1404,20 +1444,20 @@
       "buy_url": "https://pancakeswap.finance/swap?outputCurrency=0xf4c8e32eadec4bfe97e0f595add0f4450a863a11"
     },
     {
-      "rank": 39,
-      "symbol": "LKI",
+      "rank": 41,
+      "symbol": "DEAI",
       "chain": "ETH",
-      "score": 26,
-      "price": "0.00002314",
-      "liq": 465.53,
-      "vol": 2.89,
-      "mcap": 21305,
-      "ch24h": 0.04,
+      "score": 31,
+      "price": "0.0004090",
+      "liq": 12403.13,
+      "vol": 71.36,
+      "mcap": 409046,
+      "ch24h": 5.22,
       "ch7d": null,
       "flow": "NEUTRAL",
       "whale_count": 0,
-      "big_buyers": 0,
-      "diagnosis": "No recomendado por ahora.",
+      "big_buyers": 1,
+      "diagnosis": "No recomendado por ahora. 1 comprador(es) grande(s) nuevo(s).",
       "reasons": [
         {
           "effect": -12,
@@ -1428,15 +1468,19 @@
           "reason": "Volumen muerto"
         },
         {
+          "effect": 5,
+          "reason": "1 comprador(es) grande(s) nuevo(s)"
+        },
+        {
           "effect": 4,
           "reason": "Presencia social activa"
         }
       ],
-      "url": "https://dexscreener.com/bsc/0x712903c3cA65aEeb2E5452d04Da090796fCAE0dF",
-      "buy_url": "https://pancakeswap.finance/swap?outputCurrency=0x1865dc79a9e4b5751531099057d7ee801033d268"
+      "url": "https://dexscreener.com/ethereum/0x1385Fc1Fe0418ea0B4Fcf7Adc61FC7535AB7F80d",
+      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea"
     },
     {
-      "rank": 40,
+      "rank": 42,
       "symbol": "SUSHI",
       "chain": "RHOOD",
       "score": 26,
@@ -1468,122 +1512,79 @@
       "buy_url": "https://dexscreener.com/robinhood/0x0bb40D7fbaE7f0C69Bc5910C601987dce697d85F"
     },
     {
-      "rank": 41,
-      "symbol": "DEAI",
-      "chain": "ETH",
-      "score": 19,
-      "price": "0.0003686",
-      "liq": 11299.75,
-      "vol": 6435.19,
-      "mcap": 106065,
-      "ch24h": -27.87,
+      "rank": 43,
+      "symbol": "PENDLE",
+      "chain": "RHOOD",
+      "score": 20,
+      "price": "2.69",
+      "liq": 122137.44,
+      "vol": 4243.57,
+      "mcap": 467657576,
+      "ch24h": 6.16,
       "ch7d": null,
       "flow": "IN",
       "whale_count": 0,
       "big_buyers": 0,
-      "diagnosis": "No recomendado por ahora. cayo 28% en 24h. deposito a exchanges (precaucion).",
+      "diagnosis": "No recomendado por ahora. deposito a exchanges (precaucion).",
+      "reasons": [
+        {
+          "effect": 4,
+          "reason": "Liquidez media"
+        },
+        {
+          "effect": -6,
+          "reason": "Volumen muerto"
+        },
+        {
+          "effect": -8,
+          "reason": "Presion vendedora (30% buys)"
+        },
+        {
+          "effect": -10,
+          "reason": "Deposito neto a exchanges (bajista)"
+        }
+      ],
+      "url": "https://dexscreener.com/robinhood/0x2d4670ee0fcdccdff4705a163a4e3d0b426c782317db61f3ea06c5a98d5eb423",
+      "buy_url": "https://dexscreener.com/robinhood/0x5E49E1f85813F2B65858860A3FA231b4186f2e0E"
+    },
+    {
+      "rank": 44,
+      "symbol": "1INCH",
+      "chain": "RHOOD",
+      "score": 12,
+      "price": "0.09652",
+      "liq": 15392.52,
+      "vol": 113.71,
+      "mcap": 3296565,
+      "ch24h": -0.24,
+      "ch7d": null,
+      "flow": "IN",
+      "whale_count": 0,
+      "big_buyers": 0,
+      "diagnosis": "No recomendado por ahora. deposito a exchanges (precaucion).",
       "reasons": [
         {
           "effect": -12,
           "reason": "Liquidez fragil (<$50K)"
         },
         {
-          "effect": 5,
-          "reason": "Turnover saludable"
-        },
-        {
-          "effect": -8,
-          "reason": "Presion vendedora (29% buys)"
+          "effect": -6,
+          "reason": "Volumen muerto"
         },
         {
           "effect": -10,
           "reason": "Deposito neto a exchanges (bajista)"
-        },
-        {
-          "effect": 4,
-          "reason": "Presencia social activa"
         }
       ],
-      "url": "https://dexscreener.com/ethereum/0x1385Fc1Fe0418ea0B4Fcf7Adc61FC7535AB7F80d",
-      "buy_url": "https://app.uniswap.org/#/swap?outputCurrency=0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea"
+      "url": "https://dexscreener.com/robinhood/0x1c365df278671237f4fbd5338f72683c1fd32685e3696938dd589afd5e0ab61b",
+      "buy_url": "https://dexscreener.com/robinhood/0x1755C2910c126eE1b0CF1E08a307Dc9E787285a0"
     }
   ],
   "top3": [
-    "PONS",
-    "USELESS",
-    "CASHCAT"
+    "CATE",
+    "ENA",
+    "URANUS"
   ],
-  "events_count": 10,
-  "events": [
-    {
-      "ts": 1789390798,
-      "date": "2026-09-14 12:59 UTC",
-      "token": "ONDO",
-      "type": "smart_money",
-      "detail": "Wallet 0xd8ed...0fd8 en 2 tokens: ENA, ONDO"
-    },
-    {
-      "ts": 1789390799,
-      "date": "2026-09-14 12:59 UTC",
-      "token": "ONDO",
-      "type": "smart_money",
-      "detail": "Wallet 0x1916...c339 en 2 tokens: ENA, ONDO"
-    },
-    {
-      "ts": 1789390810,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "USELESS",
-      "type": "score_cross",
-      "detail": "Score de acumulacion cruzo 80 (73 -> 85)"
-    },
-    {
-      "ts": 1789390819,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "TAO",
-      "type": "score_cross",
-      "detail": "Score de acumulacion cruzo 80 (75 -> 80)"
-    },
-    {
-      "ts": 1789390830,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "PONS",
-      "type": "combo",
-      "detail": "Combo de 2 senales (score 8): Insider/smart wallet dentro, CONVERGENCIA INSIDER"
-    },
-    {
-      "ts": 1789390830,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "PONS",
-      "type": "insider_convergence",
-      "detail": "14 insiders convergen en PONS (score prom. 62)"
-    },
-    {
-      "ts": 1789390830,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "PONS",
-      "type": "smart_money",
-      "detail": "Wallet 0xdf98...a526 en 2 tokens: ENA, PONS"
-    },
-    {
-      "ts": 1789390838,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "PENDLE",
-      "type": "combo",
-      "detail": "Combo de 2 senales (score 8): Insider/smart wallet dentro, CONVERGENCIA INSIDER"
-    },
-    {
-      "ts": 1789390839,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "PENDLE",
-      "type": "insider_convergence",
-      "detail": "6 insiders convergen en PENDLE (score prom. 68)"
-    },
-    {
-      "ts": 1789390839,
-      "date": "2026-09-14 13:00 UTC",
-      "token": "PENDLE",
-      "type": "smart_money",
-      "detail": "Wallet 0x56a4...e748 en 2 tokens: PENDLE, SUSHI"
-    }
-  ]
+  "events_count": 0,
+  "events": []
 }
