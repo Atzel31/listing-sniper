@@ -1,5 +1,5 @@
 {
-  "saved_at": 1791817346,
+  "saved_at": 1791817362,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -1247515,26 +1247515,6 @@
   },
   "signals_ledger": {
     "pending": [
-      {
-        "token": "U",
-        "contract": "0xce24439f2d9c6a2289f741120fe202248b666666",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.5% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-10-09T15:01:43.194662+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-10-12T15:02:26.237144+00:00"
-      },
       {
         "token": "PONS",
         "contract": "0x39dbed3a2bd333467115de45665cc57f813c4571",
