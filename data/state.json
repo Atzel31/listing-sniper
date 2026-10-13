@@ -1,5 +1,5 @@
 {
-  "saved_at": 1791866115,
+  "saved_at": 1791866132,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -1251583,26 +1251583,6 @@
   },
   "signals_ledger": {
     "pending": [
-      {
-        "token": "APE",
-        "contract": "0x8f86a15ec17cb3369d8b3e666dadbc11daa82b79",
-        "chain": "RHOOD",
-        "network": null,
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.2% 24h ⚪",
-        "entry_price": null,
-        "max_price": null,
-        "min_price": null,
-        "last_price": null,
-        "status": "pending",
-        "ts": "2026-10-10T04:00:55.517324+00:00",
-        "outcome": "NO_DATA",
-        "closed_at": "2026-10-13T04:35:14.921186+00:00"
-      },
       {
         "token": "VIRTUAL",
         "contract": "0xc6911796042b15d7fa4f6cde69e245ddcd3d9c31",
