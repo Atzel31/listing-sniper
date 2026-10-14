@@ -1,5 +1,5 @@
 {
-  "saved_at": 1791936102,
+  "saved_at": 1791936119,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -1265344,28 +1265344,6 @@
   "signals_ledger": {
     "pending": [
       {
-        "token": "SOIL",
-        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
-        "chain": "ETH",
-        "network": "eth",
-        "signals": [
-          "insider_buy",
-          "insider_convergence"
-        ],
-        "combo_key": "insider_buy+insider_convergence",
-        "btc_context": "Mercado: BTC +0.4% 24h ⚪",
-        "entry_price": 0.1070252061,
-        "max_price": 0.1092608955,
-        "min_price": 0.105476705,
-        "last_price": 0.1092608955,
-        "status": "open",
-        "ts": "2026-10-11T00:00:46.781282+00:00",
-        "outcome": "NEUTRAL",
-        "max_gain_pct": 2.1,
-        "min_loss_pct": -1.4,
-        "closed_at": "2026-10-14T00:01:42.567519+00:00"
-      },
-      {
         "token": "DEAI",
         "contract": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
         "chain": "ETH",
@@ -1270838,6 +1270816,28 @@
         "ts": "2026-10-10T15:00:45.027741+00:00",
         "outcome": "NO_DATA",
         "closed_at": "2026-10-13T15:01:04.948101+00:00"
+      },
+      {
+        "token": "SOIL",
+        "contract": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16",
+        "chain": "ETH",
+        "network": "eth",
+        "signals": [
+          "insider_buy",
+          "insider_convergence"
+        ],
+        "combo_key": "insider_buy+insider_convergence",
+        "btc_context": "Mercado: BTC +0.4% 24h ⚪",
+        "entry_price": 0.1070252061,
+        "max_price": 0.1092608955,
+        "min_price": 0.105476705,
+        "last_price": 0.1092608955,
+        "status": "open",
+        "ts": "2026-10-11T00:00:46.781282+00:00",
+        "outcome": "NEUTRAL",
+        "max_gain_pct": 2.1,
+        "min_loss_pct": -1.4,
+        "closed_at": "2026-10-14T00:01:42.567519+00:00"
       }
     ]
   },
