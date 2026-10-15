@@ -1,5 +1,5 @@
 {
-  "saved_at": 1792108740,
+  "saved_at": 1792108753,
   "bot_version": "v9.2",
   "smart_wallets": {
     "0x37f8710c06d38a3d280cb1b3d5d6e0c11f3cc382": {
@@ -1295803,61 +1295803,30 @@
       "text": "🎯 224 smart wallets compraron $ENA [ETH] casi a la vez. Convergencia de dinero inteligente. · BTC +2.5% 🟢"
     }
   ],
-  "catalyst_opportunities": [
-    {
-      "score": 77,
-      "ip_name": "Fool Night",
-      "event_date": "2026-11-26",
-      "days_until": 42,
-      "region": "JP",
-      "audience": 23031,
-      "event_type": "season_premiere",
-      "source_url": "https://anilist.co/anime/213457",
-      "token_symbol": "FOOL",
-      "token_chain": "base",
-      "token_liq": 10471,
-      "token_vol24": 134836,
-      "token_url": "https://dexscreener.com/base/0x4d32905370e27024b0cd816f7f52eb65d44483298a9fbe9fec135663371de616",
-      "conflict": false,
-      "match_quality": 1.0,
-      "breakdown": {
-        "audiencia": 35,
-        "ventana": 20,
-        "match": 20,
-        "dormido": 0,
-        "atencion_baja": 2,
-        "conflicto": 0
-      },
-      "flags": [
-        "narrativa poblada (38 tickers): posible sobre-cobertura",
-        "volumen de narrativa alto (930,195): puede estar descubierta",
-        "verificar afinidad cultural a mano"
-      ]
-    }
-  ],
-  "catalyst_last_run": 1792022208,
+  "catalyst_opportunities": [],
+  "catalyst_last_run": 1792108753,
   "catalyst_events": 185,
   "catalyst_alerted": [
-    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
-    "Blue Box Season 2|BLUE|2026-10-04",
     "Cyberpunk: Edgerunners 2|CYBERPUNK|2026-10-20",
     "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|MAGIC|2026-08-28",
-    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
-    "The Iceblade Sorcerer Shall Rule the World II|ICEBLADE|2026-10-09",
-    "Rascal Does Not Dream of a Dear Friend|RASC|2026-10-16",
-    "The Detective Is Already Dead Season 2|DETECTIVE|2026-10-07",
-    "GROTESQQQUE|GROTESQQQUE|2026-11-06",
     "Tokyo Revengers: Santen Sensou-hen|TOKYO|2026-10-03",
     "To You in the Beyond|YOU|2026-10-09",
-    "Dragon Ball Super: Beerus|DRAGON|2026-10-11",
-    "Cyberpunk: Edgerunners 2|CBRPNK|2026-10-20",
-    "Firefly Wedding|ほたる|2026-10-09",
+    "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE|JOJO|2026-09-25",
     "Fool Night|FOOL|2026-11-26",
     "Firefly Wedding|FLY|2026-10-09",
-    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
+    "Cyberpunk: Edgerunners 2|CBRPNK|2026-10-20",
+    "Firefly Wedding|ほたる|2026-10-09",
     "My Happy Marriage Special Episodes|HAPPY|2026-10-25",
+    "The Detective Is Already Dead Season 2|DETECTIVE|2026-10-07",
+    "Dragon Ball Super: Beerus|DRAGON|2026-10-11",
+    "Black Clover Season 2|black|2026-10-03",
+    "Rascal Does Not Dream of a Dear Friend|RASC|2026-10-16",
     "To You in the Beyond|you|2026-10-09",
-    "Black Clover Season 2|black|2026-10-03"
+    "The Iceblade Sorcerer Shall Rule the World II|ICEBLADE|2026-10-09",
+    "Cyberpunk: Edgerunners 2|CITIZEN|2026-10-20",
+    "Made in Abyss: Mezameru Shinpi|MADE|2026-10-23",
+    "GROTESQQQUE|GROTESQQQUE|2026-11-06",
+    "Blue Box Season 2|BLUE|2026-10-04"
   ],
   "catalyst_snapshots": 243,
   "catalyst_backtest": {
